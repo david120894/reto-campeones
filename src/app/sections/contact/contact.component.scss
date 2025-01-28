@@ -1,0 +1,22 @@
+.section-contact{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    gap: 20px;
+}
+
+.sub-item{
+    @apply bg-red-500 w-[80%] h-40 border-2 rounded-lg;
+}
+
+.contact-container{
+    width: 100%;
+    padding: 20px;
+}
+
+.item{
+    width: 30%;
+    background-color: saddlebrown;
+}
