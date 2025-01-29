@@ -8,10 +8,11 @@ import { ServicesGalleryComponent } from "./sections/services-gallery/services-g
 import { ContactComponent } from "./sections/contact/contact.component";
 import { AboutComponent } from "./sections/about/about.component";
 import { FormComponent } from "./sections/form/form.component";
+import { FooterComponent } from "./shared/components/footer/footer.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavBarComponent, FirstViewComponent, ServicesComponent, ServicesGalleryComponent, ContactComponent, AboutComponent, ReactiveFormsModule, FormComponent],
+  imports: [RouterOutlet, NavBarComponent, FirstViewComponent, ServicesComponent, ServicesGalleryComponent, ContactComponent, AboutComponent, ReactiveFormsModule, FormComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

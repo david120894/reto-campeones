@@ -1,0 +1,31 @@
+// Colors
+$black-color: #2D3136;
+$gray-color: #7F8C99;
+$yellow-color: #F4C151;
+
+// Fonts
+$Kaisei-font: "Kaisei HarunoUmi", sans-serif;
+$JetBrains-font: "JetBrains Mono", sans-serif;
+
+.img-footer{
+    width: 220px;
+    height: 220px;
+    background-color: $gray-color;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.title-footer{
+    font-family: $Kaisei-font, sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.custom-icon-footer{
+    font-size: 40px;
+    color: #fff;
+}
+
+li{
+    color: $gray-color;
+}
