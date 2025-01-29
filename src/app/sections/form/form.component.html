@@ -1,1 +1,29 @@
-<p>form works!</p>
+<section class="form-section">
+    <div class="form-container">
+        <div class="card-title">
+            <div class="title">
+                Escribenos un email
+            </div>
+            <div class="subtitle">
+                Let's talk if you have any query or suggestion.
+                We are open to learn from you. So don't hesitate
+                to reach us anytime
+            </div>
+        </div>
+        <div class="card-form">
+            <form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="form-container">
+                <input id="nombres" type="text" formControlName="nombres" required class="input-field" placeholder="Nombres">
+
+                <input id="apellidos" type="text" formControlName="apellidos" required class="input-field" placeholder="Apellidos">
+
+                <input id="telefono" type="tel" formControlName="telefono" required class="input-field" placeholder="Teléfono">
+                
+                <input id="email" type="email" formControlName="email" required class="input-field" placeholder="Email">
+
+                <textarea id="mensaje" formControlName="mensaje" required class="input-field textarea-field" placeholder="Escribe tu mensaje aqui"></textarea>
+    
+                <button type="submit" [disabled]="formulario.invalid" class="submit-button">Enviar</button>
+            </form>
+        </div>
+    </div>
+</section>

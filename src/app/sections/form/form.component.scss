@@ -1,0 +1,91 @@
+// Colors
+$black-color: #2D3136;
+$gray-color: #7F8C99;
+$yellow-color: #F4C151;
+
+// Fonts
+$Kaisei-font: "Kaisei HarunoUmi", sans-serif;
+$JetBrains-font: "JetBrains Mono", sans-serif;
+
+.form-section{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    gap: 20px;
+    height: 100vh;
+    font-family: $JetBrains-font, sans-serif;
+}
+
+.form-container{
+    width: 100%;
+    padding: 20px;
+}
+
+.card-form {
+    display: flex;
+    flex-flow: column wrap;
+    width: 40%;
+    margin: 30px auto;  
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    border: 2px solid $gray-color;
+
+    .input-field {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 10px;
+        margin-top: 15px;
+        border: 2px solid $gray-color;
+        border-radius: 12px;
+    }
+
+    .textarea-field {
+        resize: vertical;
+        height: 100px;
+    }
+  
+    .submit-button {
+        margin-top: 15px;
+        padding: 10px;
+        background: $yellow-color;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.3s;
+
+      &:hover {
+        background: #896b13;
+      }
+  
+      &:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+.card-title{
+    margin: 30px auto;
+    width: 60%;
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center;
+}
+
+.title{
+    text-align: center;
+    font-size: 40px;
+    font-family: $Kaisei-font, sans-serif;
+    margin-bottom: 20px;
+}
+
+.subtitle{
+    text-align: center;
+}

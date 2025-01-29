@@ -1,0 +1,54 @@
+// Colors
+$black-color: #2D3136;
+$gray-color: #7F8C99;
+$yellow-color: #F4C151;
+
+// Fonts
+$Kaisei-font: "Kaisei HarunoUmi", sans-serif;
+$JetBrains-font: "JetBrains Mono", sans-serif;
+
+.about-section{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    gap: 20px;
+    height: 90vh;
+    font-family: $JetBrains-font, sans-serif;
+}
+
+.about-container{
+    display: flex;
+    flex-flow: column wrap;
+    margin-top: 20px;
+}
+
+.cards{
+    width: 45%;
+}
+
+.cards-container{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.description{
+    text-align: start;
+    margin-bottom: 80px;
+}
+
+.img-about{
+    margin: 10px auto;
+    width: 80%;
+    height: 200px;
+    border: 2px solid $gray-color;
+    border-radius: 12px;
+}
+
+.gib-image{
+    text-align: center;
+}

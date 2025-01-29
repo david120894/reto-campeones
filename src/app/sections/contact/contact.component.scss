@@ -1,3 +1,12 @@
+// Colors
+$black-color: #2D3136;
+$gray-color: #7F8C99;
+$yellow-color: #F4C151;
+
+// Fonts
+$Kaisei-font: "Kaisei HarunoUmi", sans-serif;
+$JetBrains-font: "JetBrains Mono", sans-serif;
+
 .section-contact{
     display: flex;
     flex-flow: column wrap;
@@ -5,10 +14,22 @@
     align-items: center;
     margin-top: 40px;
     gap: 20px;
+    height: 90vh;
+    font-family: $JetBrains-font, sans-serif;
+    font-weight: bold;
 }
 
+//.sub-item{
+//    @apply bg-red-500 w-[80%] h-40 border-2 rounded-lg;
+//}
+
 .sub-item{
-    @apply bg-red-500 w-[80%] h-40 border-2 rounded-lg;
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: start;
 }
 
 .contact-container{
@@ -17,6 +38,65 @@
 }
 
 .item{
-    width: 30%;
-    background-color: saddlebrown;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: space-evenly;
+    width: 25%;
+    padding: 10px;
+    border: 2px solid $gray-color;
+    border-radius: 12px;
+}
+
+.sub-item > .icon{
+    display: inline-block;
+    width: 10%;
+}
+
+.text-description{
+    display: inline-block;
+    width: 70%;
+    color: $gray-color;
+}
+
+.hour-service-item{
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: start;
+}
+
+.item-title{
+    color: $yellow-color;
+}
+
+.item-subtitle{
+    color: $black-color;
+    margin-top: 8px;
+}
+
+.item-description{
+    color: $gray-color;
+}
+
+.support-items{
+    display: flex;
+    flex-flow: column wrap;
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+    justify-content: start;
+    color: $gray-color;
+}
+
+.item-suport-title{
+    color: $black-color;
+    margin-bottom: 8px;
+}
+
+.item-suport-text{
+    margin-bottom: 8px;
 }
