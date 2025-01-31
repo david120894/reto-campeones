@@ -7,35 +7,8 @@ $yellow-color: #F4C151;
 $Kaisei-font: "Kaisei HarunoUmi", sans-serif;
 $JetBrains-font: "JetBrains Mono", sans-serif;
 
-
-.custom-first-view{
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: center;
-}
-
 .title{
-    display: flex;
-    flex-flow: column wrap;
     font-family: $Kaisei-font, sans-serif;
-    font-weight: 900;
-    font-size: 60px;
-    line-height: 1.5;
-}
-
-.childs{
-    width: 45%;
-    padding: 10px;
-}
-
-.button-container {
-    margin-top: 45px;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
 }
 
 .custom-button{
@@ -44,16 +17,7 @@ $JetBrains-font: "JetBrains Mono", sans-serif;
     padding: 10px 50px;
 }
 
-.text-container{
-    padding: 5px;
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: start;
-    gap: 20px;
-}
-
 .description{
-    padding-left: 20px;
     font-family: $JetBrains-font, sans-serif;
     color: $gray-color;
 }
@@ -62,12 +26,10 @@ $JetBrains-font: "JetBrains Mono", sans-serif;
     background-color: $yellow-color;
     color: $black-color;
     font-family: $JetBrains-font;
-     font-weight: 400;
 }
 
 #btn-location{
     border: 2px solid $yellow-color;
     color: $yellow-color;
     font-family: $JetBrains-font;
-    font-weight: 400;
 }
