@@ -7,18 +7,8 @@ $yellow-color: #F4C151;
 $Kaisei-font: "Kaisei HarunoUmi", sans-serif;
 $JetBrains-font: "JetBrains Mono", sans-serif;
 
-.img-footer{
-    width: 220px;
-    height: 220px;
-    background-color: $gray-color;
-    text-align: center;
-    border-radius: 50%;
-}
-
 .title-footer{
     font-family: $Kaisei-font, sans-serif;
-    font-size: 40px;
-    font-weight: bold;
 }
 
 .custom-icon-footer{
@@ -28,4 +18,8 @@ $JetBrains-font: "JetBrains Mono", sans-serif;
 
 li{
     color: $gray-color;
+}
+
+.img-custom{
+    width: 500px !important;
 }

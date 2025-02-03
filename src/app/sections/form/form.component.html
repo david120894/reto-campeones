@@ -1,28 +1,30 @@
-<section class="form-section">
-    <div class="form-container">
-        <div class="card-title">
-            <div class="title">
+<section class="form-section w-[100%] p-4">
+    <div class="form-container mt-[40px]">
+        <div class="card-title flex flex-col items-center justify-center text-center">
+            <div class="title text-3xl font-bold mb-6">
                 Escribenos un email
             </div>
-            <div class="subtitle">
+            <div class="subtitle text-sm font-normal">
                 Let's talk if you have any query or suggestion.
                 We are open to learn from you. So don't hesitate
                 to reach us anytime
             </div>
         </div>
-        <div class="card-form">
-            <form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="form-container">
-                <input id="nombres" type="text" formControlName="nombres" required class="input-field" placeholder="Nombres">
+        <div class="card-form flex flex-col flex-wrap my-8 md:mt-[30px] p-2 rounded-md border-2  border-solid border-[#7F8C99] items-center justify-center">
+            <form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="form-container w-[95%]">
+                <input id="nombres" type="text" formControlName="nombres" required class="input-field w-full p-2 rounded-md mt-2" placeholder="Nombres">
 
-                <input id="apellidos" type="text" formControlName="apellidos" required class="input-field" placeholder="Apellidos">
+                <input id="apellidos" type="text" formControlName="apellidos" required class="input-field w-full p-2 rounded-md mt-2" placeholder="Apellidos">
 
-                <input id="telefono" type="tel" formControlName="telefono" required class="input-field" placeholder="Teléfono">
+                <input id="telefono" type="tel" formControlName="telefono" required class="input-field w-full p-2 rounded-md mt-2" placeholder="Teléfono">
                 
-                <input id="email" type="email" formControlName="email" required class="input-field" placeholder="Email">
+                <input id="email" type="email" formControlName="email" required class="input-field w-full p-2 rounded-md mt-2" placeholder="Email">
 
-                <textarea id="mensaje" formControlName="mensaje" required class="input-field textarea-field" placeholder="Escribe tu mensaje aqui"></textarea>
-    
-                <button type="submit" [disabled]="formulario.invalid" class="submit-button">Enviar</button>
+                <textarea id="mensaje" formControlName="mensaje" required class="input-field textarea-field w-full p-2 rounded-md mt-2" placeholder="Escribe tu mensaje aqui"></textarea>
+
+                <div class="flex items-center justify-center">
+                    <button type="button" [disabled]="formulario.invalid" class="submit-button focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">Enviar</button>
+                </div>
             </form>
         </div>
     </div>
