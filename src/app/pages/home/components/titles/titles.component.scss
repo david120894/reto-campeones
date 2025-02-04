@@ -1,0 +1,35 @@
+
+// Colors
+$black-color: #2D3136;
+$gray-color: #7F8C99;
+$yellow-color: #F4C151;
+
+// Fonts
+$Kaisei-font: "Kaisei HarunoUmi", sans-serif;
+$JetBrains-font: "JetBrains Mono", sans-serif;
+
+
+.small-big-subtitle{
+    display: flex;
+    flex-flow: column;
+    padding: 60px auto;
+    align-items: center;
+    width: 80vw;
+    margin-bottom: 30px;
+}
+
+.subtitle-small{
+    font-family: $JetBrains-font, sans-serif;
+    color: $black-color;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.subtitle-big{
+    font-family: $Kaisei-font, sans-serif;
+    color: $black-color;
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+}

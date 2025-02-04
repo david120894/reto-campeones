@@ -1,0 +1,48 @@
+<section class="form-section w-[100%] p-4 md:w-[40%] md:flex md:items-center md:justify-center mx-auto">
+    <div class="form-container mt-[40px]">
+        <div class="card-title flex flex-col items-center justify-center text-center">
+            <div class="title text-3xl font-bold mb-6">
+                Escribenos un email
+            </div>
+            <div class="subtitle text-sm font-normal">
+                Let's talk if you have any query or suggestion.
+                We are open to learn from you. So don't hesitate
+                to reach us anytime
+            </div>
+        </div>
+        <div class="card-form flex flex-col flex-wrap my-8 md:mt-[30px] p-2 rounded-md border-2  border-solid border-[#7F8C99] items-center justify-center">
+            <form [formGroup]="formulario" (submit)="onSubmit()" class="form-container w-[95%]">
+                <div class="flex mb-4 mt-8">
+                    <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                        <i class="fa-regular fa-user"></i>
+                    </span>
+                    <input type="text" id="nombres"  formControlName="nombres" required class="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nombres">
+                </div>
+                <div class="flex mb-4">
+                    <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                        <i class="fa-solid fa-user"></i>
+                    </span>
+                    <input id="apellidos" type="text" formControlName="apellidos" required class="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Apellidos">
+                </div>
+                <div class="flex mb-4">
+                    <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                        <i class="fa-solid fa-phone"></i>
+                    </span>
+                    <input id="telefono" type="tel" formControlName="telefono" required class="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Teléfono">
+                </div>
+                <div class="flex mb-4">
+                    <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                        <i class="fa-solid fa-envelope"></i>
+                    </span>
+                    <input id="email" type="email" formControlName="email" required class="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Email">
+                </div>
+                <div class="mb-4">
+                    <textarea id="mensaje" formControlName="mensaje" required class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Escribe tu mensaje aqui..."></textarea>
+                </div>
+                <div class="flex items-center justify-center">
+                    <button type="submit" [disabled]="formulario.invalid" class="submit-button focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
