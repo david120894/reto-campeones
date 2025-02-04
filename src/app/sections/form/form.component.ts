@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 @Component({
   selector: 'app-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule], 
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss'
 })
@@ -12,6 +12,7 @@ export class FormComponent {
 
   constructor(private fb: FormBuilder) {
     this.formulario = this.fb.group({
+      
       nombres: ['', Validators.required],
       apellidos: ['', Validators.required],
       telefono: ['', [Validators.required, Validators.pattern('[0-9]+')]],
