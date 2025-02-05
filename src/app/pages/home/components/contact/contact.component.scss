@@ -11,6 +11,14 @@ $JetBrains-font: "JetBrains Mono", sans-serif;
     font-family: $JetBrains-font, sans-serif;
 }
 
+.small-text{
+    font-family: $JetBrains-font, sans-serif;
+}
+
+.big-title{
+    font-family: $Kaisei-font, sans-serif;
+}
+
 //.sub-item{
 //    @apply bg-red-500 w-[80%] h-40 border-2 rounded-lg;
 //}
@@ -38,4 +46,6 @@ $JetBrains-font: "JetBrains Mono", sans-serif;
 .item-suport-title{
     color: $black-color;
 }
+
+
 

@@ -7,17 +7,20 @@ $yellow-color: #F4C151;
 $Kaisei-font: "Kaisei HarunoUmi", sans-serif;
 $JetBrains-font: "JetBrains Mono", sans-serif;
 
-.about-section{
-    font-family: $JetBrains-font, sans-serif;
-}
 
 .subtitle-small{
     font-family: $JetBrains-font, sans-serif;
-    color: $black-color;
-
 }
 
 .subtitle-big{
     font-family: $Kaisei-font, sans-serif;
-    color: $black-color;
+}
+
+.description{
+    font-family: $JetBrains-font, sans-serif;
+    color: $gray-color;
+}
+
+.beneficit-custom{
+    font-family: $JetBrains-font, sans-serif;
 }

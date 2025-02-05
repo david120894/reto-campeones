@@ -8,6 +8,7 @@ import { EmailFormComponent } from './components/email-form/email-form.component
 import { ContactComponent } from './components/contact/contact.component';
 import { CarrouselComponent } from './components/carrousel/carrousel.component';
 import { AboutComponent } from './components/about/about.component';
+import { FeaturesComponent } from './components/features/features.component';
 
 
 
@@ -23,7 +24,8 @@ import { AboutComponent } from './components/about/about.component';
     EmailFormComponent,
     ContactComponent,
     CarrouselComponent,
-    AboutComponent
+    AboutComponent,
+    FeaturesComponent
   ],
   exports: [
     HomeComponent
