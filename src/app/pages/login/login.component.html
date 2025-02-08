@@ -1,0 +1,25 @@
+<div class="flex flex-col h-[80vh] w-[50%] items-center justify-center mx-auto bg-white p-6 rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold text-center mb-4">Iniciar Sesión</h2>
+    <div>
+        <form [formGroup]="loginForm" (submit)="onSubmit()">
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                <input type="email" formControlName="email"
+                    class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring focus:ring-blue-300"
+                    placeholder="email@example.com" />
+            </div>
+    
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Contraseña</label>
+                <input type="password" formControlName="password"
+                    class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring focus:ring-blue-300"
+                    placeholder="•••••••" />
+            </div>
+    
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition"
+                [disabled]="loginForm.invalid">
+                Iniciar Sesión
+            </button>
+        </form>
+    </div>
+</div>

@@ -7,18 +7,14 @@ import { CarrouselComponent } from '../carrousel/carrousel.component';
 import { AboutComponent } from '../about/about.component';
 import { FeaturesComponent } from '../features/features.component';
 
+
+const DECLARATIONS = [
+  SectionHomeComponent, GalleryComponent, EmailFormComponent, ContactComponent, CarrouselComponent, AboutComponent, FeaturesComponent,
+]
+
 @Component({
   selector: 'app-home',
-  standalone: true,
-  imports: [
-    SectionHomeComponent,
-    GalleryComponent,
-    EmailFormComponent,
-    ContactComponent,
-    CarrouselComponent,
-    AboutComponent,
-    FeaturesComponent
-  ],
+  imports: [...DECLARATIONS],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
