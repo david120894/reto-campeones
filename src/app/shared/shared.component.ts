@@ -4,11 +4,9 @@ import { FooterComponent } from '../pages/login/components/footer/footer.compone
 import { HeaderComponent } from '../pages/login/components/header/header.component';
 
 const NG_MODULES = [RouterModule];
-const DECLARATIONS = [FooterComponent, HeaderComponent]
-
 @Component({
   selector: 'app-shared',
-  imports: [...NG_MODULES, ...DECLARATIONS],
+  imports: [...NG_MODULES],
   templateUrl: './shared.component.html',
   styleUrl: './shared.component.scss'
 })
