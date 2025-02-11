@@ -18,9 +18,69 @@ $JetBrains-font: "JetBrains Mono", sans-serif;
 
 .description{
     font-family: $JetBrains-font, sans-serif;
-    color: $gray-color;
 }
 
 .beneficit-custom{
     font-family: $JetBrains-font, sans-serif;
+}
+
+.acordian-container{
+    font-family: $JetBrains-font, sans-serif;
+}
+
+
+.acordion{
+    margin:  10px auto;
+    margin-bottom: 60px;
+    width: 100%;
+    max-width: 750px;
+}
+
+input[type="checkbox"]{
+    display: none;
+}
+
+.acordion li{
+    list-style: none;
+    width: 100%;
+    margin: -1px;
+}
+
+.acordion li label{
+    display: flex;
+    align-items: center;
+    line-height: 1.2;
+    padding: 10px;
+    margin-bottom: 2px;
+    cursor: pointer;
+    position: relative;
+    background: #ffffff;
+    border-radius: 12px;
+}
+
+label::after{
+    content: '+';
+    position: absolute;
+    right: 20px;
+    transition: transform 0.3s;
+}
+
+.acordion .content{
+    background: #F4C151;
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s, padding 0.5s;
+    line-height: 1.2;
+}
+
+input[type="checkbox"]:checked + label::after {
+    transform: rotate(135deg);
+}
+
+input[type="checkbox"]:checked + label + .content {
+    max-height: 500px; /* Ajusta según la cantidad de contenido */
+    padding: 20px;
+    text-align: center;
+    border-radius: 15px;
 }

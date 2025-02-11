@@ -9,7 +9,7 @@
         </div>
     </div>
     <div>
-        <form [formGroup]="loginForm" (submit)="onSubmit()">
+        <form [formGroup]="loginForm" (submit)="login()">
             <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
                 <input type="email" formControlName="email"

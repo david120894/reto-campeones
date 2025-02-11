@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../../core/services/auth.service';
 
 
 const NG_MODULES = [ReactiveFormsModule, CommonModule]
@@ -13,20 +14,24 @@ const NG_MODULES = [ReactiveFormsModule, CommonModule]
 })
 export class RegisterComponent {
   registerForm: FormGroup;
+  message = '';
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.registerForm = this.fb.group({
-      nombres: ['', [Validators.required]],
-      apellidos: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      telefono: ['', [Validators.required, Validators.pattern('^[0-9]{9,12}$')]],
+      name: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(100)]],
+      role: ['user', [Validators.required]],
+      email: ['', [Validators.required, Validators.email, Validators.minLength(10), Validators.maxLength(50)]],
+      password: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(50)]],
+      password_confirmation: ['', [Validators.required]],
     });
   }
 
-  onSubmit() {
+  register() {
     if (this.registerForm.valid) {
-      console.log('Register Data:', this.registerForm.value);
+      this.authService.register(this.registerForm.value).subscribe({
+        next: (res) => this.message = 'Registro exitoso!',
+        error: (err) => this.message = err.error.error || 'Error en el registro',
+      });
     }
   }
 }
