@@ -2,6 +2,8 @@
 $black-color: #2D3136;
 $gray-color: #7F8C99;
 $yellow-color: #F4C151;
+$Niconne: "Niconne", sans-serif;
+$Akaya: "Akaya Kanadaka", sans-serif;
 
 // Fonts
 $Kaisei-font: "Kaisei HarunoUmi", sans-serif;
@@ -12,11 +14,11 @@ $JetBrains-font: "JetBrains Mono", sans-serif;
 }
 
 .small-text{
-    font-family: $JetBrains-font, sans-serif;
+    font-family: $Niconne, sans-serif;
 }
 
 .big-title{
-    font-family: $Kaisei-font, sans-serif;
+    font-family: $Niconne, sans-serif;
 }
 
 //.sub-item{
@@ -24,7 +26,7 @@ $JetBrains-font: "JetBrains Mono", sans-serif;
 //}
 
 .text-description{
-    color: $gray-color;
+    color: #31353a;
 }
 
 .item-title{
@@ -33,10 +35,6 @@ $JetBrains-font: "JetBrains Mono", sans-serif;
 
 .item-subtitle{
     color: $black-color;
-}
-
-.item-description{
-    color: $gray-color;
 }
 
 .support-items{

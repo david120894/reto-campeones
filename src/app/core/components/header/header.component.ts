@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.flowbiteService.loadFlowbite(flowbite => {
       // Your custom code here
-      console.log('Flowbite loaded', flowbite);
+      console.log('Flowbite loaded header', flowbite);
     });
   }
 }

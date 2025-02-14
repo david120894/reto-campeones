@@ -8,16 +8,15 @@ $Kaisei-font: "Kaisei HarunoUmi", sans-serif;
 $JetBrains-font: "JetBrains Mono", sans-serif;
 $Poppins-font: "Poppins", sans-serif;
 
-.gallery-container {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-    margin-top: 40px;
-    gap: 20px;
+// .gallery-container {
+//     display: flex;
+//     flex-flow: column wrap;
+//     justify-content: center;
+//     align-items: center;
+//     gap: 20px;
 
-    font-family: $Poppins-font, sans-serif;
-}
+//     font-family: $Poppins-font, sans-serif;
+// }
 
 .gallery-container-cards {
     width: 80vw;
