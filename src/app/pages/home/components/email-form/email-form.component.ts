@@ -1,33 +1,85 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ReservationService } from '../../../../core/services/reservation.service';
 
+interface Room {
+  title: string;
+}
+
+const NG_MODULES = [ReactiveFormsModule, CommonModule]
 @Component({
   selector: 'app-email-form',
   standalone: true,
-  imports: [
-    ReactiveFormsModule,CommonModule
-  ],
+  imports: [...NG_MODULES],
   templateUrl: './email-form.component.html',
   styleUrl: './email-form.component.scss'
 })
 export class EmailFormComponent {
+  rooms: Room[] = [
+    {
+      title: "MACHUPICCHU",
+    },
+    {
+      title: "OLLANTAYTAMBO",
+    },
+    {
+      title: "PISAQ",
+    },
+    {
+      title: "SAQSAYHUAMÁN",
+    },
+    {
+      title: "TIPÓN",
+    },
+    {
+      title: "Q'ENQO",
+    },
+    {
+      title: "PATIO PRINCIPAL",
+    },
+    {
+      title: "PATIO PARA STANDS",
+    }
+  ];
+
   formulario: FormGroup;
-  
-    constructor(private fb: FormBuilder) {
-      this.formulario = this.fb.group({
-        
-        nombres: ['', Validators.required],
-        apellidos: ['', Validators.required],
-        telefono: ['', [Validators.required, Validators.pattern('[0-9]+')]],
-        email: ['', [Validators.required, Validators.email]], 
-        mensaje: ['', Validators.required]
+  message = '';
+  success = false;
+
+  constructor(private fb: FormBuilder, private reservationService: ReservationService) {
+    this.formulario = this.fb.group({
+      nombres: ['', [Validators.required, Validators.maxLength(30)]],
+      apellidos: ['', [Validators.required, Validators.maxLength(30)]],
+      pais: ['', [Validators.required, Validators.pattern(/^\+[0-9]{1,4}$/)]],
+      telefono: ['', [Validators.required, Validators.pattern('[0-9]+'), Validators.minLength(6)]],
+      email: ['', [Validators.required, Validators.email, Validators.maxLength(50)]],
+      room: ['', [Validators.maxLength(20)]],
+      mensaje: ['', Validators.required]
+    });
+  }
+
+  onSubmit() {
+    if (this.formulario.valid) {
+      this.reservationService.sendReservation(this.formulario.value).subscribe({
+        next: (res) => {
+          this.message = 'Registro exitoso!';
+          this.success = true;
+          this.formulario.reset();
+          this.hideAlert();
+        },
+        error: (err) => {
+          this.message = err.error.error || 'Error en el registro';
+          this.success = false;
+          this.hideAlert();
+        },
       });
     }
-  
-    onSubmit() {
-      if (this.formulario.valid) {
-        console.log(this.formulario.value);
-      }
-    }
+  }
+
+  hideAlert() {
+    setTimeout(() => {
+      this.message = '';
+    }, 2000); // La alerta desaparecerá en 4 segundos
+  }
 }

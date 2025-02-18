@@ -90,7 +90,7 @@ export class CarrouselComponent implements OnInit {
       roomSize: "Ambiente abierto",
       maxCapacity: 150,
       features: "Presentación de productos.",
-      imageUrl: "https://images.unsplash.com/photo-1497366754035-f200968a6e72"
+      imageUrl: "images/patio_stands.jpg"
     }
   ];
 
