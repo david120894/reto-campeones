@@ -11,4 +11,10 @@ import { TitlesComponent } from '../titles/titles.component';
 })
 export class GalleryComponent {
 
+  scrollToEmail() {
+    const emailSection = document.getElementById('email');
+    if (emailSection) {
+      emailSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 }
