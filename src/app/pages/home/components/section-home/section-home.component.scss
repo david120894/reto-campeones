@@ -1,0 +1,38 @@
+// Colores
+$black-color: #2D3136;
+$gray-color: #7F8C99;
+$yellow-color: #F4C151;
+$black-gradient-color: #1a1a1d;
+$red-color: #8d0c28;
+$guinde-color: #740938;
+
+// Tipografías
+$Kaisei-font: "Kaisei HarunoUmi", sans-serif;
+$JetBrains-font: "JetBrains Mono", sans-serif;
+$Niconne: "Niconne", sans-serif;
+$Akaya: "Akaya Kanadaka", sans-serif;
+
+.title{
+    font-family: $Niconne, sans-serif;
+}
+
+.custom-button{
+    cursor: pointer;
+    border-radius: 7px;
+    padding: 10px 50px;
+}
+
+.description{
+    font-family: $JetBrains-font, sans-serif;
+}
+
+#btn-hours{
+    border: 2px solid $red-color;
+    font-family: $JetBrains-font;
+}
+
+#btn-location{
+    border: 2px solid $red-color;
+    color: $black-gradient-color;
+    font-family: $JetBrains-font;
+}

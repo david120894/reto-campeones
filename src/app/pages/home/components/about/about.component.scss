@@ -1,0 +1,104 @@
+// Colors
+$black-color: #2D3136;
+$gray-color: #7F8C99;
+$yellow-color: #f4c151;
+
+// Fonts
+$Kaisei-font: "Kaisei HarunoUmi", sans-serif;
+$JetBrains-font: "JetBrains Mono", sans-serif;
+$Niconne: "Niconne", sans-serif;
+$Akaya: "Akaya Kanadaka", sans-serif;
+
+.abo-cont-item {
+    background-image: linear-gradient(rgba(54, 4, 26, 0.619), rgba(101, 79, 33, 0.641)), url('../../../../../../public/images/palacio_post.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-attachment: fixed;
+    height: auto;
+}
+
+.small-text {
+    font-family: $Niconne, sans-serif;
+}
+
+.big-title {
+    font-family: $Niconne, sans-serif;
+}
+
+.about-section {
+    font-family: $JetBrains-font, sans-serif;
+}
+
+.subtitle-small {
+    font-family: $Niconne, sans-serif;
+    color: $black-color;
+
+}
+
+.subtitle-big {
+    font-family: $Niconne, sans-serif;
+    color: $black-color;
+}
+
+.description {
+    font-family: $Akaya, sans-serif;
+}
+
+.card_desc-about {
+    background-color: rgba(231, 236, 240, 0.458);
+}
+
+@keyframes changeBg {
+
+    0%,
+    100% {
+        background-color: rgba(156, 163, 175, 0.507);
+    }
+
+    // Color gris inicial y final
+    33% {
+        background-color: rgba(107, 114, 128, 0.544);
+    }
+
+    // Gris oscuro
+    66% {
+        background-color: rgba(226, 23, 67, 0.515);
+    }
+
+    // Azul oscuro
+}
+
+.card_desc-about {
+    animation: changeBg 6s infinite;
+    transition: background-color 0.5s ease-in-out;
+}
+
+
+.slider-container {
+    overflow: hidden;
+    width: 100%; // O ajusta según el contenedor
+    position: relative;
+}
+
+.slider {
+    display: flex;
+    width: 200%;
+    animation: slide 10s linear infinite;
+
+    img {
+        
+        flex-shrink: 0;
+    }
+}
+
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%); // Se mueve la mitad del contenedor (4 imágenes)
+    }
+}

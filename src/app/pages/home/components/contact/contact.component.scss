@@ -1,0 +1,70 @@
+// Colors
+$black-color: #2D3136;
+$gray-color: #7F8C99;
+$yellow-color: #F4C151;
+$Niconne: "Niconne", sans-serif;
+$Akaya: "Akaya Kanadaka", sans-serif;
+
+// Fonts
+$Kaisei-font: "Kaisei HarunoUmi", sans-serif;
+$JetBrains-font: "JetBrains Mono", sans-serif;
+
+.section-contact {
+    font-family: $JetBrains-font, sans-serif;
+}
+
+.small-text {
+    font-family: $Niconne, sans-serif;
+}
+
+.big-title {
+    font-family: $Niconne, sans-serif;
+}
+
+//.sub-item{
+//    @apply bg-red-500 w-[80%] h-40 border-2 rounded-lg;
+//}
+
+.text-description {
+    color: #31353a;
+}
+
+.item-title {
+    color: $yellow-color;
+}
+
+.item-subtitle {
+    color: $black-color;
+}
+
+.support-items {
+    color: $gray-color;
+}
+
+.item-suport-title {
+    color: $black-color;
+}
+
+
+
+@keyframes scaleRotate {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    50% {
+        transform: scale(1.05) rotate(3deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.item {
+    transition: transform 0.5s ease-in-out;
+
+    &:hover {
+        animation: scaleRotate 0.5s ease-in-out;
+    }
+}

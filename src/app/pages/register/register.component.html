@@ -1,0 +1,49 @@
+<div class="flex flex-col  h-auto items-center justify-center mx-auto bg-white p-6 rounded-lg shadow-2xl md:bg-[#e21743]">
+    <h2 class="text-4xl font-bold text-center mb-8 md:text-white">Registrar cuenta</h2>
+    <div class="container-register flex flex-col md:flex-row justify-center">
+        <div class="flex items-center justify-center">
+            <div class="image-head flex items-center justify-center flex-col mb-5 md:mb-8 w-[90%] md:w-[45%]">
+                <img src="/images/logoGedur_6.png" alt="logo_ccc" class="w-[40%] md:w-[100%]">
+                <div class="title-head font-bold text-2xl  text-center w-[90%] md:text-white">
+                    <p>Centro de convenciones Cusco</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-register w-[100%] md:w-[45%] bg-[#e21743] rounded-md md:rounded-lg">
+            <form [formGroup]="registerForm" (submit)="register()" class="p-2">
+                <div class="mt-4">
+                    <label class="block text-sm font-bold text-white">Nombre</label>
+                    <input type="text" formControlName="name" class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring focus:ring-[#F4C151]" placeholder="Nombre completo" />
+                    
+                </div>
+                <div class="mt-4">
+                    <label class="block text-sm font-bold text-white">Rol</label>
+                    <input type="text" formControlName="role" class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring focus:ring-[#F4C151]" placeholder="Rol (admin/user)" />
+                    
+                </div>
+                <div class="mt-4">
+                    <label class="block text-sm font-bold text-white">Correo Electrónico</label>
+                    <input type="email" formControlName="email" class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring focus:ring-[#F4C151]" placeholder="email@example.com" />
+                    
+                </div>
+        
+                <div class="mt-4">
+                    <label class="block text-sm font-bold text-white">Contraseña</label>
+                    <input type="password" formControlName="password" class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring focus:ring-[#F4C151]" placeholder="•••••••" />
+                    
+                </div>
+                <div class="mt-4">
+                    <label class="block text-sm font-bold text-white">Confirmar contraseña</label>
+                    <input type="password" formControlName="password_confirmation" class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring focus:ring-[#F4C151]" placeholder="Confirmar contraseña" />
+                    
+                </div>
+                <div class="flex items-center justify-center">
+                    <button type="submit" class="mt-6 w-auto bg-[#740938] text-white py-2 px-4 rounded-md hover:bg-[#F4C151] transition"
+                    [disabled]="registerForm.invalid">
+                    Registrarse
+                </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
