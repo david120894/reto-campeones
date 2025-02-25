@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { ActivatedRoute, RouterModule } from "@angular/router";
 
 interface Room {
   title: string;
@@ -10,7 +11,7 @@ interface Room {
   features: string;
   imageUrl: string;
 }
-const NG_MODULES = [CommonModule];
+const NG_MODULES = [CommonModule, RouterModule];
 
 @Component({
   selector: 'app-carrousel',
@@ -94,7 +95,14 @@ export class CarrouselComponent implements OnInit {
     }
   ];
 
-  constructor() {}
+  constructor(private route: ActivatedRoute) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+
+  scrollToEmail() {
+    const emailSection = document.getElementById('email');
+    if (emailSection) {
+      emailSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 }

@@ -1,56 +1,112 @@
 <section class="about-section" id="nosotros">
-    <div class="about-container md:mb-[120px]">
-        <div class="flex items-center justify-center">
-            <app-titles smallText="Sobre nosotros" bigText="¿Quienes somos?">
-            </app-titles>
-        </div>
-        <div class="flex justify-center items-center w-full mt-6 md:mt-8">
-            <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:w-[80%] hover:bg-[#F4C151] mr-1 md:mr-0">
-                <div class="w-[45%] hidden md:inline-block">
-                    <img class="object-cover w-full rounded-lg h-96 md:w-[80%] md:rounded-none md:rounded-s-lg"
-                    src="images/palacio.jpg" alt="">
-                </div>
-                <div class="flex flex-col justify-between p-4 leading-normal w-[90%] md:w-[45%]">
-                    <i class="fa-solid fa-landmark text-4xl animate-bounce"></i>
-                    <h5 class="mb-6 text-2xl font-bold tracking-tight text-[#740938]">
-                        Historia y Ubicación</h5>
-                    <p class="description  font-normal text-gray-700 text-center text-2xl">
-                        El Centro de Convenciones Cusco está ubicado en el Palacio Municipal, un edificio histórico que ha sido testigo de importantes momentos desde la época colonial. Situado en la plaza Cusipata, a pocos pasos de la Plaza Mayor, combina el encanto de la arquitectura tradicional con un entorno lleno de historia y cultura.
-                    </p>
-                </div>
+    <div class="abo-cont-item about-container md:mb-[50px] md:pb-[120px]">
+        <div class="md:mb-[50px] mt-[-1px] flex flex-col items-center justify-center text-white text-center md:pt-10">
+            <div class="p-2 mb-4 text-4xl font-bold small-text">
+                <p>
+                    Ubicación
+                </p>
+            </div>
+            <div class="p-2 mb-4 text-6xl font-extrabold big-title">
+                <p>
+                    Contacta con nosotros
+                </p>
             </div>
         </div>
-        <div class="flex justify-center items-center w-full md:mt-8">
-            <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:w-[80%] hover:bg-[#F4C151] mr-1 md:mr-0" dir="rtl">
-                <div class="w-[100%] md:w-[55%]">
-                    <video controls class="rounded-lg">
-                        <source src="videos/exposition.mp4" type="video/mp4">
-                    </video>
+        <div class="grid grid-cols-1 gap-4 px-4 md:grid-cols-2 lg:grid-cols-9 md:px-8">
+            <!-- Historia y Ubicación -->
+            <div class="card_desc-about lg:col-start-1 lg:col-end-4 bg-gray-400 p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow duration-300
+            ">
+                <div class="flex flex-col text-white description-title">
+                    <div class="flex flex-row justify-around header-item md:mb-6">
+                        <div
+                            class="number w-[50px] h-[50px] rounded-full border-2 border-white flex items-center justify-center bg-[#740938] font-extrabold">
+                            1
+                        </div>
+                        <div class="my-auto font-extrabold text-lg md:text-xl border-b-2 border-[#740938] text-center">
+                            Historia y Ubicación
+                        </div>
+                    </div>
+                    <div class="text-sm font-bold description-body md:text-base">
+                        <p>
+                            El Centro de Convenciones Cusco está ubicado en el Palacio Municipal, un edificio histórico
+                            que ha sido testigo de importantes momentos desde la época colonial. Situado en la plaza
+                            Cusipata, a pocos pasos de la Plaza Mayor, combina el encanto de la arquitectura tradicional
+                            con un entorno lleno de historia y cultura.
+                        </p>
+                    </div>
                 </div>
-                <div class="flex flex-col justify-between p-4 leading-normal w-[90%] md:w-[45%]">
-                    <i class="fa-solid fa-handshake text-4xl animate-bounce"></i>
-                    <h5 class="mb-6 text-2xl font-bold tracking-tight text-[#740938]">
-                        Arquitectura y Tecnología</h5>
-                    <p class="description mb-3 font-normal text-gray-700 text-center text-2xl">
-                        Este centro es una obra contemporánea integrada armoniosamente en un edificio histórico, ofreciendo una experiencia única que fusiona lo tradicional con lo moderno. Sus instalaciones cuentan con un diseño versátil que permite la realización de eventos de nivel internacional.
-                    </p>
+            </div>
+
+            <!-- Arquitectura y Tecnología -->
+            <div class="card_desc-about lg:col-start-4 lg:col-end-7 p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow duration-300
+            ">
+                <div class="flex flex-col text-white description-title">
+                    <div class="flex flex-row justify-around header-item md:mb-6">
+                        <div
+                            class="number w-[50px] h-[50px] rounded-full border-2 border-white flex items-center justify-center bg-[#740938] font-extrabold">
+                            2
+                        </div>
+                        <div class="my-auto font-extrabold text-lg md:text-xl border-b-2 border-[#740938] text-center">
+                            Arquitectura y Tecnología
+                        </div>
+                    </div>
+                    <div class="text-sm font-bold description-body md:text-base">
+                        <p>
+                            Este centro es una obra contemporánea integrada armoniosamente en un edificio histórico,
+                            ofreciendo una experiencia única que fusiona lo tradicional con lo moderno. Sus
+                            instalaciones cuentan con un diseño versátil que permite la realización de eventos de nivel
+                            internacional.
+                        </p>
+                    </div>
                 </div>
+            </div>
+            <!-- Un Espacio Estratégico -->
+            <div
+                class="card_desc-about lg:col-start-7 lg:col-end-10 p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow duration-300">
+                <div class="flex flex-col text-white description-title">
+                    <div class="flex flex-row justify-around header-item md:mb-6">
+                        <div
+                            class="number w-[50px] h-[50px] rounded-full border-2 border-white flex items-center justify-center bg-[#740938] font-extrabold">
+                            3
+                        </div>
+                        <div class="my-auto font-extrabold text-lg md:text-xl border-b-2 border-[#740938] text-center">
+                            Un Espacio Estratégico
+                        </div>
+                    </div>
+                    <div class="text-sm font-bold description-body md:text-base">
+                        <p>
+                            Ubicado en el corazón del Centro Histórico de Cusco, Patrimonio Cultural de la Humanidad, el
+                            Centro de Convenciones Cusco se encuentra rodeado de atractivos turísticos, servicios
+                            comerciales y la esencia vibrante de la ciudad. Su infraestructura versátil permite la
+                            realización de eventos de gran impacto.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video -->
+            <div class="lg:col-start-3 lg:col-end-8 pb-8 md:pb-0 md:mt-[40px]">
+                <video src="videos/exposition.mp4" type="video/mp4" controls autoplay loop muted
+                    class="w-full rounded-lg shadow-lg aspect-video"></video>
             </div>
         </div>
-        <div class="flex justify-center items-center w-full md:mt-8">
-            <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:w-[80%] hover:bg-[#F4C151] mr-1 md:mr-0">
-                <div class="w-[98%] md:w-[60%] pl-8 md:pl-0">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d550.8614980083998!2d-71.98047103461363!3d-13.516692638403274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e2!4m5!1s0x916dd6739cd7f175%3A0x27c9a9082fc6343!2sPlaza%20de%20Armas%20de%20Cusco%2C%20Del%20Medio%2C%20Cusco!3m2!1d-13.5167681!2d-71.9787795!4m3!3m2!1d-13.5165176!2d-71.9808153!5e0!3m2!1ses!2spe!4v1739555347053!5m2!1ses!2spe" class="w-[90%] h-[400px]" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-                <div class="flex flex-col justify-between p-4 leading-normal w-[90%] md:w-[45%]">
-                    <i class="fa-solid fa-earth-americas text-4xl animate-bounce"></i>
-                    <h5 class="mb-6 text-2xl font-bold tracking-tight text-[#740938]">
-                        Un Espacio Estratégico</h5>
-                    <p class="description mb-3 font-normal text-gray-700 text-center text-2xl">
-                        Ubicado en el corazón del Centro Histórico de Cusco, Patrimonio Cultural de la Humanidad, el Centro de Convenciones Cusco se encuentra rodeado de atractivos turísticos, servicios comerciales y la esencia vibrante de la ciudad. Su infraestructura versátil permite la realización de eventos de gran impacto.
-                    </p>
-                </div>
-            </div>
+    </div>
+    <div class="slider-container">
+        <div class="slider">
+            <img src="images/caja-cusco.png" alt="Caja cusco" class="h-24 mr-4">
+            <img src="images/gore-cusco.png" alt="Gobierno Regional cusco" class="h-24 mr-4">
+            <img src="images/round_log.png" alt="Logo Municipal" class="h-24 mr-4">
+            <img src="images/dicer-tur.png" alt="Dircetur" class="h-24 mr-4">
+            <!-- Duplicamos las imágenes para el efecto infinito -->
+            <img src="images/caja-cusco.png" alt="Caja cusco" class="h-24 mr-4">
+            <img src="images/gore-cusco.png" alt="Gobierno Regional cusco" class="h-24 mr-4">
+            <img src="images/round_log.png" alt="Logo Municipal" class="h-24 mr-4">
+            <img src="images/dicer-tur.png" alt="Dircetur" class="h-24 mr-4">
+
+            <img src="images/caja-cusco.png" alt="Caja cusco" class="h-24 mr-4">
+            <img src="images/gore-cusco.png" alt="Gobierno Regional cusco" class="h-24 mr-4">
+            <img src="images/round_log.png" alt="Logo Municipal" class="h-24 mr-4">
+            <img src="images/dicer-tur.png" alt="Dircetur" class="h-24 mr-4">
         </div>
     </div>
 </section>
