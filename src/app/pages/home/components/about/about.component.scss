@@ -10,7 +10,7 @@ $Niconne: "Niconne", sans-serif;
 $Akaya: "Akaya Kanadaka", sans-serif;
 
 .abo-cont-item {
-    background-image: linear-gradient(rgba(54, 4, 26, 0.619), rgba(101, 79, 33, 0.641)), url('../../../../../../public/images/palacio_post.jpg');
+    background-image: linear-gradient(rgba(54, 4, 26, 0.619), rgba(101, 79, 33, 0.641)), url('/images/palacio_post.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -66,8 +66,6 @@ $Akaya: "Akaya Kanadaka", sans-serif;
     66% {
         background-color: rgba(226, 23, 67, 0.515);
     }
-
-    // Azul oscuro
 }
 
 .card_desc-about {
@@ -78,7 +76,7 @@ $Akaya: "Akaya Kanadaka", sans-serif;
 
 .slider-container {
     overflow: hidden;
-    width: 100%; // O ajusta según el contenedor
+    width: 100%;
     position: relative;
 }
 
@@ -99,6 +97,6 @@ $Akaya: "Akaya Kanadaka", sans-serif;
     }
 
     to {
-        transform: translateX(-50%); // Se mueve la mitad del contenedor (4 imágenes)
+        transform: translateX(-50%);
     }
 }
