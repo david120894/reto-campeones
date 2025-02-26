@@ -29,14 +29,14 @@
                 <div class="button-container md:flex md:justify-evenly flex-col md:flex-row flex items-center justify-center">
                     <div class="link-buttons mb-3 md:mb-0 md:mr-1">
                         <button type="button" class="bg-[#8d0c28] custom-button transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-[#740938] duration-300 text-white" id="btn-hours">
-                            <a href="#contacts">
+                            <a (click)="scrollToContacts()" class="cursor-pointer">
                                 Horarios
                             </a>
                         </button>
                     </div>
                     <div class="link-buttons">
                         <button  type="button" class="custom-button transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110" id="btn-location">
-                            <a href="#contacts">
+                            <a (click)="scrollToEmail()" class="cursor-pointer">
                                 Reservar
                             </a>
                         </button>
