@@ -7,7 +7,7 @@ export const routes: Routes = [
         path: '',
         loadChildren: () => import('./pages/pages.routes').then((m) => m.pagesRoutes)
     },
-    
+
     // private routes
     // {
     //     path: 'auth',
@@ -15,7 +15,7 @@ export const routes: Routes = [
     // },
     {
         path: '**',
-        component: NotFoundComponent
+        redirectTo: ''
     }
 ];
 

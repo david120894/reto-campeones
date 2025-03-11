@@ -10,7 +10,7 @@ $Niconne: "Niconne", sans-serif;
 $Akaya: "Akaya Kanadaka", sans-serif;
 
 .abo-cont-item {
-    background-image: linear-gradient(rgba(54, 4, 26, 0.619), rgba(101, 79, 33, 0.641)), url('../../../../../../public/images/palacio_post.jpg');
+    background-image: linear-gradient(rgba(54, 4, 26, 0.619), rgba(101, 79, 33, 0.641)), url('/images/palacio_post.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -50,35 +50,69 @@ $Akaya: "Akaya Kanadaka", sans-serif;
     background-color: rgba(231, 236, 240, 0.458);
 }
 
-@keyframes changeBg {
+
+#child-1 {
+    animation: changeBg_1 9s infinite;
+    transition: background-color 0.5s ease-in-out;
+    // color: rgb(244, 193, 81);
+}
+
+@keyframes changeBg_1 {
 
     0%,
     100% {
         background-color: rgba(156, 163, 175, 0.507);
     }
-
-    // Color gris inicial y final
-    33% {
-        background-color: rgba(107, 114, 128, 0.544);
+    0% {
+        background-color: rgb(244, 192, 81);
     }
-
-    // Gris oscuro
-    66% {
-        background-color: rgba(226, 23, 67, 0.515);
+    43% {
+        background-color: rgba(156, 163, 175, 0.507);
     }
-
-    // Azul oscuro
 }
 
-.card_desc-about {
-    animation: changeBg 6s infinite;
+#child-2 {
+    animation: changeBg_2 9s infinite;
     transition: background-color 0.5s ease-in-out;
+}
+
+@keyframes changeBg_2 {
+
+    0%,
+    100% {
+        background-color: rgba(156, 163, 175, 0.507);
+    }
+    43% {
+        background-color: rgb(244, 192, 81);
+    }
+    60% {
+        background-color: rgba(156, 163, 175, 0.507);
+    }
+}
+
+#child-3 {
+    animation: changeBg_3 9s infinite;
+    transition: background-color 0.5s ease-in-out;
+}
+
+@keyframes changeBg_3 {
+
+    0%,
+    100% {
+        background-color: rgba(156, 163, 175, 0.507);
+    }
+    73% {
+        background-color: rgb(244, 192, 81);
+    }
+    99% {
+        background-color: rgba(156, 163, 175, 0.507);
+    }
 }
 
 
 .slider-container {
     overflow: hidden;
-    width: 100%; // O ajusta según el contenedor
+    width: 100%;
     position: relative;
 }
 
@@ -99,6 +133,6 @@ $Akaya: "Akaya Kanadaka", sans-serif;
     }
 
     to {
-        transform: translateX(-50%); // Se mueve la mitad del contenedor (4 imágenes)
+        transform: translateX(-50%);
     }
 }
