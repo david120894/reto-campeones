@@ -10,4 +10,10 @@ import { Component } from '@angular/core';
 })
 export class ContactComponent {
 
+  scrollToEmail(){
+    const emailSection = document.getElementById('email');
+    if (emailSection) {
+      emailSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 }
