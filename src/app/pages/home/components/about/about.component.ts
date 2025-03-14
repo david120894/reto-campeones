@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { FlowbiteService } from '../../../../services/flowbite.service';
-import { TitlesComponent } from '../titles/titles.component';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-about',

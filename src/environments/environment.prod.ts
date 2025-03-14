@@ -4,6 +4,5 @@ export const environment = {
     isMockEnabled: true,
     appRealm: 'municusco',
     appClientId: '',
-
-    apiUrl: '',
+    apiUrl: 'https://api-convenciones.cusco.gob.pe/api/',
 };
