@@ -4,5 +4,5 @@ export const environment = {
     appVersion: 'v1.0.0',
     appRealm: 'municusco',
     appClientId: '',
-    apiUrl: 'http://172.16.5.3:9081/api/',
+    apiUrl: 'https://api-convenciones.cusco.gob.pe/api/',
 };
