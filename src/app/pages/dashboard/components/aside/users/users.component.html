@@ -1,0 +1,113 @@
+<div class="p-4 sm:ml-64">
+    <div class="pt-12 px-8">
+        <div class="container mx-auto p-4">
+            <h1 class="text-2xl font-bold mb-4">Gestión de Usuarios</h1>
+
+            <div class="mb-4">
+                <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="onSearchChange()"
+                    placeholder="Buscar por nombre o email..."
+                    class="w-full max-w-md p-2 border rounded text-gray-900 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                        <tr class="bg-[#740938] text-white">
+                            <th scope="col" class="px-6 py-3">
+                                <span class="flex items-center">Nombre</span>
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                <span class="flex items-center">Email</span>
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                <span class="flex items-center">Rol</span>
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                <span class="flex items-center">Acciones</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of paginatedUsers" class="bg-white border-b">
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                {{ user.name }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ user.email }}
+                            </td>
+                            <td class="px-6 py-4">
+                                <select [(ngModel)]="user.role" (change)="onRoleChange(user, user.role)"
+                                    class="border rounded p-1 text-gray-900 bg-gray-50">
+                                    <option value="user">User</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="flex flex-row">
+                                    <button (click)="deleteUser(user.id)"
+                                    class="bg-red-500 hover:bg-red-700 text-white p-2 rounded w-8 h-8 rounded">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                        <path
+                                            d="M135.2 17.7L128 32 32 32C14.3 32 0 46.3 0 64S14.3 96 32 96l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-96 0-7.2-14.3C307.4 6.8 296.3 0 284.2 0L163.8 0c-12.1 0-23.2 6.8-28.6 17.7zM416 128L32 128 53.2 467c1.6 25.3 22.6 45 47.9 45l245.8 0c25.3 0 46.3-19.7 47.9-45L416 128z"
+                                            class="fill-current text-white" />
+                                    </svg>
+                                </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="flex justify-between mt-4">
+                <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1"
+                    class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
+                    Anterior
+                </button>
+                <span>Página {{ currentPage }} de {{ totalPages }}</span>
+                <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages"
+                    class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
+                    Siguiente
+                </button>
+            </div>
+
+            <div *ngIf="showDeleteModal"
+                class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
+                <div class="bg-white rounded-lg p-6 w-full max-w-md">
+                    <h2 class="text-xl font-bold mb-4 text-gray-900">Confirmar eliminación</h2>
+                    <p class="text-gray-700">¿Estás seguro de que deseas eliminar al usuario "{{ selectedUser?.name }}"?
+                    </p>
+                    <div class="flex justify-end space-x-2 mt-4">
+                        <button (click)="closeModal()"
+                            class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                            Cancelar
+                        </button>
+                        <button (click)="confirmDelete()"
+                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                            Eliminar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="showRoleConfirmModal"
+                class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
+                <div class="bg-white rounded-lg p-6 w-full max-w-md">
+                    <h2 class="text-xl font-bold mb-4 text-gray-900">Confirmar cambio de rol</h2>
+                    <p class="text-gray-700">¿Estás seguro de que deseas cambiar el rol de "{{ selectedUser?.name }}" a
+                        "admin"?</p>
+                    <div class="flex justify-end space-x-2 mt-4">
+                        <button (click)="closeModal()"
+                            class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                            Cancelar
+                        </button>
+                        <button (click)="confirmRoleChange()"
+                            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                            Confirmar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

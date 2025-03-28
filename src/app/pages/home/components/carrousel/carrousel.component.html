@@ -1,0 +1,71 @@
+<section id="services">
+    <div class="header">
+        <div class="inner-header flex">
+            <svg version="1.1" class="logo" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve">
+                <path fill="#FFFFFF" stroke="#000000" stroke-width="10" stroke-miterlimit="10" d="M57,283" />
+                <g>
+                </g>
+            </svg>
+            <div class="text-center text-white mt-8 md:mt-0 pr-10">
+                <div class="small-text mb-2 md:mb-4 text-3xl md:text-4xl font-bold p-2">
+                    <p>Salas</p>
+                </div>
+                <div class="big-title mb-4 text-4xl md:text-6xl font-extrabold p-2">
+                    <p>Conoce de cada uno</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave"
+                        d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+                </g>
+            </svg>
+        </div>
+    </div>
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div *ngFor="let place of places" 
+                class="room-card bg-white rounded-lg shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105">
+                <div class="relative h-48 overflow-hidden">
+                    <img [src]="place.image_url" [alt]="place.name"
+                        class="w-full h-full object-cover transition-opacity duration-500">
+                </div>
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-center text-gray-800 mb-4">{{place.name}}</h2>
+                    <div class="flex justify-between mb-4">
+                        <div class="text-center py-2 px-4">
+                            <p class="text-sm text-gray-600">Jornada</p>
+                            <p class="text-xl font-bold text-[#F4C151]">S/.{{place.full_day_price}}</p>
+                        </div>
+                        <div class="text-center py-2 px-4">
+                            <p class="text-sm text-gray-600">1/2 Jornada</p>
+                            <p class="text-xl font-bold text-[#F4C151]">S/.{{place.half_day_price}}</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-gray-700"><span class="font-semibold">Tamaño:</span> {{place.place_size}}</p>
+                        <p class="text-gray-700"><span class="font-semibold">Capacidad:</span> {{place.max_capacity}} personas</p>
+                        <p class="text-gray-700 md:hidden block"><span class="font-semibold">Características:</span> {{place.features}}</p>
+                    </div>
+                    <div class="flex flex-row flex-wrap justify-between w-full">
+                        <button class="mt-4 w-[60%] md:w-[70%] bg-[#740938] text-white py-2 px-4 rounded-lg hover:bg-[#e21743] transition-colors duration-300">
+                            <a [routerLink]="['/reservar']" [queryParams]="{ place: place.name }" (click)="scrollToEmail()">
+                                Realizar reserva
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</section>

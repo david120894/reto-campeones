@@ -1,0 +1,25 @@
+// Colors
+$black-color: #2D3136;
+$gray-color: #7F8C99;
+$yellow-color: #F4C151;
+
+// Fonts
+$Kaisei-font: "Kaisei HarunoUmi", sans-serif;
+$JetBrains-font: "JetBrains Mono", sans-serif;
+
+.title-footer{
+    font-family: $Kaisei-font, sans-serif;
+}
+
+.custom-icon-footer{
+    font-size: 40px;
+    color: #fff;
+}
+
+li{
+    color: $gray-color;
+}
+
+.img-custom{
+    width: 500px !important;
+}

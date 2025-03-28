@@ -1,0 +1,89 @@
+<div class="flex flex-col h-auto items-center justify-center mx-auto bg-white p-6 md:p-0 rounded-lg shadow-2xl">
+    <div class="container-register flex flex-col md:flex-row justify-center items-center min-h-screen p-4">
+        <div class="flex items-center justify-center">
+            <div class="image-head flex items-center justify-center flex-col mb-5 md:mb-8 w-[90%] md:w-[45%]">
+                <h2 class="text-4xl font-bold text-center mb-8">Registrar cuenta</h2>
+                <img src="/images/logoGedur_6.png" alt="logo_ccc" class="w-[40%] md:w-[100%]">
+                <div class="title-head font-bold text-2xl text-center w-[90%] text-gray-800">
+                    <p>Centro de Convenciones Cusco</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-register w-[100%] md:w-[45%] bg-white rounded-lg shadow-lg p-6">
+            <div *ngIf="showMessage" class="mb-4 p-3 rounded-md text-center font-bold text-white"
+                [ngClass]="message === 'Registro exitoso!' ? 'bg-green-500' : 'bg-red-500'">
+                {{ message }}
+            </div>
+            <form [formGroup]="registerForm" (ngSubmit)="register()">
+                <div class="mt-4">
+                    <label class="block text-sm font-bold text-gray-700">Nombre</label>
+                    <input type="text" formControlName="name"
+                        class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring focus:ring-[#F4C151]"
+                        placeholder="Nombre completo" />
+                    <div *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.errors" class="text-red-500 text-sm mt-1">
+                        <div *ngIf="registerForm.get('name')?.errors?.['required']">El nombre es obligatorio.</div>
+                        <div *ngIf="registerForm.get('name')?.errors?.['minlength']">Mínimo 10 caracteres.</div>
+                        <div *ngIf="registerForm.get('name')?.errors?.['maxlength']">Máximo 100 caracteres.</div>
+                        <div *ngIf="registerForm.get('name')?.errors?.['serverError']">{{ registerForm.get('name')?.errors?.['serverError'] }}</div>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <label class="block text-sm font-bold text-gray-700">Correo Electrónico</label>
+                    <input type="email" formControlName="email"
+                        class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring focus:ring-[#F4C151]"
+                        placeholder="email@example.com" />
+                    <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors" class="text-red-500 text-sm mt-1">
+                        <div *ngIf="registerForm.get('email')?.errors?.['required']">El correo es obligatorio.</div>
+                        <div *ngIf="registerForm.get('email')?.errors?.['email']">Formato de correo inválido.</div>
+                        <div *ngIf="registerForm.get('email')?.errors?.['minlength']">Mínimo 10 caracteres.</div>
+                        <div *ngIf="registerForm.get('email')?.errors?.['maxlength']">Máximo 50 caracteres.</div>
+                        <div *ngIf="registerForm.get('email')?.errors?.['serverError']">{{ registerForm.get('email')?.errors?.['serverError'] }}</div>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <label class="block text-sm font-bold text-gray-700">Contraseña</label>
+                    <input type="password" formControlName="password"
+                        class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring focus:ring-[#F4C151]"
+                        placeholder="•••••••" />
+                    <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.errors" class="text-red-500 text-sm mt-1">
+                        <div *ngIf="registerForm.get('password')?.errors?.['required']">La contraseña es obligatoria.</div>
+                        <div *ngIf="registerForm.get('password')?.errors?.['minlength']">Mínimo 10 caracteres.</div>
+                        <div *ngIf="registerForm.get('password')?.errors?.['maxlength']">Máximo 50 caracteres.</div>
+                        <div *ngIf="registerForm.get('password')?.errors?.['serverError']">{{ registerForm.get('password')?.errors?.['serverError'] }}</div>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <label class="block text-sm font-bold text-gray-700">Confirmar contraseña</label>
+                    <input type="password" formControlName="password_confirmation"
+                        class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring focus:ring-[#F4C151]"
+                        placeholder="Confirmar contraseña" />
+                    <div *ngIf="registerForm.get('password_confirmation')?.touched && registerForm.get('password_confirmation')?.errors" class="text-red-500 text-sm mt-1">
+                        <div *ngIf="registerForm.get('password_confirmation')?.errors?.['required']">La confirmación es obligatoria.</div>
+                        <div *ngIf="registerForm.get('password_confirmation')?.errors?.['serverError']">{{ registerForm.get('password_confirmation')?.errors?.['serverError'] }}</div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center space-y-4 mt-6">
+                    <button type="submit"
+                        class="w-full bg-[#740938] text-white py-2 px-4 rounded-md hover:bg-[#F4C151] transition"
+                        [disabled]="registerForm.invalid">
+                        Registrarse
+                    </button>
+                    <p class="mb-4 text-center">
+                        ¿Ya tienes una cuenta? <span class="cursor-pointer font-bold text-[#740938]" (click)="navigateToLogin()">Iniciar sesión</span>
+                    </p>
+
+                    <button type="button"
+                        class="w-full bg-gray-300 text-gray-800 py-2 px-4 rounded-md hover:bg-gray-400 transition"
+                        (click)="navigateToHome()">
+                        Ir a la página principal
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

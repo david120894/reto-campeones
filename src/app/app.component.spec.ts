@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'front_csr_ccc' title`, () => {
+  it(`should have the 'gdur' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('front_csr_ccc');
+    expect(app.title).toEqual('gdur');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, front_csr_ccc');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, gdur');
   });
 });
