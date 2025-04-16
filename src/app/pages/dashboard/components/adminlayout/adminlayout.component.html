@@ -1,0 +1,17 @@
+<div class="p-4 sm:ml-64">
+    <div class="pt-12 px-8">
+        @if (isAdmin) {
+            <div class="">
+                <app-datadashboard />
+            </div>
+        }
+        <div class="flex flex-col md:flex-row justify-around">
+            <div class="grafic md:w-[55%] order-last">
+                <app-datepicker />
+            </div>
+            <div class="md:w-[40%] order-first">
+                <app-profile />
+            </div>
+        </div>
+    </div>
+</div>

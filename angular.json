@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "gdur": {
+    "front_csr_ccc": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/gdur",
+            "outputPath": "dist/front_csr_ccc",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -34,12 +34,10 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": ["node_modules/flowbite/dist/flowbite.min.js"],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            "scripts": [
+              "node_modules/flowbite/dist/flowbite.min.js",
+              "node_modules/simple-datatables/dist/umd/simple-datatables.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -69,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "gdur:build:production"
+              "buildTarget": "front_csr_ccc:build:production"
             },
             "development": {
-              "buildTarget": "gdur:build:development"
+              "buildTarget": "front_csr_ccc:build:development"
             }
           },
           "defaultConfiguration": "development"

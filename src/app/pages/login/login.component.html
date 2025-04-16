@@ -1,34 +1,68 @@
-<div class="flex flex-col max-w-md  h-auto items-center justify-center mx-auto bg-white p-6 rounded-lg shadow-2xl">
-    <h2 class="text-2xl font-bold text-center mb-4">
+<div class="flex flex-col items-center justify-center h-auto max-w-md p-6 mx-auto bg-white rounded-lg shadow-2xl">
+    <h2 class="mb-4 text-2xl font-bold text-center">
         Iniciar Sesión
     </h2>
-    <div class="image-head flex items-center justify-center flex-col md:mb-8">
+    <div class="flex flex-col items-center justify-center image-head md:mb-8">
         <img src="/images/logoGedur_6.png" alt="logo_ccc" class="w-[40%]">
-        <div class="title-head font-bold text-2xl  text-center w-[70%]">
-            <p>Centro de convenciones Cusco</p>
+        <div class="title-head font-bold text-2xl text-center w-[70%]">
+            <p>Centro de Convenciones Cusco</p>
         </div>
     </div>
     <div>
-        <form [formGroup]="loginForm" (submit)="login()">
+        <div *ngIf="showMessage" class="p-3 mb-4 font-bold text-center text-white rounded-md"
+            [ngClass]="message === 'Inicio de sesión exitoso' ? 'bg-green-500' : 'bg-red-500'">
+            {{ message }}
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
             <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                <label class="block text-sm font-bold text-gray-700">Correo Electrónico</label>
                 <input type="email" formControlName="email"
                     class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring focus:ring-[#740938]"
                     placeholder="email@example.com" />
+                <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors"
+                    class="mt-1 text-sm text-red-500">
+                    <div *ngIf="loginForm.get('email')?.errors?.['required']">El correo es obligatorio.</div>
+                    <div *ngIf="loginForm.get('email')?.errors?.['email']">Formato de correo inválido.</div>
+                    <div *ngIf="loginForm.get('email')?.errors?.['minlength']">Mínimo 10 caracteres.</div>
+                    <div *ngIf="loginForm.get('email')?.errors?.['maxlength']">Máximo 50 caracteres.</div>
+                    <div *ngIf="loginForm.get('email')?.errors?.['serverError']">{{
+                        loginForm.get('email')?.errors?.['serverError'] }}</div>
+                </div>
             </div>
-    
+
             <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700">Contraseña</label>
+                <label class="block text-sm font-bold text-gray-700">Contraseña</label>
                 <input type="password" formControlName="password"
                     class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring-[#740938]"
                     placeholder="•••••••" />
+                <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors"
+                    class="mt-1 text-sm text-red-500">
+                    <div *ngIf="loginForm.get('password')?.errors?.['required']">La contraseña es obligatoria.</div>
+                    <div *ngIf="loginForm.get('password')?.errors?.['minlength']">Mínimo 5 caracteres.</div>
+                    <div *ngIf="loginForm.get('password')?.errors?.['maxlength']">Máximo 50 caracteres.</div>
+                    <div *ngIf="loginForm.get('password')?.errors?.['serverError']">{{
+                        loginForm.get('password')?.errors?.['serverError'] }}</div>
+                </div>
             </div>
-            <div class="flex items-center justify-center">
-                <button type="submit" class="mt-6 w-auto bg-[#740938] text-white py-2 px-4 rounded-md hover:bg-[#F4C151] transition"
-                [disabled]="loginForm.invalid">
-                Iniciar Sesión
-            </button>
+
+            <div class="flex items-center justify-center mb-6">
+                <button type="submit"
+                    class="mt-6 w-auto bg-[#740938] text-white py-2 px-4 rounded-md hover:bg-[#F4C151] transition"
+                    [disabled]="loginForm.invalid">
+                    Iniciar Sesión
+                </button>
             </div>
         </form>
+        <div class="flex flex-col items-center justify-center">
+            <p class="mb-4 text-center">
+                ¿No tienes una cuenta? <span class="cursor-pointer font-bold text-[#740938]"
+                    (click)="navigateToRegister()">Regístrate aquí</span>
+            </p>
+            <button type="button"
+                class="w-full px-4 py-2 text-gray-800 transition bg-gray-300 rounded-md hover:bg-gray-400"
+                (click)="navigateToHome()">
+                Volver a la página principal
+            </button>
+        </div>
     </div>
 </div>
