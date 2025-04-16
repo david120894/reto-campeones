@@ -1,0 +1,48 @@
+<div class="w-full bg-gray-100 rounded-lg shadow-lg overflow-hidden">
+    <!-- Header -->
+    <div class="w-full bg-gray-800 text-white p-4 text-center text-xl font-semibold">
+        Cuenta del usuario
+    </div>
+
+    <div class="w-full flex flex-col items-center p-6">
+
+        <div class="user-picture w-32 h-32 md:w-40 md:h-40 flex justify-center items-center mb-4">
+            <img src="images/user_default.svg" alt="Foto de perfil"
+                class="w-full h-full object-cover rounded-full border-4 border-gray-300">
+        </div>
+
+        <div class="flex flex-col text-center gap-2">
+            <div class="text-lg font-medium text-gray-900">
+                {{ user?.name || 'Nombre no encontrado' }}
+            </div>
+            <div class="user-email text-gray-600">
+                {{ user?.email || 'Email no encontrado' }}
+            </div>
+        </div>
+    </div>
+
+    <div class="w-full bg-gray-800 text-white p-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div class="flex flex-row gap-4">
+            <div
+                class="w-12 h-12 bg-red-500 flex justify-center items-center rounded-full transition-transform hover:scale-110">
+                <a href="https://www.facebook.com/municipalidaddelcusco/?locale=es_LA"
+                    class="text-white hover:text-gray-200" target="_blank">
+                    <i class="fa-brands fa-facebook text-2xl"></i>
+                    <span class="sr-only">Página de Facebook</span>
+                </a>
+            </div>
+            <div
+                class="w-12 h-12 bg-red-500 flex justify-center items-center rounded-full transition-transform hover:scale-110">
+                <a href="https://www.instagram.com/municipalidadelcusco/" class="text-white hover:text-gray-200"
+                    target="_blank">
+                    <i class="fa-brands fa-instagram text-2xl"></i>
+                    <span class="sr-only">Página de Instagram</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="text-sm">
+            Gracias por confiar en nosotros.
+        </div>
+    </div>
+</div>

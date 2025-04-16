@@ -47,68 +47,57 @@ $Akaya: "Akaya Kanadaka", sans-serif;
 }
 
 .card_desc-about {
-    background-color: rgba(231, 236, 240, 0.458);
+    background-color: rgba(231, 236, 240, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 
 #child-1 {
-    animation: changeBg_1 9s infinite;
+    animation: changeBg 9s infinite;
     transition: background-color 0.5s ease-in-out;
-    // color: rgb(244, 193, 81);
-}
-
-@keyframes changeBg_1 {
-
-    0%,
-    100% {
-        background-color: rgba(156, 163, 175, 0.507);
-    }
-    0% {
-        background-color: rgb(244, 192, 81);
-    }
-    43% {
-        background-color: rgba(156, 163, 175, 0.507);
-    }
 }
 
 #child-2 {
-    animation: changeBg_2 9s infinite;
+    animation: changeBg 9s infinite;
     transition: background-color 0.5s ease-in-out;
-}
-
-@keyframes changeBg_2 {
-
-    0%,
-    100% {
-        background-color: rgba(156, 163, 175, 0.507);
-    }
-    43% {
-        background-color: rgb(244, 192, 81);
-    }
-    60% {
-        background-color: rgba(156, 163, 175, 0.507);
-    }
 }
 
 #child-3 {
-    animation: changeBg_3 9s infinite;
-    transition: background-color 0.5s ease-in-out;
+    animation: changeBg 9s infinite;
 }
 
-@keyframes changeBg_3 {
+@keyframes changeBg {
 
-    0%,
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    43% {
+        transform: scale(1.05);
+    }
+
+    45% {
+        transform: rotate(-7deg) scale(1.05);
+    }
+
+    50% {
+        transform: rotate(7deg) scale(1.05);
+    }
+
+    55% {
+        transform: rotate(-7deg) scale(1.05);
+    }
+
+    58% {
+        transform: rotate(0deg) scale(1.05);
+    }
+
     100% {
-        background-color: rgba(156, 163, 175, 0.507);
-    }
-    73% {
-        background-color: rgb(244, 192, 81);
-    }
-    99% {
-        background-color: rgba(156, 163, 175, 0.507);
+        transform: rotate(0deg) scale(1);
     }
 }
-
 
 .slider-container {
     overflow: hidden;
@@ -122,7 +111,6 @@ $Akaya: "Akaya Kanadaka", sans-serif;
     animation: slide 10s linear infinite;
 
     img {
-        
         flex-shrink: 0;
     }
 }
@@ -134,5 +122,19 @@ $Akaya: "Akaya Kanadaka", sans-serif;
 
     to {
         transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 768px) {
+    #child-1{
+        animation: none;
+    }
+
+    #child-2{
+        animation: none;
+    }
+
+    #child-3{
+        animation: none;
     }
 }

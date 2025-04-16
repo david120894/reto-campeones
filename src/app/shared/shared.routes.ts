@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { authGuard } from '../core/guards/auth.guard';
+import { adminGuard } from '../core/guards/admin.guard';
 
 export const sharedRoutes: Routes = [
     {
@@ -20,7 +22,33 @@ export const sharedRoutes: Routes = [
         ],
     },
     {
+        //any user logged
         path: 'dashboard',
-        loadComponent:() => import('../pages/dashboard/dashboard.component').then((m) => m.DashboardComponent)
+        loadComponent:() => import('../pages/dashboard/dashboard.component').then((m) => m.DashboardComponent),
+        canActivate: [authGuard],
+        children:[
+            {
+                path: '',
+                loadComponent: () => import('../pages/dashboard/components/adminlayout/adminlayout.component').then((m)=> m.AdminlayoutComponent)
+            },
+            {
+                path: 'notifications',
+                loadComponent: () => import('../pages/dashboard/components/aside/notifications/notifications.component').then((m)=> m.NotificationsComponent)
+            },
+            {
+                path: 'users',
+                loadComponent: () => import('../pages/dashboard/components/aside/users/users.component').then((m)=> m.UsersComponent),
+                canActivate: [adminGuard],
+            },
+            {
+                path: 'reserves',
+                loadComponent: () => import('../pages/dashboard/components/aside/reserves/reserves.component').then((m)=> m.ReservesComponent),
+            },
+            {
+                path: 'places',
+                loadComponent: () => import('../pages/dashboard/components/aside/places/places.component').then((m)=> m.PlacesComponent),
+                canActivate: [adminGuard],
+            }
+        ]
     }
 ];
