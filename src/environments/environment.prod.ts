@@ -1,6 +1,6 @@
 export const environment = {
     production: true,
-    appVersion: 'v1.0.0',
+    appVersion: '1.0.6',
     isMockEnabled: true,
     appRealm: 'municusco',
     appClientId: '',
