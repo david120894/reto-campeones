@@ -6,33 +6,97 @@ $black-gradient-color: #1a1a1d;
 $red-color: #8d0c28;
 $guinde-color: #740938;
 
-// Tipografías
 $Kaisei-font: "Kaisei HarunoUmi", sans-serif;
 $JetBrains-font: "JetBrains Mono", sans-serif;
 $Niconne: "Niconne", sans-serif;
 $Akaya: "Akaya Kanadaka", sans-serif;
 
-.title{
+.title {
     font-family: $Niconne, sans-serif;
 }
 
-.custom-button{
+.custom-button {
     cursor: pointer;
     border-radius: 7px;
     padding: 10px 50px;
 }
 
-.description{
+.description {
     font-family: $JetBrains-font, sans-serif;
 }
 
-#btn-hours{
-    border: 2px solid $red-color;
+#btn-hours {
     font-family: $JetBrains-font;
 }
 
-#btn-location{
-    border: 2px solid $red-color;
-    color: $black-gradient-color;
+#btn-location {
     font-family: $JetBrains-font;
+}
+
+
+.contex-home {
+    background-image: url('/images/main_photo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-attachment: fixed;
+    height: auto;
+}
+
+.text-container{
+    background-color: rgba(231, 236, 240, 0.45);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.span-1 {
+    animation: moveCentro 3s ease-in-out infinite alternate;
+}
+
+.span-2 {
+    animation: moveDe 3s ease-in-out infinite alternate 0.5s;
+}
+
+.span-3 {
+    animation: moveConvenciones 3s ease-in-out infinite alternate 1s;
+}
+
+.span-4 {
+    animation: moveCusco 3s ease-in-out infinite alternate 1.5s;
+}
+
+@keyframes moveCentro {
+    0% { transform: translateY(-20px); opacity: 0; }
+    100% { transform: translateY(0px); opacity: 1; }
+}
+
+@keyframes moveDe {
+    0% { transform: translateX(-20px); opacity: 0; }
+    100% { transform: translateX(0px); opacity: 1; }
+}
+
+@keyframes moveConvenciones {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0px); opacity: 1; }
+}
+
+@keyframes moveCusco {
+    0% { transform: translateX(20px); opacity: 0; }
+    100% { transform: translateX(0px); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .span-1, .span-2, .span-3, .span-4 {
+        animation: none !important;
+        transform: none !important;
+        opacity: 1 !important; 
+    }
+    
+    .text-container{
+        background-color: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background-color: rgba(231, 236, 240, 0);
+    }
 }

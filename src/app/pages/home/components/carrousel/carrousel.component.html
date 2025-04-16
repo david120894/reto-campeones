@@ -12,7 +12,7 @@
                     <p>Salas</p>
                 </div>
                 <div class="p-2 mb-4 text-4xl font-extrabold big-title md:text-6xl">
-                    <p>Conoce de cada uno</p>
+                    <p>Conoce a cada uno</p>
                 </div>
             </div>
         </div>
@@ -34,35 +34,32 @@
     </div>
     <div class="container px-4 py-8 mx-auto">
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <div *ngFor="let room of rooms"
+            <div *ngFor="let place of places" 
                 class="overflow-hidden transition-all duration-300 transform bg-white rounded-lg shadow-md room-card hover:scale-105">
                 <div class="relative h-48 overflow-hidden">
-                    <img [src]="room.imageUrl" [alt]="room.title"
+                    <img [src]="place.image_url" [alt]="place.name"
                         class="object-cover w-full h-full transition-opacity duration-500">
                 </div>
                 <div class="p-6">
-                    <h2 class="mb-4 text-2xl font-bold text-center text-gray-800">{{room.title}}</h2>
+                    <h2 class="mb-4 text-2xl font-bold text-center text-gray-800">{{place.name}}</h2>
                     <div class="flex justify-between mb-4">
                         <div class="px-4 py-2 text-center">
                             <p class="text-sm text-gray-600">Jornada</p>
-                            <p class="text-xl font-bold text-[#F4C151]">S/.{{room.fullDayPrice}}</p>
+                            <p class="text-xl font-bold text-[#F4C151]">S/.{{place.full_day_price}}</p>
                         </div>
                         <div class="px-4 py-2 text-center">
                             <p class="text-sm text-gray-600">1/2 Jornada</p>
-                            <p class="text-xl font-bold text-[#F4C151]">S/.{{room.halfDayPrice}}</p>
+                            <p class="text-xl font-bold text-[#F4C151]">S/.{{place.half_day_price}}</p>
                         </div>
                     </div>
                     <div class="space-y-2">
-                        <p class="text-gray-700"><span class="font-semibold">Tamaño:</span> {{room.roomSize}}</p>
-                        <p class="text-gray-700"><span class="font-semibold">Capacidad:</span> {{room.maxCapacity}}
-                            personas</p>
-                        <p class="block text-gray-700 md:hidden"><span class="font-semibold">Features:</span>
-                            {{room.features}}</p>
+                        <p class="text-gray-700"><span class="font-semibold">Tamaño:</span> {{place.place_size}}</p>
+                        <p class="text-gray-700"><span class="font-semibold">Capacidad:</span> {{place.max_capacity}} personas</p>
+                        <p class="block text-gray-700 md:hidden"><span class="font-semibold">Características:</span> {{place.features}}</p>
                     </div>
-
                     <div class="flex flex-row flex-wrap justify-between w-full">
                         <button class="mt-4 w-[60%] md:w-[70%] bg-[#740938] text-white py-2 px-4 rounded-lg hover:bg-[#e21743] transition-colors duration-300">
-                            <a [routerLink]="['/reservar']" [queryParams]="{ room: room.title }" (click)="scrollToEmail()">
+                            <a [routerLink]="['/reservar']" [queryParams]="{ place: place.name }" (click)="scrollToEmail()">
                                 Realizar reserva
                             </a>
                         </button>
@@ -70,5 +67,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>    
 </section>

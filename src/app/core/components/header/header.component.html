@@ -2,17 +2,26 @@
     <div class="flex flex-wrap items-center justify-around max-w-screen-xl p-4 mx-auto">
         <div class="text-4xl font-bold text-white span-org">
             <a (click)="scrollToHome()" class="cursor-pointer">
-                <img src="images/solmuni.png" class="h-12" alt="logo sol">
+                <img src="images/round_log.png" class="h-12" alt="logo sol">
             </a>
         </div>
         <div class="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
             <button id="dropdownMenuIconHorizontalButton" data-dropdown-toggle="dropdownDotsHorizontal"
-                class="inline-flex items-center hidden p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
+                class="inline-flex items-center p-2 mr-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
                 type="button">
                 <i class="fa-regular fa-user"></i>
             </button>
+            @if (isAuth === true) {
+                <span class="text-white font-medium bg-[#8d0c28] px-2 p-y2 rounded">
+                    {{ userPrefix }}
+                </span>
+            } @else {
+                <span class=" hidden font-medium bg-[#8d0c28] px-2 p-y2 rounded">
+                    {{ userPrefix }}
+                </span>
+            }
             <div id="dropdownDotsHorizontal"
-                class="z-10 hidden bg-white border-2 border-solid divide-y divide-gray-100 rounded-lg w-44">
+                class="z-10 hidden bg-white border-2 border-solid divide-y rounded-lg dividex-gray-100 w-44">
                 <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownMenuIconHorizontalButton">
                     <li>
                         <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/dashboard"
@@ -20,18 +29,20 @@
                             Dashboard
                         </a>
                     </li>
-                    <li>
-                        <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/login"
-                            class="block px-4 py-2 hover:bg-gray-100">
-                            Login
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/register"
-                            class="block px-4 py-2 hover:bg-gray-100">
-                            Register
-                        </a>
-                    </li>
+                    @if (isAuth !== true) {
+                        <li>
+                            <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/login"
+                                class="block px-4 py-2 hover:bg-gray-100">
+                                Iniciar Sesión
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/register"
+                                class="block px-4 py-2 hover:bg-gray-100">
+                                Registrarse
+                            </a>
+                        </li>
+                    }
                 </ul>
             </div>
             <button data-collapse-toggle="navbar-sticky" type="button"
@@ -62,12 +73,16 @@
                     <a (click)="scrollToAbout()"
                         class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Nosotros</a>
                 </li>
+                @if (isAuth !== true) {
                 <li>
-                    <button type="button"
-                        class="text-white bg-[#8d0c28] hover:bg-[#740938] focus:ring-4 focus:outline-none focus:ring-[#F4C151] font-medium rounded-lg text-sm px-4 py-2 text-center">
-                        <a (click)="scrollToEmail()">Reservar</a>
-                    </button>
+                    <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/login">
+                        <button type="button"
+                            class="text-white bg-[#8d0c28] hover:bg-[#740938] focus:ring-4 focus:outline-none focus:ring-[#F4C151] font-medium rounded-lg text-sm px-4 py-2 text-center">
+                            Iniciar Sesión
+                        </button>
+                    </a>
                 </li>
+                }
             </ul>
         </div>
     </div>

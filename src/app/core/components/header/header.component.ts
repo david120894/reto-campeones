@@ -1,6 +1,7 @@
-import { Component, OnInit} from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { FlowbiteService } from '../../../services/flowbite.service';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { initFlowbite } from 'flowbite';
+import { AuthService } from '../../services/auth.service';
 
 
 
@@ -15,15 +16,38 @@ import { FlowbiteService } from '../../../services/flowbite.service';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
-  constructor(private flowbiteService: FlowbiteService) {}
+
+  user: any = null;
+  userPrefix: string = '';
+  isAuth: boolean = false;
+
+  constructor(
+    private authService: AuthService,
+  ){}
 
   ngOnInit(): void {
-    this.flowbiteService.loadFlowbite(flowbite => {
-      // Your custom code here
-      console.log('Flowbite loaded header', flowbite);
-    });
+    initFlowbite();
+    this.loadUser();
+    this.userAutenticate();
   }
-  
+
+  private loadUser(){
+    const token = this.authService.getToken();
+    if (token) {
+      this.authService.getUserProfile().subscribe(response => {
+        this.user = response; 
+        this.userPrefix = response?.name?.slice(0, 3).toUpperCase() || '';
+      });
+    }
+  }
+
+  private userAutenticate(){
+    const Auth = this.authService.isAuthenticated();
+    if (Auth === true){
+      this.isAuth = true;
+    }
+  }
+
   scrollToHome() {
     const homeSection = document.getElementById('first-view');
     if (homeSection) {
@@ -56,13 +80,6 @@ export class HeaderComponent implements OnInit {
     const contactSection = document.getElementById('contacts');
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
-
-  scrollToEmail(){
-    const emailSection = document.getElementById('email');
-    if (emailSection) {
-      emailSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
 }

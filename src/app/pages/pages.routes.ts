@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 
 
 export const pagesRoutes: Routes = [
+    // first screen to any poeple
     {
         path: '',
         loadComponent: () => import('./pages.component').then((m) => m.PagesComponent),

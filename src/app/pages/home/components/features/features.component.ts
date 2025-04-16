@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { FlowbiteService } from '../../../../services/flowbite.service';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 interface Benefit {
