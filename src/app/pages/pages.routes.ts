@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { NewRegisterComponent } from './new-register/new-register.component';
 
 
 export const pagesRoutes: Routes = [
@@ -13,4 +14,8 @@ export const pagesRoutes: Routes = [
             }
         ]
     },
+  {
+    path: 'register',
+    component:NewRegisterComponent
+  }
 ];
