@@ -15,8 +15,8 @@ const NG_MODULES = [CommonModule, RouterModule];
 })
 
 export class CarrouselComponent implements OnInit {
-  places: Place[] = []; 
-  isBrowser: boolean = false; 
+  places: Place[] = [];
+  isBrowser: boolean = false;
 
   constructor(private placeService: PlaceService,) {}
 
@@ -40,5 +40,11 @@ export class CarrouselComponent implements OnInit {
     if (emailSection) {
       emailSection.scrollIntoView({ behavior: 'smooth' });
     }
+  }
+  openPdf()
+  {
+    const pdfUrl = 'public/pdf/bases.pdf';
+    window.open(pdfUrl, '_blank');
+    window.open('public/images/bases.pdf', '_blank');
   }
 }

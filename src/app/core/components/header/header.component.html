@@ -59,26 +59,26 @@
                 <li class="flex md:justify-center md:items-center">
                     <a (click)="scrollToService()"
                         class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0"
-                        aria-current="page">Servicios</a>
+                        aria-current="page">Inicio</a>
                 </li>
                 <li class="flex md:justify-center md:items-center">
                     <a (click)="scrollToGallery()"
-                        class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Galería</a>
+                        class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Bases</a>
                 </li>
                 <li class="flex md:justify-center md:items-center">
                     <a (click)="scrollToContacts()"
-                        class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Contactos</a>
+                        class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Premios</a>
                 </li>
                 <li class="flex md:justify-center md:items-center">
                     <a (click)="scrollToAbout()"
-                        class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Nosotros</a>
+                        class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Organiza</a>
                 </li>
                 @if (isAuth !== true) {
                 <li>
                     <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/login">
                         <button type="button"
                             class="text-white bg-[#8d0c28] hover:bg-[#740938] focus:ring-4 focus:outline-none focus:ring-[#F4C151] font-medium rounded-lg text-sm px-4 py-2 text-center">
-                            Iniciar Sesión
+                            Registrarse
                         </button>
                     </a>
                 </li>

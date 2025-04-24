@@ -1,71 +1,197 @@
 <section id="services">
-    <div class="header">
-        <div class="flex inner-header">
-            <svg version="1.1" class="logo" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve">
+  <div class="header">
+    <div class="flex inner-header">
+      <svg version="1.1" class="logo" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve">
                 <path fill="#FFFFFF" stroke="#000000" stroke-width="10" stroke-miterlimit="10" d="M57,283" />
-                <g>
+        <g>
                 </g>
             </svg>
-            <div class="pr-10 mt-8 text-center text-white md:mt-0">
-                <div class="p-2 mb-2 text-3xl font-bold small-text md:mb-4 md:text-4xl">
-                    <p>Salas</p>
-                </div>
-                <div class="p-2 mb-4 text-4xl font-extrabold big-title md:text-6xl">
-                    <p>Conoce cada una</p>
-                </div>
-            </div>
+      <div class="pr-10 mt-8 text-center text-white md:mt-0">
+        <!--                <div class="p-2 mb-2 text-3xl font-bold small-text md:mb-4 md:text-4xl">-->
+        <!--                    <p>Bases</p>-->
+        <!--                </div>-->
+        <div class="p-2 mb-4 text-4xl font-extrabold big-title md:text-6xl">
+          <p>Bases</p>
         </div>
-        <div>
-            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-                <defs>
-                    <path id="gentle-wave"
-                        d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-                </defs>
-                <g class="parallax">
-                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
-                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
-                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
-                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
-                </g>
-            </svg>
-        </div>
+      </div>
     </div>
-    <div class="container px-4 py-8 mx-auto">
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <div *ngFor="let place of places" 
-                class="overflow-hidden transition-all duration-300 transform bg-white rounded-lg shadow-md room-card hover:scale-105">
-                <div class="relative h-48 overflow-hidden">
-                    <img [src]="place.image_url" [alt]="place.name"
-                        class="object-cover w-full h-full transition-opacity duration-500">
-                </div>
-                <div class="p-6">
-                    <h2 class="mb-4 text-2xl font-bold text-center text-gray-800">{{place.name}}</h2>
-                    <div class="flex justify-between mb-4">
-                        <div class="px-4 py-2 text-center">
-                            <p class="text-sm text-gray-600">Jornada</p>
-                            <p class="text-xl font-bold text-[#F4C151]">S/.{{place.full_day_price}}</p>
-                        </div>
-                        <div class="px-4 py-2 text-center">
-                            <p class="text-sm text-gray-600">1/2 Jornada</p>
-                            <p class="text-xl font-bold text-[#F4C151]">S/.{{place.half_day_price}}</p>
-                        </div>
-                    </div>
-                    <div class="space-y-2">
-                        <p class="text-gray-700"><span class="font-semibold">Tamaño:</span> {{place.place_size}}</p>
-                        <p class="text-gray-700"><span class="font-semibold">Capacidad:</span> {{place.max_capacity}} personas</p>
-                        <p class="block text-gray-700 md:hidden"><span class="font-semibold">Características:</span> {{place.features}}</p>
-                    </div>
-                    <div class="flex flex-row flex-wrap justify-between w-full">
-                        <button class="mt-4 w-[60%] md:w-[70%] bg-[#740938] text-white py-2 px-4 rounded-lg hover:bg-[#e21743] transition-colors duration-300">
-                            <a [routerLink]="['/reservar']" [queryParams]="{ place: place.name }" (click)="scrollToEmail()">
-                                Realizar reserva
-                            </a>
-                        </button>
-                    </div>
-                </div>
-            </div>
+    <div>
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+           viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave"
+                d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+          <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+          <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+          <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div class="container px-4 py-8 mx-auto">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div
+        class="overflow-hidden transition-all duration-300 transform bg-white rounded-lg shadow-md room-card hover:scale-105">
+        <div class="relative h-48 overflow-hidden">
+          <img src="images/img.png"
+               class="object-cover w-full h-full transition-opacity duration-500">
         </div>
-    </div>    
+        <div class="p-6">
+          <h2 class="mb-4 text-2xl font-bold text-center text-gray-800">Categoría I</h2>
+          <div class="space-y-2">
+            <p class="text-gray-700"><span class="font-semibold">Tamaño:</span> varones de 12 a 17 años, 10 kilómetros
+              de distancia.</p>
+          </div>
+          <div class="flex flex-row flex-wrap justify-between w-full">
+            <button
+              class="mt-4 w-[60%] md:w-[70%] bg-[#740938] text-white py-2 px-4 rounded-lg hover:bg-[#e21743] transition-colors duration-300">
+              <a (click)="openPdf()">
+                Bases
+              </a>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="overflow-hidden transition-all duration-300 transform bg-white rounded-lg shadow-md room-card hover:scale-105">
+        <div class="relative h-48 overflow-hidden">
+          <img src="images/img.png"
+               class="object-cover w-full h-full transition-opacity duration-500">
+        </div>
+        <div class="p-6">
+          <h2 class="mb-4 text-2xl font-bold text-center text-gray-800">Categoría II</h2>
+          <div class="space-y-2">
+            <p class="text-gray-700"><span class="font-semibold"></span>Damas de 12 a 17 años, 10 kilómetros de distancia.</p>
+          </div>
+          <div class="flex flex-row flex-wrap justify-between w-full">
+            <button
+              class="mt-4 w-[60%] md:w-[70%] bg-[#740938] text-white py-2 px-4 rounded-lg hover:bg-[#e21743] transition-colors duration-300">
+              <a (click)="openPdf()">
+                Bases
+              </a>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="overflow-hidden transition-all duration-300 transform bg-white rounded-lg shadow-md room-card hover:scale-105">
+        <div class="relative h-48 overflow-hidden">
+          <img src="images/img.png"
+               class="object-cover w-full h-full transition-opacity duration-500">
+        </div>
+        <div class="p-6">
+          <h2 class="mb-4 text-2xl font-bold text-center text-gray-800">Categoría III</h2>
+          <div class="space-y-2">
+            <p class="text-gray-700"><span class="font-semibold"></span>Varones de 18 a 39 años, 10 kilómetros de distancia.</p>
+          </div>
+          <div class="flex flex-row flex-wrap justify-between w-full">
+            <button
+              class="mt-4 w-[60%] md:w-[70%] bg-[#740938] text-white py-2 px-4 rounded-lg hover:bg-[#e21743] transition-colors duration-300">
+              <a (click)="openPdf()">
+                Bases
+              </a>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="overflow-hidden transition-all duration-300 transform bg-white rounded-lg shadow-md room-card hover:scale-105">
+        <div class="relative h-48 overflow-hidden">
+          <img src="images/img.png"
+               class="object-cover w-full h-full transition-opacity duration-500">
+        </div>
+        <div class="p-6">
+          <h2 class="mb-4 text-2xl font-bold text-center text-gray-800">Categoría IV</h2>
+          <div class="space-y-2">
+            <p class="text-gray-700"><span class="font-semibold"></span> Damas de 18 a 39 años, 10 kilómetros de distancia.</p>
+          </div>
+          <div class="flex flex-row flex-wrap justify-between w-full">
+            <button
+              class="mt-4 w-[60%] md:w-[70%] bg-[#740938] text-white py-2 px-4 rounded-lg hover:bg-[#e21743] transition-colors duration-300">
+              <a (click)="openPdf()">
+                Bases
+              </a>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="overflow-hidden transition-all duration-300 transform bg-white rounded-lg shadow-md room-card hover:scale-105">
+        <div class="relative h-48 overflow-hidden">
+          <img src="images/img.png"
+               class="object-cover w-full h-full transition-opacity duration-500">
+        </div>
+        <div class="p-6">
+          <h2 class="mb-4 text-2xl font-bold text-center text-gray-800">Categoría V</h2>
+          <div class="space-y-2">
+            <p class="text-gray-700"><span class="font-semibold"></span>Master en damas de 40 años a 60 años, 10 kilómetros de distancia.</p>
+          </div>
+          <div class="flex flex-row flex-wrap justify-between w-full">
+            <button
+              class="mt-4 w-[60%] md:w-[70%] bg-[#740938] text-white py-2 px-4 rounded-lg hover:bg-[#e21743] transition-colors duration-300">
+              <a (click)="openPdf()">
+                Bases
+              </a>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="overflow-hidden transition-all duration-300 transform bg-white rounded-lg shadow-md room-card hover:scale-105">
+        <div class="relative h-48 overflow-hidden">
+          <img src="images/img.png"
+               class="object-cover w-full h-full transition-opacity duration-500">
+        </div>
+        <div class="p-6">
+          <h2 class="mb-4 text-2xl font-bold text-center text-gray-800">Categoría VI</h2>
+          <div class="space-y-2">
+            <p class="text-gray-700"><span class="font-semibold"></span>Master en varones de 40 años a 60 años, 10 kilómetros de distancia.</p>
+          </div>
+          <div class="flex flex-row flex-wrap justify-between w-full">
+            <button
+              class="mt-4 w-[60%] md:w-[70%] bg-[#740938] text-white py-2 px-4 rounded-lg hover:bg-[#e21743] transition-colors duration-300">
+              <a>
+                Bases
+              </a>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="overflow-hidden transition-all duration-300 transform bg-white rounded-lg shadow-md room-card hover:scale-105">
+        <div class="relative h-48 overflow-hidden">
+          <img src="images/img.png"
+               class="object-cover w-full h-full transition-opacity duration-500">
+        </div>
+        <div class="p-6">
+          <h2 class="mb-4 text-2xl font-bold text-center text-gray-800">Categoría VII</h2>
+          <div class="space-y-2">
+            <p class="text-gray-700"><span class="font-semibold"></span>Libre, caminantes y personas con habilidades especiales, varones y mujeres, 10kilómetros de distancia.</p>
+          </div>
+          <div class="flex flex-row flex-wrap justify-between w-full">
+            <a
+              href="assets/bases.pdf"
+              target="_blank"
+              rel="noopener"
+              class="mt-4 w-[60%] md:w-[70%] bg-[#740938] text-white py-2 px-4 rounded-lg hover:bg-[#e21743] transition-colors duration-300 text-center">
+              Bases
+            </a>
+          </div>
+
+          <!--          <div class="flex flex-row flex-wrap justify-between w-full">-->
+<!--            <button-->
+<!--              class="mt-4 w-[60%] md:w-[70%] bg-[#740938] text-white py-2 px-4 rounded-lg hover:bg-[#e21743] transition-colors duration-300">-->
+<!--              <a>-->
+<!--                Bases-->
+<!--              </a>-->
+<!--            </button>-->
+<!--          </div>-->
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
