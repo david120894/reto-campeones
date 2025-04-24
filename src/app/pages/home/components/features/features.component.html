@@ -1,27 +1,47 @@
 <div class="acordian-container w-full border border-gray-200 shadow-sm bg-[#740938] p-2 md:p-8 md:mt-[40px]">
-    <div
-        class="small-big-subtitle mt-[40px] md:mt-0 md:mb-[40px] pt-8 flex flex-col items-center justify-center md:items-center">
-        <div class="subtitle-small text-3xl md:text-4xl font-bold mb-3 md:mb-5 text-[#F4C151]">
-            <p>
-                Equipamiento
-            </p>
-        </div>
-        <div class="subtitle-big text-5xl md:text-6xl font-bold md:mb-5 text-center mb-6 text-white">
-            <p>
-                Características y beneficios de nuestras instalaciones
-            </p>
-        </div>
+  <div
+    class="small-big-subtitle mt-[40px] md:mt-0 md:mb-[40px] pt-8 flex flex-col items-center justify-center md:items-center">
+    <!--        <div class="subtitle-small text-3xl md:text-4xl font-bold mb-3 md:mb-5 text-[#F4C151]">-->
+    <!--            <p>-->
+    <!--                Equipamiento-->
+    <!--            </p>-->
+    <!--        </div>-->
+    <div class="subtitle-big text-5xl md:text-6xl font-bold md:mb-5 text-center mb-6 text-white">
+      <p>
+        Auspiciadores
+      </p>
     </div>
-    <div class="container mx-auto px-4 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div *ngFor="let benefit of benefits"
-                class="relative bg-white rounded-lg shadow-md p-6 transition-all duration-300 hover:scale-105 hover:shadow-xl group hover:bg-[#2D3136] hover:text-[#F4C151]">
-                <div class="flex justify-center mb-4">
-                    <i [class]="benefit.icon + ' text-6xl text-[#F4C151] transition-all duration-300 group-hover:animate-bounce'"></i>
-                </div>
-                <h3 class="text-xl font-semibold text-gray-900 text-center mb-3 group-hover:text-white">{{ benefit.title }}</h3>
-                <p class="text-gray-600 text-base text-center group-hover:text-gray-400">{{ benefit.description }}</p>
-            </div>
+  </div>
+  <div class="container mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div
+        class="relative bg-white rounded-lg shadow-md p-6 transition-all duration-300 hover:scale-105 hover:shadow-xl group hover:bg-[#2D3136] hover:text-[#F4C151]">
+        <div class="text-center d-flex justify-items-center h-50">
+          <img src="organizadores/dulce.jpeg" alt="pnp" class="h-30" style="">
         </div>
+        <h3 class="text-xl font-semibold text-gray-900 text-center mb-3 group-hover:text-white">Dulce</h3>
+      </div>
+      <div
+        class="relative bg-white rounded-lg shadow-md p-6 transition-all duration-300 hover:scale-105 hover:shadow-xl group hover:bg-[#2D3136] hover:text-[#F4C151]">
+        <div class="text-center d-flex justify-items-center h-50">
+          <img src="organizadores/generade.jpeg" alt="pnp" class="h-30" style="">
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 text-center mb-3 group-hover:text-white">Generade</h3>
+      </div>
+      <div
+        class="relative bg-white rounded-lg shadow-md p-6 transition-all duration-300 hover:scale-105 hover:shadow-xl group hover:bg-[#2D3136] hover:text-[#F4C151]">
+        <div class="text-center d-flex justify-items-center h-50">
+          <img src="organizadores/loa.jpeg" alt="pnp" class="h-30" style="">
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 text-center mb-3 group-hover:text-white">Agua loa</h3>
+      </div>
+      <div
+        class="relative bg-white rounded-lg shadow-md p-6 transition-all duration-300 hover:scale-105 hover:shadow-xl group hover:bg-[#2D3136] hover:text-[#F4C151]">
+        <div class="text-center d-flex justify-items-center h-50">
+          <img src="organizadores/coca.png" alt="pnp" class="h-30" style="">
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 text-center mb-3 group-hover:text-white">Coca</h3>
+      </div>
     </div>
+  </div>
 </div>
