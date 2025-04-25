@@ -229,19 +229,23 @@ export class EmailFormComponent implements OnInit {
       underage: this.formulario.get('underage')?.value,
     };
     console.log(params);
-
-    this.reservationService.saveRegister(params).subscribe({
-      next: (response) => {
-        this.mensajeExito = 'Se guardó correctamente';
-        this.formulario.reset();
-        setTimeout(() => {
-          this.mensajeExito = null;
-        }, 3000); // Oculta el mensaje después de 3 segundos
-      },
-      error: (err) => {
-        // Puedes también mostrar un mensaje de error si quieres
-      },
-    });
+    this.mensajeExito = 'Aun no esta disponible';
+    this.formulario.reset();
+    setTimeout(() => {
+      this.mensajeExito = null;
+    }, 3000);
+    // this.reservationService.saveRegister(params).subscribe({
+    //   next: (response) => {
+    //     this.mensajeExito = 'Se guardó correctamente';
+    //     this.formulario.reset();
+    //     setTimeout(() => {
+    //       this.mensajeExito = null;
+    //     }, 3000); // Oculta el mensaje después de 3 segundos
+    //   },
+    //   error: (err) => {
+    //     // Puedes también mostrar un mensaje de error si quieres
+    //   },
+    // });
 
 
   }
@@ -324,7 +328,7 @@ export class EmailFormComponent implements OnInit {
   }
 
   downloadParentalPermission() {
-    const parentalPermissionUrl = 'https://taqe.cusco.gob.pe/publico/eventos/2025/hatun-phaway/AUTORIZACION.docx';
+    const parentalPermissionUrl = 'https://taqe.cusco.gob.pe/publico/eventos/2025/hatun-phaway/anxo2.docx';
     const link = document.createElement('a');
     link.href = parentalPermissionUrl;
     link.download = 'parental-permission.pdf';
