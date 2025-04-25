@@ -20,31 +20,31 @@
                     {{ userPrefix }}
                 </span>
             }
-            <div id="dropdownDotsHorizontal"
-                class="z-10 hidden bg-white border-2 border-solid divide-y rounded-lg dividex-gray-100 w-44">
-                <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownMenuIconHorizontalButton">
-                    <li>
-                        <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/dashboard"
-                            class="block px-4 py-2 hover:bg-gray-100">
-                            Dashboard
-                        </a>
-                    </li>
-                    @if (isAuth !== true) {
-                        <li>
-                            <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/login"
-                                class="block px-4 py-2 hover:bg-gray-100">
-                                Iniciar Sesión
-                            </a>
-                        </li>
-                        <li>
-                            <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/register"
-                                class="block px-4 py-2 hover:bg-gray-100">
-                                Registrarse
-                            </a>
-                        </li>
-                    }
-                </ul>
-            </div>
+<!--            <div id="dropdownDotsHorizontal"-->
+<!--                class="z-10 hidden bg-white border-2 border-solid divide-y rounded-lg dividex-gray-100 w-44">-->
+<!--                <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownMenuIconHorizontalButton">-->
+<!--                    <li>-->
+<!--                        <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/dashboard"-->
+<!--                            class="block px-4 py-2 hover:bg-gray-100">-->
+<!--                            Dashboard-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    @if (isAuth !== true) {-->
+<!--                        <li>-->
+<!--                            <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/login"-->
+<!--                                class="block px-4 py-2 hover:bg-gray-100">-->
+<!--                                Iniciar Sesión-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/register"-->
+<!--                                class="block px-4 py-2 hover:bg-gray-100">-->
+<!--                                Registrarse-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                    }-->
+<!--                </ul>-->
+<!--            </div>-->
             <button data-collapse-toggle="navbar-sticky" type="button"
                 class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
                 aria-controls="navbar-sticky" aria-expanded="false">
@@ -67,15 +67,15 @@
                 </li>
                 <li class="flex md:justify-center md:items-center">
                     <a (click)="scrollToContacts()"
-                        class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Premios</a>
+                        class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Recorrido</a>
                 </li>
                 <li class="flex md:justify-center md:items-center">
                     <a (click)="scrollToAbout()"
-                        class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Organiza</a>
+                        class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Organizadores</a>
                 </li>
                 @if (isAuth !== true) {
                 <li>
-                    <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/login">
+                    <a routerLinkActive="active" (click)="scrollRegister()">
                         <button type="button"
                             class="text-white bg-[#8d0c28] hover:bg-[#740938] focus:ring-4 focus:outline-none focus:ring-[#F4C151] font-medium rounded-lg text-sm px-4 py-2 text-center">
                             Registrarse
