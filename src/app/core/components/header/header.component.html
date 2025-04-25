@@ -6,51 +6,13 @@
             </a>
         </div>
         <div class="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
-            <button id="dropdownMenuIconHorizontalButton" data-dropdown-toggle="dropdownDotsHorizontal"
-                class="inline-flex items-center p-2 mr-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
-                type="button">
-                <i class="fa-regular fa-user"></i>
-            </button>
-            @if (isAuth === true) {
-                <span class="text-white font-medium bg-[#8d0c28] px-2 p-y2 rounded">
-                    {{ userPrefix }}
-                </span>
-            } @else {
-                <span class=" hidden font-medium bg-[#8d0c28] px-2 p-y2 rounded">
-                    {{ userPrefix }}
-                </span>
-            }
-<!--            <div id="dropdownDotsHorizontal"-->
-<!--                class="z-10 hidden bg-white border-2 border-solid divide-y rounded-lg dividex-gray-100 w-44">-->
-<!--                <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownMenuIconHorizontalButton">-->
-<!--                    <li>-->
-<!--                        <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/dashboard"-->
-<!--                            class="block px-4 py-2 hover:bg-gray-100">-->
-<!--                            Dashboard-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                    @if (isAuth !== true) {-->
-<!--                        <li>-->
-<!--                            <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/login"-->
-<!--                                class="block px-4 py-2 hover:bg-gray-100">-->
-<!--                                Iniciar Sesión-->
-<!--                            </a>-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/register"-->
-<!--                                class="block px-4 py-2 hover:bg-gray-100">-->
-<!--                                Registrarse-->
-<!--                            </a>-->
-<!--                        </li>-->
-<!--                    }-->
-<!--                </ul>-->
-<!--            </div>-->
-            <button data-collapse-toggle="navbar-sticky" type="button"
-                class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
-                aria-controls="navbar-sticky" aria-expanded="false">
-                <span class="sr-only">Abrir menú</span>
-                <i class="fa-solid fa-bars"></i>
-            </button>
+          <button data-collapse-toggle="navbar-sticky" type="button"
+                  class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                  aria-controls="navbar-sticky" aria-expanded="false">
+            <span class="sr-only">Abrir menú</span>
+            <i class="fa-solid fa-bars text-xl"></i>
+          </button>
+
         </div>
         <div id="navbar-sticky"
             class="absolute left-0 hidden w-full bg-gray-100 shadow-lg top-20 md:top-0 md:relative md:flex md:items-center md:w-auto md:bg-transparent md:shadow-none">
