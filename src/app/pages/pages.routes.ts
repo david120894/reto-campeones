@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { NewRegisterComponent } from './new-register/new-register.component';
+import { EmailFormComponent } from './home/components/email-form/email-form.component';
 
 
 export const pagesRoutes: Routes = [
@@ -16,6 +17,6 @@ export const pagesRoutes: Routes = [
     },
   {
     path: 'register',
-    component:NewRegisterComponent
+    component:EmailFormComponent
   }
 ];
