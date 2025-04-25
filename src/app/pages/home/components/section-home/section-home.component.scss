@@ -90,9 +90,9 @@ $Akaya: "Akaya Kanadaka", sans-serif;
     .span-1, .span-2, .span-3, .span-4 {
         animation: none !important;
         transform: none !important;
-        opacity: 1 !important; 
+        opacity: 1 !important;
     }
-    
+
     .text-container{
         background-color: none;
         backdrop-filter: none;
@@ -100,3 +100,17 @@ $Akaya: "Akaya Kanadaka", sans-serif;
         background-color: rgba(231, 236, 240, 0);
     }
 }
+
+@media (max-width: 767px) {
+  .title span {
+    visibility: visible !important;
+    display: block !important;
+  }
+}
+//.image-with-transparent-background {
+//  background-color: transparent;
+//  -webkit-mask-image: url('/public/images/llamasss.png');
+//  mask-image: url('public/images/llamasss.png');
+//  background-repeat: no-repeat;
+//  background-size: cover;
+//}
