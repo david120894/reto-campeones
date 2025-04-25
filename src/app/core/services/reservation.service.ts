@@ -10,9 +10,9 @@ import { Reservation } from '../models';
 })
 export class ReservationService {
 
-  private apiUrl = environment.apiUrl + '/reservations';
+  private apiUrl = environment.apiUrl
   private http = inject(HttpClient);
-  
+
   getConsulting():Observable<Reservation[]>{
     return this.http.get<Reservation[]>(`${this.apiUrl}/queries`).pipe(
       map(reservations => reservations.filter(r => r.type === 'consultation')
@@ -20,6 +20,9 @@ export class ReservationService {
     );
   }
 
+  saveRegister(body:any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/participants/create`, body);
+  }
   getReservation():Observable<Reservation[]>{
     return this.http.get<Reservation[]>(`${this.apiUrl}/reserves`).pipe(
       map(reservations => reservations.filter(r => r.type === 'reservation')
