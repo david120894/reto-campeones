@@ -9,7 +9,6 @@ import { AuthService } from '../../services/auth.service';
   selector: 'app-header',
   standalone: true,
   imports: [
-    RouterLink,
     RouterLinkActive
   ],
   templateUrl: './header.component.html',
@@ -35,7 +34,7 @@ export class HeaderComponent implements OnInit {
     const token = this.authService.getToken();
     if (token) {
       this.authService.getUserProfile().subscribe(response => {
-        this.user = response; 
+        this.user = response;
         this.userPrefix = response?.name?.slice(0, 3).toUpperCase() || '';
       });
     }
@@ -80,6 +79,14 @@ export class HeaderComponent implements OnInit {
     const contactSection = document.getElementById('contacts');
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  scrollRegister()
+  {
+    const registerSection = document.getElementById('register');
+    if (registerSection) {
+      registerSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
 }
