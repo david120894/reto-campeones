@@ -43,7 +43,7 @@ export class CarrouselComponent implements OnInit {
   }
   openPdf()
   {
-    const pdfUrl = 'public/pdf/bases.pdf';
+    const pdfUrl = 'https://taqe.cusco.gob.pe/publico/eventos/2025/hatun-phaway/baseupload.pdf';
     window.open(pdfUrl, '_blank');
     window.open('public/images/bases.pdf', '_blank');
   }
