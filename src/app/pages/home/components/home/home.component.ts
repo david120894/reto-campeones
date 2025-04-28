@@ -9,7 +9,7 @@ import { FeaturesComponent } from '../features/features.component';
 
 
 const DECLARATIONS = [
-  SectionHomeComponent, GalleryComponent, EmailFormComponent, ContactComponent, CarrouselComponent, AboutComponent, FeaturesComponent,
+  SectionHomeComponent, GalleryComponent, ContactComponent, CarrouselComponent, AboutComponent, FeaturesComponent,
 ]
 
 @Component({

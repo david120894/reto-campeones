@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Reservation } from '../models';
+import { ResponseRegisterModels } from '../models/response.register.models';
 
 
 @Injectable({
@@ -20,8 +21,12 @@ export class ReservationService {
     );
   }
 
-  saveRegister(body:any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/participants/create`, body);
+  saveRegister(body:any): Observable<ResponseRegisterModels> {
+    return this.http.post<ResponseRegisterModels>(`http://172.16.4.74:30011/api/participants/create`, body);
+  }
+
+  searchByDni(dni: string): Observable<ResponseRegisterModels> {
+    return this.http.get<ResponseRegisterModels>(`http://172.16.4.74:30011/api/participants/search?dni=${dni}`)
   }
   getReservation():Observable<Reservation[]>{
     return this.http.get<Reservation[]>(`${this.apiUrl}/reserves`).pipe(

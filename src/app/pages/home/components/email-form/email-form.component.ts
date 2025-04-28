@@ -1,19 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { requestStatus } from '../../../../core/models';
-import { Place } from '../../../../core/models/place';
 import { AuthService } from '../../../../core/services/auth.service';
 import { PlaceService } from '../../../../core/services/place.service';
 import { ReservationService } from '../../../../core/services/reservation.service';
 import { RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { ResponseRegisterModels } from '../../../../core/models/response.register.models';
 
 const NG_MODULES = [ReactiveFormsModule, CommonModule];
 
@@ -25,12 +19,16 @@ const NG_MODULES = [ReactiveFormsModule, CommonModule];
   styleUrl: './email-form.component.scss',
 })
 export class EmailFormComponent implements OnInit {
+
+  isModalOpen = false;
+  showModal: boolean = false;
+  imageModal: string = '';
+  objectRegister: ResponseRegisterModels | null = null;
   showTerms = false;
   mensajeExito: string | null = null;
 
   archivoParentalBase64: string | null = null;
 
-  places: Place[] = [];
   formulario: FormGroup;
   formTypeToggle = new FormControl(false);
   message = '';
@@ -62,7 +60,7 @@ export class EmailFormComponent implements OnInit {
       ],
       email: [
         '',
-        [Validators.required, Validators.email, Validators.maxLength(50)],
+        [Validators.email, Validators.maxLength(50)],
       ],
       gender: ['', Validators.required],
       age: ['', Validators.required],
@@ -87,22 +85,15 @@ export class EmailFormComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {
-    this.placeService.getPlaces().subscribe((places) => {
-      this.places = places;
-      this.formWithUserData();
-    });
-    // this.getUnderage()
+  formSearchDni: FormGroup = new FormGroup({
+    searchDni: new FormControl(''),
+  });
+
+  get search() {
+    return this.formSearchDni.controls;
   }
 
-  getUnderage() {
-    const aux = this.formulario.get('underage')?.value;
-    console.log(aux);
-    if (aux === 'Si') {
-      this.parentalPermissionRequired = true;
-    } else {
-      this.parentalPermissionRequired = false;
-    }
+  ngOnInit(): void {
   }
 
   calculateAge(event: Event): void {
@@ -150,24 +141,6 @@ export class EmailFormComponent implements OnInit {
       }
 
       this.formulario.get('category')?.setValue(category);
-    }
-  }
-
-  private formWithUserData(): void {
-    const token = this.authService.getToken();
-    if (token && this.authService.isAuthenticated()) {
-      this.authService.getUser().subscribe({
-        next: (response) => {
-          this.userData = response;
-          if (this.userData && this.userData.email) {
-            this.formulario.patchValue({
-              email: this.userData.email,
-            });
-          }
-        },
-        error: (err) =>
-          console.error('Error al obtener datos del usuario:', err),
-      });
     }
   }
 
@@ -228,102 +201,24 @@ export class EmailFormComponent implements OnInit {
       termsAndConditions: this.formulario.get('termsAndConditions')?.value,
       underage: this.formulario.get('underage')?.value,
     };
-    console.log(params);
-    this.mensajeExito = 'Aun no esta disponible';
-    this.formulario.reset();
-    setTimeout(() => {
-      this.mensajeExito = null;
-    }, 3000);
-    // this.reservationService.saveRegister(params).subscribe({
-    //   next: (response) => {
-    //     this.mensajeExito = 'Se guardó correctamente';
-    //     this.formulario.reset();
-    //     setTimeout(() => {
-    //       this.mensajeExito = null;
-    //     }, 3000); // Oculta el mensaje después de 3 segundos
-    //   },
-    //   error: (err) => {
-    //     // Puedes también mostrar un mensaje de error si quieres
-    //   },
-    // });
+    this.reservationService.saveRegister(params).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.objectRegister = response;
+        const nameImg = this.objectRegister.qrCode.image;
+        this.formulario.reset()
 
+        this.mensajeExito = 'Se guardó correctamente';
+        setTimeout(() => {
+          this.mensajeExito = null;
+        }, 3000);
 
-  }
-
-  onSubmit() {
-    this.getUnderage();
-    const authTokenToSend = this.authService.getToken();
-    /*
-    if (!authTokenToSend) {
-      console.warn('Usuario no logueado. No se puede realizar la reserva.');
-      this.message = 'Debe iniciar sesión para realizar una reserva.';
-      this.status = 'failed';
-      this.isVisible = true;
-      this.hideAlert();
-      return;
-    }
-*/
-    this.isVisible = true;
-    this.status = 'loading';
-    const isReservation = this.formTypeToggle.value;
-    const formValue = this.formulario.value;
-
-    // form to "consultation"
-    const formDataBase = {
-      name: formValue.name.toUpperCase(),
-      surnames: formValue.surnames.toUpperCase(),
-      country: formValue.country,
-      phone: formValue.phone,
-      email: formValue.email,
-      message: formValue.message,
-      type: isReservation ? 'reservation' : 'consultation',
-    };
-
-    const formData = isReservation
-      ? {
-        ...formDataBase,
-        institution_name: formValue.institution_name,
-        event_name: formValue.event_name,
-        event_date: formValue.event_date,
-        place: formValue.place,
-        req_state: formValue.req_state,
-      }
-      : formDataBase;
-
-    this.reservationService.sendReservation(formData).subscribe({
-      next: () => {
-        this.message = isReservation
-          ? 'Reserva enviada exitosamente. Verifique su email.'
-          : 'Consulta enviada exitosamente. Verifique su email.';
-        this.status = 'success';
-        this.hideAlert();
-        this.formulario.reset();
-        this.formTypeToggle.setValue(false);
-        this.formulario.patchValue({ req_state: 'pending' });
+        this.imageModal = nameImg;
+        this.showModal = true;
       },
       error: (err) => {
-        this.message = err.error?.error || 'Error al procesar la solicitud';
-        this.status = 'failed';
-        this.hideAlert();
+        console.error(err);
       },
-    });
-  }
-
-  hideAlert() {
-    setTimeout(() => {
-      this.message = '';
-      this.isVisible = false;
-      this.status = 'init';
-    }, 3000);
-  }
-
-  resetData() {
-    this.formulario.patchValue({
-      institution_name: '',
-      event_name: '',
-      event_date: '',
-      place: '',
-      req_state: 'pending',
     });
   }
 
@@ -335,5 +230,92 @@ export class EmailFormComponent implements OnInit {
     link.click();
   }
 
-  protected readonly Event = Event;
+  searchByDni() {
+    const dni = this.search['searchDni'].value;
+    console.log(dni);
+    this.reservationService.searchByDni(dni).subscribe({
+      next: (response) => {
+        this.objectRegister = response;
+        this.imageModal = this.objectRegister.qrCode.image;
+        this.showModal = true;
+        this.formSearchDni.reset();
+        this.closeModal();
+      },
+      error:(error) => {
+        console.error('Usuario no registrado aun')
+        // this.messageService.error('El DNI ingresado no está registrado.');
+        // alert('El DNI ingresado no está registrado.');
+        this.mensajeExito = 'El DNI ingresado no está registrado.'
+      }
+    })
+  }
+
+  printModal() {
+    const modalContentElement = document.querySelector('.modal-content');
+
+    if (modalContentElement) {
+      const clonedContent = modalContentElement.cloneNode(true) as HTMLElement;
+
+      const noPrintElements = clonedContent.querySelectorAll('.no-print');
+      noPrintElements.forEach(el => el.remove());
+
+      const originalContent = document.body.innerHTML;
+
+      document.body.innerHTML = `
+      <html>
+        <head>
+          <style>
+            body {
+              font-family: Arial, sans-serif;
+              text-align: center;
+              margin: 0;
+              padding: 0;
+              height: 100vh;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+            }
+            img {
+              max-width: 300px;
+              margin-bottom: 20px;
+              display: block;
+            }
+            h5 {
+              margin: 8px 0;
+              font-size: 16px;
+            }
+            .content-wrapper {
+              text-align: center;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="content-wrapper">
+            ${clonedContent.innerHTML}
+          </div>
+        </body>
+      </html>
+    `;
+
+      window.print();
+
+      setTimeout(() => {
+        document.body.innerHTML = originalContent;
+        window.location.reload();
+      }, 1000);
+    }
+  }
+
+  openModal() {
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
+
+  closeModalPrint() {
+    this.showModal = false;
+  }
 }
