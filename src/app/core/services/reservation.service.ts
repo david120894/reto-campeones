@@ -22,11 +22,11 @@ export class ReservationService {
   }
 
   saveRegister(body:any): Observable<ResponseRegisterModels> {
-    return this.http.post<ResponseRegisterModels>(`http://172.16.4.74:30011/api/participants/create`, body);
+    return this.http.post<ResponseRegisterModels>(`${this.apiUrl}/participants/create`, body);
   }
 
   searchByDni(dni: string): Observable<ResponseRegisterModels> {
-    return this.http.get<ResponseRegisterModels>(`http://172.16.4.74:30011/api/participants/search?dni=${dni}`)
+    return this.http.get<ResponseRegisterModels>(`${this.apiUrl}/participants/search?dni=${dni}`)
   }
   getReservation():Observable<Reservation[]>{
     return this.http.get<Reservation[]>(`${this.apiUrl}/reserves`).pipe(
