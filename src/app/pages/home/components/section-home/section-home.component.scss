@@ -114,3 +114,90 @@ $Akaya: "Akaya Kanadaka", sans-serif;
 //  background-repeat: no-repeat;
 //  background-size: cover;
 //}
+.modal {
+  display: none; /* Escondido por defecto */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal.show {
+  display: block; /* Se muestra cuando tiene la clase show */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+.style-print {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+/* Para darle un buen diseño al modal */
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bg-opacity-50 {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.rounded-lg {
+  border-radius: 8px;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.w-full {
+  width: 100%;
+}
