@@ -408,6 +408,18 @@
                 >NINGUNO</label
                 >
               </div>
+              <div class="flex items-center space-x-2">
+                <input
+                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+                  type="radio"
+                  formControlName="healthInsurance"
+                  id="otros"
+                  value="OTROS"
+                />
+                <label class="text-sm font-medium text-gray-700" for="otros"
+                >OTROS</label
+                >
+              </div>
               @if (formulario.get('healthInsurance')?.touched &&
               formulario.get('healthInsurance')?.invalid) {
                 <div class="mt-1 text-sm text-red-400">
