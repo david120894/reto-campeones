@@ -201,6 +201,7 @@ export class EmailFormComponent implements OnInit {
       termsAndConditions: this.formulario.get('termsAndConditions')?.value,
       underage: this.formulario.get('underage')?.value,
     }
+    console.log(params);
     this.reservationService.saveRegister(params).subscribe({
       next: (response) => {
         console.log(response)
