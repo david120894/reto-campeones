@@ -71,7 +71,7 @@ export class EmailFormComponent implements OnInit {
       healthInsurance: ['', Validators.required],
       medicalInfo: ['', Validators.required],
       shirtSize: ['', Validators.required],
-      file: [''],
+      file: ['',Validators.required],
       parentDetails: [''],
       underage: [false],
       auxUnderage: [''],
