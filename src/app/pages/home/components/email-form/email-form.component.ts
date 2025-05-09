@@ -71,7 +71,7 @@ export class EmailFormComponent implements OnInit {
       healthInsurance: ['', Validators.required],
       medicalInfo: ['', Validators.required],
       shirtSize: ['', Validators.required],
-      file: ['',Validators.required],
+      file: [''],
       parentDetails: [''],
       underage: [false],
       auxUnderage: [''],
@@ -114,6 +114,12 @@ export class EmailFormComponent implements OnInit {
 
       // Check if parental permission is required
       this.parentalPermissionRequired = age < 18
+      if (this.parentalPermissionRequired) {
+        this.formulario.get('file')?.setValidators(Validators.required);
+      } else {
+        this.formulario.get('file')?.clearValidators();
+      }
+      this.formulario.get('file')?.updateValueAndValidity();
 
       // Call selectCategory after setting the age
       this.selectCategory()
