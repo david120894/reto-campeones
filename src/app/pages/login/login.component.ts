@@ -17,17 +17,24 @@ export class LoginComponent {
   message = '';
   showMessage = false;
 
+  // [Validators.required, Validators.email, Validators.minLength(10), Validators.maxLength(50)]
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email, Validators.minLength(10), Validators.maxLength(50)]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      email: [''],
+      password: ['', [Validators.required, Validators.minLength(5)]],
     });
+  }
+
+  get groupLogin() {
+    return this.loginForm.controls;
   }
 
   login() {
     if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value).subscribe({
-        next: (res) => {
+
+      if (this.loginForm.value.email === 'admin' && this.loginForm.value.password === 'admin') {}
+      // this.authService.login(this.loginForm.value).subscribe({
+      //   next: (res) => {
           this.message = 'Inicio de sesión exitoso';
           this.showMessage = true;
           this.loginForm.reset();
@@ -35,23 +42,23 @@ export class LoginComponent {
             this.showMessage = false;
             this.navigateToDashboard();
           }, 2000);
-        },
-        error: (err) => {
-          this.message = 'No existe el usuario o sus credenciales son incorrectas';
-          this.showMessage = true;
-          this.loginForm.reset();
-          setTimeout(() => this.showMessage = false, 3000);
-        }
-      });
+      //   },
+      //   error: (err) => {
+      //     this.message = 'No existe el usuario o sus credenciales son incorrectas';
+      //     this.showMessage = true;
+      //     this.loginForm.reset();
+      //     setTimeout(() => this.showMessage = false, 3000);
+      //   }
+      // });
     }
   }
 
   navigateToDashboard() {
-    this.router.navigate(['/auth/dashboard']); 
+    this.router.navigate(['/auth/dashboard']);
   }
 
   navigateToRegister() {
-    this.router.navigate(['/auth/register']); 
+    this.router.navigate(['/auth/register']);
   }
 
   navigateToHome() {
