@@ -1,0 +1,23 @@
+export interface ParticipantsModel{
+  id:number
+  name:string
+  lastName:string
+  email:string
+  dni:string
+  phone:string
+  gender:string
+  birthDate:string
+  age:number
+  district:string
+  emergencyContact:string
+  healthInsurance:string
+  medicalInfo:string
+  shirtSize:string
+  category:string
+  underage:boolean
+  parentalDetails:string|null
+  termsAndConditions:boolean
+  createdAt:string
+  attendance:boolean
+  updateAt:string|null
+}

@@ -3,45 +3,48 @@
     aria-label="Sidebar">
     <div class="h-full px-3 pb-4 overflow-y-auto bg-[#1a1a1d]">
         <ul class="space-y-2 font-medium">
-            <li>
-                <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/dashboard"
-                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-house-user"></i>
-                    <span class="ms-3">Menu</span>
-                </a>
-            </li>
+<!--            <li>-->
+<!--                <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/dashboard"-->
+<!--                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">-->
+<!--                    <i class="fa-solid fa-house-user"></i>-->
+<!--                    <span class="ms-3">Menu</span>-->
+<!--                </a>-->
+<!--            </li>-->
             <li>
                 <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/dashboard/notifications"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-envelope"></i>
-                    <span class="flex-1 ms-3 whitespace-nowrap">Consultas</span>
+<!--                    <i class="fa-solid fa-envelope"></i>-->
+                  <i class="fa-solid fa-pen-to-square"></i>
+
+
+                  <span class="flex-1 ms-3 whitespace-nowrap">Inscritos</span>
                 </a>
             </li>
-            @if (isAdmin) {
-            <li>
-                <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/dashboard/users"
-                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-users"></i>
-                    <span class="flex-1 ms-3 whitespace-nowrap">Usuarios</span>
-                </a>
-            </li>
-            }
-            <li>
-                <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/dashboard/reserves"
-                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-ticket"></i>
-                    <span class="flex-1 ms-3 whitespace-nowrap">Reservas</span>
-                </a>
-            </li>
-            @if (isAdmin) {
-            <li>
-                <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/dashboard/places"
-                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-square-pen"></i>
-                    <span class="flex-1 ms-3 whitespace-nowrap">Salas</span>
-                </a>
-            </li>
-            }
+<!--            @if (isAdmin) {-->
+<!--            <li>-->
+<!--                <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/dashboard/users"-->
+<!--                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">-->
+<!--                    <i class="fa-solid fa-users"></i>-->
+<!--                    <span class="flex-1 ms-3 whitespace-nowrap">Usuarios</span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            }-->
+<!--            <li>-->
+<!--                <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/dashboard/reserves"-->
+<!--                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">-->
+<!--                    <i class="fa-solid fa-ticket"></i>-->
+<!--                    <span class="flex-1 ms-3 whitespace-nowrap">Reservas</span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            @if (isAdmin) {-->
+<!--            <li>-->
+<!--                <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/dashboard/places"-->
+<!--                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">-->
+<!--                    <i class="fa-solid fa-square-pen"></i>-->
+<!--                    <span class="flex-1 ms-3 whitespace-nowrap">Salas</span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            }-->
             <li>
                 <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
