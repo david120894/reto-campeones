@@ -23,11 +23,10 @@ export function authInterceptorFn(req: HttpRequest<unknown>, next: HttpHandlerFn
   return next(authReq).pipe(
     catchError((error: HttpErrorResponse) => {
       if (error.status === 401) {
-        
-        authService.removeToken();
+        authService.removeToken()
         // router.navigate(['/auth/login']);
       } else if (error.status === 403) {
-        
+
         router.navigate(['/forbidden']);
       }
       return throwError(() => error);

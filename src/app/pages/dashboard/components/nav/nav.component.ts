@@ -28,7 +28,7 @@ export class NavComponent implements OnInit {
     if (token) {
       this.authService.getUserProfile().subscribe(response => {
         this.user = response;
-        this.userPrefix = response?.name?.slice(0, 3).toUpperCase() || '';
+        this.userPrefix = response?.name?.toUpperCase() || '';
       });
     }
   }
@@ -36,15 +36,15 @@ export class NavComponent implements OnInit {
   logout() {
     this.authService.logout().subscribe({
       next: () => {
-        this.authService.removeToken(); 
-        this.user = null; 
+        this.authService.removeToken();
+        this.user = null;
         this.router.navigate(['/']);
       },
       error: (err) => {
         console.error('Error al cerrar sesión:', err);
-        this.authService.removeToken(); 
+        this.authService.removeToken();
         this.user = null;
-        this.router.navigate(['/']); 
+        this.router.navigate(['/']);
       }
     });
   }

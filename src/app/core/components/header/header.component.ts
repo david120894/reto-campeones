@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { initFlowbite } from 'flowbite';
 import { AuthService } from '../../services/auth.service';
+import { IUserInfo } from '../../models/userInfo.model';
 
 
 
@@ -17,7 +18,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  user: any = null;
+  user: IUserInfo | null = null;
   userPrefix: string = '';
   isAuth: boolean = false;
 

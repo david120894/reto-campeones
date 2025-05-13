@@ -31,10 +31,9 @@ export class LoginComponent {
 
   login() {
     if (this.loginForm.valid) {
-
-      if (this.loginForm.value.email === 'admin' && this.loginForm.value.password === 'admin') {}
-      // this.authService.login(this.loginForm.value).subscribe({
-      //   next: (res) => {
+      console.log(this.loginForm.value);
+      this.authService.login(this.loginForm.value).subscribe({
+        next: (res) => {
           this.message = 'Inicio de sesión exitoso';
           this.showMessage = true;
           this.loginForm.reset();
@@ -42,14 +41,14 @@ export class LoginComponent {
             this.showMessage = false;
             this.navigateToDashboard();
           }, 2000);
-      //   },
-      //   error: (err) => {
-      //     this.message = 'No existe el usuario o sus credenciales son incorrectas';
-      //     this.showMessage = true;
-      //     this.loginForm.reset();
-      //     setTimeout(() => this.showMessage = false, 3000);
-      //   }
-      // });
+        },
+        error: (err) => {
+          this.message = 'No existe el usuario o sus credenciales son incorrectas';
+          this.showMessage = true;
+          this.loginForm.reset();
+          setTimeout(() => this.showMessage = false, 3000);
+        }
+      });
     }
   }
 

@@ -46,9 +46,14 @@
                     </a>
                 </li>
                 }
-              <li class="flex md:justify-center md:items-center">
-                <a routerLink="/login"
-                   class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Login</a>
+              <li>
+                <a routerLinkActive="active">
+                  <button type="button"
+                          routerLink="/login"
+                          class="text-white bg-[#8d0c28] hover:bg-[#740938] focus:ring-4 focus:outline-none focus:ring-[#F4C151] font-medium rounded-lg text-sm px-4 py-2 text-center">
+                    Iniciar Sesión
+                  </button>
+                </a>
               </li>
             </ul>
         </div>
