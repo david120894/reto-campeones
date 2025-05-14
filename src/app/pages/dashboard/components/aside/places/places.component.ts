@@ -18,9 +18,9 @@ export class PlacesComponent implements OnInit {
   places: Place[] = [];
   placeForm: FormGroup;
   selectedPlace: Place | null = null;
-  showFormModal = false; 
-  showViewModal = false; 
-  showDeleteModal = false; 
+  showFormModal = false;
+  showViewModal = false;
+  showDeleteModal = false;
 
   constructor(
     private placeService: PlaceService,
@@ -43,10 +43,10 @@ export class PlacesComponent implements OnInit {
   }
 
   loadPlaces() {
-    this.placeService.getPlaces().subscribe({
-      next: (places) => this.places = places,
-      error: (err) => console.error('Error loading places:', err)
-    });
+    // this.placeService.getPlaces().subscribe({
+    //   next: (places) => this.places = places,
+    //   error: (err) => console.error('Error loading places:', err)
+    // });
   }
 
   onFileChange(event: any) {

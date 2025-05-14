@@ -24,17 +24,6 @@ export class AuthService {
     }
   }
 
-  saveRefreshToken(token: string): void {
-    localStorage.setItem(this.refreshTokenKey, token);
-  }
-
-  getRefreshToken(): string | null {
-    return localStorage.getItem(this.refreshTokenKey);
-  }
-
-  removeRefreshToken(): void {
-    localStorage.removeItem(this.refreshTokenKey);
-  }
 
   login(credentials: any): Observable<ModelTokenModel> {
     const body = { username: credentials.email, password: credentials.password };
@@ -46,35 +35,22 @@ export class AuthService {
         return throwError(() => 'login error');
       }),
       tap((response: any) => {
-        console.log(response);
         if (response.access_token) {
           this.saveToken(response.access_token);
-          if (response.refresh_token) {
-            this.saveRefreshToken(response.refresh_token);
-          }
+          this.saveRefreshToken(response.refresh_token);
         }
       }),
-    );
+    )
   }
 
   refreshToken(): Observable<any> {
     const refreshToken = this.getRefreshToken();
-    console.log('refreshToken', refreshToken);
+
     if (!refreshToken) {
       return throwError(() => 'No refresh token available');
     }
 
-    return this.http.post<any>(`${this.apiUrl}/authorize/refresh`, { refresh_token: refreshToken }).pipe(
-      tap((response) => {
-        if (response.access_token) {
-          this.saveToken(response.access_token);
-        }
-      }),
-      catchError((err) => {
-        console.error('Error refreshing token', err);
-        return throwError(() => 'Error refreshing token');
-      }),
-    );
+    return this.http.post<any>(`${this.apiUrl}/authorize/update`, { refreshToken: refreshToken })
   }
 
   register(userData: any): Observable<any> {
@@ -90,23 +66,39 @@ export class AuthService {
 
   logout(): Observable<any> {
 
-    const currentRefreshToken = this.getRefreshToken();
-    console.log('currentRefreshToken', currentRefreshToken);
+    this.removeToken();
+    this.removeUser();
+    this.removeRefreshToken();
+    return of(null)
+    // const currentRefreshToken = this.getRefreshToken();
+    // console.log('currentRefreshToken', currentRefreshToken);
+    //
+    // return this.http.post(`${this.apiUrl}/authorize/logout`, { refresh_token: currentRefreshToken }).pipe(
+    //   tap(() => {
+    //     this.removeToken();
+    //     this.removeUser();
+    //     this.removeRefreshToken();
+    //   }),
+    //   catchError((err) => {
+    //     console.error('Logout error:', err);
+    //     this.removeToken();
+    //     this.removeUser();
+    //     this.removeRefreshToken();
+    //     return of(null);
+    //   }),
+    // );
+  }
 
-    return this.http.post(`${this.apiUrl}/authorize/logout`, { refresh_token: currentRefreshToken }).pipe(
-      tap(() => {
-        this.removeToken();
-        this.removeUser();
-        this.removeRefreshToken();
-      }),
-      catchError((err) => {
-        console.error('Logout error:', err);
-        this.removeToken();
-        this.removeUser();
-        this.removeRefreshToken();
-        return of(null);
-      }),
-    );
+  saveRefreshToken(token: string): void {
+    localStorage.setItem(this.refreshTokenKey, token);
+  }
+
+  getRefreshToken(): string | null {
+    return localStorage.getItem(this.refreshTokenKey);
+  }
+
+  removeRefreshToken(): void {
+    localStorage.removeItem(this.refreshTokenKey);
   }
 
   saveToken(token: string): void {

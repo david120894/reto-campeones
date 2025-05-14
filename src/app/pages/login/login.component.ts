@@ -53,7 +53,7 @@ export class LoginComponent {
   }
 
   navigateToDashboard() {
-    this.router.navigate(['/auth/dashboard']);
+    this.router.navigate(['auth/dashboard/participants']);
   }
 
   navigateToRegister() {

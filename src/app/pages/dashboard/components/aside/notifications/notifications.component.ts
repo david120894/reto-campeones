@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core'
-import { ReservationService } from '../../../../../core/services/reservation.service'
-import { Reservation } from '../../../../../core/models'
-import { FormsModule } from '@angular/forms'
-import { CommonModule } from '@angular/common'
-import { AuthService } from '../../../../../core/services/auth.service'
-import { ParticipantsService } from '../../../../../core/services/participants.service'
-import { ParticipantsModel } from '../../../../../core/models/participants.model'
-import { NgLabelTemplateDirective, NgSelectComponent } from '@ng-select/ng-select'
-import { forkJoin, map, Observable, of } from 'rxjs'
-import { catchError } from 'rxjs/operators'
+import { Component, OnInit } from '@angular/core';
+import { ReservationService } from '../../../../../core/services/reservation.service';
+import { Reservation } from '../../../../../core/models';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../../../core/services/auth.service';
+import { ParticipantsService } from '../../../../../core/services/participants.service';
+import { ParticipantsModel } from '../../../../../core/models/participants.model';
+import { NgLabelTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
+import { forkJoin, map, Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
-const NG_MODULES = [FormsModule, CommonModule]
+const NG_MODULES = [FormsModule, CommonModule];
 
 @Component({
   selector: 'app-notifications',
@@ -27,20 +27,27 @@ export class NotificationsComponent implements OnInit {
     'Categoria IV',
     'Categoria V',
   ]
-  reservations: Reservation[] = []
-  listParticipants: Array<ParticipantsModel> = []
-  listParticipantsAux: Array<any> = []
-  paginatedReservations: any[] = []
-  searchQuery: string = ''
-  searchQueryCategory: string = ''
-  currentPage: number = 1
-  itemsPerPage: number = 10
-  totalPages: number = 1
-  selectedReservation: Reservation | null = null
-  showDeleteModal: boolean = false
-  showViewModal: boolean = false
-  currentUser: any = null
-  isAdmin: boolean = false
+  loading = false
+
+  typeChange = 'all'
+  totalInscriptions = 0;
+  totalFemales = 0;
+  totalMales = 0;
+  totalMinor = 0;
+  reservations: Reservation[] = [];
+  listParticipants: Array<ParticipantsModel> = [];
+  listParticipantsAux: Array<any> = [];
+  paginatedReservations: any[] = [];
+  searchQuery: string = '';
+  searchQueryCategory: string = '';
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
+  totalPages: number = 1;
+  selectedReservation: Reservation | null = null;
+  showDeleteModal: boolean = false;
+  showViewModal: boolean = false;
+  currentUser: any = null;
+  isAdmin: boolean = false;
 
   constructor(
     private reservationService: ReservationService,
@@ -50,42 +57,68 @@ export class NotificationsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Subscribe to the user observable to get current user data
     this.authService.getUser().subscribe(user => {
-      this.currentUser = user
-      // this.loadReservations()
-      this.checkAdminStatus()
-      this.getParticipants()
-    })
+      this.currentUser = user;
+      this.checkAdminStatus();
+      this.getParticipants();
+    });
   }
 
   private checkAdminStatus() {
     this.authService.getUser().subscribe((user) => {
-      this.isAdmin = this.authService.isAdmin()
-    })
+      this.isAdmin = this.authService.isAdmin();
+    });
   }
 
+  filterFemale() {
+    this.updatePagination('Femenino');
+    this.typeChange = 'Femenino'
+  }
+
+  filterMinor() {
+    this.updatePagination('Menor');
+    this.typeChange = 'Menor';
+  }
+
+  filterMale() {
+    this.updatePagination('Masculino');
+    this.typeChange = 'Masculino';
+
+  }
+
+  filterAll() {
+    this.updatePagination('all');
+    this.typeChange = 'all';
+
+  }
 
   getParticipants() {
     this.participantsService.getAllParticipants().subscribe({
       next: (response) => {
-        this.listParticipants = response
-        this.getParticipantsByDni(this.listParticipants).subscribe(result => {
-          this.listParticipantsAux = result
-          this.updatePagination()
-        })
+        this.listParticipants = response;
+        this.totalInscriptions = response.length
+        this.loading = true
+        setTimeout(() => {
+          this.loading = false
+          this.getParticipantsByDni(this.listParticipants).subscribe(result => {
+            this.listParticipantsAux = result;
+            this.updatePagination('all');
+          })
+        },3000)
+
       },
       error: (error) => {
-        console.error('Error fetching participants:', error)
+        this.loading = true
+        console.error('Error fetching participants:', error);
       },
-    })
+    });
   }
 
   downloadFile(dataUrl: string) {
-    const link = document.createElement('a')
-    link.href = dataUrl
-    link.download = 'archivo.pdf'
-    link.click()
+    const link = document.createElement('a');
+    link.href = dataUrl;
+    link.download = 'archivo.pdf';
+    link.click();
   }
 
 
@@ -95,116 +128,126 @@ export class NotificationsComponent implements OnInit {
         return this.participantsService.getParticipantsById(participant.dni).pipe(
           map(archive => ({ ...participant, file: archive })),
           catchError(error => {
-            console.error(`Error al buscar datos para DNI ${participant.dni}:`, error)
-            return of({ ...participant, file: null })
+            console.error(`Error al buscar datos para DNI ${participant.dni}:`, error);
+            return of({ ...participant, file: null });
           }),
-        )
+        );
       } else {
-        return of({ ...participant, file: null })
+        return of({ ...participant, file: null });
       }
-    })
+    });
 
-    return forkJoin(observables)
+    return forkJoin(observables);
   }
-
-
-  // loadReservations() {
-  //   this.reservationService.getConsulting().subscribe({
-  //     next: (reservations) => {
-  //       this.updatePagination()
-  //     },
-  //     error: (error) => console.error('Error loading reservations:', error),
-  //   })
-  // }
 
   private filterReservations(reservations: ParticipantsModel[]): ParticipantsModel[] {
     if (!this.currentUser) {
-      return []
+      return [];
     }
 
     // data for admin
     if (this.authService.isAdmin()) {
-      return reservations
+      return reservations;
     }
 
     // data for not admin
     return reservations.filter(reservation =>
       reservation.email === this.currentUser.email,
-    )
+    );
   }
 
-  updatePagination() {
-    let filteredReservations: any[] = []
+  updatePagination(type?: string) {
+    let filteredReservations: any[] = [];
+    let listAux: any[] = [];
+    if (type === 'Femenino') {
+      listAux = this.listParticipantsAux.filter(r => r.gender === type)
+    }
+    if (type === 'Masculino') {
+      listAux = this.listParticipantsAux.filter(r => r.gender === type);
+    }
+    if (type === 'Menor') {
+      listAux = this.listParticipantsAux.filter(r => r.age < 18)
+    }
+    if (type === 'all') {
+      listAux = this.listParticipantsAux
+    }
     if (this.searchQuery) {
-      this.searchQueryCategory = ''
-      filteredReservations = this.listParticipantsAux.filter(r =>
+      this.searchQueryCategory = '';
+      filteredReservations = listAux.filter(r =>
         r.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
         r.email.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
         r.dni.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
         r.phone.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
         r.category.toLowerCase().includes(this.searchQuery.toLowerCase()),
-      )
+      );
     } else if (this.searchQueryCategory) {
-      this.searchQuery = ''
-      filteredReservations = this.listParticipantsAux.filter(r =>
+      this.searchQuery = '';
+      filteredReservations = listAux.filter(r =>
         r.category.toLowerCase() === this.searchQueryCategory.toLowerCase(),
-      )
+      );
+      this.totalFemales = filteredReservations.filter(r => r.gender === 'Femenino').length;
+      this.totalMales = filteredReservations.filter(r => r.gender === 'Masculino').length;
+      this.totalMinor = filteredReservations.filter(r => r.age < 18).length;
     } else {
-      filteredReservations = [...this.listParticipantsAux] // Mostrar todos si no hay búsqueda
+      filteredReservations = [...listAux]; // Mostrar todos si no hay búsqueda
+      this.totalFemales = filteredReservations.filter(r => r.gender === 'Femenino').length;
+      this.totalMales = filteredReservations.filter(r => r.gender === 'Masculino').length;
+      this.totalMinor = filteredReservations.filter(r => r.age < 18).length;
+
     }
 
-    this.totalPages = Math.ceil(filteredReservations.length / this.itemsPerPage)
-    const startIndex = (this.currentPage - 1) * this.itemsPerPage
-    const endIndex = startIndex + this.itemsPerPage
-    this.paginatedReservations = filteredReservations.slice(startIndex, endIndex)
+    this.totalPages = Math.ceil(filteredReservations.length / this.itemsPerPage);
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.paginatedReservations = filteredReservations.slice(startIndex, endIndex);
   }
 
 
   onSearchChange() {
-    this.searchQueryCategory = ''
-    this.currentPage = 1
-    this.updatePagination()
+    this.searchQueryCategory = '';
+    this.currentPage = 1;
+    this.updatePagination('all');
   }
 
   onSearchChangeFilter() {
-    this.searchQuery = ''
-    this.currentPage = 1
-    this.updatePagination()
+    this.searchQuery = '';
+    this.currentPage = 1;
+    this.updatePagination(this.typeChange);
   }
 
-  changePage(page: number) {
+  changePage(page: number,type?: string) {
     if (page >= 1 && page <= this.totalPages) {
-      this.currentPage = page
-      this.updatePagination()
+      this.currentPage = page;
+      this.updatePagination(this.typeChange);
     }
   }
 
   openViewModal(reservation: any) {
-    this.selectedReservation = reservation
-    this.showViewModal = true
+    this.selectedReservation = reservation;
+    this.showViewModal = true;
   }
 
   openDeleteModal(reservation: any) {
-    this.selectedReservation = reservation
-    this.showDeleteModal = true
+    this.selectedReservation = reservation;
+    this.showDeleteModal = true;
   }
 
   closeModal() {
-    this.showDeleteModal = false
-    this.showViewModal = false
-    this.selectedReservation = null
+    this.showDeleteModal = false;
+    this.showViewModal = false;
+    this.selectedReservation = null;
   }
 
   confirmDelete() {
     if (this.selectedReservation?.id) {
       this.reservationService.deleteReservation(this.selectedReservation.id).subscribe({
         next: () => {
-          this.reservations = this.reservations.filter(r => r.id !== this.selectedReservation!.id)
-          this.closeModal()
-          this.updatePagination()
+          this.reservations = this.reservations.filter(r => r.id !== this.selectedReservation!.id);
+          this.closeModal();
+          this.updatePagination();
         },
         error: (error) => console.error('Error deleting reservation:', error),
-      })
+      });
     }
   }
 }

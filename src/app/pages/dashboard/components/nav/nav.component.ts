@@ -33,12 +33,15 @@ export class NavComponent implements OnInit {
     }
   }
 
+
   logout() {
     this.authService.logout().subscribe({
       next: () => {
         this.authService.removeToken();
+        this.authService.removeRefreshToken()
+        this.authService.removeUser();
         this.user = null;
-        this.router.navigate(['/']);
+        this.router.navigate(['/login']);
       },
       error: (err) => {
         console.error('Error al cerrar sesión:', err);
