@@ -32,7 +32,7 @@ export const sharedRoutes: Routes = [
                 loadComponent: () => import('../pages/dashboard/components/adminlayout/adminlayout.component').then((m)=> m.AdminlayoutComponent)
             },
             {
-                path: 'notifications',
+                path: 'participants',
                 loadComponent: () => import('../pages/dashboard/components/aside/notifications/notifications.component').then((m)=> m.NotificationsComponent)
             },
             {

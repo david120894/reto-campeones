@@ -9,7 +9,8 @@ import { environment } from '../../../environments/environment';
 })
 export class PlaceService {
 
-  private apiUrl = environment.apiUrl + '/places';
+  // private apiUrl = environment.apiUrl + '/places';
+  private apiUrl = ''
 
   constructor(private http: HttpClient) { }
 
