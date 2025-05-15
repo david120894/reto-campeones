@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from "../core/components/header/header.component";
+import { HeaderComponent } from '../core/components/header/header.component';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from '../core/components/footer/footer.component';
 import { Observable } from 'rxjs';
@@ -13,7 +13,7 @@ const DECLARATIONS = [HeaderComponent, FooterComponent];
   selector: 'app-pages',
   imports: [...NG_MODULES, ...DECLARATIONS, AsyncPipe, NgIf],
   templateUrl: './pages.component.html',
-  styleUrl: './pages.component.scss'
+  styleUrl: './pages.component.scss',
 })
 export class PagesComponent {
   loading$: Observable<boolean>;
