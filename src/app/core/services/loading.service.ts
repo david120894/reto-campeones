@@ -8,10 +8,10 @@ export class LoadingService {
   loading$ = this.loadingSubject.asObservable();
 
   show() {
-    this.loadingSubject.next(true);
+    this.loadingSubject.next(true)
   }
 
   hide() {
-    this.loadingSubject.next(false);
+    this.loadingSubject.next(false)
   }
 }

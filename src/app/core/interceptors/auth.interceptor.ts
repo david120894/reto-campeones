@@ -26,11 +26,11 @@ export function authInterceptorFn(req: HttpRequest<unknown>, next: HttpHandlerFn
       if (error.status === 401) {
         const refresh = authService.getRefreshToken();
         if (!refresh) {
-          console.log('No refresh token available');
           // loadingService.show(); // muestra loading
           // setTimeout(() => {
             authService.removeToken();
-            authService.removeRefreshToken();
+            authService.removeRefreshToken()
+
             // window.location.reload(); // recarga la página completamente
           // }, 2000); // breve delay para mostrar spinner
           return throwError(() => error);
@@ -38,10 +38,8 @@ export function authInterceptorFn(req: HttpRequest<unknown>, next: HttpHandlerFn
 
         return authService.refreshToken().pipe(
           switchMap((res: any) => {
-            console.log('Refreshing token:', res);
             authService.saveToken(res.access_token);
             authService.saveRefreshToken(res.refresh_token);
-            console.log('Token refreshed:', res);
             const newAuthReq = req.clone({
               setHeaders: {
                 Authorization: `Bearer ${res.access_token}`,

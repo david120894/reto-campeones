@@ -6,15 +6,18 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../../../core/services/auth.service';
 import { ParticipantsService } from '../../../../../core/services/participants.service';
 import { ParticipantsModel } from '../../../../../core/models/participants.model';
-import { NgLabelTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
+import { NgSelectComponent } from '@ng-select/ng-select';
 import { forkJoin, map, Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import * as XLSX from 'xlsx';
+import FileSaver from 'file-saver';
+
 
 const NG_MODULES = [FormsModule, CommonModule];
 
 @Component({
   selector: 'app-notifications',
-  imports: [...NG_MODULES, NgSelectComponent, NgLabelTemplateDirective],
+  imports: [...NG_MODULES, NgSelectComponent],
   templateUrl: './notifications.component.html',
   styleUrl: './notifications.component.scss',
 })
@@ -26,10 +29,10 @@ export class NotificationsComponent implements OnInit {
     'Categoria III',
     'Categoria IV',
     'Categoria V',
-  ]
-  loading = false
-
-  typeChange = 'all'
+  ];
+  loading = false;
+  listToExcel: Array<any> = [];
+  typeChange = 'all';
   totalInscriptions = 0;
   totalFemales = 0;
   totalMales = 0;
@@ -72,7 +75,7 @@ export class NotificationsComponent implements OnInit {
 
   filterFemale() {
     this.updatePagination('Femenino');
-    this.typeChange = 'Femenino'
+    this.typeChange = 'Femenino';
   }
 
   filterMinor() {
@@ -96,22 +99,52 @@ export class NotificationsComponent implements OnInit {
     this.participantsService.getAllParticipants().subscribe({
       next: (response) => {
         this.listParticipants = response;
-        this.totalInscriptions = response.length
-        this.loading = true
+        this.mapParticipants(this.listParticipants);
+        this.totalInscriptions = response.length;
+        this.loading = true;
         setTimeout(() => {
-          this.loading = false
+          this.loading = false;
           this.getParticipantsByDni(this.listParticipants).subscribe(result => {
             this.listParticipantsAux = result;
+            console.log(this.listParticipantsAux);
             this.updatePagination('all');
-          })
-        },3000)
+          });
+        }, 3000);
 
       },
       error: (error) => {
-        this.loading = true
+        this.loading = true;
         console.error('Error fetching participants:', error);
       },
     });
+  }
+
+  mapParticipants(participants: ParticipantsModel[]) {
+    this.listToExcel = participants.map((participant) => ({
+      Nombre: participant.name,
+      Apellido: participant.lastName,
+      dni: participant.dni,
+      edad: participant.age,
+      Genero: participant.gender,
+      Correo: participant.email,
+      Celular: participant.phone,
+      Talla: participant.shirtSize,
+      Categoria: participant.category,
+      T_Seguro: participant.healthInsurance,
+      Direccion: participant.district,
+    }))
+  }
+
+  exportExcel(): void {
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.listToExcel);
+    const workbook: XLSX.WorkBook = {
+      Sheets: { 'Participantes': worksheet },
+      SheetNames: ['Participantes'],
+    };
+    const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const data: Blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
+
+    FileSaver.saveAs(data, `participantes_export.xlsx`);
   }
 
   downloadFile(dataUrl: string) {
@@ -160,16 +193,16 @@ export class NotificationsComponent implements OnInit {
     let filteredReservations: any[] = [];
     let listAux: any[] = [];
     if (type === 'Femenino') {
-      listAux = this.listParticipantsAux.filter(r => r.gender === type)
+      listAux = this.listParticipantsAux.filter(r => r.gender === type);
     }
     if (type === 'Masculino') {
       listAux = this.listParticipantsAux.filter(r => r.gender === type);
     }
     if (type === 'Menor') {
-      listAux = this.listParticipantsAux.filter(r => r.age < 18)
+      listAux = this.listParticipantsAux.filter(r => r.age < 18);
     }
     if (type === 'all') {
-      listAux = this.listParticipantsAux
+      listAux = this.listParticipantsAux;
     }
     if (this.searchQuery) {
       this.searchQueryCategory = '';
@@ -215,7 +248,7 @@ export class NotificationsComponent implements OnInit {
     this.updatePagination(this.typeChange);
   }
 
-  changePage(page: number,type?: string) {
+  changePage(page: number, type?: string) {
     if (page >= 1 && page <= this.totalPages) {
       this.currentPage = page;
       this.updatePagination(this.typeChange);
