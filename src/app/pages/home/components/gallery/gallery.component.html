@@ -1,56 +1,61 @@
-<!--<section class="gallery-container md:my-[50px] hidden md:block" id="gallery">-->
-<!--  <div class="flex items-center justify-center">-->
-<!--    <app-titles smallText="" bigText="SEGUNDA EDICIÓN DE LA GRAN CARRERA QOSQO 10K HATUN PHAWAY 2025"></app-titles>-->
-<!--  </div>-->
-<!--  <div class="lg:col-start-3 lg:col-end-8 pb-8 md:pb-0 md:mt-[40px]">-->
-<!--  </div>-->
-<!--  <div class="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-12 gallery-container-cards">-->
-<!--    <video src="https://taqe.cusco.gob.pe/publico/eventos/2025/hatun-phaway/principal.mp4" type="video/mp4" controls loop muted-->
-<!--           class="w-full rounded-lg shadow-lg aspect-video">-->
-<!--    </video>-->
-<!--    <video src="https://taqe.cusco.gob.pe/publico/eventos/2025/hatun-phaway/RECORRIDO.mp4" type="video/mp4" controls loop muted-->
-<!--           class="w-full rounded-lg shadow-lg aspect-video">-->
-<!--    </video>-->
-<!--    <video src="https://taqe.cusco.gob.pe/publico/eventos/2025/hatun-phaway/colegios.mp4" type="video/mp4" controls loop muted-->
-<!--           class="w-full rounded-lg shadow-lg aspect-video">-->
-<!--    </video>-->
-<!--    <video src="https://taqe.cusco.gob.pe/publico/eventos/2025/hatun-phaway/run.mp4" type="video/mp4" controls loop muted-->
-<!--           class="w-full rounded-lg shadow-lg aspect-video">-->
-<!--    </video>-->
-<!--    <video src="https://taqe.cusco.gob.pe/publico/eventos/2025/hatun-phaway/medalla.mp4" type="video/mp4" controls loop muted-->
-<!--           class="w-full rounded-lg shadow-lg aspect-video">-->
-<!--    </video>-->
-<!--    <img src="images/run2.jpeg" alt="logo_gdur" >-->
-<!--    <img src="images/img.png" alt="logo_gdur" style="height: auto; width: 100%;">-->
-<!--    <img src="images/img_1.png" alt="logo_gdur">-->
-<!--  </div>-->
-<!--</section>-->
-<section class="gallery-container my-[20px] md:my-[50px] block" id="gallery">
+
+<section class="gallery-container block" id="gallery">
   <div class="flex items-center justify-center">
-    <app-titles smallText="" bigText="QOSQO 10K HATUN PHAWAY 2025"></app-titles>
+    <h2 class="text-7xl font-bold text-center my-4 mb-6 text-white" style="font-family: Niconne, sans-serif, sans-serif;">Reto de Campeones Qosqo Hatun Llacta-2025</h2>
+
   </div>
   <div class="lg:col-start-3 lg:col-end-8 pb-8 md:pb-0 md:mt-[40px]">
   </div>
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-12 gallery-container-cards">
-    <video src="https://taqe.cusco.gob.pe/publico/eventos/2025/hatun-phaway/principal.mp4" type="video/mp4" controls loop muted
+    <!-- Video horizontal -->
+    <video src="https://taqe.cusco.gob.pe/publico/web/campeonato/Reto_de_Campeones_Spot_Oficial.mp4"
+           type="video/mp4"
+           controls
+           loop
+           muted
            class="w-full rounded-lg shadow-lg aspect-video">
     </video>
-    <video src="https://taqe.cusco.gob.pe/publico/eventos/2025/hatun-phaway/RECORRIDO.mp4" type="video/mp4" controls loop muted
+
+    <!-- Video vertical con fondo difuminado -->
+    <div class="relative w-full rounded-lg shadow-lg aspect-video overflow-hidden">
+      <!-- Video de fondo (muted de verdad) -->
+      <video
+        src="https://taqe.cusco.gob.pe/publico/web/campeonato/Lanzamiento_1.mp4"
+        autoplay
+        loop
+        muted
+        defaultMuted
+        playsinline
+        class="absolute inset-0 w-full h-full object-cover blur-lg scale-110"
+      ></video>
+
+      <!-- Video principal centrado -->
+      <video
+        src="https://taqe.cusco.gob.pe/publico/web/campeonato/Lanzamiento_1.mp4"
+        type="video/mp4"
+        controls
+        loop
+        muted
+        playsinline
+        class="relative z-10 h-full mx-auto"
+      ></video>
+    </div>
+
+
+
+    <!-- Video horizontal -->
+    <video src="https://taqe.cusco.gob.pe/publico/web/campeonato/Spot.mp4"
+           type="video/mp4"
+           controls
+           loop
+           muted
            class="w-full rounded-lg shadow-lg aspect-video">
     </video>
-    <video src="https://taqe.cusco.gob.pe/publico/eventos/2025/hatun-phaway/colegios.mp4" type="video/mp4" controls loop muted
-           class="w-full rounded-lg shadow-lg aspect-video">
-    </video>
-    <video src="https://taqe.cusco.gob.pe/publico/eventos/2025/hatun-phaway/run.mp4" type="video/mp4" controls loop muted
-           class="w-full rounded-lg shadow-lg aspect-video">
-    </video>
-    <video src="https://taqe.cusco.gob.pe/publico/eventos/2025/hatun-phaway/medalla.mp4" type="video/mp4" controls loop muted
-           class="w-full rounded-lg shadow-lg aspect-video">
-    </video>
-    <img src="images/run2.jpeg" alt="logo_gdur" class="w-full rounded-lg shadow-lg">
-    <img src="images/img.png" alt="logo_gdur" class="w-full rounded-lg shadow-lg">
-    <img src="images/img_1.png" alt="logo_gdur" class="w-full rounded-lg shadow-lg">
-    <img src="images/portada1.jpg" alt="logo_gdur" class="w-full rounded-lg shadow-lg">
-    <img src="images/portada2.jpg" alt="logo_gdur" class="w-full rounded-lg shadow-lg">
+
+    <!-- Imágenes -->
+    <img src="championship/apertura.jpg" alt="logo_gdur" class="w-full rounded-lg shadow-lg">
+    <img src="children/children.jpg" alt="logo_gdur" class="w-full rounded-lg shadow-lg">
+    <img src="children/childrenVoley.jpg" alt="logo_gdur" class="w-full rounded-lg shadow-lg">
   </div>
+
 </section>

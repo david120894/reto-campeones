@@ -43,8 +43,14 @@ export class CarrouselComponent implements OnInit {
   }
   openPdf()
   {
-    const pdfUrl = 'https://taqe.cusco.gob.pe/publico/eventos/2025/hatun-phaway/baseupload.pdf';
+    const pdfUrl = 'https://taqe.cusco.gob.pe/publico/web/campeonato/BASES_CAMPEONATO_DE_FUTBOL_Y_VOLEY_INTER_ESCOLAR.pdf';
     window.open(pdfUrl, '_blank');
-    window.open('public/images/bases.pdf', '_blank');
+    window.open('public/images/bases_futbol_voley.pdf', '_blank');
+  }
+
+  openPdfAjedrez() {
+    const pdfUrl = 'https://taqe.cusco.gob.pe/publico/web/campeonato/BASES_CAMPEONATO_INTERCOLEGIOS_DISCIPLINA_DE_AJEDREZ.pdf';
+    window.open(pdfUrl, '_blank');
+    window.open('public/images/bases_ajedrez.pdf', '_blank');
   }
 }

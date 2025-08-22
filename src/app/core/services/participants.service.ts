@@ -20,5 +20,8 @@ export class ParticipantsService {
       responseType: 'text'
     });
   }
+  getWinner():Observable<ParticipantsModel> {
+    return this.http.get<ParticipantsModel>(`${environment.apiUrl}/participants/draw`);
+  }
 
 }

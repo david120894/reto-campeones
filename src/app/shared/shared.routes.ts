@@ -44,6 +44,10 @@ export const sharedRoutes: Routes = [
                 path: 'reserves',
                 loadComponent: () => import('../pages/dashboard/components/aside/reserves/reserves.component').then((m)=> m.ReservesComponent),
             },
+          {
+            path:'raffle',
+            loadComponent:() => import('../pages/home/components/raffle/raffle.component').then((m)=> m.RaffleComponent),
+          },
             {
                 path: 'places',
                 loadComponent: () => import('../pages/dashboard/components/aside/places/places.component').then((m)=> m.PlacesComponent),

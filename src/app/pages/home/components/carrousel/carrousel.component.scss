@@ -16,13 +16,34 @@ $Akaya: "Akaya Kanadaka", sans-serif;
 .big-title {
     font-family: $Niconne, sans-serif;
 }
-
 .header {
     position: relative;
     text-align: center;
-    background: linear-gradient(60deg, #e21743 0%, #740938 100%);
-    color: white;
+    background: linear-gradient(60deg, #8bc9ff,#8bc9ff,#18aec2);
+    color: black;
 }
+.owner-section {
+
+}
+//.owner-section {
+//  background:
+//    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+//    url("/background/fondo1.png") center/cover no-repeat;
+//}
+.gallery-container-cards {
+  width: 80vw;
+  margin: 0 auto;
+}
+
+
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
 
 .logo {
     width: 50px;
@@ -33,7 +54,7 @@ $Akaya: "Akaya Kanadaka", sans-serif;
 }
 
 .inner-header {
-    height: 25vh;
+    height: 10vh;
     width: 100%;
     margin: 0;
     padding: 0;

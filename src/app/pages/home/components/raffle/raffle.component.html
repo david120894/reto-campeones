@@ -1,0 +1,60 @@
+<div class="fixed inset-0 bg-black bg-opacity-50 pt-56 flex items-center justify-center z-50">
+  <div class="rounded-xl p-6 max-w-sm w-full animate-fadeIn align-middle justify-center">
+    <div class="box">
+      <div class="balls">
+        <div *ngFor="let ball of balls" class="ball" [ngStyle]="ball.style">
+          🎉
+        </div>
+        <div *ngIf="ganadora" class="ball winner" [ngStyle]="ganadora.style"
+             (click)="onGanadoraClick()">
+          <div id="page">
+            <div id="container">
+              <div id="ring"></div>
+              <div id="ring"></div>
+              <div id="ring"></div>
+              <div id="ring"></div>
+              <div id="h3">Win..🎉</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img src="images/box.png" alt="box" class="box-image" />
+      </div>
+    </div>
+    <!-- From Uiverse.io by JkHuger -->
+    <button (click)="sortear()">🎲 Sortear</button>
+  </div>
+
+  <!-- Confetti container -->
+  <div *ngIf="showConfetti" class="confetti-wrapper">
+    <div *ngFor="let c of confettiArray" class="confetti"
+         [ngStyle]="c.style"></div>
+  </div>
+  <!-- Modal backdrop -->
+  <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" *ngIf="showWinnerModal">
+    <!-- Modal content -->
+
+    <div class="bg-white rounded-xl shadow-lg p-6 max-w-sm w-full animate-fadeIn text-center">
+      <div>
+        <img src="images/feliz.png" alt="box" class="box-image" />
+      </div>
+      <h2 class="text-2xl font-bold text-green-600 mb-4">🎉 ¡Ganador del HatunPhaway 2025!</h2>
+
+      <div *ngIf="showWinners" class="space-y-2 text-gray-700">
+        <p><span class="font-semibold">Categoría:</span> {{ganador?.categoria}}</p>
+        <p><span class="font-semibold">Nombre:</span> {{ganador?.nombre}}</p>
+        <p><span class="font-semibold">DNI:</span> {{ganador?.dni}}</p>
+      </div>
+      <div *ngIf="!showWinners" class="space-y-2 text-gray-700">
+        <p><span class="font-semibold">No tenemos Ganador</span> </p>
+      </div>
+
+      <button (click)="cerrarModal()"
+              class="mt-6 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-all">
+        Cerrar
+      </button>
+    </div>
+  </div>
+
+</div>

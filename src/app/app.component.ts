@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { LoadingService } from './core/services/loading.service';
 import { Observable } from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
+import { NgParticlesModule } from 'ng-particles'
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import { AsyncPipe, NgIf } from '@angular/common';
     RouterOutlet,
     AsyncPipe,
     NgIf,
+    NgParticlesModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
