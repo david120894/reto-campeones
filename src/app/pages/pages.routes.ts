@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { NewRegisterComponent } from './new-register/new-register.component';
 import { EmailFormComponent } from './home/components/email-form/email-form.component';
 import { LoginComponent } from './login/login.component';
+import { RaffleComponent } from './home/components/raffle/raffle.component'
 
 
 export const pagesRoutes: Routes = [
@@ -20,8 +21,16 @@ export const pagesRoutes: Routes = [
     path: 'register',
     component:EmailFormComponent
   },
+  // {
+  //   path: 'landing',
+  //   component:LandingComponent
+  // },
   {
     path: 'login',
     component:LoginComponent
+  },
+  {
+    path:'raffle',
+    component:RaffleComponent
   }
 ];

@@ -1,144 +1,77 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { DatePipe, NgIf } from '@angular/common';
-import { ResponseRegisterModels } from '../../../../core/models/response.register.models';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { ReservationService } from '../../../../core/services/reservation.service';
+import {
+  AfterViewInit,
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { NgIf } from '@angular/common';
+import { LlamaSceneComponent } from '../llama-scene/llama-scene.component'
 
 @Component({
   selector: 'app-section-home',
-  imports: [
-    RouterLink,
-    DatePipe,
-    NgIf,
-    ReactiveFormsModule,
-  ],
+  standalone: true,
+  imports: [NgIf, LlamaSceneComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './section-home.component.html',
-  styleUrl: './section-home.component.scss',
+  styleUrls: ['./section-home.component.scss']
 })
-export class SectionHomeComponent implements OnInit {
+export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  {
 
-  isModalOpen = false;
-  imageModal: string = '';
-  showModal = false;
-  objectRegister: ResponseRegisterModels | null = null;
-  mensajeExito: string | null = null;
+  days: string = '00';
+  hours: string = '00';
+  minutes: string = '00';
+  seconds: string = '00';
 
-
-  formSearchDni: FormGroup = new FormGroup({
-    searchDni: new FormControl(''),
-  });
-
-  constructor(private reservationService: ReservationService) {
-  }
-
-  get search() {
-    return this.formSearchDni.controls;
-  }
+  private intervalId: any;
 
   ngOnInit() {
+    this.updateCountdown();
+    this.intervalId = setInterval(() => this.updateCountdown(), 1000);
   }
 
-  scrollToEmail() {
-    const emailSection = document.getElementById('email');
-    if (emailSection) {
-      emailSection.scrollIntoView({ behavior: 'smooth' });
+  ngOnDestroy() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
     }
   }
 
-  scrollToContacts() {
-    const emailSection = document.getElementById('contacts');
-    if (emailSection) {
-      emailSection.scrollIntoView({ behavior: 'smooth' });
+  private updateCountdown() {
+    const eventDate = new Date('August 16, 2025 00:00:00').getTime();
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    if (distance <= 0) {
+      this.days = this.hours = this.minutes = this.seconds = '00';
+      clearInterval(this.intervalId);
+      return;
     }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    this.days = days.toString().padStart(2, '0');
+    this.hours = hours.toString().padStart(2, '0');
+    this.minutes = minutes.toString().padStart(2, '0');
+    this.seconds = seconds.toString().padStart(2, '0');
   }
 
-  searchByDni() {
-    const dni = this.search['searchDni'].value;
-    console.log(dni);
-    this.reservationService.searchByDni(dni).subscribe({
-      next: (response) => {
-        this.objectRegister = response;
-        this.imageModal = this.objectRegister.qrCode.image;
-        this.showModal = true;
-        this.formSearchDni.reset();
-        this.closeModal();
-      },
-      error: (error) => {
-        console.error('Usuario no registrado aun');
-        this.mensajeExito = 'El DNI ingresado no está registrado.';
-      },
+  @ViewChild('videoPlayer', { static: true }) videoPlayer!: ElementRef<HTMLVideoElement>;
+
+  ngAfterViewInit(): void {
+    const video = this.videoPlayer.nativeElement;
+
+    // Asegurar muteado antes de reproducir
+    video.muted = true;
+    video.playsInline = true;
+
+    // Forzar autoplay
+    video.play().catch(err => {
+      console.warn('⚠️ Autoplay bloqueado por Chrome, esperando interacción del usuario:', err);
     });
   }
-
-  printModal() {
-    const modalContentElement = document.querySelector('.modal-content');
-
-    if (modalContentElement) {
-      const clonedContent = modalContentElement.cloneNode(true) as HTMLElement;
-
-      const noPrintElements = clonedContent.querySelectorAll('.no-print');
-      noPrintElements.forEach(el => el.remove());
-
-      const originalContent = document.body.innerHTML;
-
-      document.body.innerHTML = `
-      <html>
-        <head>
-          <style>
-            body {
-              font-family: Arial, sans-serif;
-              text-align: center;
-              margin: 0;
-              padding: 0;
-              height: 100vh;
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              align-items: center;
-            }
-            img {
-              max-width: 300px;
-              margin-bottom: 20px;
-              display: block;
-            }
-            h5 {
-              margin: 8px 0;
-              font-size: 16px;
-            }
-            .content-wrapper {
-              text-align: center;
-            }
-          </style>
-        </head>
-        <body>
-          <div class="content-wrapper">
-            ${clonedContent.innerHTML}
-          </div>
-        </body>
-      </html>
-    `;
-
-      window.print();
-
-      setTimeout(() => {
-        document.body.innerHTML = originalContent;
-        window.location.reload();
-      }, 1000);
-    }
-  }
-
-
-  openModal() {
-    this.isModalOpen = true;
-  }
-
-  closeModal() {
-    this.isModalOpen = false;
-  }
-
-  closeModalPrint() {
-    this.showModal = false;
-  }
-
 }

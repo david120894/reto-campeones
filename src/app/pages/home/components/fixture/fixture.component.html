@@ -1,0 +1,107 @@
+<section id="fixture" class="bg-gradient-to-br to-blue-50">
+  <div class="mx-auto p-4 my-4">
+    <div class="p-2 mb-4  text-center text-white font-extrabold big-title md:text-6xl">
+      <p class="text-7xl mb-4" style="font-family: Niconne, sans-serif, sans-serif;">Fixture del Torneo</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-6 gallery-container-cards ">
+      <button
+        (click)="setTab('primariaFutbol')"
+        [ngClass]="activeTab === 'primariaFutbol' ? 'bg-purple-600 text-white' : 'bg-gray-200 text-gray-700'"
+        class="w-full px-4 py-2 rounded-lg font-semibold transition">
+        Futbol Primaria
+      </button>
+
+      <button
+        (click)="setTab('secundariaFutbol')"
+        [ngClass]="activeTab === 'secundariaFutbol' ? 'bg-purple-600 text-white' : 'bg-gray-200 text-gray-700'"
+        class="w-full px-4 py-2 rounded-lg font-semibold transition">
+        Futbol Secundaria
+      </button>
+
+      <button
+        (click)="setTab('primariaVoley')"
+        [ngClass]="activeTab === 'primariaVoley' ? 'bg-purple-600 text-white' : 'bg-gray-200 text-gray-700'"
+        class="w-full px-4 py-2 rounded-lg font-semibold transition">
+        Voley Primaria
+      </button>
+
+      <button
+        (click)="setTab('secundariaVoley')"
+        [ngClass]="activeTab === 'secundariaVoley' ? 'bg-purple-600 text-white' : 'bg-gray-200 text-gray-700'"
+        class="w-full px-4 py-2 rounded-lg font-semibold transition">
+        Voley Secundaria
+      </button>
+    </div>
+
+
+    <!-- =================== FILA 1: GRUPOS A y B =================== -->
+    <div class="grid gap-6 justify-center gallery-container-cards"
+         style="margin-top: 10px"
+         [ngClass]="{
+    'md:grid-cols-4': gruposConFechas.length >= 4,
+    'md:grid-cols-3': gruposConFechas.length === 3,
+    'md:grid-cols-2': gruposConFechas.length === 2,
+    'md:grid-cols-1': gruposConFechas.length === 1
+  }">
+      <div *ngFor="let grupo of gruposConFechas | slice:0:4" class=" rounded-xl shadow-md overflow-hidden">
+
+        <!-- Header del Grupo -->
+        <div class="p-3 text-white font-bold text-lg text-center" style="background-color: rgb(97,105,122)">
+          {{ grupo.nombre }}
+        </div>
+
+        <!-- Fechas -->
+        <div class="divide-y">
+          <div *ngFor="let fecha of grupo.fechas" class="p-2" style="background-color: #460805">
+            <!-- Título de la fecha -->
+            <div class="text-md font-bold text-white mb-2">
+              {{ fecha.fecha }}
+            </div>
+
+            <!-- Partidos -->
+            <div *ngFor="let partido of fecha.partidos" style="background-color: white"
+                 class="flex justify-between items-center bg-gray-100 rounded-lg px-2 py-2 mb-2">
+              <span class="text-md font-large text-black">{{ partido.equipo1 }}</span>
+              <span class="font-bold text-blue-500">vs</span>
+              <span class="text-md font-large text-black">{{ partido.equipo2 }}</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- =================== FILA 2: GRUPOS C y D =================== -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div *ngFor="let grupo of gruposConFechas | slice:4:8" class="rounded-xl shadow-md overflow-hidden">
+
+        <!-- Header del Grupo -->
+        <div style="background-color: rgb(97,105,122)" class="p-3 text-white font-bold text-lg text-center">
+          {{ grupo.nombre }}
+        </div>
+
+        <!-- Fechas -->
+        <div class="divide-y">
+          <div *ngFor="let fecha of grupo.fechas" class="p-3" style="background-color: #460805">
+            <!-- Título de la fecha -->
+            <div class="text-md font-bold text-white mb-2">
+              {{ fecha.fecha }}
+            </div>
+
+            <!-- Partidos -->
+            <div *ngFor="let partido of fecha.partidos" style="background-color: white"
+                 class="flex justify-between items-center bg-gray-100 rounded-lg px-3 py-2 mb-2">
+              <span class="text-md font-medium text-gray-800">{{ partido.equipo1 }}</span>
+              <span class="font-bold text-blue-500">vs</span>
+              <span class="text-md font-medium text-gray-800">{{ partido.equipo2 }}</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

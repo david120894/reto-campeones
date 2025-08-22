@@ -4,5 +4,6 @@ export const environment = {
   appRealm: 'municusco',
   appClientId: '',
   // apiUrl: 'https://hatunphaway.cusco.gob.pe/api',
-  apiUrl: 'http://172.16.4.74:30011/api',
+  apiUrl: 'http://172.16.5.167:4200/api',
+  // apiUrl: location.origin+'/api',
 };

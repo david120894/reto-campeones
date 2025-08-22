@@ -22,3 +22,4 @@ export class PagesComponent {
     this.loading$ = this.loadingService.loading$;
   }
 }
+

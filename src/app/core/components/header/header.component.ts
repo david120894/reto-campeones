@@ -9,8 +9,6 @@ import { IUserInfo } from '../../models/userInfo.model'
   selector: 'app-header',
   standalone: true,
   imports: [
-    RouterLinkActive,
-    RouterLink,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -57,7 +55,7 @@ export class HeaderComponent implements OnInit {
   }
 
   scrollToService() {
-    const serviceSection = document.getElementById('gallery')
+    const serviceSection = document.getElementById('home')
     if (serviceSection) {
       serviceSection.scrollIntoView({ behavior: 'smooth' })
     }
@@ -78,14 +76,14 @@ export class HeaderComponent implements OnInit {
   }
 
   scrollToContacts() {
-    const contactSection = document.getElementById('contacts')
+    const contactSection = document.getElementById('fixture')
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' })
     }
   }
 
   scrollRegister() {
-    const registerSection = document.getElementById('register')
+    const registerSection = document.getElementById('discipline')
     if (registerSection) {
       registerSection.scrollIntoView({ behavior: 'smooth' })
     }
