@@ -4,5 +4,5 @@ export const environment = {
     isMockEnabled: true,
     appRealm: 'municusco',
     appClientId: '',
-    apiUrl: 'https://hatunphaway.cusco.gob.pe/api',
+    apiUrl: 'https://reto-campeones.cusco.gob.pe/',
 };
