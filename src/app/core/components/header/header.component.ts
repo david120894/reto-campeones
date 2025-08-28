@@ -54,6 +54,13 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  scrollTablePositions() {
+    const tablePositions = document.getElementById('table-positions')
+    if (tablePositions) {
+      tablePositions.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   scrollToService() {
     const serviceSection = document.getElementById('home')
     if (serviceSection) {

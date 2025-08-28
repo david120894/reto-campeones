@@ -13,7 +13,7 @@ import { LlamaSceneComponent } from '../llama-scene/llama-scene.component'
 @Component({
   selector: 'app-section-home',
   standalone: true,
-  imports: [NgIf, LlamaSceneComponent],
+  imports: [LlamaSceneComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './section-home.component.html',
   styleUrls: ['./section-home.component.scss']
@@ -61,16 +61,23 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
   }
 
   @ViewChild('videoPlayer', { static: true }) videoPlayer!: ElementRef<HTMLVideoElement>;
+  @ViewChild('videoPlayer2', { static: true }) videoPlayer2!: ElementRef<HTMLVideoElement>;
 
   ngAfterViewInit(): void {
     const video = this.videoPlayer.nativeElement;
+    const video2 = this.videoPlayer2.nativeElement;
 
     // Asegurar muteado antes de reproducir
     video.muted = true;
     video.playsInline = true;
+    video2.muted = true;
+    video2.playsInline = true;
 
     // Forzar autoplay
     video.play().catch(err => {
+      console.warn('⚠️ Autoplay bloqueado por Chrome, esperando interacción del usuario:', err);
+    });
+    video2.play().catch(err => {
       console.warn('⚠️ Autoplay bloqueado por Chrome, esperando interacción del usuario:', err);
     });
   }
