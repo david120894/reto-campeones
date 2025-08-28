@@ -11,6 +11,7 @@ import { FeaturesComponent } from '../features/features.component';
 import { GalleryInterNeighborhoodComponent } from '../gallery-inter-neighborhood/gallery-inter-neighborhood.component'
 import { LlamaSceneComponent } from '../llama-scene/llama-scene.component'
 import { FixtureComponent } from '../fixture/fixture.component'
+import { PresentationComponent } from '../presentation/presentation.component'
 
 const DECLARATIONS = [
   SectionHomeComponent, GalleryComponent, ContactComponent, CarrouselComponent, AboutComponent, FeaturesComponent,
@@ -19,7 +20,7 @@ const DECLARATIONS = [
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [...DECLARATIONS, GalleryInterNeighborhoodComponent, EmailFormComponent, LlamaSceneComponent, FixtureComponent, NgParticlesModule],
+  imports: [...DECLARATIONS, GalleryInterNeighborhoodComponent, EmailFormComponent, LlamaSceneComponent, FixtureComponent, NgParticlesModule, PresentationComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']   // ✅ corregido
 })

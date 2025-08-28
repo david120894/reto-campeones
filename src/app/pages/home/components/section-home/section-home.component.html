@@ -49,23 +49,35 @@
 
       <!-- Right Content (Llama + efectos) -->
       <div class="w-full relative flex flex-col items-center">
-        <div class="relative w-full max-w-[400px] md:max-w-[500px] lg:max-w-[600px] aspect-square flex items-center justify-center">
-          <app-llama-scene></app-llama-scene>
-        </div>
-
-        <!-- Magic Ring -->
-        <div class="magic-ring absolute bottom-0">
-          <div class="cone-light"></div>
-          <div class="ring"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
+        <div class="flex justify-center lg:justify-start">
+          <video
+            #videoPlayer2
+            src="https://taqe.cusco.gob.pe/publico/web/campeonato/FC.mp4"
+            type="video/mp4"
+            autoplay
+            loop
+            muted
+            playsinline
+            class="w-full h-[800px] rounded-lg shadow-lg aspect-video fade-edges2">
+          </video>
         </div>
       </div>
 
+      <!--        <div class="relative w-full max-w-[400px] md:max-w-[500px] lg:max-w-[600px] aspect-square flex items-center justify-center">-->
+      <!--          <app-llama-scene></app-llama-scene>-->
+      <!--        </div>-->
+
+      <!--        &lt;!&ndash; Magic Ring &ndash;&gt;-->
+      <!--        <div class="magic-ring absolute bottom-0">-->
+      <!--          <div class="cone-light"></div>-->
+      <!--          <div class="ring"></div>-->
+      <!--          <div class="particle"></div>-->
+      <!--          <div class="particle"></div>-->
+      <!--          <div class="particle"></div>-->
+      <!--          <div class="particle"></div>-->
+      <!--          <div class="particle"></div>-->
+      <!--          <div class="particle"></div>-->
+      <!--        </div>-->
     </div>
   </div>
 </section>

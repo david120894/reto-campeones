@@ -90,8 +90,8 @@ export class FixtureComponent implements OnInit {
       partidos: [
         { fecha: '23 de agosto', equipo1: 'I.E. Fortunato L. Herrera', equipo2: 'I.E. Simón Bolívar' },
         { fecha: '23 de agosto', equipo1: 'I.E. Inca Garcilaso de la Vega', equipo2: 'I.E. Ashid Kumar Bahal' },
-        // { fecha: '30 de agosto', equipo1: 'I.E. San Cristóbal', equipo2: 'I.E. Inca Garcilaso de la Vega' },
-        // { fecha: '30 de agosto', equipo1: 'I.E. Ashid Kumar Bahal', equipo2: 'I.E. Fortunato L. Herrera' },
+        { fecha: '30 de agosto', equipo1: 'I.E. San Cristóbal', equipo2: 'I.E. Inca Garcilaso de la Vega' },
+        { fecha: '30 de agosto', equipo1: 'I.E. Ashid Kumar Bahal', equipo2: 'I.E. Fortunato L. Herrera' },
         // { fecha: '6 de septiembre', equipo1: 'I.E. Fortunato L. Herrera', equipo2: 'I.E. San Cristóbal' },
         // { fecha: '6 de septiembre', equipo1: 'I.E. Ashid Kumar Bahal', equipo2: 'I.E. Simón Bolívar' },
         // { fecha: '13 de septiembre', equipo1: 'I.E. San Cristóbal', equipo2: 'I.E. Ashid Kumar Bahal' },
@@ -106,8 +106,8 @@ export class FixtureComponent implements OnInit {
       partidos: [
         { fecha: '23 de agosto', equipo1: 'I.E. Nuestra Señora de Gracia', equipo2: 'I.E. Alejandro Sánchez Arteaga' },
         { fecha: '23 de agosto', equipo1: 'I.E. Ayuda Mutua', equipo2: 'I.E. El Niño Divino' },
-        // { fecha: '30 de agosto', equipo1: 'I.E. Alejandro Sánchez Arteaga', equipo2: 'I.E. Humberto Luna' },
-        // { fecha: '30 de agosto', equipo1: 'I.E. El Niño Divino', equipo2: 'I.E. Nuestra Señora de Gracia' },
+        { fecha: '30 de agosto', equipo1: 'I.E. Alejandro Sánchez Arteaga', equipo2: 'I.E. Humberto Luna' },
+        { fecha: '30 de agosto', equipo1: 'I.E. El Niño Divino', equipo2: 'I.E. Nuestra Señora de Gracia' },
         // { fecha: '6 de septiembre', equipo1: 'I.E. Ayuda Mutua', equipo2: 'I.E. Humberto Luna' },
         // { fecha: '6 de septiembre', equipo1: 'I.E. El Niño Divino', equipo2: 'I.E. Alejandro Sánchez Arteaga' },
         // { fecha: '13 de septiembre', equipo1: 'I.E. Ayuda Mutua', equipo2: 'I.E. Alejandro Sánchez Arteaga' },
@@ -123,9 +123,9 @@ export class FixtureComponent implements OnInit {
         { fecha: '23 de agosto', equipo1: 'I.E. San Vicente de Paul', equipo2: 'I.E. Diego Quispe Tito' },
         { fecha: '23 de agosto', equipo1: 'I.E. Ciencias', equipo2: 'I.E. Uriel García' },
         { fecha: '23 de agosto', equipo1: 'I.E. San Francisco de Borja', equipo2: 'I.E. Red de Colegios Kancharisum' },
-        // { fecha: '30 de agosto', equipo1: 'I.E. Red de Colegios Kancharisum', equipo2: 'I.E. Ciencias' },
-        // { fecha: '30 de agosto', equipo1: 'I.E. Diego Quispe Tito', equipo2: 'I.E. San Francisco de Borja' },
-        // { fecha: '30 de agosto', equipo1: 'I.E. Uriel García', equipo2: 'I.E. San Vicente de Paul' },
+        { fecha: '30 de agosto', equipo1: 'I.E. Red de Colegios Kancharisum', equipo2: 'I.E. Ciencias' },
+        { fecha: '30 de agosto', equipo1: 'I.E. Diego Quispe Tito', equipo2: 'I.E. San Francisco de Borja' },
+        { fecha: '30 de agosto', equipo1: 'I.E. Uriel García', equipo2: 'I.E. San Vicente de Paul' },
         // { fecha: '6 de septiembre', equipo1: 'I.E. San Vicente de Paul', equipo2: 'I.E. Red de Colegios Kancharisum' },
         // { fecha: '6 de septiembre', equipo1: 'I.E. Ciencias', equipo2: 'I.E. San Francisco de Borja' },
         // { fecha: '6 de septiembre', equipo1: 'I.E. Uriel García', equipo2: 'I.E. Diego Quispe Tito' },
@@ -143,8 +143,8 @@ export class FixtureComponent implements OnInit {
       partidos: [
         { fecha: '23 de agosto', equipo1: 'I.E. Dolores Pata', equipo2: 'I.E. Huancabamba' },
         { fecha: '23 de agosto', equipo1: 'I.E. Sagrado Corazón', equipo2: 'I.E. Miguel Grau Seminario' },
-        // { fecha: '30 de agosto', equipo1: 'I.E. Miguel Grau Seminario', equipo2: 'I.E. Dolores Pata' },
-        // { fecha: '30 de agosto', equipo1: 'I.E. Huancabamba', equipo2: 'I.E. Mariscal Gamarra' },
+        { fecha: '30 de agosto', equipo1: 'I.E. Miguel Grau Seminario', equipo2: 'I.E. Dolores Pata' },
+        { fecha: '30 de agosto', equipo1: 'I.E. Huancabamba', equipo2: 'I.E. Mariscal Gamarra' },
         // { fecha: '6 de septiembre', equipo1: 'I.E. Mariscal Gamarra', equipo2: 'I.E. Miguel Grau Seminario' },
         // { fecha: '6 de septiembre', equipo1: 'I.E. Dolores Pata', equipo2: 'I.E. Sagrado Corazón' },
         // { fecha: '13 de septiembre', equipo1: 'I.E. Miguel Grau Seminario', equipo2: 'I.E. Huancabamba' },
@@ -163,10 +163,10 @@ export class FixtureComponent implements OnInit {
         { fecha: '23 de agosto', equipo1: 'I.E. 51004 San Vicente de Paul', equipo2: 'I.E. Ciencias' },
         { fecha: '23 de agosto', equipo1: 'I.E. San Francisco de Borja', equipo2: 'I.E. Humberto Luna' },
 
-        // { fecha: '30 de agosto', equipo1: 'I.E. Humberto Luna', equipo2: 'I.E. 51004 San Vicente de Paul' },
-        // { fecha: '30 de agosto', equipo1: 'I.E. Fortunato L. Herrera', equipo2: 'I.E. San Francisco de Borja' },
-        // { fecha: '30 de agosto', equipo1: 'I.E. Ciencias', equipo2: 'I.E. 51003 Rosario' },
-        //
+        { fecha: '30 de agosto', equipo1: 'I.E. Humberto Luna', equipo2: 'I.E. 51004 San Vicente de Paul' },
+        { fecha: '30 de agosto', equipo1: 'I.E. Fortunato L. Herrera', equipo2: 'I.E. San Francisco de Borja' },
+        { fecha: '30 de agosto', equipo1: 'I.E. Ciencias', equipo2: 'I.E. 51003 Rosario' },
+
         // { fecha: '6 de septiembre', equipo1: 'I.E. 51003 Rosario', equipo2: 'I.E. Humberto Luna' },
         // { fecha: '6 de septiembre', equipo1: 'I.E. 51004 San Vicente de Paul', equipo2: 'I.E. San Francisco de Borja' },
         // { fecha: '6 de septiembre', equipo1: 'I.E. Ciencias', equipo2: 'I.E. Fortunato L. Herrera' },
@@ -188,9 +188,9 @@ export class FixtureComponent implements OnInit {
         { fecha: '23 de agosto', equipo1: 'I.E. Uriel García', equipo2: 'I.E. Garcilazo de la Vega' },
         { fecha: '23 de agosto', equipo1: 'I.E. Miguel Grau Seminario', equipo2: 'I.E. Luis Vallejo Santoni' },
 
-        // { fecha: '30 de agosto', equipo1: 'I.E. Luis Vallejo Santoni', equipo2: 'I.E. Uriel García' },
-        // { fecha: '30 de agosto', equipo1: 'I.E. Sagrado Corazón de Jesús', equipo2: 'I.E. Miguel Grau Seminario' },
-        // { fecha: '30 de agosto', equipo1: 'I.E. Garcilazo de la Vega', equipo2: 'I.E. Diego Quispe Tito' },
+        { fecha: '30 de agosto', equipo1: 'I.E. Luis Vallejo Santoni', equipo2: 'I.E. Uriel García' },
+        { fecha: '30 de agosto', equipo1: 'I.E. Sagrado Corazón de Jesús', equipo2: 'I.E. Miguel Grau Seminario' },
+        { fecha: '30 de agosto', equipo1: 'I.E. Garcilazo de la Vega', equipo2: 'I.E. Diego Quispe Tito' },
         //
         // { fecha: '6 de septiembre', equipo1: 'I.E. Diego Quispe Tito', equipo2: 'I.E. Luis Vallejo Santoni' },
         // { fecha: '6 de septiembre', equipo1: 'I.E. Uriel García', equipo2: 'I.E. Miguel Grau Seminario' },
@@ -217,10 +217,10 @@ export class FixtureComponent implements OnInit {
         { fecha: '23 de agosto', equipo1: 'I.E. 50966 Virgen Rosario (Ayuda Mutua)', equipo2: 'I.E. Fortunato L. Herrera' },
 
         // // FECHA 2 - 30 DE AGOSTO
-        // { fecha: '30 de agosto', equipo1: 'I.E. Fortunato L. Herrera', equipo2: 'I.E. 50828 Ashid Kumar Bahal' },
-        // { fecha: '30 de agosto', equipo1: 'I.E. 51001 Humberto Luna', equipo2: 'I.E. 50966 Virgen Rosario (Ayuda Mutua)' },
-        // { fecha: '30 de agosto', equipo1: 'I.E. Clorinda Matto de Turner', equipo2: 'I.E. 50707 Simón Bolívar' },
-        //
+        { fecha: '30 de agosto', equipo1: 'I.E. Fortunato L. Herrera', equipo2: 'I.E. 50828 Ashid Kumar Bahal' },
+        { fecha: '30 de agosto', equipo1: 'I.E. 51001 Humberto Luna', equipo2: 'I.E. 50966 Virgen Rosario (Ayuda Mutua)' },
+        { fecha: '30 de agosto', equipo1: 'I.E. Clorinda Matto de Turner', equipo2: 'I.E. 50707 Simón Bolívar' },
+
         // // FECHA 3 - 06 DE SEPTIEMBRE
         // { fecha: '6 de septiembre', equipo1: 'I.E. 50707 Simón Bolívar', equipo2: 'I.E. Fortunato L. Herrera' },
         // { fecha: '6 de septiembre', equipo1: 'I.E. 50828 Ashid Kumar Bahal', equipo2: 'I.E. 50966 Virgen Rosario (Ayuda Mutua)' },
@@ -247,8 +247,8 @@ export class FixtureComponent implements OnInit {
         { fecha: '23 de agosto', equipo1: 'I.E. Sagrado Corazón de Jesús', equipo2: '' },
 
         // // FECHA 2 - 30 DE AGOSTO
-        // { fecha: '30 de agosto', equipo1: 'I.E. El Niño Divino', equipo2: 'I.E. Sagrado Corazón de Jesús' },
-        // { fecha: '30 de agosto', equipo1: 'I.E. María de la Merced', equipo2: 'I.E. Miguel Grau Seminario' },
+        { fecha: '30 de agosto', equipo1: 'I.E. El Niño Divino', equipo2: 'I.E. Sagrado Corazón de Jesús' },
+        { fecha: '30 de agosto', equipo1: 'I.E. María de la Merced', equipo2: 'I.E. Miguel Grau Seminario' },
         // { fecha: '30 de agosto', equipo1: 'I.E. Uriel García', equipo2: '' },
         //
         // // FECHA 3 - 06 DE SEPTIEMBRE
@@ -279,9 +279,9 @@ export class FixtureComponent implements OnInit {
         { fecha: '23 de agosto', equipo1: 'I.E. Educandas', equipo2: 'I.E. 51003 Rosario' },
 
         // // FECHA 2 - 30 DE AGOSTO
-        // { fecha: '30 de agosto', equipo1: 'I.E. Clorinda Matto de Turner', equipo2: 'I.E. Educandas' },
-        // { fecha: '30 de agosto', equipo1: 'I.E. Comercio 41', equipo2: 'I.E. Fortunato L. Herrera' },
-        // { fecha: '30 de agosto', equipo1: 'I.E. Humberto Luna', equipo2: 'I.E. 51003 Rosario' },
+        { fecha: '30 de agosto', equipo1: 'I.E.  Educandas', equipo2: 'I.E. Comercio 41' },
+        { fecha: '30 de agosto', equipo1: 'I.E. Fortunato L. Herrera', equipo2: 'I.E. Humberto Luna' },
+        { fecha: '30 de agosto', equipo1: 'I.E. Clorinda Matto de Turner', equipo2: 'I.E. 51003 Rosario' },
         //
         // // FECHA 3 - 06 DE SEPTIEMBRE
         // { fecha: '6 de septiembre', equipo1: 'I.E. Humberto Luna', equipo2: 'I.E. Clorinda Matto de Turner' },
@@ -309,9 +309,9 @@ export class FixtureComponent implements OnInit {
         { fecha: '23 de agosto', equipo1: 'I.E. Miguel Grau Seminario', equipo2: '' },
 
         // // FECHA 2 - 30 DE AGOSTO
-        // { fecha: '30 de agosto', equipo1: 'I.E. Luis Vallejo Santoni', equipo2: 'I.E. Miguel Grau Seminario' },
-        // { fecha: '30 de agosto', equipo1: 'I.E. San Francisco de Borja', equipo2: 'I.E. María de la Merced' },
-        // { fecha: '30 de agosto', equipo1: 'I.E. Uriel García', equipo2: '' },
+        { fecha: '30 de agosto', equipo1: 'I.E. Luis Vallejo Santoni', equipo2: 'I.E. Miguel Grau Seminario' },
+        { fecha: '30 de agosto', equipo1: 'I.E. San Francisco de Borja', equipo2: 'I.E. María de la Merced' },
+        { fecha: '30 de agosto', equipo1: 'I.E. Uriel García', equipo2: 'I.E. Sagrado Corazón de Jesús' },
         //
         // // FECHA 3 - 06 DE SEPTIEMBRE
         // { fecha: '6 de septiembre', equipo1: 'I.E. Uriel García', equipo2: 'I.E. Luis Vallejo Santoni' },
