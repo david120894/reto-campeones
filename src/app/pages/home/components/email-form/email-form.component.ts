@@ -215,10 +215,7 @@ export class EmailFormComponent implements OnInit {
             'I.E. Sagrado Corazón de Jesús',
           ],
         },
-        // ... demás grupos
       ],
     },
   ];
-
-  // categoría activa
 }
