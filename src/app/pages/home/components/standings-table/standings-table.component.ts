@@ -16,17 +16,6 @@ export interface TeamStanding {
   dg?: number;
   pts?: number;
 }
-export interface TeamStandingVoley {
-  puesto: number;
-  club: string;
-  pj: number;
-  pg: number;
-  pp: number;
-  sf: number;
-  sc: number;
-  ds: number;
-  pts: number;
-}
 @Component({
   selector: 'app-standings-table',
   standalone: true,
