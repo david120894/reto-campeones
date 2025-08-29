@@ -9,7 +9,7 @@ const NG_MODULES = [CommonModule];
 
 @Component({
   selector: 'app-gallery',
-  imports: [...NG_MODULES, ...NG_DECLARATIONS],
+  imports: [...NG_MODULES],
   templateUrl: './gallery.component.html',
   styleUrl: './gallery.component.scss'
 })

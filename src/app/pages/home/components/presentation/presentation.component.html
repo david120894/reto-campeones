@@ -35,7 +35,7 @@
   <!-- Mostrar todos los grupos de ese deporte -->
   <ng-container *ngIf="deporteSeleccionado">
     <h3 class="text-lg font-semibold mb-4 text-white text-center">
-      Resultados: {{ fechaSeleccionada?.nombre }} - {{ nivelSeleccionado?.nombre }} - {{ deporteSeleccionado?.nombre }}
+      Resultados: {{ fechaSeleccionada?.nombre }} - {{ nivelSeleccionado?.nombre }} - {{ deporteSeleccionado.nombre }}
     </h3>
 
     <div class="grid justify-center justify-items-center gap-6"
@@ -51,7 +51,7 @@
       'w-full': deporteSeleccionado.grupos.length > 1
     }"
         *ngFor="let grupo of deporteSeleccionado.grupos"
-        [titulo]="fechaSeleccionada?.nombre + ' | ' + nivelSeleccionado?.nombre + ' | ' + deporteSeleccionado?.nombre"
+        [titulo]="fechaSeleccionada?.nombre + ' | ' + nivelSeleccionado?.nombre + ' | ' + deporteSeleccionado.nombre"
         [nivel]="nivelSeleccionado!.nombre"
         [grupo]="grupo.nombre"
         [typeTeam]="grupo.typeTeam"

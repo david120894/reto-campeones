@@ -57,7 +57,7 @@ export interface NivelEducacion {
     NgClass,
   ],
   templateUrl: './presentation.component.html',
-  styleUrl: './presentation.component.scss',
+  styleUrls: ['./presentation.component.scss',]
 })
 export class PresentationComponent implements OnInit {
   selectedDate = ""
@@ -243,14 +243,12 @@ export class PresentationComponent implements OnInit {
 
     const value = event ? (event.target as HTMLSelectElement).value : "";
     if (value === "") {
-      console.log("Fecha seleccionada: ", value);
       this.selectedDate = this.fechas[0].nombre!;
       this.fechaSeleccionada = this.fechas[0]
       this.nivelSeleccionado = undefined;
       this.deporteSeleccionado = undefined;
       // this.onNivelChange();
     } else {
-      console.log("Fecha seleccionada: ", value);
       this.fechaSeleccionada = this.fechas.find(f => f.nombre === value)
       this.nivelSeleccionado = this.fechaSeleccionada?.niveles[0];
       this.deporteSeleccionado = undefined;
@@ -262,14 +260,12 @@ export class PresentationComponent implements OnInit {
   onNivelChange(event?: Event) {
     const value = event ? (event.target as HTMLSelectElement).value : "";
     if (value === "") {
-      console.log("Nivel seleccionado: ", value);
       this.selectedLevel = this.fechaSeleccionada?.niveles[0].nombre!;
       this.nivelSeleccionado = this.fechaSeleccionada?.niveles[0];
       this.deporteSeleccionado = undefined;
       this.onDeporteChange();
 
     } else {
-      console.log("Nivel seleccionado: ", value);
       this.nivelSeleccionado = this.fechaSeleccionada?.niveles.find(n => n.nombre === value);
       this.selectedDeport = this.nivelSeleccionado?.deportes[0].nombre!;
       this.deporteSeleccionado = undefined;
@@ -278,8 +274,6 @@ export class PresentationComponent implements OnInit {
   }
 
   onDeporteChange(event?: Event) {
-    console.log("Deporte seleccionado: ", event)
-    console.log('this.seleccionadoDeport',this.selectedDeport);
     const value = event ? (event.target as HTMLSelectElement).value : "";
     if (value === "") {
       this.selectedDeport = this.nivelSeleccionado?.deportes[0].nombre!;

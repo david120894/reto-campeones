@@ -44,7 +44,5 @@ export class StandingsTableComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log('standings-table.component.ts cargado ' + this.titulo);
-    console.log(this.equipos);
   }
 }
