@@ -20,7 +20,7 @@ const DECLARATIONS = [
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [...DECLARATIONS, GalleryInterNeighborhoodComponent, EmailFormComponent, LlamaSceneComponent, FixtureComponent, NgParticlesModule, PresentationComponent],
+  imports: [EmailFormComponent, FixtureComponent, NgParticlesModule, PresentationComponent, GalleryComponent, CarrouselComponent, AboutComponent, SectionHomeComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']   // ✅ corregido
 })

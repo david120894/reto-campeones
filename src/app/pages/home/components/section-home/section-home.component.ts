@@ -13,7 +13,7 @@ import { LlamaSceneComponent } from '../llama-scene/llama-scene.component'
 @Component({
   selector: 'app-section-home',
   standalone: true,
-  imports: [LlamaSceneComponent],
+  imports: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './section-home.component.html',
   styleUrls: ['./section-home.component.scss']

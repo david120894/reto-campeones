@@ -11,8 +11,6 @@ const DECLATAIONS = [TitlesComponent];
 @Component({
   selector: 'app-about',
   imports: [
-    NgForOf,
-    NgClass,
   ],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
