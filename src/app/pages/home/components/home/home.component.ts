@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgParticlesModule } from 'ng-particles';
 
 import { SectionHomeComponent } from '../section-home/section-home.component';
@@ -8,8 +8,6 @@ import { ContactComponent } from '../contact/contact.component';
 import { CarrouselComponent } from '../carrousel/carrousel.component';
 import { AboutComponent } from '../about/about.component';
 import { FeaturesComponent } from '../features/features.component';
-import { GalleryInterNeighborhoodComponent } from '../gallery-inter-neighborhood/gallery-inter-neighborhood.component'
-import { LlamaSceneComponent } from '../llama-scene/llama-scene.component'
 import { FixtureComponent } from '../fixture/fixture.component'
 import { PresentationComponent } from '../presentation/presentation.component'
 
@@ -22,7 +20,12 @@ const DECLARATIONS = [
   standalone: true,
   imports: [EmailFormComponent, FixtureComponent, NgParticlesModule, PresentationComponent, GalleryComponent, CarrouselComponent, AboutComponent, SectionHomeComponent],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']   // ✅ corregido
+  styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  @Input() sectionChanged: string[] = [];
+
+  ngOnInit() {
+    console.log(this.sectionChanged)
+  }
 }
