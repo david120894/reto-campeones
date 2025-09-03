@@ -1,8 +1,5 @@
-<app-section-home />
-
-<!--<app-gallery-inter-neighborhood />-->
-
-
+<!--<app-section-home />-->
+<app-section-home (sectionChanged)="onSectionChanged($event)"></app-section-home>
 <div class="bg-section">
   <app-presentation />
   <app-gallery />
