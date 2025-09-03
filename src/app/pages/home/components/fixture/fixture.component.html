@@ -48,13 +48,13 @@
       <div *ngFor="let grupo of gruposConFechas | slice:0:4" class=" rounded-xl shadow-md overflow-hidden">
 
         <!-- Header del Grupo -->
-        <div class="p-3 text-white font-bold text-lg text-center" style="background-color: rgb(97,105,122)">
+        <div class="p-2 text-white font-bold text-lg text-center" style="background-color: rgb(97,105,122)">
           {{ grupo.nombre }}
         </div>
 
         <!-- Fechas -->
         <div class="divide-y">
-          <div *ngFor="let fecha of grupo.fechas" class="p-2" style="background-color: #460805">
+          <div *ngFor="let fecha of grupo.fechas" class="p-1" style="background-color: #460805">
             <!-- Título de la fecha -->
             <div class="text-md font-bold text-white mb-2">
               {{ fecha.fecha }}
@@ -78,7 +78,7 @@
 
     <!-- =================== FILA 2: GRUPOS C y D =================== -->
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-      <div *ngFor="let grupo of gruposConFechas | slice:4:8" class="rounded-xl shadow-md overflow-hidden">
+      <div *ngFor="let grupo of gruposConFechas | slice:4: 8" class="rounded-xl shadow-md overflow-hidden">
 
         <!-- Header del Grupo -->
         <div style="background-color: rgb(97,105,122)" class="p-3 text-white font-bold text-lg text-center">
@@ -95,7 +95,8 @@
 
             <!-- Partidos -->
             <div *ngFor="let partido of fecha.partidos" style="background-color: white"
-                 class="flex justify-between items-center bg-gray-100 rounded-lg px-3 py-2 mb-2">
+                 class="flex justify-between items-center bg-gray-100 rounded-lg px-1 py-1 mb-2">
+              <span class="text-md font-large text-orange-500">{{ partido.hora }}</span>
               <span class="text-md font-medium text-gray-800">{{ partido.equipo1 }}</span>
               <span class="font-bold text-blue-500">vs</span>
               <span class="text-md font-medium text-gray-800">{{ partido.equipo2 }}</span>

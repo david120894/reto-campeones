@@ -8,6 +8,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { NgForOf, NgIf } from '@angular/common'
+import { RouterLink } from '@angular/router'
 
 interface CarouselItem {
   type: 'image' | 'video';
@@ -21,12 +22,16 @@ interface CarouselItem {
   imports: [
     NgIf,
     NgForOf,
+    RouterLink,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './section-home.component.html',
   styleUrls: ['./section-home.component.scss']
 })
 export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  {
+
+
+
   @Output() sectionChanged = new EventEmitter<string>();
   items: CarouselItem[] = [
     { type: 'image', src: 'championship/logo1.png', title: 'Imagen 1' },
@@ -48,6 +53,7 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
     this.intervalId = setInterval(() => this.updateCountdown(), 1000);
     this.selectItem(0);
   }
+
 
   ngOnDestroy() {
     if (this.intervalId) {
