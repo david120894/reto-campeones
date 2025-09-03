@@ -23,9 +23,13 @@ const DECLARATIONS = [
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  @Input() sectionChanged: string[] = [];
 
+  sectionChangedValue: string = '';
   ngOnInit() {
-    console.log(this.sectionChanged)
+  }
+
+  onSectionChanged(newSection: string) {
+    this.sectionChangedValue = newSection;
+    console.log(newSection);
   }
 }

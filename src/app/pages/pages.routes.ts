@@ -3,6 +3,7 @@ import { NewRegisterComponent } from './new-register/new-register.component';
 import { EmailFormComponent } from './home/components/email-form/email-form.component';
 import { LoginComponent } from './login/login.component';
 import { RaffleComponent } from './home/components/raffle/raffle.component'
+import { UserRegisterComponent } from './home/components/user-register/user-register.component'
 
 
 export const pagesRoutes: Routes = [
@@ -21,10 +22,10 @@ export const pagesRoutes: Routes = [
     path: 'register',
     component:EmailFormComponent
   },
-  // {
-  //   path: 'landing',
-  //   component:LandingComponent
-  // },
+  {
+    path: 'user-register',
+    component:UserRegisterComponent
+  },
   {
     path: 'login',
     component:LoginComponent
