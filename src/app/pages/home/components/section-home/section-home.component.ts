@@ -2,23 +2,44 @@ import {
   AfterViewInit,
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  ElementRef,
+  ElementRef, EventEmitter,
   OnDestroy,
-  OnInit,
+  OnInit, Output,
   ViewChild,
 } from '@angular/core';
-import { NgIf } from '@angular/common';
-import { LlamaSceneComponent } from '../llama-scene/llama-scene.component'
+import { NgForOf, NgIf } from '@angular/common'
+import { RouterLink } from '@angular/router'
+
+interface CarouselItem {
+  type: 'image' | 'video';
+  src: string;
+  title?: string;
+}
 
 @Component({
   selector: 'app-section-home',
   standalone: true,
-  imports: [],
+  imports: [
+    NgIf,
+    NgForOf,
+    RouterLink,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './section-home.component.html',
   styleUrls: ['./section-home.component.scss']
 })
 export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  {
+
+
+
+  @Output() sectionChanged = new EventEmitter<string>();
+  items: CarouselItem[] = [
+    { type: 'image', src: 'championship/logo1.png', title: 'Imagen 1' },
+    { type: 'image', src: 'championship/logo2.png', title: 'Imagen 2' },
+  ];
+
+  selectedItem = ''
+  currentIndex = 0;
 
   days: string = '00';
   hours: string = '00';
@@ -30,12 +51,40 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
   ngOnInit() {
     this.updateCountdown();
     this.intervalId = setInterval(() => this.updateCountdown(), 1000);
+    this.selectItem(0);
   }
+
 
   ngOnDestroy() {
     if (this.intervalId) {
       clearInterval(this.intervalId);
     }
+  }
+  get currentItem(): CarouselItem {
+    return this.items[this.currentIndex];
+  }
+
+  next() {
+    this.currentIndex = (this.currentIndex + 1) % this.items.length;
+    this.selectItem(this.currentIndex);
+  }
+
+  prev() {
+    this.currentIndex = (this.currentIndex - 1 + this.items.length) % this.items.length;
+    this.selectItem(this.currentIndex);
+  }
+
+  selectItem(index: number) {
+    const item: Record<string, string> = {
+      0:"challenge-champions",
+      1:"bike-ride",
+      // 3:"interscholastic-championship",
+    }
+    this.selectedItem = item[index] || '';
+    console.log(this.selectedItem);
+    this.currentIndex = index;
+    this.sectionChanged.emit(this.selectedItem);
+    console.log(this.currentIndex);
   }
 
   private updateCountdown() {
@@ -67,13 +116,11 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
     const video = this.videoPlayer.nativeElement;
     const video2 = this.videoPlayer2.nativeElement;
 
-    // Asegurar muteado antes de reproducir
     video.muted = true;
     video.playsInline = true;
     video2.muted = true;
     video2.playsInline = true;
 
-    // Forzar autoplay
     video.play().catch(err => {
       console.warn('⚠️ Autoplay bloqueado por Chrome, esperando interacción del usuario:', err);
     });

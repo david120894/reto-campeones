@@ -7,7 +7,8 @@
          background-repeat: no-repeat;">
 
   <!-- Overlay -->
-  <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+  <div class="absolute inset-0 bg-black bg-opacity-50">
+  </div>
 
   <div class="container mx-auto px-4 relative z-10">
     <div class="flex flex-col lg:flex-row items-center justify-between gap-10">
@@ -15,22 +16,43 @@
       <!-- Left Content -->
       <div class="w-full lg:w-1/2 text-center lg:text-left">
 
-        <!-- Logo -->
-        <!-- Logo -->
-        <div class="flex justify-center lg:justify-start mt-[100px] sm:mt-32 md:mt-20 w-full">
-          <img src="championship/logo1.png"
-               alt="Logo Cusco"
-               class="w-full max-w-[250px] sm:max-w-[300px] md:max-w-[350px] lg:max-w-[600px] h-auto object-contain">
-        </div>
-
-
-
 
         <!-- Texto -->
-        <p class="text-base pl-6 pr-8 md:text-lg lg:text-xl text-white mb-6 max-w-md mx-auto lg:mx-0">
-          El torneo escolar más competitivo del año donde las mejores Instituciones Educativas se enfrentarán por el
-          título de campeón.
-        </p>
+        @if (selectedItem === 'challenge-champions') {
+          <div class="flex justify-center lg:justify-start mt-[100px] sm:mt-32 md:mt-20 w-full">
+            <img src="championship/logo1.png"
+                 alt="Logo Cusco"
+                 class="w-full max-w-[250px] sm:max-w-[300px] md:max-w-[350px] lg:max-w-[600px] h-auto object-contain">
+          </div>
+          <p class="text-base pl-6 pr-8 md:text-lg lg:text-xl text-white mb-6 max-w-md mx-auto lg:mx-0">
+            El torneo escolar más competitivo del año donde las mejores Instituciones Educativas se enfrentarán por el
+            título de campeón.
+          </p>
+        } @else {
+          <div class="lg:w-1/2 text-center mt-[80px] lg:text-left mb-10 lg:mb-3">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 font-bebas tracking-wide">
+              1RA GRAN BICICLETEADA<br>
+              <span class="text-yellow-400">FAMILIAR</span><br>
+              "KUSKA MUYUSUNCHIS 2025"
+            </h1>
+<!--            <p class="text-lg md:text-xl text-white mb-8 max-w-lg mx-auto lg:mx-0">-->
+<!--              El torneo escolar más competitivo del año donde las mejores instituciones educativas se enfrentarán por el-->
+<!--              título de campeón.-->
+<!--            </p>-->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <a routerLink="/user-register"
+                 class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-lg text-lg transition duration-300 transform hover:scale-105">
+                ¡Inscribete!
+              </a>
+<!--              <a href="#info"-->
+<!--                 class="bg-transparent border-2 border-white hover:bg-white hover:text-black text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-300">-->
+<!--                Más información-->
+<!--              </a>-->
+            </div>
+          </div>
+
+        }
+
 
         <!-- Video -->
         <div class="flex justify-center lg:justify-start">
@@ -62,22 +84,34 @@
           </video>
         </div>
       </div>
-
-      <!--        <div class="relative w-full max-w-[400px] md:max-w-[500px] lg:max-w-[600px] aspect-square flex items-center justify-center">-->
-      <!--          <app-llama-scene></app-llama-scene>-->
-      <!--        </div>-->
-
-      <!--        &lt;!&ndash; Magic Ring &ndash;&gt;-->
-      <!--        <div class="magic-ring absolute bottom-0">-->
-      <!--          <div class="cone-light"></div>-->
-      <!--          <div class="ring"></div>-->
-      <!--          <div class="particle"></div>-->
-      <!--          <div class="particle"></div>-->
-      <!--          <div class="particle"></div>-->
-      <!--          <div class="particle"></div>-->
-      <!--          <div class="particle"></div>-->
-      <!--          <div class="particle"></div>-->
-      <!--        </div>-->
     </div>
+<!--    <div class="carousel-container">-->
+<!--      <h2 class="text-3xl font-bold text-center text-white">Proximos eventos...</h2>-->
+<!--      <div class="carousel-content">-->
+<!--        <ng-container *ngIf="currentItem.type === 'image'">-->
+<!--          <img [src]="currentItem.src" [alt]="currentItem.title" class="aspect-video fade-edges carousel-img" />-->
+<!--        </ng-container>-->
+<!--        <ng-container *ngIf="currentItem.type === 'video'">-->
+<!--          <video [src]="currentItem.src"-->
+<!--                 autoplay-->
+<!--                 loop-->
+<!--                 muted-->
+<!--                 playsinline-->
+<!--                 controls-->
+<!--                 class="aspect-video fade-edges carousel-video"></video>-->
+<!--        </ng-container>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; Botones &ndash;&gt;-->
+<!--      <button (click)="prev()" class="btn prev">⟨</button>-->
+<!--      <button (click)="next()" class="btn next">⟩</button>-->
+<!--      &lt;!&ndash; Indicadores &ndash;&gt;-->
+<!--      <div class="indicators">-->
+<!--    <span-->
+<!--      *ngFor="let item of items; let i = index"-->
+<!--      (click)="selectItem(i)"-->
+<!--      [class.active]="i === currentIndex">-->
+<!--    </span>-->
+<!--      </div>-->
+<!--    </div>-->
   </div>
 </section>
