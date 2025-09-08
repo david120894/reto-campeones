@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common'
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core'
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
 
 const NG_MODULES = [ReactiveFormsModule, CommonModule]
@@ -21,11 +21,17 @@ export interface Categoria {
 })
 
 
-export class EmailFormComponent implements OnInit {
-  @Input() typeSection!: string;
+export class EmailFormComponent implements OnInit, OnChanges {
   constructor(
   ) {}
 
+  @Input() typeSection: string = 'home';
+  tittleSection ='';
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['typeSection']) {
+      this.tittleSection = changes['typeSection'].currentValue;
+    }
+  }
   activeIndex: number = 0;
 
   setActive(index: number) {

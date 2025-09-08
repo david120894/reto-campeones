@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { NgParticlesModule } from 'ng-particles';
 
 import { SectionHomeComponent } from '../section-home/section-home.component';
@@ -23,6 +23,7 @@ const DECLARATIONS = [
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
 
   sectionChangedValue: string = '';
   ngOnInit() {
