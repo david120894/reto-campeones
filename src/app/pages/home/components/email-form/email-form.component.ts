@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common'
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
 
 const NG_MODULES = [ReactiveFormsModule, CommonModule]
@@ -22,6 +22,7 @@ export interface Categoria {
 
 
 export class EmailFormComponent implements OnInit {
+  @Input() typeSection!: string;
   constructor(
   ) {}
 

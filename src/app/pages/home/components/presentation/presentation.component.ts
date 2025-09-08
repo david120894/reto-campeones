@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { StandingsTableComponent } from '../standings-table/standings-table.component'
 import { NgClass, NgForOf, NgIf } from '@angular/common'
 import { FormsModule } from '@angular/forms'
@@ -59,12 +59,20 @@ export interface NivelEducacion {
   templateUrl: './presentation.component.html',
   styleUrls: ['./presentation.component.scss',]
 })
-export class PresentationComponent implements OnInit {
+export class PresentationComponent implements OnInit, OnChanges {
+
+  @Input() typeSection!: string;
   selectedDate = ""
   selectedLevel = ""
   selectedDeport = ""
 
   constructor() {
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['typeSection']) {
+      console.log('data sending', this.typeSection);
+    }
   }
 
   ngOnInit(): void {

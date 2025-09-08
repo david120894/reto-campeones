@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, PLATFORM_ID } from "@angular/core";
+import { Component, Inject, Input, OnChanges, OnInit, PLATFORM_ID, SimpleChanges } from "@angular/core";
 import { CommonModule, isPlatformBrowser } from "@angular/common";
 import { PlaceService } from "../../../../core/services/place.service";
 import { Place } from "../../../../core/models/place";
@@ -14,12 +14,23 @@ const NG_MODULES = [CommonModule, RouterModule];
   styleUrls: ['./carrousel.component.scss']
 })
 
-export class CarrouselComponent implements OnInit {
+export class CarrouselComponent implements OnInit, OnChanges {
+
+  @Input() typeSection!: string;
+
+  imagen1 = 'children/children.jpg';
+  imagen2 = 'bike-rider/IMG_2240.jpg';
+
   places: Place[] = [];
   isBrowser: boolean = false;
 
   constructor(private placeService: PlaceService,) {}
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['typeSection']) {
+      console.log('typeSection changed:', this.typeSection);
+    }
+  }
   ngOnInit(): void {
     this.loadRooms();
   }
@@ -43,7 +54,13 @@ export class CarrouselComponent implements OnInit {
   }
   openPdf()
   {
-    const pdfUrl = 'https://taqe.cusco.gob.pe/publico/web/campeonato/BASES_CAMPEONATO_DE_FUTBOL_Y_VOLEY_INTER_ESCOLAR.pdf';
+    let pdfUrl = '';
+    if(this.typeSection==='challenge-champions'){
+      pdfUrl = 'https://taqe.cusco.gob.pe/publico/web/campeonato/BASES_CAMPEONATO_DE_FUTBOL_Y_VOLEY_INTER_ESCOLAR.pdf';
+    }else {
+      pdfUrl= 'https://taqe.cusco.gob.pe/publico/web/campeonato/1RA_GRAN_BICICLETEADA_FAMILIAR_BASE[1].docx'
+    }
+    // const pdfUrl = 'https://taqe.cusco.gob.pe/publico/web/campeonato/BASES_CAMPEONATO_DE_FUTBOL_Y_VOLEY_INTER_ESCOLAR.pdf';
     window.open(pdfUrl, '_blank');
     window.open('public/images/bases_futbol_voley.pdf', '_blank');
   }

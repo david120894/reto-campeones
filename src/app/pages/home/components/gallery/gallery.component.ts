@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TitlesComponent } from '../titles/titles.component';
 import { Place } from '../../../../core/models/place';
 import { PlaceService } from '../../../../core/services/place.service';
@@ -14,11 +14,15 @@ const NG_MODULES = [CommonModule];
   styleUrl: './gallery.component.scss'
 })
 export class GalleryComponent implements OnInit {
+  @Input() typeSection!: string;
+
+
   places: Place[] = [];
 
   constructor(private placeService: PlaceService) {}
 
   ngOnInit(): void {
+    console.log('data sending',this.typeSection);
     this.placeService.getPlaces().subscribe((data) => {
       this.places = data;
     });
