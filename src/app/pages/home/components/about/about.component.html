@@ -86,7 +86,80 @@
           </div>
         </div>
       </div>
-
+      @if (inputTitle!=='challenge-champions') {
+        <div
+          class="card_desc-about p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow w-full max-w-sm"
+          id="child-5">
+          <div class="flex flex-col items-center text-center h-50 text-[#29293d]">
+            <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
+              <div
+                class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">
+                4
+              </div>
+              <div class="my-auto font-extrabold text-lg md:text-xl border-b-2 border-[#29293d] text-center">
+                Inka's bike perú
+              </div>
+            </div>
+            <div class="text-center d-flex justify-items-center">
+              <img src="championship/inkas-bike.png" alt="pnp" class="">
+            </div>
+          </div>
+        </div>
+        <div
+          class="card_desc-about p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow w-full max-w-sm"
+          id="child-6">
+          <div class="flex flex-col items-center text-center h-50 text-[#29293d]">
+            <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
+              <div
+                class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">
+                4
+              </div>
+              <div class="my-auto font-extrabold text-lg md:text-xl border-b-2 border-[#29293d] text-center">
+                Policia Nacional del Perú
+              </div>
+            </div>
+            <div class="text-center d-flex justify-items-center h-50">
+              <img src="championship/pnp.png" alt="pnp" class="h-30">
+            </div>
+          </div>
+        </div>
+        <div
+          class="card_desc-about p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow w-full max-w-sm"
+          id="child-7">
+          <div class="flex flex-col items-center text-center h-50 text-[#29293d]">
+            <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
+              <div
+                class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">
+                4
+              </div>
+              <div class="my-auto font-extrabold text-lg md:text-xl border-b-2 border-[#29293d] text-center">
+                Distrito de San Sebastian
+              </div>
+            </div>
+            <div class="text-center d-flex justify-items-center h-50 ">
+              <img src="championship/sebastian.png" alt="pnp" class="h-30">
+            </div>
+          </div>
+        </div>
+        <div
+          class="card_desc-about p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow w-full max-w-sm"
+          id="child-8">
+          <div class="flex flex-col items-center text-center h-50 text-[#29293d]">
+            <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
+              <div
+                class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">
+                4
+              </div>
+              <div class="my-auto font-extrabold text-lg md:text-xl border-b-2 border-[#29293d] text-center">
+                Distrito de San Jerónimo
+              </div>
+            </div>
+            <div class="text-center d-flex justify-items-center h-50">
+              <img src="championship/san jeronimo.png" alt="pnp" class="h-30">
+            </div>
+          </div>
+        </div>
+      }
     </div>
   </div>
   <div class="py-2 px-4 about-section">
@@ -108,56 +181,58 @@
 <!--      </div>-->
 <!--    </div>-->
   </div>
-  <div class="py-2 px-4 about-section">
-    <div class="mx-auto px-4">
-      <div class="p-2 mb-4 text-4xl text-center text-white font-extrabold big-title md:text-6xl">
-        <p class="mb-4 text-7xl">Auspiciadores</p>
-      </div>
-      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:gap-12 gallery-container-cards">
-        <div class="bg-white p-6 rounded-lg shadow-lg text-center card-sponsor glow-effect">
-          <div
-            class="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center pulse-border">
+  @if(inputTitle === 'challenge-champions') {
+    <div class="py-2 px-4 about-section">
+      <div class="mx-auto px-4">
+        <div class="p-2 mb-4 text-4xl text-center text-white font-extrabold big-title md:text-6xl">
+          <p class="mb-4 text-7xl">Auspiciadores</p>
+        </div>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:gap-12 gallery-container-cards">
+          <div class="bg-white p-6 rounded-lg shadow-lg text-center card-sponsor glow-effect">
+            <div
+              class="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center pulse-border">
             <span class="text-white font-bold text-xl">
               <img src="auspiciadores/artesanal.jpeg" alt="Artesanal" class="h-24 mr-4">
             </span>
+            </div>
+            <h3 class="text-lg font-bold mb-2">El Marquez</h3>
+            <p class="text-gray-600 text-sm">Asociación Artesanal de Productores</p>
           </div>
-          <h3 class="text-lg font-bold mb-2">El Marquez</h3>
-          <p class="text-gray-600 text-sm">Asociación Artesanal de Productores</p>
-        </div>
 
-        <div class="bg-white p-6 rounded-lg shadow-lg text-center card-sponsor glow-effect">
-          <div
-            class="w-24 h-24 bg-gradient-to-br from-green-500 to-teal-600 rounded-full mx-auto mb-4 flex items-center justify-center pulse-border">
+          <div class="bg-white p-6 rounded-lg shadow-lg text-center card-sponsor glow-effect">
+            <div
+              class="w-24 h-24 bg-gradient-to-br from-green-500 to-teal-600 rounded-full mx-auto mb-4 flex items-center justify-center pulse-border">
             <span class="text-white font-bold text-xl">
               <img src="auspiciadores/aspan.jpg" alt="aspan" class="h-24 mr-4">
             </span>
+            </div>
+            <h3 class="text-lg font-bold mb-2">ASPAN</h3>
+            <p class="text-gray-600 text-sm">Asociación de panificadores de Oropesa</p>
           </div>
-          <h3 class="text-lg font-bold mb-2">ASPAN</h3>
-          <p class="text-gray-600 text-sm">Asociación de panificadores de Oropesa</p>
-        </div>
 
-        <div class="bg-white p-6 rounded-lg shadow-lg text-center card-sponsor glow-effect">
-          <div
-            class="w-24 h-24 bg-gradient-to-br from-red-500 to-orange-600 rounded-full mx-auto mb-4 flex items-center justify-center pulse-border">
+          <div class="bg-white p-6 rounded-lg shadow-lg text-center card-sponsor glow-effect">
+            <div
+              class="w-24 h-24 bg-gradient-to-br from-red-500 to-orange-600 rounded-full mx-auto mb-4 flex items-center justify-center pulse-border">
             <span class="text-white font-bold text-xl">
               <img src="auspiciadores/cuscoFc.png" alt="PowerDrink" class="h-24 mr-4">
             </span>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Futbol Club Cusco</h3>
+            <p class="text-gray-600 text-sm"></p>
           </div>
-          <h3 class="text-lg font-bold mb-2">Futbol Club Cusco</h3>
-          <p class="text-gray-600 text-sm"></p>
-        </div>
 
-        <div class="bg-white p-6 rounded-lg shadow-lg text-center card-sponsor glow-effect">
-          <div
-            class="w-24 h-24 bg-gradient-to-br from-indigo-500 to-pink-600 rounded-full mx-auto mb-4 flex items-center justify-center pulse-border">
+          <div class="bg-white p-6 rounded-lg shadow-lg text-center card-sponsor glow-effect">
+            <div
+              class="w-24 h-24 bg-gradient-to-br from-indigo-500 to-pink-600 rounded-full mx-auto mb-4 flex items-center justify-center pulse-border">
             <span class="text-white font-bold text-xl">
               <img src="auspiciadores/depo.png" alt="SportsMedia" class="h-24 mr-4">
             </span>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Club Deportivo Garcilazo</h3>
+            <!--          <p class="text-gray-600 text-sm">Transmisión Oficial</p>-->
           </div>
-          <h3 class="text-lg font-bold mb-2">Club Deportivo Garcilazo</h3>
-          <!--          <p class="text-gray-600 text-sm">Transmisión Oficial</p>-->
         </div>
       </div>
     </div>
-  </div>
+  }
 </section>

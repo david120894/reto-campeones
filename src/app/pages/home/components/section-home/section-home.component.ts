@@ -20,8 +20,6 @@ interface CarouselItem {
   selector: 'app-section-home',
   standalone: true,
   imports: [
-    NgIf,
-    NgForOf,
     RouterLink,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -29,8 +27,6 @@ interface CarouselItem {
   styleUrls: ['./section-home.component.scss']
 })
 export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  {
-
-
 
   @Output() sectionChanged = new EventEmitter<string>();
   items: CarouselItem[] = [

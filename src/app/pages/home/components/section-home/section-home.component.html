@@ -52,36 +52,43 @@
           </div>
 
         }
-
-
         <!-- Video -->
         <div class="flex justify-center lg:justify-start">
-          <video
-            #videoPlayer
-            src="https://taqe.cusco.gob.pe/publico/web/campeonato/Spot_fin.mp4"
-            type="video/mp4"
-            autoplay
-            loop
-            muted
-            playsinline
-            class="w-full max-w-[480px] rounded-lg shadow-lg aspect-video fade-edges">
-          </video>
+          @if (selectedItem === 'challenge-champions') {
+            <video
+              #videoPlayer
+              src="https://taqe.cusco.gob.pe/publico/web/campeonato/Spot_fin.mp4"
+              type="video/mp4"
+              autoplay
+              loop
+              muted
+              playsinline
+              class="w-full max-w-[480px] rounded-lg shadow-lg aspect-video fade-edges">
+            </video>
+          }@else {
+<!--            <img src="bike/bike-ride.png">-->
+          }
         </div>
       </div>
 
       <!-- Right Content (Llama + efectos) -->
       <div class="w-full relative flex flex-col items-center">
         <div class="flex justify-center lg:justify-start">
-          <video
-            #videoPlayer2
-            src="https://taqe.cusco.gob.pe/publico/web/campeonato/FC.mp4"
-            type="video/mp4"
-            autoplay
-            loop
-            muted
-            playsinline
-            class="w-full h-[800px] rounded-lg shadow-lg aspect-video fade-edges2">
-          </video>
+          @if (selectedItem === 'challenge-champions') {
+            <video
+              #videoPlayer2
+              src="https://taqe.cusco.gob.pe/publico/web/campeonato/FC.mp4"
+              type="video/mp4"
+              autoplay
+              loop
+              muted
+              playsinline
+              class="w-full h-[800px] rounded-lg shadow-lg aspect-video fade-edges2">
+            </video>
+          } @else {
+            <img class="mt-[70px]" src="bike/bike-ride.png">
+          }
+
         </div>
       </div>
     </div>

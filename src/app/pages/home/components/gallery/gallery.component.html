@@ -1,51 +1,60 @@
 
 <section class="gallery-container block" id="gallery">
   <div class="flex items-center justify-center">
-    <h2 class="text-7xl font-bold text-center my-4 mb-6 text-white" style="font-family: Niconne, sans-serif, sans-serif;">Reto de Campeones Qosqo Hatun Llacta-2025</h2>
+    @if (typeSection == 'challenge-champions') {
+      <h2 class="text-7xl font-bold text-center my-4 mb-6 text-white"
+          style="font-family: Niconne, sans-serif, sans-serif;">Reto de Campeones Qosqo Hatun Llacta-2025</h2>
 
+    } @else {
+      <h2 class="text-5xl font-bold text-center my-4 mb-6 text-white">1RA GRAN BICICLETEADA
+        FAMILIAR</h2>
+    }
   </div>
   <div class="lg:col-start-3 lg:col-end-8 pb-8 md:pb-0 md:mt-[40px]">
   </div>
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-12 gallery-container-cards">
     <!-- Video horizontal -->
-    <video src="https://taqe.cusco.gob.pe/publico/web/campeonato/Reto_de_Campeones_Spot_Oficial.mp4"
-           type="video/mp4"
-           controls
-           loop
-           muted
-           class="w-full rounded-lg shadow-lg aspect-video">
-    </video>
+    @if (typeSection == 'challenge-champions') {
+      <video src="https://taqe.cusco.gob.pe/publico/web/campeonato/Reto_de_Campeones_Spot_Oficial.mp4"
+             type="video/mp4"
+             controls
+             loop
+             muted
+             class="w-full rounded-lg shadow-lg aspect-video">
+      </video>
+      <!-- Video vertical con fondo difuminado -->
+      <div class="relative w-full rounded-lg shadow-lg aspect-video overflow-hidden bg-black">
+        <!-- Video principal centrado -->
+        <video
+          src="https://taqe.cusco.gob.pe/publico/web/campeonato/Lanzamiento_1.mp4"
+          type="video/mp4"
+          controls
+          loop
+          muted
+          playsinline
+          class="relative z-10 h-full mx-auto"
+        ></video>
+      </div>
+      <!-- Video horizontal -->
+      <video src="https://taqe.cusco.gob.pe/publico/web/campeonato/Spot.mp4"
+             type="video/mp4"
+             controls
+             loop
+             muted
+             class="w-full rounded-lg shadow-lg aspect-video">
+      </video>
 
-    <!-- Video vertical con fondo difuminado -->
-    <div class="relative w-full rounded-lg shadow-lg aspect-video overflow-hidden bg-black">
-      <!-- Video principal centrado -->
-      <video
-        src="https://taqe.cusco.gob.pe/publico/web/campeonato/Lanzamiento_1.mp4"
-        type="video/mp4"
-        controls
-        loop
-        muted
-        playsinline
-        class="relative z-10 h-full mx-auto"
-      ></video>
-    </div>
-
-
-
-
-    <!-- Video horizontal -->
-    <video src="https://taqe.cusco.gob.pe/publico/web/campeonato/Spot.mp4"
-           type="video/mp4"
-           controls
-           loop
-           muted
-           class="w-full rounded-lg shadow-lg aspect-video">
-    </video>
-
-    <!-- Imágenes -->
-    <img src="championship/apertura.jpg" alt="logo_gdur" class="w-full rounded-lg shadow-lg">
-    <img src="children/children.jpg" alt="logo_gdur" class="w-full rounded-lg shadow-lg">
-    <img src="children/childrenVoley.jpg" alt="logo_gdur" class="w-full rounded-lg shadow-lg">
+      <!-- Imágenes -->
+      <img src="championship/apertura.jpg" alt="logo_gdur" class="w-full rounded-lg shadow-lg">
+      <img src="children/children.jpg" alt="logo_gdur" class="w-full rounded-lg shadow-lg">
+      <img src="children/childrenVoley.jpg" alt="logo_gdur" class="w-full rounded-lg shadow-lg">
+    } @else {
+      <img src="bike-rider/IMG_2199.jpg" alt="logo_gdur" class="w-full rounded-lg shadow-lg">
+      <img src="bike-rider/IMG_2203.jpg" alt="logo_gdur" class="w-full rounded-lg shadow-lg">
+      <img src="bike-rider/IMG_2209.jpg" alt="logo_gdur" class="w-full rounded-lg shadow-lg">
+      <img src="bike-rider/IMG_2210.jpg" alt="logo_gdur" class="w-full rounded-lg shadow-lg">
+      <img src="bike-rider/IMG_2215.jpg" alt="logo_gdur" class="w-full rounded-lg shadow-lg">
+      <img src="bike-rider/IMG_2233.jpg" alt="logo_gdur" class="w-full rounded-lg shadow-lg">
+    }
   </div>
-
 </section>

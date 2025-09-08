@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 import { TitlesComponent } from '../titles/titles.component';
 import { initFlowbite } from 'flowbite';
@@ -15,7 +15,16 @@ const DECLATAIONS = [TitlesComponent];
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })
-export class AboutComponent implements OnInit{
+export class AboutComponent implements OnInit, OnChanges{
+  @Input() typeSection!: string;
+  inputTitle=''
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['typeSection']) {
+      this.inputTitle = changes['typeSection'].currentValue;
+      console.log(this.inputTitle);
+    }
+  }
+
 
   ngOnInit(): void {
     initFlowbite();
