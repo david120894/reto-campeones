@@ -105,8 +105,8 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
     this.seconds = seconds.toString().padStart(2, '0');
   }
 
-  @ViewChild('videoPlayer', { static: true }) videoPlayer!: ElementRef<HTMLVideoElement>;
-  @ViewChild('videoPlayer2', { static: true }) videoPlayer2!: ElementRef<HTMLVideoElement>;
+  @ViewChild('videoPlayer', { static: false }) videoPlayer!: ElementRef<HTMLVideoElement>;
+  @ViewChild('videoPlayer2', { static: false }) videoPlayer2!: ElementRef<HTMLVideoElement>;
 
   ngAfterViewInit(): void {
     const video = this.videoPlayer.nativeElement;
