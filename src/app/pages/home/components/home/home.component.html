@@ -1,15 +1,14 @@
 <!--<app-section-home />-->
 <app-section-home (sectionChanged)="onSectionChanged($event)"></app-section-home>
 <div class="bg-section">
-  <app-presentation />
-  <app-gallery />
-  <app-carrousel />
-  <app-fixture />
-  <app-about />
-  <app-email-form />
+  <app-presentation [typeSection]="sectionChangedValue" />
+  <app-gallery [typeSection]="sectionChangedValue" />
+  <app-carrousel [typeSection]="sectionChangedValue" />
+  <app-fixture [typeSection]="sectionChangedValue" />
+  <app-about [typeSection]="sectionChangedValue" />
+  <app-email-form [typeSection]="sectionChangedValue" />
 </div>
-<!--<app-contact />-->
-<!--<app-features />-->
+
 
 
 

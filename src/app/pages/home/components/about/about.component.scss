@@ -79,6 +79,18 @@ $Akaya: "Akaya Kanadaka", sans-serif;
   animation: changeBg 9s infinite;
 }
 
+#child-6 {
+  animation: changeBg 9s infinite;
+}
+
+#child-7 {
+  animation: changeBg 9s infinite;
+}
+
+#child-8 {
+  animation: changeBg 9s infinite;
+}
+
 @keyframes changeBg {
 
     0% {
@@ -148,6 +160,25 @@ $Akaya: "Akaya Kanadaka", sans-serif;
     #child-3{
         animation: none;
     }
+  #child-4 {
+    animation: none;
+  }
+
+  #child-5 {
+    animation: none;
+  }
+
+  #child-6 {
+    animation: none;
+  }
+  #child-7 {
+    animation: none;
+  }
+
+  #child-8 {
+    animation: none;
+  }
+
 }
 
 @keyframes fadeInUp {
@@ -162,6 +193,22 @@ $Akaya: "Akaya Kanadaka", sans-serif;
 .card-sponsor:nth-child(2) { animation-delay: 0.4s; }
 .card-sponsor:nth-child(3) { animation-delay: 0.6s; }
 .card-sponsor:nth-child(4) { animation-delay: 0.8s; }
+
+.card-sponsor:nth-child(5) {
+  animation-delay: 0.2s;
+}
+
+.card-sponsor:nth-child(6) {
+  animation-delay: 0.4s;
+}
+
+.card-sponsor:nth-child(7) {
+  animation-delay: 0.6s;
+}
+
+.card-sponsor:nth-child(8) {
+  animation-delay: 0.8s;
+}
 
 /* Pulso en los círculos */
 @keyframes pulse {
@@ -269,6 +316,26 @@ $Akaya: "Akaya Kanadaka", sans-serif;
 }
 
 .parallax>use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+
+.parallax > use:nth-child(5) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+
+.parallax > use:nth-child(6) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+
+.parallax > use:nth-child(7) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+
+.parallax > use:nth-child(8) {
   animation-delay: -5s;
   animation-duration: 20s;
 }

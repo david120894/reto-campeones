@@ -6,46 +6,23 @@
     <div class="w-full mb-6 text-6xl font-bold text-center title">Inscripción
     </div>
     <div class="flex flex-col items-center justify-between order-1 md:flex-row">
-<!--      <div class="email-description flex flex-col justify-between w-full md:w-[45%]">-->
-<!--        <div-->
-<!--          class="w-[90%] card-title flex flex-col items-center justify-center text-center">-->
-<!--          <div class="text-xl font-normal subtitle">-->
-<!--            "RECUERDA QUE PARA VALIDAR SU CODIGO DE INSCRIPCIÓN DEBERA TRAER UN KILO DE ALIMENTO NO PERECIBLE-->
-<!--            PARA FOMENTAR LA SOLIDARIDAD. CORRE CON AMOR, CORRE CON PROPÓSITO."-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="hidden w-full md:block">-->
-<!--          <div class="flex items-center justify-center pt-4">-->
-<!--            <div class="custom-img">-->
-<!--              <img-->
-<!--                src="images/round_log.png"-->
-<!--                alt="Logo del Sol"-->
-<!--                class="h-auto"-->
-<!--              />-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
       <div
-        class="order-first w-full md:w-[45%] card-form flex flex-col flex-wrap my-8 md:mt-[30px] p-2 rounded-md border-2 border-solid border-[#7F8C99] items-center justify-center"
+        class="order-first card-form flex flex-col md:mt-[30px]
+         p-4 rounded-md border-2 border-solid border-[#7F8C99]
+         items-center justify-start relative min-h-screen overflow-hidden
+         w-[1000px] mx-auto"
       >
-        <img src="images/porta3.jpg">
 
+      <img src="bike/bike-ride.png"
+             class="absolute opacity-15 w-[400px] top-[100px] left-1/2 -translate-x-1/2 pointer-events-none select-none"
+             alt="Marca de agua" />
         <form
           [formGroup]="formulario"
           (submit)="saveRegistration()"
           class="form-container w-[95%]"
         >
-          <div class="flex flex-col items-center justify-between mb-6 md:flex-row">
+          <div class="flex flex-col items-center justify-between md:flex-row">
           </div>
-          <!-- Botón de Ver Registro -->
-          <!--          <button-->
-          <!--            type="button"-->
-          <!--            class="w-full py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"-->
-          <!--            (click)="openModal()"-->
-          <!--          >-->
-          <!--            Ver Registro-->
-          <!--          </button>-->
 
           <div class="flex mt-8 mb-4">
             <span
@@ -557,8 +534,10 @@
                 </div>
 
                 <div *ngIf="showTerms"
-                     class="text-justify text-gray-700 mt-2 max-h-[200px] overflow-y-auto pr-2
-            border rounded-lg p-3 bg-gray-50 w-full max-w-[1000px]">
+                     class="w-full text-justify text-gray-700 mt-2
+             overflow-y-auto pr-2
+            border rounded-lg p-3 bg-gray-50">
+
                   <p>
                     DECLARACIÓN DE EXONERACION DE RESPONSABILIDAD CIVIL CONTRACTUAL
                     Declaro que en forma voluntaria he decido participar en la 1RA GRAN BICICLETEADA FAMILIAR “KUSKA MUYUSUNCHIS” 2025
@@ -588,7 +567,7 @@
               </div>
             </label>
           </div>
-          <div class="flex justify-end gap-4 mt-6">
+          <div class="flex justify-end gap-4 mt-6 mb-2">
             <div *ngIf="formulario.get('termsAndConditions')?.touched && formulario.get('termsAndConditions')?.invalid"
                  class="text-red-600 text-sm mt-2">
               Debes aceptar los términos y condiciones.
@@ -627,7 +606,6 @@
               </button>
             </div>
           </div>
-
         </form>
       </div>
     </div>
@@ -661,7 +639,4 @@
   <!--      </button>-->
   <!--    </div>-->
   <!--  </div>-->
-  <h1>Rossy <3 & D</h1>
-
-
 </section>
