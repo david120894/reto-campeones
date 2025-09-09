@@ -39,19 +39,11 @@
         Resultados: {{ fechaSeleccionada?.nombre }} - {{ nivelSeleccionado?.nombre }} - {{ deporteSeleccionado.nombre }}
       </h3>
 
-      <div class="grid justify-center justify-items-center gap-6"
-           [ngClass]="{
-       'grid-cols-1': deporteSeleccionado.grupos.length === 1,
-       'grid-cols-2': deporteSeleccionado.grupos.length === 2,
-       'grid-cols-3': deporteSeleccionado.grupos.length === 3,
-       'grid-cols-4': deporteSeleccionado.grupos.length >= 4
-     }">
+      <div class="grid justify-center justify-items-center gap-6
+            grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         <app-standings-table
-          [ngClass]="{
-      'max-w-lg w-full': deporteSeleccionado.grupos.length === 1,
-      'w-full': deporteSeleccionado.grupos.length > 1
-    }"
           *ngFor="let grupo of deporteSeleccionado.grupos"
+          class="w-full max-w-lg"
           [titulo]="fechaSeleccionada?.nombre + ' | ' + nivelSeleccionado?.nombre + ' | ' + deporteSeleccionado.nombre"
           [nivel]="nivelSeleccionado!.nombre"
           [grupo]="grupo.nombre"
@@ -60,6 +52,7 @@
           [equipos]="grupo?.equipos!">
         </app-standings-table>
       </div>
+
 
     </ng-container>
   </section>
