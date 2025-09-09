@@ -28,7 +28,6 @@ export class CarrouselComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['typeSection']) {
-      console.log('typeSection changed:', this.typeSection);
     }
   }
   ngOnInit(): void {
