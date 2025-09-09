@@ -130,7 +130,6 @@ export class UserRegisterComponent {
   selectCategory(): void {
     const age = this.formulario.get('age')?.value
     const gender = this.formulario.get('gender')?.value
-    console.log(this.formulario)
     if (age && gender) {
       let category = ''
       if (age >= 12) {
@@ -169,7 +168,6 @@ export class UserRegisterComponent {
       reader.onloadend = () => {
         this.archivoParentalBase64 = reader.result as string
         this.formulario.get('file')?.setValue(reader.result as string)
-        console.log(this.archivoParentalBase64)
       }
 
       reader.readAsDataURL(file) // Leer como Data URL (Base64)
@@ -202,30 +200,28 @@ export class UserRegisterComponent {
       termsAndConditions: this.formulario.get('termsAndConditions')?.value,
       underage: this.formulario.get('underage')?.value,
     }
-    console.log(params);
-    // this.reservationService.saveRegister(params).subscribe({
-    //   next: (response) => {
-    //     console.log(response)
-    //     this.objectRegister = response
-    //     const nameImg = this.objectRegister.qrCode.image
-    //     this.formulario.reset()
-    //
-    //     this.mensajeExito = 'Se guardó correctamente'
-    //     setTimeout(() => {
-    //       this.mensajeExito = null
-    //     }, 3000)
-    //
-    //     this.imageModal = nameImg
-    //     this.showModal = true
-    //   },
-    //   error: (err) => {
-    //     console.error(err)
-    //   },
-    // })
+    this.reservationService.saveRegister(params).subscribe({
+      next: (response) => {
+        this.objectRegister = response
+        const nameImg = this.objectRegister.qrCode.image
+        this.formulario.reset()
+
+        this.mensajeExito = 'Se guardó correctamente'
+        setTimeout(() => {
+          this.mensajeExito = null
+        }, 3000)
+
+        this.imageModal = nameImg
+        this.showModal = true
+      },
+      error: (err) => {
+        console.error(err)
+      },
+    })
   }
 
   downloadParentalPermission() {
-    const parentalPermissionUrl = 'https://taqe.cusco.gob.pe/publico/eventos/2025/hatun-phaway/anxo2.docx'
+    const parentalPermissionUrl = 'https://taqe.cusco.gob.pe/publico/web/campeonato/ANEXO%2002.%20BICICLETEADA.docx'
     const link = document.createElement('a')
     link.href = parentalPermissionUrl
     link.download = 'parental-permission.pdf'
@@ -234,7 +230,6 @@ export class UserRegisterComponent {
 
   searchByDni() {
     const dni = this.search['searchDni'].value
-    console.log(dni)
     this.reservationService.searchByDni(dni).subscribe({
       next: (response) => {
         this.objectRegister = response

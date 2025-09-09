@@ -22,7 +22,6 @@ export class GalleryComponent implements OnInit {
   constructor(private placeService: PlaceService) {}
 
   ngOnInit(): void {
-    console.log('data sending',this.typeSection);
     this.placeService.getPlaces().subscribe((data) => {
       this.places = data;
     });

@@ -7,8 +7,11 @@ import {
   OnInit, Output,
   ViewChild,
 } from '@angular/core';
-import { NgForOf, NgIf } from '@angular/common'
+import { DatePipe, NgClass, NgForOf, NgIf } from '@angular/common'
 import { RouterLink } from '@angular/router'
+import { ResponseRegisterModels } from '../../../../core/models/response.register.models'
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { ReservationService } from '../../../../core/services/reservation.service'
 
 interface CarouselItem {
   type: 'image' | 'video';
@@ -21,6 +24,12 @@ interface CarouselItem {
   standalone: true,
   imports: [
     RouterLink,
+    NgIf,
+    NgForOf,
+    NgClass,
+    DatePipe,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './section-home.component.html',
@@ -28,10 +37,26 @@ interface CarouselItem {
 })
 export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  {
 
+  objectRegister: ResponseRegisterModels | null = null;
+
+  isModalOpen = false;
+  imageModal: string = '';
+  showModal = false;
+
+  mensajeExito: string | null = null;
+
+
+  formSearchDni: FormGroup = new FormGroup({
+    searchDni: new FormControl(''),
+  });
+
+  get search() {
+    return this.formSearchDni.controls;
+  }
   @Output() sectionChanged = new EventEmitter<string>();
   items: CarouselItem[] = [
+    { type: 'image', src: 'bike/bike-ride.png', title: 'Imagen 2' },
     { type: 'image', src: 'championship/logo1.png', title: 'Imagen 1' },
-    { type: 'image', src: 'championship/logo2.png', title: 'Imagen 2' },
   ];
 
   selectedItem = ''
@@ -44,10 +69,31 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
 
   private intervalId: any;
 
+  constructor(
+    private reservationService: ReservationService,
+    ) {}
+
   ngOnInit() {
     this.updateCountdown();
     this.intervalId = setInterval(() => this.updateCountdown(), 1000);
     this.selectItem(0);
+  }
+
+  searchByDni() {
+    const dni = this.search['searchDni'].value;
+    this.reservationService.searchByDni(dni).subscribe({
+      next: (response) => {
+        this.objectRegister = response;
+        this.imageModal = this.objectRegister.qrCode.image;
+        this.showModal = true;
+        this.formSearchDni.reset();
+        this.closeModal();
+      },
+      error: (error) => {
+        console.error('Usuario no registrado aun');
+        this.mensajeExito = 'El DNI ingresado no está registrado.';
+      },
+    });
   }
 
 
@@ -72,15 +118,13 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
 
   selectItem(index: number) {
     const item: Record<string, string> = {
-      0:"challenge-champions",
-      1:"bike-ride",
+      0:"bike-ride",
+      1:"challenge-champions",
       // 3:"interscholastic-championship",
     }
     this.selectedItem = item[index] || '';
-    console.log(this.selectedItem);
     this.currentIndex = index;
     this.sectionChanged.emit(this.selectedItem);
-    console.log(this.currentIndex);
   }
 
   private updateCountdown() {
@@ -109,19 +153,87 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
   @ViewChild('videoPlayer2', { static: false }) videoPlayer2!: ElementRef<HTMLVideoElement>;
 
   ngAfterViewInit(): void {
-    const video = this.videoPlayer.nativeElement;
-    const video2 = this.videoPlayer2.nativeElement;
+    if (this.videoPlayer) {
+      const video = this.videoPlayer.nativeElement;
+      video.muted = true;
+      video.playsInline = true;
+      video.play().catch(err => console.warn('Autoplay bloqueado:', err));
+    }
 
-    video.muted = true;
-    video.playsInline = true;
-    video2.muted = true;
-    video2.playsInline = true;
+    if (this.videoPlayer2) {
+      const video2 = this.videoPlayer2.nativeElement;
+      video2.muted = true;
+      video2.playsInline = true;
+      video2.play().catch(err => console.warn('Autoplay bloqueado:', err));
+    }
+  }
 
-    video.play().catch(err => {
-      console.warn('⚠️ Autoplay bloqueado por Chrome, esperando interacción del usuario:', err);
-    });
-    video2.play().catch(err => {
-      console.warn('⚠️ Autoplay bloqueado por Chrome, esperando interacción del usuario:', err);
-    });
+  printModal() {
+    const modalContentElement = document.querySelector('.modal-content');
+
+    if (modalContentElement) {
+      const clonedContent = modalContentElement.cloneNode(true) as HTMLElement;
+
+      const noPrintElements = clonedContent.querySelectorAll('.no-print');
+      noPrintElements.forEach(el => el.remove());
+
+      const originalContent = document.body.innerHTML;
+
+      document.body.innerHTML = `
+      <html>
+        <head>
+          <style>
+            body {
+              font-family: Arial, sans-serif;
+              text-align: center;
+              margin: 0;
+              padding: 0;
+              height: 100vh;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+            }
+            img {
+              max-width: 300px;
+              margin-bottom: 20px;
+              display: block;
+            }
+            h5 {
+              margin: 8px 0;
+              font-size: 16px;
+            }
+            .content-wrapper {
+              text-align: center;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="content-wrapper">
+            ${clonedContent.innerHTML}
+          </div>
+        </body>
+      </html>
+    `;
+
+      window.print();
+
+      setTimeout(() => {
+        document.body.innerHTML = originalContent;
+        window.location.reload();
+      }, 1000);
+    }
+  }
+
+  openModal() {
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
+
+  closeModalPrint() {
+    this.showModal = false;
   }
 }

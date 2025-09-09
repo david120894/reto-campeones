@@ -2,16 +2,33 @@
 <section class="gallery-container block" id="gallery">
   <div class="flex items-center justify-center">
     @if (typeSection == 'challenge-champions') {
-      <h2 class="text-7xl font-bold text-center my-4 mb-6 text-white"
+      <h2 class="text-7xl font-bold text-center my-4 mb-3 text-white"
           style="font-family: Niconne, sans-serif, sans-serif;">Reto de Campeones Qosqo Hatun Llacta-2025</h2>
 
     } @else {
-      <h2 class="text-5xl font-bold text-center my-4 mb-6 text-white">1RA GRAN BICICLETEADA
+      <h2 class="text-4xl font-bold text-center my-4 text-white">1RA GRAN BICICLETEADA
         FAMILIAR</h2>
     }
   </div>
-  <div class="lg:col-start-3 lg:col-end-8 pb-8 md:pb-0 md:mt-[40px]">
+  <div class="lg:col-start-3 lg:col-end-8 md:pb-0 md:mt-[40px]">
   </div>
+  @if (typeSection == 'bike-ride') {
+    <h2 class="text-4xl font-bold text-center my-4 mb-6 text-white">RECORRIDO</h2>
+    <div class="flex justify-center mb-8">
+      <div class="relative w-[800px]  rounded-lg shadow-lg aspect-video overflow-hidden bg-black">
+        <video
+          src="https://video.relive.cc/6247752007571_dc335eb9a7e3-357a-ae94-09fb-1f5db1a7_relive-tracker_1757006083932.mp4?x-ref=site"
+          type="video/mp4"
+          autoplay
+          controls
+          loop
+          muted
+          playsinline
+          class="relative z-10 h-full mx-auto"
+        ></video>
+      </div>
+    </div>
+  }
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-12 gallery-container-cards">
     <!-- Video horizontal -->
     @if (typeSection == 'challenge-champions') {
