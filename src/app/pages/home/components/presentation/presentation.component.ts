@@ -71,7 +71,6 @@ export class PresentationComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['typeSection']) {
-      console.log('data sending', this.typeSection);
     }
   }
 

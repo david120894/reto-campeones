@@ -2,7 +2,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 
 import { TitlesComponent } from '../titles/titles.component';
 import { initFlowbite } from 'flowbite';
-import { NgClass, NgForOf } from '@angular/common'
+import { NgClass, NgForOf, NgIf } from '@angular/common'
 
 const DECLATAIONS = [TitlesComponent];
 
@@ -11,6 +11,7 @@ const DECLATAIONS = [TitlesComponent];
 @Component({
   selector: 'app-about',
   imports: [
+    NgIf,
   ],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
@@ -21,7 +22,6 @@ export class AboutComponent implements OnInit, OnChanges{
   ngOnChanges(changes: SimpleChanges) {
     if (changes['typeSection']) {
       this.inputTitle = changes['typeSection'].currentValue;
-      console.log(this.inputTitle);
     }
   }
 

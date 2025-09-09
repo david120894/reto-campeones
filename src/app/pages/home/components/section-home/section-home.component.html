@@ -16,7 +16,6 @@
       <!-- Left Content -->
       <div class="w-full lg:w-1/2 text-center lg:text-left">
 
-
         <!-- Texto -->
         @if (selectedItem === 'challenge-champions') {
           <div class="flex justify-center lg:justify-start mt-[100px] sm:mt-32 md:mt-20 w-full">
@@ -32,23 +31,26 @@
           <div class="lg:w-1/2 text-center mt-[80px] lg:text-left mb-10 lg:mb-3">
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 font-bebas tracking-wide">
               1RA GRAN BICICLETEADA<br>
-              <span class="text-yellow-400">FAMILIAR</span><br>
+              <span class="text-orange-500">FAMILIAR</span><br>
               "KUSKA MUYUSUNCHIS 2025"
             </h1>
-<!--            <p class="text-lg md:text-xl text-white mb-8 max-w-lg mx-auto lg:mx-0">-->
-<!--              El torneo escolar más competitivo del año donde las mejores instituciones educativas se enfrentarán por el-->
-<!--              título de campeón.-->
-<!--            </p>-->
+            <p class="text-lg md:text-xl text-justify text-white max-w-lg mx-auto lg:mx-0">
+              Recuerda que la inscripción se validara con la entrega de Juguetes (nuevos o seminuevos), Artículos de Limpieza, Pañales para adulto mayor
+            </p>
+            <p class="text-lg md:text-xl text-justify text-orange-400 mb-8 font-semibold" >
+              “Pedalea con el corazón, Llega a la meta con el Propósito de compartir y promueve la solidaridad”
+            </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a routerLink="/user-register"
-                 class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-lg text-lg transition duration-300 transform hover:scale-105">
+                 class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-300 transform hover:scale-105">
                 ¡Inscribete!
               </a>
-<!--              <a href="#info"-->
-<!--                 class="bg-transparent border-2 border-white hover:bg-white hover:text-black text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-300">-->
-<!--                Más información-->
-<!--              </a>-->
+              <a (click)="openModal()"
+                 class="bg-pink-800 hover:bg-pink-900 text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-300 transform hover:scale-105">
+                ¡Ver Registro!
+              </a>
             </div>
+
           </div>
 
         }
@@ -92,33 +94,99 @@
         </div>
       </div>
     </div>
-<!--    <div class="carousel-container">-->
-<!--      <h2 class="text-3xl font-bold text-center text-white">Proximos eventos...</h2>-->
-<!--      <div class="carousel-content">-->
-<!--        <ng-container *ngIf="currentItem.type === 'image'">-->
-<!--          <img [src]="currentItem.src" [alt]="currentItem.title" class="aspect-video fade-edges carousel-img" />-->
-<!--        </ng-container>-->
-<!--        <ng-container *ngIf="currentItem.type === 'video'">-->
-<!--          <video [src]="currentItem.src"-->
-<!--                 autoplay-->
-<!--                 loop-->
-<!--                 muted-->
-<!--                 playsinline-->
-<!--                 controls-->
-<!--                 class="aspect-video fade-edges carousel-video"></video>-->
-<!--        </ng-container>-->
-<!--      </div>-->
-<!--      &lt;!&ndash; Botones &ndash;&gt;-->
-<!--      <button (click)="prev()" class="btn prev">⟨</button>-->
-<!--      <button (click)="next()" class="btn next">⟩</button>-->
-<!--      &lt;!&ndash; Indicadores &ndash;&gt;-->
-<!--      <div class="indicators">-->
-<!--    <span-->
-<!--      *ngFor="let item of items; let i = index"-->
-<!--      (click)="selectItem(i)"-->
-<!--      [class.active]="i === currentIndex">-->
-<!--    </span>-->
-<!--      </div>-->
-<!--    </div>-->
+    <div class="carousel-container relative max-w-4xl mx-auto mt-12">
+      <!-- Título -->
+      <h2 class="text-4xl md:text-4xl font-extrabold text-yellow-400 whitespace-nowrap
+             animate-marquee">
+        🚀 Próximos eventos 🚀 Próximos eventos 🚀 Próximos eventos
+      </h2>
+      <!-- Contenido del carrusel -->
+      <div class="carousel-content relative overflow-hidden rounded-2xl shadow-lg">
+        <ng-container *ngIf="currentItem.type === 'image'">
+          <img [src]="currentItem.src"
+               [alt]="currentItem.title"
+               class="w-full h-[200px] object-contain transition-opacity duration-700 ease-in-out fade-edges" />
+        </ng-container>
+
+        <ng-container *ngIf="currentItem.type === 'video'">
+          <video [src]="currentItem.src"
+                 autoplay
+                 loop
+                 muted
+                 playsinline
+                 controls
+                 class="w-full h-[500px] object-cover transition-opacity duration-700 ease-in-out fade-edges"></video>
+        </ng-container>
+
+        <!-- Botones de navegación (flechas) -->
+        <button (click)="prev()"
+                class="absolute top-1/2 left-3 transform -translate-y-1/2 bg-black/60 text-white p-3 rounded-full hover:bg-black/80 transition z-10">
+          ⟨
+        </button>
+        <button (click)="next()"
+                class="absolute top-1/2 right-3 transform -translate-y-1/2 bg-black/60 text-white p-3 rounded-full hover:bg-black/80 transition z-10">
+          ⟩
+        </button>
+      </div>
+
+      <!-- Indicadores -->
+      <div class="flex justify-center mt-4 gap-2">
+    <span *ngFor="let item of items; let i = index"
+          (click)="selectItem(i)"
+          class="w-3 h-3 rounded-full cursor-pointer transition-all duration-300"
+          [ngClass]="i === currentIndex ? 'bg-yellow-400 scale-110' : 'bg-gray-400 hover:bg-gray-300'">
+    </span>
+      </div>
+    </div>
+    <div id="myModal" class="modal" [class.show]="showModal">
+      <div class="modal-content">
+        <span class="close no-print" (click)="closeModalPrint()">&times;</span>
+        <h2 class="no-print">Guarde o Imprime su código QR</h2>
+        <br>
+        <img [src]="imageModal" alt="Imagen" style="max-width: 100%; display: block; margin: auto;">
+        <div class="text-center justify-start">
+          <h5>Fecha Inscripción: {{ objectRegister?.createAt | date:'yyyy-MM-dd HH:mm' }}</h5>
+          <h5>DNI: {{ objectRegister?.dni }}</h5>
+          <h5>Nombre: {{ objectRegister?.name }} {{ objectRegister?.lastName }}</h5>
+          <h5>Categoría: {{ objectRegister?.category }}</h5>
+          <h5>Talla: {{ objectRegister?.shirtSize }}</h5>
+        </div>
+        <br>
+        <button
+          (click)="printModal()"
+          class="no-print style-print">
+          Imprimir
+        </button>
+      </div>
+    </div>
+    <div [formGroup]="formSearchDni" *ngIf="isModalOpen" class="fixed inset-0 z-10 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+      <div class="bg-white rounded-lg p-6 w-full max-w-md mx-4 sm:mx-0">
+        <h3 class="text-xl font-semibold mb-4">Buscar Registro por DNI</h3>
+        <div>
+          <div class="mb-4">
+            <label for="dniInput" class="block text-sm font-medium text-gray-700">DNI</label>
+            <input
+              type="text"
+              id="dniInput"
+              formControlName="searchDni"
+              required
+              maxlength="30"
+              class="rounded-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-[#2D3136] focus:border-[#2D3136] w-full p-2"
+              placeholder="Ingrese su DNI"
+            />
+          </div>
+          <div *ngIf="mensajeExito" class="bg-green-100 border border-green-400 text-green-700 px-4 py-2 rounded mb-4">
+            {{ mensajeExito }}
+          </div>
+          <button (click)="searchByDni()" type="submit" class="w-full py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+            Buscar
+          </button>
+        </div>
+        <button (click)="closeModal()" class="mt-4 w-full py-2 bg-gray-300 text-black rounded-lg hover:bg-gray-400">
+          Cerrar
+        </button>
+      </div>
+    </div>
+
   </div>
 </section>

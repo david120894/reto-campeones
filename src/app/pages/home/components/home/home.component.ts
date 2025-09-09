@@ -31,6 +31,5 @@ export class HomeComponent implements OnInit {
 
   onSectionChanged(newSection: string) {
     this.sectionChangedValue = newSection;
-    console.log(newSection);
   }
 }

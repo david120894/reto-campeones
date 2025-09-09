@@ -28,21 +28,21 @@
       </div>
 
       <!-- CARD 2 -->
-      <div
+      <div *ngIf="inputTitle==='bike-ride'"
         class="card_desc-about p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow w-full max-w-sm"
-        id="child-2">
-        <div class="flex flex-col items-center text-[#29293d] justify-center description-title">
+           id="child-6">
+        <div class="flex flex-col items-center text-center h-50 text-[#29293d]">
           <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
             <div
-              class="number w-[50px] h-[50px] text-white rounded-full border-2 border-white flex items-center justify-center bg-[#29293d] font-extrabold">
+              class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">
               2
             </div>
             <div class="my-auto font-extrabold text-lg md:text-xl border-b-2 border-[#29293d] text-center">
-              Instituto Peruano del Deporte
+              Policia Nacional del Perú
             </div>
           </div>
-          <div class="flex flex-col justify-center text-center h-50">
-            <img src="championship/ipd.png" alt="pnp" class="h-30">
+          <div class="text-center d-flex justify-items-center h-50">
+            <img src="championship/pnp.png" alt="pnp" class="h-30">
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@
           <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
             <div
               class="number w-[50px] text-white h-[50px] rounded-full border-2 border-white flex items-center justify-center bg-[#29293d] font-extrabold">
-              3
+              {{ inputTitle === 'challenge-champions' ? 2 : 3 }}
             </div>
             <div class="my-auto font-extrabold text-lg md:text-xl border-b-2 border-[#29293d] text-center">
               Sociedad de Beneficencia del Cusco
@@ -63,6 +63,24 @@
           </div>
           <div class="text-center d-flex justify-items-center h-50">
             <img src="championship/beneficencia.png" alt="pnp" class="h-30">
+          </div>
+        </div>
+      </div>
+      <div
+        class="card_desc-about p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow w-full max-w-sm"
+        id="child-2">
+        <div class="flex flex-col items-center text-[#29293d] justify-center description-title">
+          <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
+            <div
+              class="number w-[50px] h-[50px] text-white rounded-full border-2 border-white flex items-center justify-center bg-[#29293d] font-extrabold">
+              {{ inputTitle === 'challenge-champions' ? 3 : 4 }}
+            </div>
+            <div class="my-auto font-extrabold text-lg md:text-xl border-b-2 border-[#29293d] text-center">
+              Instituto Peruano del Deporte
+            </div>
+          </div>
+          <div class="flex flex-col justify-center text-center h-50">
+            <img src="championship/ipd.png" alt="pnp" class="h-30">
           </div>
         </div>
       </div>
@@ -75,7 +93,7 @@
           <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
             <div
               class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">
-              4
+              {{inputTitle === 'challenge-champions' ? 4 : 5}}
             </div>
             <div class="my-auto font-extrabold text-lg md:text-xl border-b-2 border-[#29293d] text-center">
               Proyecto Cusco Deportes
@@ -86,7 +104,7 @@
           </div>
         </div>
       </div>
-      @if (inputTitle!=='challenge-champions') {
+      @if (inputTitle==='bike-ride') {
         <div
           class="card_desc-about p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow w-full max-w-sm"
           id="child-5">
@@ -94,7 +112,7 @@
             <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
               <div
                 class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">
-                4
+                6
               </div>
               <div class="my-auto font-extrabold text-lg md:text-xl border-b-2 border-[#29293d] text-center">
                 Inka's bike perú
@@ -105,81 +123,71 @@
             </div>
           </div>
         </div>
-        <div
-          class="card_desc-about p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow w-full max-w-sm"
-          id="child-6">
-          <div class="flex flex-col items-center text-center h-50 text-[#29293d]">
-            <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
-              <div
-                class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">
-                4
-              </div>
-              <div class="my-auto font-extrabold text-lg md:text-xl border-b-2 border-[#29293d] text-center">
-                Policia Nacional del Perú
-              </div>
-            </div>
-            <div class="text-center d-flex justify-items-center h-50">
-              <img src="championship/pnp.png" alt="pnp" class="h-30">
-            </div>
-          </div>
-        </div>
-        <div
-          class="card_desc-about p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow w-full max-w-sm"
-          id="child-7">
-          <div class="flex flex-col items-center text-center h-50 text-[#29293d]">
-            <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
-              <div
-                class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">
-                4
-              </div>
-              <div class="my-auto font-extrabold text-lg md:text-xl border-b-2 border-[#29293d] text-center">
-                Distrito de San Sebastian
-              </div>
-            </div>
-            <div class="text-center d-flex justify-items-center h-50 ">
-              <img src="championship/sebastian.png" alt="pnp" class="h-30">
-            </div>
-          </div>
-        </div>
-        <div
-          class="card_desc-about p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow w-full max-w-sm"
-          id="child-8">
-          <div class="flex flex-col items-center text-center h-50 text-[#29293d]">
-            <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
-              <div
-                class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">
-                4
-              </div>
-              <div class="my-auto font-extrabold text-lg md:text-xl border-b-2 border-[#29293d] text-center">
-                Distrito de San Jerónimo
-              </div>
-            </div>
-            <div class="text-center d-flex justify-items-center h-50">
-              <img src="championship/san jeronimo.png" alt="pnp" class="h-30">
-            </div>
-          </div>
-        </div>
       }
     </div>
   </div>
-  <div class="py-2 px-4 about-section">
-<!--    <div class="mx-auto px-4">-->
-<!--      <div class="p-2 mb-4 text-4xl text-center text-white font-extrabold big-title md:text-6xl">-->
-<!--        <p class="mb-4 text-7xl">Patrocinador Oficial</p>-->
-<!--        <div>-->
-<!--          <div class="p-6 rounded-lg shadow-lg text-center card-sponsor glow-effect">-->
-<!--            <div-->
-<!--              class="w-24 h-24 bg-gradient-to-br bg-white mx-auto mb-4 flex items-center justify-center pulse-border">-->
-<!--            <span class="text-white font-bold text-xl">-->
-<!--              <img src="auspiciadores/depo.png" alt="SportsMedia" class="">-->
-<!--            </span>-->
-<!--            </div>-->
-<!--            <h3 class="text-lg font-bold mb-2">Club Deportivo Garcilazo</h3>-->
-<!--            &lt;!&ndash;          <p class="text-gray-600 text-sm">Transmisión Oficial</p>&ndash;&gt;-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
+  <div class="py-2 px-4 about-section" *ngIf="inputTitle==='bike-ride'">
+    <div class="mx-auto px-4">
+      <div class="p-2 mb-4 text-4xl text-center text-white font-extrabold big-title md:text-6xl">
+        <p class="mb-4 text-7xl">Coorganizadores</p>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-12 gallery-container-cards">
+          <div
+            class="card_desc-about p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow w-full max-w-sm"
+            id="child-8">
+            <div class="flex flex-col items-center text-center h-50 text-[#29293d]">
+              <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
+                <div
+                  class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">
+                  1
+                </div>
+                <div class="my-auto font-extrabold text-lg md:text-xl border-b-2 border-[#29293d] text-center">
+                  Distrito de San Jerónimo
+                </div>
+              </div>
+              <div class="text-center d-flex justify-items-center h-50">
+                <img src="championship/san jeronimo.png" alt="pnp" class="h-30">
+              </div>
+            </div>
+          </div>
+          <div
+            class="card_desc-about p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow w-full max-w-sm"
+            id="child-7">
+            <div class="flex flex-col items-center text-center h-50 text-[#29293d]">
+              <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
+                <div
+                  class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">
+                  2
+                </div>
+                <div class="my-auto font-extrabold text-lg md:text-xl border-b-2 border-[#29293d] text-center">
+                  Distrito de San Sebastian
+                </div>
+              </div>
+              <div class="text-center d-flex justify-items-center h-50 ">
+                <img src="championship/sebastian.png" alt="pnp" class="h-30">
+              </div>
+            </div>
+          </div>
+          <div
+            class="card_desc-about p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow w-full max-w-sm"
+            id="child-7">
+            <div class="flex flex-col items-center text-center h-50 text-[#29293d]">
+              <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
+                <div
+                  class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">
+                  3
+                </div>
+                <div class="my-auto font-extrabold text-lg md:text-xl border-b-2 border-[#29293d] text-center">
+                  Distrito de Santiago
+                </div>
+              </div>
+              <div class="text-center d-flex justify-items-center h-50 ">
+                <img src="championship/santiago.jpg" alt="pnp" class="h-30">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   @if(inputTitle === 'challenge-champions') {
     <div class="py-2 px-4 about-section">
