@@ -54,7 +54,6 @@ export interface NivelEducacion {
     NgForOf,
     NgIf,
     FormsModule,
-    NgClass,
   ],
   templateUrl: './presentation.component.html',
   styleUrls: ['./presentation.component.scss',]
