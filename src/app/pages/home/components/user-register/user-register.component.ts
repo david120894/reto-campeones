@@ -221,7 +221,7 @@ export class UserRegisterComponent {
   }
 
   downloadParentalPermission() {
-    const parentalPermissionUrl = 'https://taqe.cusco.gob.pe/publico/web/campeonato/ANEXO%2002.%20BICICLETEADA.docx'
+    const parentalPermissionUrl = 'https://taqe.cusco.gob.pe/publico/web/campeonato/autorizacion-anexo2.docx'
     const link = document.createElement('a')
     link.href = parentalPermissionUrl
     link.download = 'parental-permission.pdf'
