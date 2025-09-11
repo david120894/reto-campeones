@@ -39,6 +39,7 @@
 
 
     <!-- =================== FILA 1: GRUPOS A y B =================== -->
+    <!-- =================== FILA 1: GRUPOS A y B =================== -->
     <div class="grid gap-6 justify-center gallery-container-cards"
          style="margin-top: 10px"
          [ngClass]="{
@@ -47,8 +48,8 @@
     'md:grid-cols-2': gruposConFechas.length === 2,
     'md:grid-cols-1': gruposConFechas.length === 1
   }">
-      <div *ngFor="let grupo of gruposConFechas | slice:0:4" class=" rounded-xl shadow-md overflow-hidden">
 
+      <div *ngFor="let grupo of gruposConFechas | slice:0:4" class="rounded-xl shadow-md overflow-hidden">
         <!-- Header del Grupo -->
         <div class="p-2 text-white font-bold text-lg text-center" style="background-color: rgb(97,105,122)">
           {{ grupo.nombre }}
@@ -56,22 +57,35 @@
 
         <!-- Fechas -->
         <div class="divide-y">
-          <div *ngFor="let fecha of grupo.fechas" class="p-1" style="background-color: #460805">
-            <!-- Título de la fecha -->
-            <div class="text-md font-bold text-white mb-2">
+          <div *ngFor="let fecha of grupo.fechas; let i = index" class="p-1" style="background-color: #460805">
+
+            <!-- Header con botón para abrir/cerrar -->
+            <div class="flex justify-between items-center cursor-pointer text-md font-bold text-white mb-2"
+                 (click)="fecha.abierto = !fecha.abierto">
+
               {{ fecha.fecha }}
+
+              <!-- Icono flechita -->
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   [ngClass]="fecha.abierto ? 'rotate-90' : 'rotate-0'"
+                   class="h-5 w-5 transform transition-transform duration-300"
+                   fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9 5l7 7-7 7" />
+              </svg>
             </div>
 
-            <!-- Partidos -->
-            <div *ngFor="let partido of fecha.partidos" style="background-color: white"
-                 class="flex justify-between items-center bg-gray-100 rounded-lg px-2 py-2 mb-2">
-              <div class="flex items-center gap-2">
+            <!-- Contenido del acordeón -->
+            <div *ngIf="fecha.abierto" class="space-y-2">
+              <div *ngFor="let partido of fecha.partidos"
+                   class="flex justify-between items-center bg-gray-100 rounded-lg px-2 py-2 mb-2">
                 <span class="text-md font-large text-orange-500">{{ partido.hora }}</span>
                 <span class="text-md font-large text-black">{{ partido.equipo1 }}</span>
                 <span class="font-bold text-blue-500">vs</span>
                 <span class="text-md font-large text-black">{{ partido.equipo2 }}</span>
               </div>
             </div>
+
           </div>
         </div>
 
