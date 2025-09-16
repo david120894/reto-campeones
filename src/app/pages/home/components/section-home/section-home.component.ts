@@ -23,7 +23,6 @@ interface CarouselItem {
   selector: 'app-section-home',
   standalone: true,
   imports: [
-    RouterLink,
     NgIf,
     NgForOf,
     NgClass,
