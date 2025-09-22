@@ -19,11 +19,7 @@
       <img src="bike/bike-ride.png"
              class="absolute opacity-15 w-[400px] top-[100px] left-1/2 -translate-x-1/2 pointer-events-none select-none"
              alt="Marca de agua" />
-        <form
-          [formGroup]="formulario"
-          (submit)="saveRegistration()"
-          class="form-container w-[95%]"
-        >
+        <form [formGroup]="formulario" (submit)="saveRegistration()" class="form-container w-[95%]">
           <div class="flex flex-col items-center justify-between md:flex-row">
           </div>
 
@@ -440,9 +436,14 @@
               </label>
               <input
                 type="file"
+                formControlName="file"
                 (change)="onFileSelected($event)"
                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none focus:ring-[#2D3136] focus:border-[#2D3136]"
               />
+              <div *ngIf="formulario.get('file')?.touched && formulario.get('file')?.invalid"
+                   class="text-red-600 text-sm mt-2">
+                Debes cargar autorización del padre.
+              </div>
             </div>
             <!-- Campo para los datos del padre -->
             <div class="w-full mb-4">
@@ -529,7 +530,14 @@
             <button
               type="submit"
               class="bg-[#F4C151] text-white py-2 px-4 rounded-lg">
-              Enviar
+              @if (isSave) {
+                <span class="indicator-progress" [style.display]="'block'">
+        Espere por favor...
+        <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+      </span>
+              } @else {
+                Enviar
+              }
             </button>
             <button
               class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg"

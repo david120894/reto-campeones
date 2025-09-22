@@ -160,6 +160,7 @@ $Akaya: "Akaya Kanadaka", sans-serif;
     #child-3{
         animation: none;
     }
+
   #child-4 {
     animation: none;
   }
@@ -176,6 +177,18 @@ $Akaya: "Akaya Kanadaka", sans-serif;
   }
 
   #child-8 {
+    animation: none;
+  }
+  #Child-9 {
+    animation: none;
+  }
+  #Child-10 {
+    animation: none;
+  }
+  #Child-11 {
+    animation: none;
+  }
+  #Child-12 {
     animation: none;
   }
 
@@ -397,4 +410,12 @@ $Akaya: "Akaya Kanadaka", sans-serif;
     opacity: 0.8;
   }
 }
-
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
