@@ -5,63 +5,72 @@
   </div>
 
   <div class="mx-auto px-4">
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:gap-12 gallery-container-cards">
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-12 gallery-container-cards">
 
-      <!-- CARD 1 -->
+    <!-- CARD 1 -->
       <div
         class="card_desc-about p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow w-full max-w-sm"
         id="child-1">
         <div class="flex flex-col text-[#29293d] description-title">
           <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
-            <div
-              class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">
-              1
-            </div>
-            <div class="my-auto font-extrabold text-white text-lg md:text-xl border-b-2 border-[#fff] text-center">
+<!--            <div-->
+<!--              class="number w-[40px] h-[50px] rounded-full border-2 border-white-->
+<!--              text-white flex items-center justify-center bg-[#29293d] font-bold">-->
+<!--              1-->
+<!--            </div>-->
+            <div class="my-auto font-bold text-white
+            text-sm sm:text-base md:text-lg lg:text-xl
+            border-b-2 border-[#fff] text-center">
               Municipalidad Provincial del Cusco
             </div>
+
           </div>
-          <div class="flex flex-col items-center text-center h-50">
-            <img src="images/round_log.png" alt="pnp" class="h-30">
+          <div class="flex flex-col items-center text-center h-50 md:p-8" >
+            <img src="images/round_log.png" alt="pnp" class="w-[200px] md:w-[130px] lg:w-[150px] xl:w-180px] 2xl:w-[260px] max-w-none object-contain">
           </div>
         </div>
       </div>
 
       <!-- CARD 2 -->
       <div *ngIf="inputTitle==='bike-ride'"
-        class="card_desc-about p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow w-full max-w-sm"
+           class="card_desc-about p-5 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow w-full max-w-sm"
            id="child-6">
         <div class="flex flex-col items-center text-center h-50 text-[#29293d]">
           <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
-            <div
-              class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">
-              2
-            </div>
+<!--            <div-->
+<!--              class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">-->
+<!--              2-->
+<!--            </div>-->
             <div class="my-auto text-white font-extrabold text-lg md:text-xl border-b-2 border-[#FFF] text-center">
               Policia Nacional del Perú
             </div>
           </div>
-          <div class="text-center d-flex justify-items-center p-10">
-            <img src="organizadores/pnpupdate.png" alt="pnp" class="w-125 " style="width: 150px">
+          <div class="text-center d-flex justify-items-center md:p-8">
+            <img
+              src="organizadores/pnpupdate.png"
+              alt="pnp"
+              class="w-[120px] md:w-[80px] lg:w-[120px] xl:w-[120px] 2xl:w-[150px] max-w-none object-contain">
           </div>
         </div>
       </div>
+
       <!-- CARD 3 -->
       <div
         class="card_desc-about p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow w-full max-w-sm"
         id="child-3">
         <div class="flex flex-col items-center text-center h-50 text-[#29293d]">
           <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
-            <div
-              class="number w-[50px] text-white h-[50px] rounded-full border-2 border-white flex items-center justify-center bg-[#29293d] font-extrabold">
-              {{ inputTitle === 'challenge-champions' ? 2 : 3 }}
-            </div>
+<!--            <div-->
+<!--              class="number w-[50px] text-white h-[50px] rounded-full border-2 border-white flex items-center justify-center bg-[#29293d] font-extrabold">-->
+<!--              {{ inputTitle === 'challenge-champions' ? 2 : 3 }}-->
+<!--            </div>-->
             <div class="my-auto text-white font-extrabold text-lg md:text-xl border-b-2 border-[#fff] text-center">
               Sociedad de Beneficencia del Cusco
             </div>
           </div>
-          <div class="text-center d-flex justify-items-center h-50">
-            <img src="championship/bene_blanco.png" alt="pnp" class="h-30" style="width: 200px">
+          <div class="text-center d-flex justify-items-center h-50 md:p-8">
+            <img src="championship/bene_blanco.png" alt="pnp"
+                 class="w-[150px] md:w-[100px] lg:w-[120px] xl:w-[120px] 2xl:w-[180px] max-w-none object-contain">
           </div>
         </div>
       </div>
@@ -70,16 +79,16 @@
         id="child-2">
         <div class="flex flex-col items-center text-[#29293d] justify-center description-title">
           <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
-            <div
-              class="number w-[50px] h-[50px] text-white rounded-full border-2 border-white flex items-center justify-center bg-[#29293d] font-extrabold">
-              {{ inputTitle === 'challenge-champions' ? 3 : 4 }}
-            </div>
+<!--            <div-->
+<!--              class="number w-[50px] h-[50px] text-white rounded-full border-2 border-white flex items-center justify-center bg-[#29293d] font-extrabold">-->
+<!--              {{ inputTitle === 'challenge-champions' ? 3 : 4 }}-->
+<!--            </div>-->
             <div class="my-auto text-white font-extrabold text-lg md:text-xl border-b-2 border-[#fff] text-center">
-              Instituto Peruano del Deporte
+              Instituto Peruano del Deporte - Cusco
             </div>
           </div>
-          <div class="flex flex-col justify-center text-center h-50">
-            <img src="championship/ipd.png" alt="pnp" class="h-30">
+          <div class="flex flex-col justify-center text-center h-50 md:p-8">
+            <img src="championship/ipd-fh.png" alt="pnp" class="h-30">
           </div>
         </div>
       </div>
@@ -90,10 +99,10 @@
         id="child-4">
         <div class="flex flex-col items-center text-center h-50 text-[#29293d]">
           <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
-            <div
-              class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">
-              {{inputTitle === 'challenge-champions' ? 4 : 5}}
-            </div>
+<!--            <div-->
+<!--              class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">-->
+<!--              {{inputTitle === 'challenge-champions' ? 4 : 5}}-->
+<!--            </div>-->
             <div class="my-auto text-white font-extrabold text-lg md:text-xl border-b-2 border-[#fff] text-center">
               Proyecto Cusco Deportes
             </div>
@@ -109,15 +118,15 @@
           id="child-5">
           <div class="flex flex-col items-center text-center h-50 text-[#29293d]">
             <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
-              <div
-                class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">
-                6
-              </div>
+<!--              <div-->
+<!--                class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">-->
+<!--                6-->
+<!--              </div>-->
               <div class="my-auto text-white font-extrabold text-lg md:text-xl border-b-2 border-[#fff] text-center">
-                Inka's bike perú
+                Inka's Bike Perú
               </div>
             </div>
-            <div class="text-center d-flex justify-items-center">
+            <div class="text-center d-flex justify-items-center p-8">
               <img src="championship/inkas-bike.png" alt="pnp" class="">
             </div>
           </div>
@@ -125,21 +134,27 @@
       }
     </div>
   </div>
+
+<!--  class="card_desc-about p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow w-full max-w-sm"-->
+<!--  id="child-1">-->
+<!--  <div class="flex flex-col text-[#29293d] description-title">-->
+<!--    <div class="flex flex-row justify-around mb-4 header-item md:mb-6">-->
+
   <div class="py-2 px-4 about-section" *ngIf="inputTitle==='bike-ride'">
     <div class="mx-auto px-4">
       <div class="p-2 mb-4 text-4xl text-center text-white font-extrabold big-title md:text-6xl">
         <p class="mb-4 text-7xl">Coorganizadores</p>
-        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-12 gallery-container-cards">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-12 gallery-container-cards">
           <div
             class="card_desc-about p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow w-full max-w-sm"
             id="child-8">
             <div class="flex flex-col items-center text-center h-50 text-[#29293d]">
               <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
-                <div
-                  class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">
-                  1
-                </div>
-                <div class="my-auto text-white font-extrabold text-lg md:text-xl border-b-2 border-[#fff] text-center">
+<!--                <div-->
+<!--                  class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">-->
+<!--                  1-->
+<!--                </div>-->
+                <div class="my-auto about-section text-white font-extrabold text-lg md:text-xl border-b-2 border-[#fff] text-center">
                   Municipalidad Distrital de San Jerónimo
                 </div>
               </div>
@@ -150,14 +165,14 @@
           </div>
           <div
             class="card_desc-about p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow w-full max-w-sm"
-            id="child-7">
+            id="child-9">
             <div class="flex flex-col items-center text-center h-50 text-[#29293d]">
               <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
-                <div
-                  class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">
-                  2
-                </div>
-                <div class="my-auto text-white font-extrabold text-lg md:text-xl border-b-2 border-[#fff] text-center">
+<!--                <div-->
+<!--                  class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">-->
+<!--                  2-->
+<!--                </div>-->
+                <div class="my-auto about-section text-white font-extrabold text-lg md:text-xl border-b-2 border-[#fff] text-center">
                   Municipalidad Distrital de San Sebastian
                 </div>
               </div>
@@ -168,14 +183,14 @@
           </div>
           <div
             class="card_desc-about p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow w-full max-w-sm"
-            id="child-7">
+            id="child-10">
             <div class="flex flex-col items-center text-center h-50 text-[#29293d]">
               <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
-                <div
-                  class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">
-                  3
-                </div>
-                <div class="my-auto text-white font-extrabold text-lg md:text-xl border-b-2 border-[#fff] text-center">
+<!--                <div-->
+<!--                  class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">-->
+<!--                  3-->
+<!--                </div>-->
+                <div class="my-auto about-section text-white font-extrabold text-lg md:text-xl border-b-2 border-[#fff] text-center">
                   Municipalidad Distrital de Santiago
                 </div>
               </div>
@@ -184,13 +199,69 @@
               </div>
             </div>
           </div>
+          <div
+            class="card_desc-about p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow w-full max-w-sm"
+            id="child-11">
+            <div class="flex flex-col items-center text-center h-50 text-[#29293d]">
+              <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
+<!--                <div-->
+<!--                  class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">-->
+<!--                  3-->
+<!--                </div>-->
+                <div class="my-auto about-section text-white font-extrabold text-lg md:text-xl border-b-2 border-[#fff] text-center">
+                  Quinta Brigada de Montaña - Cusco
+                </div>
+              </div>
+              <div class="text-center d-flex justify-items-center h-50 ">
+                <img src="championship/5t.png" alt="pnp" class="h-30">
+              </div>
+            </div>
+          </div>
+          <div
+            class="card_desc-about p-6 rounded-lg md:mb-[40px] hover:shadow-xl transition-shadow w-full max-w-sm"
+            id="child-12">
+            <div class="flex flex-col items-center text-center h-50 text-[#29293d]">
+              <div class="flex flex-row justify-around mb-4 header-item md:mb-6">
+<!--                <div-->
+<!--                  class="number w-[50px] h-[50px] rounded-full border-2 border-white text-white flex items-center justify-center bg-[#29293d] font-extrabold">-->
+<!--                  3-->
+<!--                </div>-->
+                <div class="my-auto about-section text-white font-extrabold text-lg md:text-xl border-b-2 border-[#fff] text-center">
+                  Prefectura Regional Cusco
+                </div>
+              </div>
+              <div class="text-center d-flex justify-items-center h-50 ">
+                <img src="championship/prefectura.jpeg" alt="pnp" class="h-30">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <div class="relative w-full overflow-hidden pb-10">
+      <h2>
+        <p class="mb-4 text-4xl md:text-6xl text-center text-white font-extrabold big-title pb-10">
+          Auspiciadores
+        </p>
+      </h2>
+      <div class="flex animate-marquee">
+        <img src="bike-auspiciadores/monark.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="2">
+        <img src="bike-auspiciadores/logoisofeli.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="3">
+        <img src="bike-auspiciadores/aqua.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="4">
+        <img src="bike-auspiciadores/lumire.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="5">
+        <img src="bike-auspiciadores/cajacusco.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
+<!--        // Repetir las imágenes para un efecto continuo-->
+        <img src="bike-auspiciadores/monark.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="2">
+        <img src="bike-auspiciadores/logoisofeli.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="3">
+        <img src="bike-auspiciadores/aqua.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="4">
+        <img src="bike-auspiciadores/lumire.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="5">
+        <img src="bike-auspiciadores/cajacusco.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
+      </div>
+    </div>
     <div class="p-2 mb-4 text-4xl text-center text-white font-extrabold big-title md:text-6xl">
-      <p class="mb-4 text-7xl">Ruta del Recorrido</p>
+      <p class="mb-4 text-6xl">Ruta del Recorrido</p>
       <div class="border-4 border-yellow-500 rounded-2xl inline-block p-2 shadow-lg">
-        <img src="championship/recorrido.png" alt="mapa" class="mx-auto">
+        <img src="bike/ruta1.jpg" alt="mapa" class="mx-auto">
       </div>
     </div>
   </div>
@@ -200,7 +271,7 @@
         <div class="p-2 mb-4 text-4xl text-center text-white font-extrabold big-title md:text-6xl">
           <p class="mb-4 text-7xl">Auspiciadores</p>
         </div>
-        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:gap-12 gallery-container-cards">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-12 gallery-container-cards">
           <div class="bg-white p-6 rounded-lg shadow-lg text-center card-sponsor glow-effect">
             <div
               class="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center pulse-border">
