@@ -24,6 +24,7 @@ import { RouterLink } from '@angular/router'
 })
 export class UserRegisterComponent {
 
+  isSave   = false
   isModalOpen = false
   showModal = false
   imageModal = ''
@@ -116,6 +117,9 @@ export class UserRegisterComponent {
 
       this.formulario.get('age')?.setValue(age)
 
+      if (age < 18) {
+        this.formulario.get('file')?.setValidators([Validators.required])
+      }
       // Check if parental permission is required
       this.parentalPermissionRequired = age < 18
 
@@ -179,7 +183,7 @@ export class UserRegisterComponent {
       this.formulario.markAllAsTouched()
       return
     }
-
+    this.isSave = true
     const params = {
       age: this.formulario.get('age')?.value,
       birthDate: this.formulario.get('birthDate')?.value,
@@ -202,6 +206,7 @@ export class UserRegisterComponent {
     }
     this.reservationService.saveRegister(params).subscribe({
       next: (response) => {
+        this.isSave = false
         this.objectRegister = response
         const nameImg = this.objectRegister.qrCode.image
         this.formulario.reset()
@@ -215,8 +220,12 @@ export class UserRegisterComponent {
         this.showModal = true
       },
       error: (err) => {
+        this.isSave = false
         console.error(err)
       },
+      complete: () => {
+        this.isSave = false
+      }
     })
   }
 
