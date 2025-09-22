@@ -41,22 +41,22 @@
             <p class="text-lg md:text-xl text-justify text-orange-400 mb-8 font-semibold" >
               “Pedalea con el corazón, Llega a la meta con el Propósito de compartir y promueve la solidaridad”
             </p>
-<!--            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">-->
-<!--              <a routerLink="/user-register"-->
-<!--                 class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-300 transform hover:scale-105">-->
-<!--                ¡Inscribete!-->
-<!--              </a>-->
-<!--              <a (click)="openModal()"-->
-<!--                 class="bg-pink-800 hover:bg-pink-900 text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-300 transform hover:scale-105">-->
-<!--                ¡Ver Registro!-->
-<!--              </a>-->
-<!--            </div>-->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <a routerLink="/user-register"
+                 class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-300 transform hover:scale-105">
+                ¡Inscribete!
+              </a>
+              <a (click)="openModal()"
+                 class="bg-pink-800 hover:bg-pink-900 text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-300 transform hover:scale-105">
+                ¡Ver Registro!
+              </a>
+            </div>
 
           </div>
 
         }
         <!-- Video -->
-        <div class="flex justify-center lg:justify-start">
+          <div class="flex justify-center lg:justify-start">
           @if (selectedItem === 'challenge-champions') {
             <video
               #videoPlayer
@@ -88,7 +88,6 @@
               playsinline
               class="w-full h-[800px] rounded-lg shadow-lg aspect-video fade-edges2">
             </video>
-            rosy
           } @else {
             <div>
               <div class="relative
@@ -98,7 +97,7 @@
                 <div class="bg-gradient-to-r from-orange-600 via-pink-600 to-purple-700
               text-white p-4 sm:p-6 rounded-2xl border-4 border-yellow-400
               animate-pulse-glow w-[90%] sm:max-w-md md:max-w-lg lg:max-w-xl
-              text-center font-bebas">
+              text-center font-bebas md:mx-[150px]">
                   <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold mb-2 tracking-wide uppercase">
                     🚴‍♂️ Sábado 11 de Octubre 🚴‍♀️
                   </h3>

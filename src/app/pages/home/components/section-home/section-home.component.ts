@@ -29,6 +29,7 @@ interface CarouselItem {
     DatePipe,
     FormsModule,
     ReactiveFormsModule,
+    RouterLink,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './section-home.component.html',

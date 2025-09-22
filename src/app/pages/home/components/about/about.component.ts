@@ -12,6 +12,7 @@ const DECLATAIONS = [TitlesComponent];
   selector: 'app-about',
   imports: [
     NgIf,
+    NgForOf,
   ],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
@@ -33,6 +34,23 @@ export class AboutComponent implements OnInit, OnChanges{
   initFutbol() {
 
   }
+  images = [
+    'bike/ruta1.jpg',
+    'bike/ruta2.jpg'
+  ];
 
+  currentIndex = 0;
+
+  nextSlide() {
+    this.currentIndex = (this.currentIndex + 1) % this.images.length;
+  }
+
+  prevSlide() {
+    this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+  }
+
+  goToSlide(index: number) {
+    this.currentIndex = index;
+  }
 
 }
