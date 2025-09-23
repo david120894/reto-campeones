@@ -35,14 +35,6 @@ export class CarrouselComponent implements OnInit, OnChanges {
   }
 
   loadRooms(): void {
-    // this.placeService.getPlaces().pipe(take(1)).subscribe({
-    //   next: (data) => {
-    //     this.places = data;
-    //   },
-    //   error: (error) => {
-    //     console.error("Error al obtener los lugares", error);
-    //   }
-    // });
   }
 
   scrollToEmail() {

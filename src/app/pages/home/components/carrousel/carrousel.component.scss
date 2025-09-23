@@ -141,17 +141,17 @@ $Akaya: "Akaya Kanadaka", sans-serif;
     animation: cardAnimation 8s infinite;
 }
 
-@keyframes cardAnimation {
-
-    0%,
-    100% {
-        background-color: rgba(255, 255, 255, 1);
-    }
-
-    50% {
-        background-color: rgba(238, 242, 255, 1);
-    }
-}
+//@keyframes cardAnimation {
+//
+//    0%,
+//    100% {
+//        background-color: rgba(255, 255, 255, 1);
+//    }
+//
+//    50% {
+//        background-color: rgba(238, 242, 255, 1);
+//    }
+//}
 
 .room-card img {
     animation: imageAnimation 8s infinite;
