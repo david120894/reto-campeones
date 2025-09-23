@@ -12,7 +12,6 @@ const DECLATAIONS = [TitlesComponent];
   selector: 'app-about',
   imports: [
     NgIf,
-    NgForOf,
   ],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
