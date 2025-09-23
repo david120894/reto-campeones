@@ -157,7 +157,16 @@ $Akaya: "Akaya Kanadaka", sans-serif;
 .style-print {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: red;
+  background-color: #1785f1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.style-close {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #e40404;
   color: white;
   border: none;
   border-radius: 5px;
