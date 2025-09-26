@@ -111,8 +111,10 @@ export class FixtureComponent implements OnInit {
 
         { hora:'09:00',fecha: '20 de septiembre', equipo1: 'I.E. San Cristóbal', equipo2: 'I.E. Ashid Kumar Bahal' },
         { hora:'09:40',fecha: '20 de septiembre', equipo1: 'I.E. Inca Garcilaso de la Vega', equipo2: 'I.E. Simón Bolívar' },
-        // { fecha: '20 de septiembre', equipo1: 'I.E. Fortunato L. Herrera', equipo2: 'I.E. Inca Garcilaso de la Vega' },
-        // { fecha: '20 de septiembre', equipo1: 'I.E. Simón Bolívar', equipo2: 'I.E. San Cristóbal' },
+
+        { hora:'10:20',fecha: '27 de septiembre', equipo1: 'I.E. San Francisco de Borja', equipo2: 'I.E. Inca Garcilaso de la Vega' },
+        { hora:'11:00',fecha: '27 de septiembre', equipo1: 'I.E. Simón Bolívar', equipo2: 'I.E. San Cristóbal'  },
+
       ],
     },
     {
@@ -135,8 +137,9 @@ export class FixtureComponent implements OnInit {
 
         { hora:'13:00',fecha: '20 de septiembre', equipo1: 'I.E. Ayuda Mutua', equipo2: 'I.E. Alejandro Sánchez Arteaga' },
         { hora:'13:40',fecha: '20 de septiembre', equipo1: 'I.E. Humberto Luna', equipo2: 'I.E. Nuestra Señora de Gracia' },
-        // { fecha: '20 de septiembre', equipo1: 'I.E. Nuestra Señora de Gracia', equipo2: 'I.E. Ayuda Mutua' },
-        // { fecha: '20 de septiembre', equipo1: 'I.E. El Niño Divino', equipo2: 'I.E. Humberto Luna' },
+
+        { hora: '09:00', fecha: '27 de septiembre', equipo1: 'I.E. Nuestra Señora de Gracia', equipo2: 'I.E. Ayuda Mutua' },
+        { hora: '09:40', fecha: '27 de septiembre', equipo1: 'I.E. El Niño Divino', equipo2: 'I.E. Humberto Luna' },
       ],
     },
     {
@@ -163,8 +166,8 @@ export class FixtureComponent implements OnInit {
         { hora:"10:20", fecha: '20 de septiembre', equipo1: 'I.E. Red de Colegios Kancharisum', equipo2: 'I.E. Uriel García' },
         { hora:"11:00", fecha: '20 de septiembre', equipo1: 'I.E. Ciencias', equipo2: 'I.E. Diego Quispe Tito' },
         // { fecha: '13 de septiembre', equipo1: 'I.E. San Francisco de Borja', equipo2: 'I.E. San Vicente de Paul' },
-        // { fecha: '20 de septiembre', equipo1: 'I.E. San Vicente de Paul', equipo2: 'I.E. Ciencias' },
-        // { fecha: '20 de septiembre', equipo1: 'I.E. Diego Quispe Tito', equipo2: 'I.E. Red de Colegios Kancharisum' },
+        { hora:'11:40', fecha: '27 de septiembre', equipo1: 'I.E. San Vicente de Paul', equipo2: 'I.E. Ciencias' },
+        { hora:'12:20', fecha: '27 de septiembre', equipo1: 'I.E. Diego Quispe Tito', equipo2: 'I.E. Red de Colegios Kancharisum' },
         // { fecha: '20 de septiembre', equipo1: 'I.E. Uriel García', equipo2: 'I.E. San Francisco de Borja' },
       ],
     },
@@ -189,8 +192,9 @@ export class FixtureComponent implements OnInit {
 
         { hora:"11:40",fecha: '20 de septiembre', equipo1: 'I.E. Miguel Grau Seminario', equipo2: 'I.E. Huancabamba' },
         { hora:"12:20",fecha: '20 de septiembre', equipo1: 'I.E. Sagrado Corazón', equipo2: 'I.E. Mariscal Gamarra' },
-        // { fecha: '20 de septiembre', equipo1: 'I.E. Mariscal Gamarra', equipo2: 'I.E. Dolores Pata' },
-        // { fecha: '20 de septiembre', equipo1: 'I.E. Huancabamba', equipo2: 'I.E. Sagrado Corazón' },
+
+        { hora:'13:00', fecha: '27 de septiembre', equipo1: 'I.E. Mariscal Gamarra', equipo2: 'I.E. Dolores Pata' },
+        { hora:'13:40', fecha: '27 de septiembre', equipo1: 'I.E. Huancabamba', equipo2: 'I.E. Sagrado Corazón' },
       ],
     },
   ];
@@ -213,8 +217,8 @@ export class FixtureComponent implements OnInit {
         { hora:"13:00", fecha: '20 de septiembre', equipo1: 'I.E. Humberto Luna', equipo2: 'I.E. Ciencias' },
         // { fecha: '13 de septiembre', equipo1: 'I.E. 51004 San Vicente de Paul', equipo2: 'I.E. Fortunato L. Herrera' },
         //
-        // { fecha: '20 de septiembre', equipo1: 'I.E. 51003 Rosario', equipo2: 'I.E. 51004 San Vicente de Paul' },
-        // { fecha: '20 de septiembre', equipo1: 'I.E. Fortunato L. Herrera', equipo2: 'I.E. Humberto Luna' },
+        { hora:'12:00', fecha: '27 de septiembre', equipo1: 'I.E. 51003 Rosario', equipo2: 'I.E. Humberto Luna' },
+        { hora:'13:00', fecha: '27 de septiembre', equipo1: 'I.E. San Vicente de Paul', equipo2: 'I.E. San Francisco de Borja' },
         // { fecha: '20 de septiembre', equipo1: 'I.E. Ciencias', equipo2: 'I.E. San Francisco de Borja' },
       ],
     },
@@ -253,9 +257,9 @@ export class FixtureComponent implements OnInit {
         { hora:"10:00", fecha: '20 de septiembre', equipo1: 'I.E. Uriel García', equipo2: 'I.E. Sagrado Corazón de Jesús' },
         { hora:"11:00", fecha: '20 de septiembre', equipo1: 'I.E. Miguel Grau Seminario', equipo2: 'I.E. Diego Quispe Tito' },
         //
-        // { fecha: '20 de septiembre', equipo1: 'I.E. Diego Quispe Tito', equipo2: 'I.E. Uriel García' },
-        // { fecha: '20 de septiembre', equipo1: 'I.E. Sagrado Corazón de Jesús', equipo2: 'I.E. Luis Vallejo Santoni' },
-        // { fecha: '20 de septiembre', equipo1: 'I.E. Garcilazo de la Vega', equipo2: 'I.E. Miguel Grau Seminario' },
+        { hora:'09:00',  fecha: '27 de septiembre', equipo1: 'I.E. Diego Quispe Tito', equipo2: 'I.E. Uriel García' },
+        { hora:'10:00',  fecha: '27 de septiembre', equipo1: 'I.E. Sagrado Corazón de Jesús', equipo2: 'I.E. Luis Vallejo Santoni' },
+        { hora:'11:00',  fecha: '27 de septiembre', equipo1: 'I.E. Garcilazo de la Vega', equipo2: 'I.E. Miguel Grau Seminario' },
       ],
     },
   ];
@@ -289,13 +293,15 @@ export class FixtureComponent implements OnInit {
         // { fecha: '6 de septiembre', equipo1: 'I.E. Clorinda Matto de Turner', equipo2: 'I.E. 51001 Humberto Luna' },
         //
         // // FECHA 4 - 13 DE SEPTIEMBRE
-        // { fecha: '13 de septiembre', equipo1: 'I.E. Fortunato L. Herrera', equipo2: 'I.E. Clorinda Matto de Turner' },
-        // { fecha: '13 de septiembre', equipo1: 'I.E. 50828 Ashid Kumar Bahal', equipo2: 'I.E. 51001 Humberto Luna' },
+
         // { fecha: '13 de septiembre', equipo1: 'I.E. 50966 Virgen Rosario (Ayuda Mutua)', equipo2: 'I.E. 50707 Simón Bolívar' },
         //
         // // FECHA 5 - 20 DE SEPTIEMBRE
         { hora:"10:20",fecha: '20 de septiembre', equipo1: 'I.E. Clorinda Matto de Turner', equipo2: 'I.E. 50966 Virgen Rosario (Ayuda Mutua)' },
         { hora:"11:00",fecha: '20 de septiembre', equipo1: 'I.E. 50707 Simón Bolívar', equipo2: 'I.E. 50828 Ashid Kumar Bahal' },
+
+        { hora:'09:30', fecha: '27 de septiembre', equipo1: 'I.E. Miguel Grau Seminario', equipo2: 'I.E. Uriel García' },
+        { hora:'10:10', fecha: '27 de septiembre', equipo1: 'I.E. Sagrado Corazón de Jesús', equipo2: 'I.E. Maria de la Merced' },
         // { fecha: '20 de septiembre', equipo1: 'I.E. 51001 Humberto Luna', equipo2: 'I.E. Fortunato L. Herrera' },
       ],
     },
@@ -324,14 +330,15 @@ export class FixtureComponent implements OnInit {
         // { fecha: '6 de septiembre', equipo1: 'I.E. María de la Merced', equipo2: '' },
         //
         // // FECHA 4 - 13 DE SEPTIEMBRE
-        // { fecha: '13 de septiembre', equipo1: 'I.E. Sagrado Corazón de Jesús', equipo2: 'I.E. María de la Merced' },
-        // { fecha: '13 de septiembre', equipo1: 'I.E. Miguel Grau Seminario', equipo2: 'I.E. Uriel García' },
         // { fecha: '13 de septiembre', equipo1: 'I.E. El Niño Divino', equipo2: '' },
         //
         // // FECHA 5 - 20 DE SEPTIEMBRE
         { hora:"09:00",fecha: '20 de septiembre', equipo1: 'I.E. Uriel García', equipo2: 'I.E. Sagrado Corazón de Jesús' },
         { hora:"09:40",fecha: '20 de septiembre', equipo1: 'I.E. María de la Merced', equipo2: 'I.E. El Niño Divino' },
         // { fecha: '20 de septiembre', equipo1: 'I.E. Miguel Grau Seminario', equipo2: '' },
+
+        { hora:'10:50',fecha: '27 de septiembre', equipo1: 'I.E. 50966 Virgen Rosario (Ayuda Mutua)', equipo2: 'I.E. 50707 Simón Bolívar' },
+        { hora:'11:30',fecha: '27 de septiembre', equipo1: 'I.E. 50828 Ashid Kumar Bahal', equipo2: 'I.E. 51001 Humberto Luna' },
       ],
     },
   ];
@@ -354,15 +361,16 @@ export class FixtureComponent implements OnInit {
         { hora:'08:30', fecha: '13 de septiembre', equipo1: 'I.E. Clorinda Matto de Turner', equipo2: 'I.E. Rosario' },
         { hora: '09:30', fecha: '13 de septiembre', equipo1: 'I.E. Humberto Luna', equipo2: 'I.E. Clorinda Matto de Turner'},
         { hora: '10:20', fecha: '13 de septiembre', equipo1: 'I.E. Comercio 41', equipo2: 'I.E. 51003 Rosario' },
-        //
+
         // // FECHA 4 - 13 DE SEPTIEMBRE
         { hora:"09:00",fecha: '20 de septiembre', equipo1: 'I.E. Maria de la Merced', equipo2: 'I.E. Uriel García' },
         { hora:"09:50",fecha: '20 de septiembre', equipo1: 'I.E. Luis Vallejo Antoni', equipo2: 'I.E. Sagrado Corazón de Jesús' },
         // { fecha: '13 de septiembre', equipo1: 'I.E. Clorinda Matto de Turner', equipo2: 'I.E. 51003 Rosario' },
-        //
+
         // // FECHA 5 - 20 DE SEPTIEMBRE
-        // { fecha: '20 de septiembre', equipo1: 'I.E. Humberto Luna', equipo2: 'I.E. Educandas' },
-        // { fecha: '20 de septiembre', equipo1: 'I.E. Comercio 41', equipo2: 'I.E. Clorinda Matto de Turner' },
+        { hora: '08:30',fecha: '27 de septiembre', equipo1: 'I.E. Educandas', equipo2: 'I.E. Comercio 41' },
+        { hora: '09:30',fecha: '27 de septiembre', equipo1: 'I.E. Clorinda Matto de Turner', equipo2: 'I.E. Educandas' },
+        { hora: '10:20',fecha: '27 de septiembre', equipo1: 'I.E. Humberto Luna', equipo2: 'I.E. 51003 Rosario' },
         // { fecha: '20 de septiembre', equipo1: 'I.E. Fortunato L. Herrera', equipo2: 'I.E. 51003 Rosario' },
       ],
     },
@@ -392,9 +400,10 @@ export class FixtureComponent implements OnInit {
         // { fecha: '13 de septiembre', equipo1: 'I.E. Luis Vallejo Santoni', equipo2: '' },
         //
         // // FECHA 5 - 20 DE SEPTIEMBRE
-        // { fecha: '20 de septiembre', equipo1: 'I.E. Uriel García', equipo2: 'I.E. Miguel Grau Seminario' },
-        // { fecha: '20 de septiembre', equipo1: 'I.E. San Francisco de Borja', equipo2: 'I.E. Luis Vallejo Santoni' },
-        // { fecha: '20 de septiembre', equipo1: 'I.E. María de la Merced', equipo2: '' },
+        { hora:'08:30', fecha: '27 de septiembre', equipo1: 'I.E. Miguel Grau Seminario', equipo2: 'I.E. San Francisco de Borja' },
+        { hora:'11:10', fecha: '27 de septiembre', equipo1: 'I.E. San Francisco de Borja', equipo2: 'I.E. Luis Vallejo Santoni' },
+        { hora:'12:00', fecha: '27 de septiembre', equipo1: 'I.E. Uriel García', equipo2: 'I.E. Miguel Grau Seminario' },
+        { hora:'12:50', fecha: '27 de septiembre', equipo1: 'I.E. María de la Merced', equipo2: 'Sagrado Corazón de Jesús' },
       ],
     },
   ];

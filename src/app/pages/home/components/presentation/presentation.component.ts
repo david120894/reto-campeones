@@ -745,9 +745,9 @@ export class PresentationComponent implements OnInit, OnChanges {
                   equipos: [
                     { puesto: 1, club: 'I.E. HUMBERTO LUNA', pj: 3, pg: 3, pe: 0, pp: 0, gf: 10, gc: 2, dg: 8, pts: 9 },
                     { puesto: 2, club: 'I.E. ALEJANDRO SANCHEZ ARTEAGA', pj: 4, pg: 2, pe: 1, pp: 1, gf: 6, gc: 4, dg: 2, pts: 7 },
-                    { puesto: 3, club: 'I.E. AYUDA MUTUA', pj: 3, pg: 2, pe: 1, pp: 1, gf: 3, gc: 4, dg: -1, pts: 6 },
-                    { puesto: 4, club: 'I.E. EL NIÑO DIVINO', pj: 3, pg: 1, pe: 2, pp: 1, gf: 2, gc: 3, dg: -1, pts: 3 },
-                    { puesto: 5, club: 'I.E. NUESTRA SEÑORA DE GRACIA', pj: 3, pg: 0, pe: 3, pp: 3, gf: 2, gc: 10, dg: -8, pts: 0 },
+                    { puesto: 3, club: 'I.E. AYUDA MUTUA', pj: 3, pg: 2, pe: 0, pp: 1, gf: 3, gc: 4, dg: -1, pts: 6 },
+                    { puesto: 4, club: 'I.E. EL NIÑO DIVINO', pj: 3, pg: 1, pe: 0, pp: 2, gf: 2, gc: 3, dg: -1, pts: 3 },
+                    { puesto: 5, club: 'I.E. NUESTRA SEÑORA DE GRACIA', pj: 3, pg: 0, pe: 0, pp: 3, gf: 2, gc: 10, dg: -8, pts: 0 },
                   ],
                   typeTeam: 'F'
                 },
@@ -816,7 +816,7 @@ export class PresentationComponent implements OnInit, OnChanges {
                     { puesto: 1, club: 'I.E. CIENCIAS', pj: 4, pg: 3, pe: 0, pp: 1, gf: 7, gc: 3, dg: 4, pts: 9 },
                     { puesto: 2, club: 'I.E. 51003 ROSARIO', pj: 3, pg: 2, pe: 1, pp: 0, gf: 4, gc: 1, dg: 3, pts: 7 },
                     { puesto: 3, club: 'I.E. SAN FRANCISCO DE BORJA', pj: 3, pg: 1, pe: 1, pp: 1, gf: 5, gc: 4, dg: 1, pts: 4 },
-                    { puesto: 4, club: 'I.E. HUMBERTO LUNA', pj: 3, pg: 1, pe: 0, pp: 2, gf: 4, gc: 6, dg: -2, pts: 4 },
+                    { puesto: 4, club: 'I.E. HUMBERTO LUNA', pj: 3, pg: 1, pe: 0, pp: 2, gf: 4, gc: 6, dg: -2, pts: 3 },
                     { puesto: 5, club: 'I.E. SAN VICENTE DE PAUL', pj: 3, pg: 0, pe: 0, pp: 3, gf: 0, gc: 6, dg: -6, pts: 0 },
                   ],
                   typeTeam: 'F'
@@ -827,9 +827,9 @@ export class PresentationComponent implements OnInit, OnChanges {
                     { puesto: 1, club: 'I.E. GARCILAZO DE LA VEGA', pj: 4, pg: 4, pe: 0, pp: 0, gf: 13, gc: 2, dg: 11, pts: 12 },
                     { puesto: 2, club: 'I.E. URIEL GARCIA', pj: 4, pg: 2, pe: 1, pp: 1, gf: 7, gc: 3, dg: 4, pts: 7 },
                     { puesto: 3, club: 'I.E. MIGUEL GRAU SEMINARIO', pj: 4, pg: 2, pe: 1, pp: 1, gf: 6, gc: 4, dg: 2, pts: 7 },
-                    { puesto: 4, club: 'I.E. DIEGO QUISPE TITO', pj: 4, pg: 1, pe: 3, pp: 3, gf: 8, gc: 12, dg: -4, pts: 3 },
-                    { puesto: 5, club: 'I.E. SAGRADO CORAZON DE JESUS', pj: 4, pg: 0, pe: 3, pp: 3, gf: 3, gc: 7, dg: -4, pts: 1},
-                    { puesto: 6, club: 'I.E. LUIS VALLEJO SANTONI', pj: 4, pg: 0, pe: 3, pp: 3, gf: 1, gc: 11, dg: -10, pts: 1 },
+                    { puesto: 4, club: 'I.E. DIEGO QUISPE TITO', pj: 4, pg: 1, pe: 0, pp: 3, gf: 8, gc: 12, dg: -4, pts: 3 },
+                    { puesto: 5, club: 'I.E. SAGRADO CORAZON DE JESUS', pj: 4, pg: 0, pe: 1, pp: 3, gf: 3, gc: 7, dg: -4, pts: 1},
+                    { puesto: 6, club: 'I.E. LUIS VALLEJO SANTONI', pj: 4, pg: 0, pe: 1, pp: 3, gf: 1, gc: 11, dg: -10, pts: 1 },
                   ],
                   typeTeam: 'F'
                 }
@@ -843,7 +843,7 @@ export class PresentationComponent implements OnInit, OnChanges {
                   equipos: [
                     { puesto: 1, club: 'I.E. CLORINDA MATTO DE TURNER', pj: 3, pg: 3, pp: 0, sf: 6, sc: 0, ds: 6, pts: 9 },
                     { puesto: 2, club: 'I.E. EDUCANDAS', pj: 2, pg: 2, pp: 0, sf: 4, sc: 0, ds: 4, pts: 6 },
-                    { puesto: 3, club: 'I.E. COMERCIO 41', pj: 3, pg: 0, pp: 1, sf: 4, sc: 2, ds: 2, pts: 6 },
+                    { puesto: 3, club: 'I.E. COMERCIO 41', pj: 3, pg: 2, pp: 1, sf: 4, sc: 2, ds: 2, pts: 6 },
                     { puesto: 4, club: 'I.E. HUMBERTO LUNA', pj: 3, pg: 0, pp: 3, sf: 0, sc: 6, ds: -6, pts: 0 },
                     { puesto: 5, club: 'I.E. ROSARIO', pj: 3, pg: 0, pp: 3, sf: 0, sc: 6, ds: -6, pts: 0 },
                   ],
@@ -877,8 +877,8 @@ export class PresentationComponent implements OnInit, OnChanges {
 
     const value = event ? (event.target as HTMLSelectElement).value : "";
     if (value === "") {
-      this.selectedDate = this.fechas[0].nombre!;
-      this.fechaSeleccionada = this.fechas[0]
+      this.selectedDate = this.fechas[3].nombre!;
+      this.fechaSeleccionada = this.fechas[3]
       this.nivelSeleccionado = undefined;
       this.deporteSeleccionado = undefined;
       // this.onNivelChange();
