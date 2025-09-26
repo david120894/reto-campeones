@@ -12,11 +12,19 @@
          items-center justify-start relative min-h-screen overflow-hidden
          w-[1000px] mx-auto bg-[#F4C151]/10 mb-10"
       >
-        <h2 class="justify-normal text-center text-2xl font-bold text-orange-600">
+        <div>
+          <img src="auspiciadores/img_2.png" alt="" class="pb-3" />
+        </div>
+        <h2 class="text-center text-2xl font-bold text-orange-800 pb-4">
+          "PEDALEA CON EL CORAZÓN, LLEGA A LA META CON EL PROPÓSITO DE COMPARTIR Y PROMUEVE LA SOLIDARIDAD"
+        </h2>
+        <h2
+          class="text-center text-2xl font-bold text-orange-600 animate-bounce"
+        >
           Recuerda que la inscripción se validará con la entrega de útiles escolares, artículos de limpieza y pañales para adulto mayor
         </h2>
 
-      <img src="bike/bike-ride.png"
+        <img src="bike/bike-ride.png"
              class="absolute opacity-15 w-[400px] top-[100px] left-1/2 -translate-x-1/2 pointer-events-none select-none"
              alt="Marca de agua" />
         <form [formGroup]="formulario" (submit)="saveRegistration()" class="form-container w-[95%]">

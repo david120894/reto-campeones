@@ -24,11 +24,9 @@ const NG_MODULES = [FormsModule, CommonModule];
 export class NotificationsComponent implements OnInit {
 
   categories = [
-    'Categoria I',
-    'Categoria II',
-    'Categoria III',
-    'Categoria IV',
-    'Categoria V',
+    'Tramo I',
+    'Tramo II',
+    'Tramo  III',
   ];
   loading = false;
   listToExcel: Array<any> = [];
@@ -60,18 +58,9 @@ export class NotificationsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authService.getUser().subscribe(user => {
-      this.currentUser = user;
-      this.checkAdminStatus();
       this.getParticipants();
-    });
   }
 
-  private checkAdminStatus() {
-    this.authService.getUser().subscribe((user) => {
-      this.isAdmin = this.authService.isAdmin();
-    });
-  }
 
   filterFemale() {
     this.updatePagination('Femenino');
@@ -98,19 +87,13 @@ export class NotificationsComponent implements OnInit {
   getParticipants() {
     this.participantsService.getAllParticipants().subscribe({
       next: (response) => {
+        console.log('here')
         this.listParticipants = response;
-        this.mapParticipants(this.listParticipants);
+        console.log(this.listParticipants);
         this.totalInscriptions = response.length;
-        this.loading = true;
-        setTimeout(() => {
           this.loading = false;
-          this.getParticipantsByDni(this.listParticipants).subscribe(result => {
-            this.listParticipantsAux = result;
-            console.log(this.listParticipantsAux);
-            this.updatePagination('all');
-          });
-        }, 3000);
-
+              this.listParticipantsAux = response;
+              this.updatePagination('all');
       },
       error: (error) => {
         this.loading = true;
@@ -119,8 +102,8 @@ export class NotificationsComponent implements OnInit {
     });
   }
 
-  mapParticipants(participants: ParticipantsModel[]) {
-    this.listToExcel = participants.map((participant) => ({
+  mapParticipants() {
+    this.listToExcel = this.listParticipants.map((participant) => ({
       Nombre: participant.name,
       Apellido: participant.lastName,
       dni: participant.dni,
@@ -133,10 +116,11 @@ export class NotificationsComponent implements OnInit {
       T_Seguro: participant.healthInsurance,
       Direccion: participant.district,
     }))
+    return this.listToExcel
   }
 
   exportExcel(): void {
-    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.listToExcel);
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.mapParticipants());
     const workbook: XLSX.WorkBook = {
       Sheets: { 'Participantes': worksheet },
       SheetNames: ['Participantes'],
@@ -152,41 +136,6 @@ export class NotificationsComponent implements OnInit {
     link.href = dataUrl;
     link.download = 'archivo.pdf';
     link.click();
-  }
-
-
-  getParticipantsByDni(listParticipantsAux: ParticipantsModel[]): Observable<ParticipantsModel[]> {
-    const observables = listParticipantsAux.map(participant => {
-      if (participant.age < 18) {
-        return this.participantsService.getParticipantsById(participant.dni).pipe(
-          map(archive => ({ ...participant, file: archive })),
-          catchError(error => {
-            console.error(`Error al buscar datos para DNI ${participant.dni}:`, error);
-            return of({ ...participant, file: null });
-          }),
-        );
-      } else {
-        return of({ ...participant, file: null });
-      }
-    });
-
-    return forkJoin(observables);
-  }
-
-  private filterReservations(reservations: ParticipantsModel[]): ParticipantsModel[] {
-    if (!this.currentUser) {
-      return [];
-    }
-
-    // data for admin
-    if (this.authService.isAdmin()) {
-      return reservations;
-    }
-
-    // data for not admin
-    return reservations.filter(reservation =>
-      reservation.email === this.currentUser.email,
-    );
   }
 
   updatePagination(type?: string) {
@@ -255,32 +204,23 @@ export class NotificationsComponent implements OnInit {
     }
   }
 
-  openViewModal(reservation: any) {
-    this.selectedReservation = reservation;
-    this.showViewModal = true;
-  }
 
-  openDeleteModal(reservation: any) {
-    this.selectedReservation = reservation;
-    this.showDeleteModal = true;
-  }
+  // closeModal() {
+  //   this.showDeleteModal = false;
+  //   this.showViewModal = false;
+  //   this.selectedReservation = null;
+  // }
 
-  closeModal() {
-    this.showDeleteModal = false;
-    this.showViewModal = false;
-    this.selectedReservation = null;
-  }
-
-  confirmDelete() {
-    if (this.selectedReservation?.id) {
-      this.reservationService.deleteReservation(this.selectedReservation.id).subscribe({
-        next: () => {
-          this.reservations = this.reservations.filter(r => r.id !== this.selectedReservation!.id);
-          this.closeModal();
-          this.updatePagination();
-        },
-        error: (error) => console.error('Error deleting reservation:', error),
-      });
-    }
-  }
+  // confirmDelete() {
+  //   if (this.selectedReservation?.id) {
+  //     this.reservationService.deleteReservation(this.selectedReservation.id).subscribe({
+  //       next: () => {
+  //         this.reservations = this.reservations.filter(r => r.id !== this.selectedReservation!.id);
+  //         this.closeModal();
+  //         this.updatePagination();
+  //       },
+  //       error: (error) => console.error('Error deleting reservation:', error),
+  //     });
+  //   }
+  // }
 }

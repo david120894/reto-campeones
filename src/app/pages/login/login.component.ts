@@ -13,6 +13,7 @@ const NG_MODULES = [ReactiveFormsModule, CommonModule]
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  isLoading = false;
   loginForm: FormGroup;
   message = '';
   showMessage = false;
@@ -30,23 +31,30 @@ export class LoginComponent {
   }
 
   login() {
+    this.isLoading = true;
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
       this.authService.login(this.loginForm.value).subscribe({
         next: (res) => {
-          this.message = 'Inicio de sesión exitoso';
-          this.showMessage = true;
-          this.loginForm.reset();
-          setTimeout(() => {
-            this.showMessage = false;
+          if (res) {
+            this.isLoading = false;
+            this.message = 'Inicio de sesión exitoso';
+            this.showMessage = true;
+            this.loginForm.reset();
             this.navigateToDashboard();
-          }, 2000);
+          } else {
+            this.isLoading = false;
+            this.message = 'No existe el usuario o sus credenciales son incorrectas';
+            this.showMessage = true;
+            this.loginForm.reset();
+          }
         },
         error: (err) => {
+          this.isLoading = false;
           this.message = 'No existe el usuario o sus credenciales son incorrectas';
           this.showMessage = true;
           this.loginForm.reset();
-          setTimeout(() => this.showMessage = false, 3000);
+        }, complete: () => {
+          this.isLoading = false;
         }
       });
     }

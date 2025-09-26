@@ -9,6 +9,8 @@ import { IUserInfo } from '../../models/userInfo.model'
   selector: 'app-header',
   standalone: true,
   imports: [
+    RouterLinkActive,
+    RouterLink,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
