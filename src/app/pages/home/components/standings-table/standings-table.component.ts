@@ -30,8 +30,6 @@ export class StandingsTableComponent implements OnInit {
   @Input() nivel: string = '';
   @Input() typeTeam: string = '';
   @Input() equipos: TeamStanding[]= [];
-
-
   ngOnInit() {
   }
 }
