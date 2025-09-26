@@ -12,6 +12,8 @@ import { RouterLink } from '@angular/router'
 import { ResponseRegisterModels } from '../../../../core/models/response.register.models'
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { ReservationService } from '../../../../core/services/reservation.service'
+import html2canvas from 'html2canvas';
+
 
 interface CarouselItem {
   type: 'image' | 'video';
@@ -236,4 +238,40 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
   closeModalPrint() {
     this.showModal = false;
   }
+  async shareModal() {
+    const modalElement = document.querySelector('.modal-content') as HTMLElement;
+
+    if (!modalElement) {
+      console.error("No se encontró el modal");
+      return;
+    }
+
+    // Generar canvas ignorando elementos con la clase "no-print"
+    const canvas = await html2canvas(modalElement, {
+      ignoreElements: (element) => element.classList.contains('no-print')
+    });
+
+    const dataUrl = canvas.toDataURL("image/png");
+
+    // Pasar a Blob
+    const response = await fetch(dataUrl);
+    const blob = await response.blob();
+    const file = new File([blob], "inscripcion.png", { type: blob.type });
+
+    // Si navegador soporta compartir (móvil con WhatsApp, Telegram, etc.)
+    if (navigator.share && navigator.canShare({ files: [file] })) {
+      await navigator.share({
+        title: "Inscripción",
+        text: "Aquí está mi inscripción con QR",
+        files: [file]
+      });
+    } else {
+      // En PC → descarga la imagen
+      const link = document.createElement("a");
+      link.href = dataUrl;
+      link.download = "inscripcion.png";
+      link.click();
+    }
+  }
+
 }
