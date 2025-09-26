@@ -1,67 +1,51 @@
-<aside id="logo-sidebar"
-    class="fixed top-0 left-0 z-40 w-64 h-screen pt-[60px] transition-transform -translate-x-full bg-[#1a1a1d] border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
-    aria-label="Sidebar">
-    <div class="h-full px-3 pb-4 overflow-y-auto bg-[#1a1a1d]">
-        <ul class="space-y-2 font-medium">
-<!--            <li>-->
-<!--                <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/dashboard"-->
-<!--                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">-->
-<!--                    <i class="fa-solid fa-house-user"></i>-->
-<!--                    <span class="ms-3">Menu</span>-->
-<!--                </a>-->
-<!--            </li>-->
-            <li>
-                <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/dashboard/notifications"
-                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-<!--                    <i class="fa-solid fa-envelope"></i>-->
-                  <i class="fa-solid fa-pen-to-square"></i>
+<aside id="logo-sidebar pt-8"
+       class="fixed top-0 left-0 z-40 w-64 h-screen pt-[60px] bg-white border-r border-gray-200 shadow-lg transition-transform -translate-x-full sm:translate-x-0"
+       aria-label="Sidebar">
 
+  <div class="h-full px-3 pt-4 pb-4 overflow-y-auto bg-white">
+    <ul class="space-y-1 font-medium">
 
-                  <span class="flex-1 ms-3 whitespace-nowrap">Inscritos</span>
-                </a>
-            </li>
-          <li>
-            <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/dashboard/raffle"
-               class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-              <!--                    <i class="fa-solid fa-envelope"></i>-->
-              <i class="fa-solid fa-pen-to-square"></i>
+      <!-- Item -->
+      <li>
+        <a routerLinkActive="bg-[#FDF2F3] text-[#8D0C28] font-semibold shadow-sm border-l-4 border-[#8D0C28]"
+           ariaCurrentWhenActive="page"
+           routerLink="/auth/dashboard/participants"
+           class="flex items-center gap-3 px-4 py-3 rounded-md cursor-pointer
+                  text-gray-700 hover:bg-gray-100 transition-all duration-200">
+          <i class="fa-solid fa-users text-lg text-gray-500 group-[.active]:text-[#8D0C28]"></i>
+          <span class="truncate">Inscritos</span>
+        </a>
+      </li>
 
+      <!-- Item -->
+      <li>
+        <a routerLinkActive="bg-[#FDF2F3] text-[#8D0C28] font-semibold shadow-sm border-l-4 border-[#8D0C28]"
+           ariaCurrentWhenActive="page"
+           routerLink="/auth/dashboard/raffle"
+           class="flex items-center gap-3 px-4 py-3 rounded-md cursor-pointer
+                  text-gray-700 hover:bg-gray-100 transition-all duration-200">
+          <i class="fa-solid fa-ticket text-lg text-gray-500"></i>
+          <span class="truncate">Sorteo</span>
+        </a>
+      </li>
 
-              <span class="flex-1 ms-3 whitespace-nowrap">Sorteo</span>
-            </a>
-          </li>
-<!--            @if (isAdmin) {-->
-<!--            <li>-->
-<!--                <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/dashboard/users"-->
-<!--                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">-->
-<!--                    <i class="fa-solid fa-users"></i>-->
-<!--                    <span class="flex-1 ms-3 whitespace-nowrap">Usuarios</span>-->
-<!--                </a>-->
-<!--            </li>-->
-<!--            }-->
-<!--            <li>-->
-<!--                <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/dashboard/reserves"-->
-<!--                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">-->
-<!--                    <i class="fa-solid fa-ticket"></i>-->
-<!--                    <span class="flex-1 ms-3 whitespace-nowrap">Reservas</span>-->
-<!--                </a>-->
-<!--            </li>-->
-<!--            @if (isAdmin) {-->
-<!--            <li>-->
-<!--                <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/dashboard/places"-->
-<!--                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">-->
-<!--                    <i class="fa-solid fa-square-pen"></i>-->
-<!--                    <span class="flex-1 ms-3 whitespace-nowrap">Salas</span>-->
-<!--                </a>-->
-<!--            </li>-->
-<!--            }-->
-            <li>
-                <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/"
-                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                    <span class="flex-1 ms-3 whitespace-nowrap">Volver al inicio</span>
-                </a>
-            </li>
-        </ul>
-    </div>
+      <!-- Divider -->
+      <li>
+        <hr class="my-2 border-gray-300" />
+      </li>
+
+      <!-- Item -->
+      <li>
+        <a routerLinkActive="bg-[#FDF2F3] text-[#8D0C28] font-semibold shadow-sm border-l-4 border-[#8D0C28]"
+           ariaCurrentWhenActive="page"
+           routerLink="/"
+           class="flex items-center gap-3 px-4 py-3 rounded-md cursor-pointer
+                  text-gray-700 hover:bg-gray-100 transition-all duration-200">
+          <i class="fa-solid fa-arrow-right-to-bracket text-lg text-gray-500"></i>
+          <span class="truncate">Volver al inicio</span>
+        </a>
+      </li>
+
+    </ul>
+  </div>
 </aside>

@@ -14,9 +14,11 @@
   </div>
   @if (typeSection == 'bike-ride') {
     <h2 class="text-4xl font-bold text-center my-4 mb-6 text-white">RECORRIDO</h2>
-    <div class="flex justify-center mb-8">
-      <div class="relative w-[800px]  rounded-lg shadow-lg aspect-video overflow-hidden bg-black">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[1600px] mx-auto justify-items-center mb-8">
+      <!-- Video 1 -->
+      <div class="relative w-full max-w-[800px] rounded-lg shadow-lg aspect-video overflow-hidden bg-black">
         <video
+          #videoPlayer
           src="https://video.relive.cc/6247752007571_dc335eb9a7e3-357a-ae94-09fb-1f5db1a7_relive-tracker_1757006083932.mp4?x-ref=site"
           type="video/mp4"
           autoplay
@@ -24,10 +26,27 @@
           loop
           muted
           playsinline
-          class="relative z-10 h-full mx-auto"
+          class="relative z-10 h-full w-full"
+        ></video>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="relative w-full max-w-[800px] rounded-lg shadow-lg aspect-video overflow-hidden bg-black">
+        <video
+          #videoPlayer3
+          src="https://taqe.cusco.gob.pe/publico/web/campeonato/Spot_Kuska.mp4"
+          type="video/mp4"
+          [muted]="true"
+          autoplay
+          loop
+          controls
+          playsinline
+          class="relative z-10 h-full w-full"
         ></video>
       </div>
     </div>
+
+
   }
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-12 gallery-container-cards">
     <!-- Video horizontal -->
@@ -60,7 +79,6 @@
              muted
              class="w-full rounded-lg shadow-lg aspect-video">
       </video>
-
       <!-- Imágenes -->
       <img src="championship/apertura.jpg" alt="logo_gdur" class="w-full rounded-lg shadow-lg">
       <img src="children/children.jpg" alt="logo_gdur" class="w-full rounded-lg shadow-lg">
