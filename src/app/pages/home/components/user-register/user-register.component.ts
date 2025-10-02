@@ -9,6 +9,7 @@ import { ReservationService } from '../../../../core/services/reservation.servic
 import { DatePipe, NgClass, NgIf } from '@angular/common'
 import { RouterLink } from '@angular/router'
 
+
 @Component({
   selector: 'app-user-register',
   imports: [
@@ -124,7 +125,7 @@ export class UserRegisterComponent {
       this.parentalPermissionRequired = age < 18
 
       // Call selectCategory after setting the age
-      this.selectCategory()
+      // this.selectCategory()
     } else {
       this.formulario.get('age')?.setValue(null)
       this.parentalPermissionRequired = false
@@ -230,7 +231,7 @@ export class UserRegisterComponent {
   }
 
   downloadParentalPermission() {
-    const parentalPermissionUrl = 'https://taqe.cusco.gob.pe/publico/web/campeonato/autorizacion-anexo2.docx'
+    const parentalPermissionUrl = 'https://taqe.cusco.gob.pe/publico/web/campeonato/autorizacion-anexo2(2).docx'
     const link = document.createElement('a')
     link.href = parentalPermissionUrl
     link.download = 'parental-permission.pdf'
