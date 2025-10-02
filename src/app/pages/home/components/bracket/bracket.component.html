@@ -1,0 +1,90 @@
+@if (typeSection === 'challenge-champions') {
+  <div class="min-h-screen  text-white flex justify-center py-10">
+    <div class="grid grid-cols-7 gap-8 items-center">
+
+      <!-- Octavos izquierda -->
+      <div class="space-y-8">
+        <div *ngFor="let match of getRounds('R16').slice(0,4)"
+             class="relative w-44">
+          <button class="block w-full bg-gray-700 p-2 rounded-lg mb-2 hover:bg-yellow-500 hover:text-black transition"
+                  (click)="selectWinner(match, match.team1!)">
+            {{ match.team1?.name }}
+          </button>
+          <button class="block w-full bg-gray-700 p-2 rounded-lg hover:bg-yellow-500 hover:text-black transition"
+                  (click)="selectWinner(match, match.team2!)">
+            {{ match.team2?.name }}
+          </button>
+          <!-- Línea hacia cuartos -->
+          <div class="absolute right-[-2rem] top-1/2 w-8 border-t border-white"></div>
+        </div>
+      </div>
+
+      <!-- Cuartos izquierda -->
+      <div class="space-y-52">
+        <div *ngFor="let match of getRounds('QF').slice(0,2)"
+             class="relative w-44">
+          <div class="bg-gray-700 p-2 rounded-lg mb-2">{{ match.team1?.name || '---' }}</div>
+          <div class="bg-gray-700 p-2 rounded-lg">{{ match.team2?.name || '---' }}</div>
+          <div class="absolute right-[-2rem] top-1/2 w-8 border-t border-white"></div>
+        </div>
+      </div>
+
+      <!-- Semifinal izquierda -->
+      <div>
+        <div *ngFor="let match of getRounds('SF').slice(0,1)"
+             class="relative w-44">
+          <div class="bg-gray-700 p-2 rounded-lg mb-2">{{ match.team1?.name || '---' }}</div>
+          <div class="bg-gray-700 p-2 rounded-lg">{{ match.team2?.name || '---' }}</div>
+          <div class="absolute right-[-2rem] top-1/2 w-8 border-t border-white"></div>
+        </div>
+      </div>
+
+      <!-- Final -->
+      <div>
+        <div *ngFor="let match of getRounds('F')"
+             class="bg-yellow-500 p-4 rounded-lg w-48 text-black text-center">
+          <div class="mb-2">{{ match.team1?.name || '---' }}</div>
+          <div>{{ match.team2?.name || '---' }}</div>
+          <div *ngIf="match.winner" class="mt-2 font-bold text-xl">🏆 {{ match.winner.name }}</div>
+        </div>
+      </div>
+
+      <!-- Semifinal derecha -->
+      <div>
+        <div *ngFor="let match of getRounds('SF').slice(1,2)"
+             class="relative w-44">
+          <div class="bg-gray-700 p-2 rounded-lg mb-2">{{ match.team1?.name || '---' }}</div>
+          <div class="bg-gray-700 p-2 rounded-lg">{{ match.team2?.name || '---' }}</div>
+          <div class="absolute left-[-2rem] top-1/2 w-8 border-t border-white"></div>
+        </div>
+      </div>
+
+      <!-- Cuartos derecha -->
+      <div class="space-y-56">
+        <div *ngFor="let match of getRounds('QF').slice(2,4); let i = index"
+             class="relative w-44">
+          <div  class="absolute left-[-4rem] top-1/2 w-8 border-t border-white"></div>
+          <div class="bg-gray-700 p-2 rounded-lg mb-2">{{ match.team1?.name || '---' }}</div>
+          <div class="bg-gray-700 p-2 rounded-lg">{{ match.team2?.name || '---' }}</div>
+        </div>
+      </div>
+
+      <!-- Octavos derecha -->
+      <div class="space-y-8">
+        <div *ngFor="let match of getRounds('R16').slice(4,8)"
+             class="relative w-44">
+          <button class="block w-full bg-gray-700 p-2 rounded-lg mb-2 hover:bg-yellow-500 hover:text-black transition"
+                  (click)="selectWinner(match, match.team1!)">
+            {{ match.team1?.name }}
+          </button>
+          <button class="block w-full bg-gray-700 p-2 rounded-lg hover:bg-yellow-500 hover:text-black transition"
+                  (click)="selectWinner(match, match.team2!)">
+            {{ match.team2?.name }}
+          </button>
+          <!-- Línea hacia cuartos -->
+          <div class="absolute left-[-2rem] top-1/2 w-8 border-t border-white"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+}

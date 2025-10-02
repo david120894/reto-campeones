@@ -158,7 +158,6 @@
                   formControlName="gender"
                   id="male"
                   value="Masculino"
-                  (change)="selectCategory()"
                 />
                 <label class="text-sm font-medium text-gray-700" for="male"
                 >Masculino</label
@@ -170,12 +169,19 @@
                   type="radio"
                   formControlName="gender"
                   id="female"
-                  (change)="selectCategory()"
                   value="Femenino"
                 />
                 <label class="text-sm font-medium text-gray-700" for="female"
                 >Femenino</label
                 >
+              </div>
+              <div>
+                @if (formulario.get('gender')?.touched &&
+                formulario.get('gender')?.invalid) {
+                  <div class="w-full pb-2 text-center text-red-400">
+                    <p>Selecciona tu genero</p>
+                  </div>
+                }
               </div>
             </div>
             <div class="flex flex-col w-full md:w-1/2">
@@ -204,9 +210,8 @@
             </div>
           </div>
           <div class="flex flex-col">
-            <label class="block text-sm font-medium text-gray-700"
-            >¿En que Tramo participarás?</label
-            >
+            <label class="block text-sm font-medium text-gray-700">¿En qué Tramo participarás?</label>
+
             <div class="flex items-center space-x-2">
               <input
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
@@ -215,10 +220,11 @@
                 id="cat1"
                 value="INTI"
               />
-              <label class="text-sm font-medium text-gray-700" for="male"
-              >INTI: 12 años en adelante	Varones Mujeres, 14.5O KM</label
-              >
+              <label class="text-sm font-medium text-gray-700" for="cat1">
+                INTI: 12 años en adelante Varones Mujeres, 14.5 km
+              </label>
             </div>
+
             <div class="flex items-center space-x-2">
               <input
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
@@ -227,10 +233,11 @@
                 id="cat2"
                 value="KILLA"
               />
-              <label class="text-sm font-medium text-gray-700" for="male"
-              >KILLA: 8 a 11 años	Niños y Niñas, 7 km</label
-              >
+              <label class="text-sm font-medium text-gray-700" for="cat2">
+                KILLA: 8 a 11 años Niños y Niñas, 7 km
+              </label>
             </div>
+
             <div class="flex items-center space-x-2">
               <input
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
@@ -239,11 +246,18 @@
                 id="cat3"
                 value="CHASKA"
               />
-              <label class="text-sm font-medium text-gray-700" for="male"
-              >CHASKA: Competidores con habilidades diferentes	Varones Mujeres, 3 km</label
-              >
+              <label class="text-sm font-medium text-gray-700" for="cat3">
+                CHASKA: Competidores con habilidades diferentes Varones Mujeres, 3 km
+              </label>
+            </div>
+
+            <!-- Mensaje de error -->
+            <div *ngIf="formulario.get('category')?.touched && formulario.get('category')?.invalid"
+                 class="text-red-500 text-sm mt-2">
+              Debes seleccionar un tramo
             </div>
           </div>
+
           <div class="flex mt-6 mb-4">
             <span
               class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-gray-300 border-e-0 rounded-s-md"

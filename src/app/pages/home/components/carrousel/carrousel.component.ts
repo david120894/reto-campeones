@@ -49,7 +49,8 @@ export class CarrouselComponent implements OnInit, OnChanges {
     if(this.typeSection==='challenge-champions'){
       pdfUrl = 'https://taqe.cusco.gob.pe/publico/web/campeonato/BASES_CAMPEONATO_DE_FUTBOL_Y_VOLEY_INTER_ESCOLAR.pdf';
     }else {
-      pdfUrl= 'https://taqe.cusco.gob.pe/publico/web/campeonato/base-biker1.pdf'
+      pdfUrl= 'https://taqe.cusco.gob.pe/publico/web/campeonato/1RA_GRAN_BICICLETEADA_FAMILIAR_BASE.pdf'
+      // https://taqe.cusco.gob.pe/publico/web/campeonato/1RA_GRAN_BICICLETEADA_FAMILIAR_BASE.pdf
     }
     // const pdfUrl = 'https://taqe.cusco.gob.pe/publico/web/campeonato/BASES_CAMPEONATO_DE_FUTBOL_Y_VOLEY_INTER_ESCOLAR.pdf';
     window.open(pdfUrl, '_blank');
