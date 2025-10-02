@@ -1,0 +1,43 @@
+// Animaciones personalizadas para la copa
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes ray-1 {
+  0%, 100% { transform: translateY(0) scaleY(1); opacity: 0.3; }
+  50% { transform: translateY(-5px) scaleY(1.2); opacity: 0.7; }
+}
+
+@keyframes ray-2 {
+  0%, 100% { transform: translateX(0) scaleY(1); opacity: 0.2; }
+  50% { transform: translateX(3px) scaleY(1.1); opacity: 0.5; }
+}
+
+@keyframes ray-3 {
+  0%, 100% { transform: translateY(0) scaleY(1); opacity: 0.4; }
+  50% { transform: translateY(2px) scaleY(0.8); opacity: 0.6; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+.animate-ray-1 {
+  animation: ray-1 2s ease-in-out infinite;
+}
+
+.animate-ray-2 {
+  animation: ray-2 2.5s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.animate-ray-3 {
+  animation: ray-3 2.2s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+// Efectos de profundidad
+.shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
