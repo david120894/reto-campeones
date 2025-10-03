@@ -93,6 +93,7 @@ export class NotificationsComponent implements OnInit {
         this.totalInscriptions = response.length;
           this.loading = false;
               this.listParticipantsAux = response;
+        console.log(this.listParticipantsAux);
               this.updatePagination('all');
       },
       error: (error) => {
@@ -132,10 +133,13 @@ export class NotificationsComponent implements OnInit {
   }
 
   downloadFile(dataUrl: string) {
-    const link = document.createElement('a');
-    link.href = dataUrl;
-    link.download = 'archivo.pdf';
-    link.click();
+    this.participantsService.getParticipantsById(dataUrl).subscribe({
+      next: (response) => {
+        const link = document.createElement('a');
+        link.href = response;
+        link.download = 'archivo.pdf';
+        link.click();
+    }})
   }
 
   updatePagination(type?: string) {
