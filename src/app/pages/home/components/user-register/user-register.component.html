@@ -451,22 +451,32 @@
                 Descargar
               </button>
             </div>
-
             <div class="w-full mb-4">
               <label class="block text-sm font-medium text-gray-700">
                 Permiso del Padre (Adjuntar carta de autorización)
               </label>
+
               <input
                 type="file"
                 formControlName="file"
                 (change)="onFileSelected($event)"
+                accept="image/*,application/pdf"
                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none focus:ring-[#2D3136] focus:border-[#2D3136]"
               />
+
+              <!-- Mostrar el nombre del archivo -->
+              <div *ngIf="nombreArchivo" class="mt-2 text-sm text-green-700">
+                📂 {{ nombreArchivo }}
+              </div>
+
               <div *ngIf="formulario.get('file')?.touched && formulario.get('file')?.invalid"
                    class="text-red-600 text-sm mt-2">
                 Debes cargar autorización del padre.
               </div>
             </div>
+
+
+
             <!-- Campo para los datos del padre -->
             <div class="w-full mb-4">
               <label class="block text-sm font-medium text-gray-700">

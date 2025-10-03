@@ -46,6 +46,7 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
   showModal = false;
 
   mensajeExito: string | null = null;
+  showMessage: boolean = false;
 
 
   formSearchDni: FormGroup = new FormGroup({
@@ -93,6 +94,7 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
       },
       error: (error) => {
         console.error('Usuario no registrado aun');
+        this.showMessage = true;
         this.mensajeExito = 'El DNI ingresado no está registrado.';
       },
     });
@@ -153,6 +155,7 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
 
   @ViewChild('videoPlayer', { static: false }) videoPlayer!: ElementRef<HTMLVideoElement>;
   @ViewChild('videoPlayer2', { static: false }) videoPlayer2!: ElementRef<HTMLVideoElement>;
+  @ViewChild('videoPlayer3', { static: false }) videoPlayer3!: ElementRef<HTMLVideoElement>;
 
   ngAfterViewInit(): void {
     if (this.videoPlayer) {
@@ -164,6 +167,12 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
 
     if (this.videoPlayer2) {
       const video2 = this.videoPlayer2.nativeElement;
+      video2.muted = true;
+      video2.playsInline = true;
+      video2.play().catch(err => console.warn('Autoplay bloqueado:', err));
+    }
+    if (this.videoPlayer3) {
+      const video2 = this.videoPlayer3.nativeElement;
       video2.muted = true;
       video2.playsInline = true;
       video2.play().catch(err => console.warn('Autoplay bloqueado:', err));
@@ -233,6 +242,9 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
 
   closeModal() {
     this.isModalOpen = false;
+    this.showMessage = false;
+    this.formSearchDni.reset();
+    // this.mensajeExito = false
   }
 
   closeModalPrint() {
