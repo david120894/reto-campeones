@@ -144,7 +144,7 @@
               </div>
             </td>
             <td class="px-6 py-4 text-center">
-              <button *ngIf="p.age < 18" (click)="downloadFile(p.file)" class="hover:scale-110 transition">
+              <button *ngIf="p.age < 18" (click)="downloadFile(p.dni)" class="hover:scale-110 transition">
                 <i class="fas fa-file text-blue-500 text-2xl"></i>
               </button>
             </td>
@@ -152,7 +152,6 @@
           </tbody>
         </table>
       </div>
-
       <!-- Paginación -->
       <div class="flex justify-between items-center mt-6">
         <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1"

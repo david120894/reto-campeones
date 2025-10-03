@@ -8,6 +8,7 @@ import { PlaceService } from '../../../../core/services/place.service'
 import { ReservationService } from '../../../../core/services/reservation.service'
 import { DatePipe, NgClass, NgIf } from '@angular/common'
 import { RouterLink } from '@angular/router'
+import { jsPDF } from 'jspdf';
 
 
 @Component({
@@ -163,21 +164,84 @@ export class UserRegisterComponent {
     })
   }
 
+  nombreArchivo: string | null = null;
+
   onFileSelected(event: Event): void {
-    const fileInput = event.target as HTMLInputElement
+    const fileInput = event.target as HTMLInputElement;
+
     if (fileInput.files && fileInput.files.length > 0) {
-      const file = fileInput.files[0]
+      const file = fileInput.files[0];
+      this.nombreArchivo = file.name; // 👈 Guardamos el nombre para mostrarlo
 
-      const reader = new FileReader()
+      if (file.type === 'application/pdf') {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          const pdfBase64 = reader.result as string;
+          this.archivoParentalBase64 = pdfBase64;
+          this.formulario.get('file')?.setValue(pdfBase64);
 
-      reader.onloadend = () => {
-        this.archivoParentalBase64 = reader.result as string
-        this.formulario.get('file')?.setValue(reader.result as string)
+          if (file.size > 2 * 1024 * 1024) {
+            alert('El PDF supera los 2MB, por favor suba un archivo más ligero.');
+          }
+        };
+        reader.readAsDataURL(file);
+      } else if (file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          const imageBase64 = reader.result as string;
+          const img = new Image();
+          img.src = imageBase64;
+
+          img.onload = () => {
+            const pdf = new jsPDF({
+              orientation: img.width > img.height ? 'l' : 'p',
+              unit: 'px',
+              format: [600, 800]
+            });
+
+            const pageWidth = pdf.internal.pageSize.getWidth();
+            const pageHeight = pdf.internal.pageSize.getHeight();
+
+            let imgWidth = img.width;
+            let imgHeight = img.height;
+
+            if (imgWidth > pageWidth) {
+              imgHeight = (pageWidth / imgWidth) * imgHeight;
+              imgWidth = pageWidth;
+            }
+            if (imgHeight > pageHeight) {
+              imgWidth = (pageHeight / imgHeight) * imgWidth;
+              imgHeight = pageHeight;
+            }
+
+            pdf.addImage(img, 'JPEG', 0, 0, imgWidth, imgHeight, undefined, 'FAST');
+            const pdfBlob = pdf.output('blob');
+
+            const pdfBase64Promise = new Promise<string>((resolve) => {
+              const reader = new FileReader();
+              reader.onloadend = () => resolve(reader.result as string);
+              reader.readAsDataURL(pdfBlob);
+            });
+
+            pdfBase64Promise.then((pdfBase64) => {
+              this.archivoParentalBase64 = pdfBase64;
+              this.formulario.get('file')?.setValue(pdfBase64);
+
+              if (pdfBlob.size > 4 * 1024 * 1024) {
+                alert('El archivo convertido supera los 4MB, intenta con una imagen más ligera.');
+              }
+            });
+          };
+        };
+        reader.readAsDataURL(file);
+      } else {
+        alert('Solo se aceptan imágenes o archivos PDF.');
+        this.nombreArchivo = null;
       }
-
-      reader.readAsDataURL(file) // Leer como Data URL (Base64)
     }
   }
+
+
 
   saveRegistration() {
     if (this.formulario.invalid) {
@@ -310,6 +374,15 @@ export class UserRegisterComponent {
         window.location.reload()
       }, 1000)
     }
+  }
+
+  abrirCamara(): void {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.capture = 'environment'; // abre cámara trasera
+    input.onchange = (event: any) => this.onFileSelected(event);
+    input.click();
   }
 
   openModal() {
