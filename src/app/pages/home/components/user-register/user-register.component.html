@@ -27,7 +27,7 @@
         <img src="bike/bike-ride.png"
              class="absolute opacity-15 w-[400px] top-[100px] left-1/2 -translate-x-1/2 pointer-events-none select-none"
              alt="Marca de agua" />
-        <form [formGroup]="formulario" (submit)="saveRegistration()" class="form-container w-[95%]">
+        <form [formGroup]="formulario" (ngSubmit)="saveRegistration()" class="form-container w-[95%]">
           <div class="flex flex-col items-center justify-between md:flex-row">
           </div>
 
@@ -561,17 +561,18 @@
             </div>
             <button
               type="submit"
-              class="bg-[#F4C151] text-white py-2 px-4 rounded-lg">
-              @if (isSave) {
-                <span class="indicator-progress" [style.display]="'block'">
+              class="bg-[#F4C151] text-white py-2 px-4 rounded-lg flex items-center justify-center"
+            >
+              <ng-container *ngIf="isSave; else normalText">
+      <span class="indicator-progress flex items-center gap-2">
         Espere por favor...
-        <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+        <span class="spinner-border spinner-border-sm align-middle"></span>
       </span>
-              } @else {
-                Enviar
-              }
+              </ng-container>
+              <ng-template #normalText>Enviar</ng-template>
             </button>
             <button
+              rossy
               class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg"
               routerLink="/registro">
               Cancelar
