@@ -241,7 +241,11 @@ export class UserRegisterComponent {
     }
   }
 
-
+  onSubmit(event: Event): void {
+    event.preventDefault(); // Previene el comportamiento por defecto
+    event.stopPropagation(); // Evita conflictos con Safari
+    this.saveRegistration(); // Llama a tu método original
+  }
 
   saveRegistration() {
     if (this.formulario.invalid) {
