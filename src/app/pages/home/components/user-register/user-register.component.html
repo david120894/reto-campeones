@@ -27,7 +27,7 @@
         <img src="bike/bike-ride.png"
              class="absolute opacity-15 w-[400px] top-[100px] left-1/2 -translate-x-1/2 pointer-events-none select-none"
              alt="Marca de agua" />
-        <form [formGroup]="formulario" (ngSubmit)="saveRegistration()" class="form-container w-[95%]">
+        <form [formGroup]="formulario" (submit)="onSubmit($event)" class="form-container w-[95%]">
           <div class="flex flex-col items-center justify-between md:flex-row">
           </div>
 
@@ -572,7 +572,6 @@
               <ng-template #normalText>Enviar</ng-template>
             </button>
             <button
-              rossy
               class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg"
               routerLink="/registro">
               Cancelar
