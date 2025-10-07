@@ -54,7 +54,7 @@ export class UserRegisterComponent {
     private authService: AuthService,
   ) {
     this.formulario = this.fb.group({
-      dni: ['', [Validators.required, Validators.maxLength(87)]],
+      dni: ['', [Validators.required, Validators.pattern(/^\d{8}$/)]],
       name: ['', [Validators.required, Validators.maxLength(30)]],
       lastName: ['', [Validators.required, Validators.maxLength(30)]],
       phone: [
@@ -70,7 +70,7 @@ export class UserRegisterComponent {
         [Validators.email, Validators.maxLength(50)],
       ],
       gender: ['', Validators.required],
-      age: ['', Validators.required],
+      age: ['', [Validators.required, Validators.min(5)]],
       birthDate: ['', Validators.required],
       district: ['', Validators.required],
       category: ['', Validators.required],
@@ -104,51 +104,52 @@ export class UserRegisterComponent {
   }
 
   calculateAge(event: Event): void {
-    const input = event.target as HTMLInputElement
-    const birthDate = new Date(input.value)
-    const today = new Date()
+    const input = event.target as HTMLInputElement;
+    const birthDate = new Date(input.value);
+    const today = new Date();
+    const ageControl = this.formulario.get('age');
+    const fileControl = this.formulario.get('file');
 
-    if (!isNaN(birthDate.getTime())) {
-      let age = today.getFullYear() - birthDate.getFullYear()
-      const monthDiff = today.getMonth() - birthDate.getMonth()
-      const dayDiff = today.getDate() - birthDate.getDate()
+    if (isNaN(birthDate.getTime())) {
+      // Fecha inválida
+      ageControl?.setValue(null);
+      this.parentalPermissionRequired = false;
+      fileControl?.clearValidators();
+      fileControl?.updateValueAndValidity();
+      return;
+    }
 
-      if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
-        age--
-      }
+    // Calcular edad
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    const dayDiff = today.getDate() - birthDate.getDate();
+    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+      age--;
+    }
 
-      this.formulario.get('age')?.setValue(age)
+    // Establecer edad en el formulario
+    ageControl?.setValue(age);
 
-      if (age < 18) {
-        this.formulario.get('file')?.setValidators([Validators.required])
-      }
-      // Check if parental permission is required
-      this.parentalPermissionRequired = age < 18
-
-      // Call selectCategory after setting the age
-      // this.selectCategory()
+    // Validar edad mínima
+    if (age < 5) {
+      ageControl?.setErrors({ minAge: true }); // marca error si menor a 5
     } else {
-      this.formulario.get('age')?.setValue(null)
-      this.parentalPermissionRequired = false
+      ageControl?.setErrors(null); // limpia errores si >= 5
     }
+
+    // Actualizar validador dinámico de archivo si es menor de 18
+    if (age < 18) {
+      fileControl?.setValidators([Validators.required]);
+    } else {
+      fileControl?.clearValidators();
+    }
+    fileControl?.updateValueAndValidity();
+
+    // Indicar si se requiere permiso parental
+    this.parentalPermissionRequired = age < 18;
   }
 
-  selectCategory(): void {
-    const age = this.formulario.get('age')?.value
-    const gender = this.formulario.get('gender')?.value
-    if (age && gender) {
-      let category = ''
-      if (age >= 12) {
-        category = gender === 'Masculino' ? 'Categoria I' : 'Categoria II'
-      } else if (age >= 8 && age <= 11) {
-        category = gender === 'Masculino' ? 'Categoria II' : 'Categoria III'
-      } else {
-        category = gender === 'Femenino' ? 'Categoria III' : 'Categoria III'
-      }
 
-      this.formulario.get('category')?.setValue(category)
-    }
-  }
 
   private updateFormValidations(isReservation: boolean) {
     const controls = ['institution_name', 'event_name', 'event_date']
