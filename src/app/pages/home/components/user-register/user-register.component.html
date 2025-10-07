@@ -32,26 +32,25 @@
           </div>
 
           <div class="flex mt-8 mb-4">
-            <span
-              class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-gray-300 border-e-0 rounded-s-md"
-            >
-              <i class="fa-regular fa-user"></i>
-            </span>
+  <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-gray-300 border-e-0 rounded-s-md">
+    <i class="fa-regular fa-user"></i>
+  </span>
             <input
               type="text"
               id="dni"
               formControlName="dni"
-              required
-              maxlength="30"
+              maxlength="8"
               class="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-[#2D3136] focus:border-[#2D3136] block flex-1 min-w-0 w-full text-sm p-2.5"
               placeholder="DNI"
             />
           </div>
-          @if (formulario.get('dni')?.touched && formulario.get('dni')?.invalid) {
-            <div class="mt-1 text-sm text-red-400">
-              <p>DNI INVALIDO</p>
-            </div>
-          }
+
+          <div *ngIf="formulario.get('dni')?.touched && formulario.get('dni')?.invalid" class="mt-1 text-sm text-red-400">
+            <p *ngIf="formulario.get('dni')?.errors?.['required']">DNI es obligatorio</p>
+            <p *ngIf="formulario.get('dni')?.errors?.['pattern']">El DNI debe tener 8 dígitos</p>
+
+          </div>
+
           <div class="flex mb-4">
             <span
               class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-gray-300 border-e-0 rounded-s-md"
@@ -207,7 +206,12 @@
                 formControlName="age"
                 class="rounded-none rounded-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-[#2D3136] focus:border-[#2D3136] block w-full text-sm p-2.5"
               />
+              <div *ngIf="formulario.get('age')?.errors?.['minAge']" class="text-red-500 text-sm mt-1">
+                Debes tener al menos 5 años
+              </div>
             </div>
+
+
           </div>
           <div class="flex flex-col">
             <label class="block text-sm font-medium text-gray-700">¿En qué Tramo participarás?</label>
@@ -562,6 +566,7 @@
             <button
               type="submit"
               class="bg-[#F4C151] text-white py-2 px-4 rounded-lg flex items-center justify-center"
+              [disabled]="isSave"
             >
               <ng-container *ngIf="isSave; else normalText">
       <span class="indicator-progress flex items-center gap-2">
