@@ -291,7 +291,10 @@ export class UserRegisterComponent {
       },
       error: (err) => {
         this.isSave = false
-        console.error(err)
+        console.error(err.status)
+        if(err.status === 409) {
+          this.mensajeExito = 'Ya existe un registro con el mismo DNI'
+        }
       },
       complete: () => {
         this.isSave = false

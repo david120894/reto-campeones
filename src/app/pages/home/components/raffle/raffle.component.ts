@@ -133,23 +133,23 @@ export class RaffleComponent implements OnInit {
   showWinnerModal = false;
 
   onGanadoraClick() {
-    this.participantsService.getWinner().subscribe({
-      next: (winner: ParticipantsModel) => {
-        if (winner) {
-          this.showWinners = true
-          this.currentWinner = winner
-          this.showWinner()
-        }
-      } ,
-      error: (err) => {
-        if (err.status === 404) {
-          this.showWinners = false
-          this.errorMessage="No tenemos ganador"
-        }
-        // this.sshowWinners = true
-      }
-    })
-    this.showWinnerModal = true;
+    // this.participantsService.getWinner().subscribe({
+    //   next: (winner: ParticipantsModel) => {
+    //     if (winner) {
+    //       this.showWinners = true
+    //       this.currentWinner = winner
+    //       this.showWinner()
+    //     }
+    //   } ,
+    //   error: (err) => {
+    //     if (err.status === 404) {
+    //       this.showWinners = false
+    //       this.errorMessage="No tenemos ganador"
+    //     }
+    //     // this.sshowWinners = true
+    //   }
+    // })
+    // this.showWinnerModal = true;
   }
   showWinner() {
     this.ganador = {
