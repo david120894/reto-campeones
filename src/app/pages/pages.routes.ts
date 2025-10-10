@@ -2,8 +2,9 @@ import { Routes } from '@angular/router';
 import { NewRegisterComponent } from './new-register/new-register.component';
 import { EmailFormComponent } from './home/components/email-form/email-form.component';
 import { LoginComponent } from './login/login.component';
-import { RaffleComponent } from './home/components/raffle/raffle.component'
 import { UserRegisterComponent } from './home/components/user-register/user-register.component'
+import { LotteryMachineComponent } from './dashboard/components/aside/lottery/lottery-machine/lottery-machine.component'
+import { RaffleComponent } from './dashboard/components/aside/raffle/raffle.component'
 
 
 export const pagesRoutes: Routes = [
@@ -33,5 +34,9 @@ export const pagesRoutes: Routes = [
   {
     path:'raffle',
     component:RaffleComponent
+  },
+  {
+  path:'raffle2',
+    component:LotteryMachineComponent
   }
 ];

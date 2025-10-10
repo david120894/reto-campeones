@@ -87,13 +87,10 @@ export class NotificationsComponent implements OnInit {
   getParticipants() {
     this.participantsService.getAllParticipants().subscribe({
       next: (response) => {
-        console.log('here')
         this.listParticipants = response;
-        console.log(this.listParticipants);
         this.totalInscriptions = response.length;
           this.loading = false;
               this.listParticipantsAux = response;
-        console.log(this.listParticipantsAux);
               this.updatePagination('all');
       },
       error: (error) => {

@@ -1,6 +1,10 @@
 import { Routes } from '@angular/router';
 import { authGuard } from '../core/guards/auth.guard';
 import { adminGuard } from '../core/guards/admin.guard';
+import {
+  LotteryMachineComponent,
+} from '../pages/dashboard/components/aside/lottery/lottery-machine/lottery-machine.component'
+import { RaffleComponent } from '../pages/dashboard/components/aside/raffle/raffle.component'
 
 export const sharedRoutes: Routes = [
     {
@@ -45,8 +49,12 @@ export const sharedRoutes: Routes = [
                 loadComponent: () => import('../pages/dashboard/components/aside/reserves/reserves.component').then((m)=> m.ReservesComponent),
             },
           {
-            path:'raffle',
-            loadComponent:() => import('../pages/home/components/raffle/raffle.component').then((m)=> m.RaffleComponent),
+            path: 'raffle2',
+            component: LotteryMachineComponent,
+          },
+          {
+            path: 'raffle',
+            component: RaffleComponent  ,
           },
             {
                 path: 'places',
