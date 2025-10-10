@@ -1,0 +1,46 @@
+<div class="winner-card" [class.active]="visible">
+  <div class="card-header">
+    <h2>¡Felicidades al Ganador!</h2>
+    <button class="close-btn" (click)="closeCard()">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <div class="winner-info" *ngIf="winner">
+    <div class="info-row">
+      <div class="info-icon">
+        <i class="fas fa-user"></i>
+      </div>
+      <div class="info-text">
+        <h3>Nombre</h3>
+        <p>{{ winner?.name }}</p>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">
+        <i class="fas fa-id-badge"></i>
+      </div>
+      <div class="info-text">
+        <h3>Número de Participante</h3>
+        <p>{{ winner?.number }}</p>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">
+        <i class="fas fa-bicycle"></i>
+      </div>
+      <div class="info-text">
+        <h3>Categoría</h3>
+        <p>{{ winner?.category }}</p>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">
+        <i class="fas fa-trophy"></i>
+      </div>
+      <div class="info-text">
+        <h3>Premio</h3>
+        <p>{{ winner?.prize }}</p>
+      </div>
+    </div>
+  </div>
+</div>
