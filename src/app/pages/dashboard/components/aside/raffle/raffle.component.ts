@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgClass, NgForOf, NgIf } from '@angular/common';
 import confetti from 'canvas-confetti';
 
@@ -8,6 +8,7 @@ interface Participant {
   email: string;
   orbit: number;
   angle: number;
+  color: string; // Nueva propiedad para el color
 }
 
 @Component({
@@ -16,7 +17,11 @@ interface Participant {
   templateUrl: './raffle.component.html',
   styleUrl: './raffle.component.scss',
 })
-export class RaffleComponent implements OnInit {
+export class RaffleComponent implements OnInit,AfterViewInit{
+  @ViewChild('videoPlayer', { static: false }) videoPlayer!: ElementRef<HTMLVideoElement>;
+
+  // Para la opción 2 - Partículas flotantes
+  floatingParticles: any[] = [];
   participants: Participant[] = [];
   visibleBalls: Participant[] = [];
   winner: Participant | null = null;
@@ -26,11 +31,64 @@ export class RaffleComponent implements OnInit {
   orbitCount = 7;
   showWinnerModal = false;
   confettiInterval: any;
+ngAfterViewInit(): void {
+    if (this.videoPlayer) {
+      const video = this.videoPlayer.nativeElement;
+      video.muted = true;
+      video.playsInline = true;
+      video.play().catch(err => console.warn('Autoplay bloqueado:', err));
+    }
+  }
+  // Paleta de colores vibrantes para las bolas
+  private colorPalette = [
+    '#FF0000', // ROJO NEÓN
+    '#00FF00', // VERDE NEÓN
+    '#0000FF', // AZUL NEÓN
+    '#FFFF00', // AMARILLO NEÓN
+    '#FF00FF', // MAGENTA NEÓN
+    '#00FFFF', // CIAN NEÓN
+    '#FF007F', // ROSA NEÓN
+    '#7FFF00', // CHARTREUSE NEÓN
+    '#007FFF', // AZUL CIELO NEÓN
+    '#FF7F00', // NARANJA NEÓN
+    '#8F00FF', // VIOLETA NEÓN
+    '#00FF7F', // VERDE PRIMAVERA NEÓN
+    '#FF00AA', // ROSA FUCSIA
+    '#AA00FF', // PÚRPURA ELÉCTRICO
+    '#00AAFF', // AZUL CELESTE
+    '#FFAA00', // AMARILLO NARANJA
+    '#7F00FF', // VIOLETA AZUL
+    '#00FFAA', // TURQUESA NEÓN
+    '#FF007F', // ROSA INTENSO
+    '#FF5500', // NARANJA ROJIZO
+    '#00FF55', // VERDE LIMA
+    '#5500FF', // AZUL VIOLETA
+    '#FF0055', // ROSA ROJIZO
+    '#55FF00', // VERDE AMARILLENTO
+    '#0055FF', // AZUL PURPURA
+    '#FF5500', // NARANJA FUEGO
+    '#00FF55', // VERDE AGUA
+    '#FF00AA', // MAGENTA ROSADO
+    '#AAFF00', // AMARILLO VERDE
+    '#FFAA00'  // NARANJA DORADO
+  ];
 
   ngOnInit() {
+    console.log(this.phase)
     this.generateParticipants();
+    this.generateFloatingParticles();
   }
-
+  // Método para generar partículas flotantes (Opción 2)
+  private generateFloatingParticles() {
+    this.floatingParticles = [];
+    for (let i = 0; i < 15; i++) {
+      this.floatingParticles.push({
+        x: Math.random() * 100,
+        delay: Math.random() * 5,
+        color: this.colorPalette[Math.floor(Math.random() * this.colorPalette.length)]
+      });
+    }
+  }
   generateParticipants() {
     this.participants = [];
 
@@ -46,34 +104,36 @@ export class RaffleComponent implements OnInit {
           email: `user${id}@correo.com`,
           orbit,
           angle: (i / ballsInOrbit) * 360,
+          color: this.getRandomColor() // Asignar color aleatorio
         });
       }
     }
+  }
+
+  // Método para obtener color aleatorio de la paleta
+  private getRandomColor(): string {
+    const randomIndex = Math.floor(Math.random() * this.colorPalette.length);
+    return this.colorPalette[randomIndex];
   }
 
   startRaffle() {
     if (this.isRunning) return;
     this.isRunning = true;
     this.showWinnerModal = false;
-    this.stopConfetti(); // Detener confeti si estaba activo
+    this.stopConfetti();
 
     this.winner = null;
     this.visibleBalls = [...this.participants];
     this.phase = 'spin';
 
-    // Fase 1: giran durante 5s
     setTimeout(() => {
       this.phase = 'explode';
-
-      // Seleccionar ganador
       this.winner = this.getRandomWinner();
 
-      // Fase 2: después de la explosión, mostrar solo el ganador
       setTimeout(() => {
         this.visibleBalls = [this.winner!];
         this.phase = 'moveToCenter';
 
-        // Fase 3: después de moverse al centro, mostrar como ganador
         setTimeout(() => {
           this.phase = 'winner';
           this.isRunning = false;
@@ -107,7 +167,6 @@ export class RaffleComponent implements OnInit {
   }
 
   startConfetti() {
-    // Configuración del confeti más visible
     const confettiConfig = {
       particleCount: 150,
       spread: 100,
@@ -119,12 +178,9 @@ export class RaffleComponent implements OnInit {
       ticks: 200
     };
 
-    // Disparar confeti inmediatamente
     confetti(confettiConfig);
 
-    // Disparar confeti desde la izquierda
     this.confettiInterval = setInterval(() => {
-      // Confeti desde izquierda
       confetti({
         ...confettiConfig,
         angle: 60,
@@ -133,7 +189,6 @@ export class RaffleComponent implements OnInit {
         origin: { x: 0, y: 0.7 }
       });
 
-      // Confeti desde derecha
       confetti({
         ...confettiConfig,
         angle: 120,
@@ -142,7 +197,6 @@ export class RaffleComponent implements OnInit {
         origin: { x: 1, y: 0.7 }
       });
 
-      // Confeti adicional del centro
       confetti({
         particleCount: 50,
         spread: 120,
@@ -152,7 +206,6 @@ export class RaffleComponent implements OnInit {
         gravity: 0.5
       });
 
-      // Confeti de estrella ocasional
       if (Math.random() > 0.7) {
         confetti({
           particleCount: 30,
@@ -162,8 +215,7 @@ export class RaffleComponent implements OnInit {
           colors: ['#FFE400', '#FFBD00', '#E89400', '#FFCA6C', '#FDFFB8'],
         });
       }
-
-    }, 400); // Más frecuente
+    }, 400);
   }
 
   stopConfetti() {
@@ -171,8 +223,6 @@ export class RaffleComponent implements OnInit {
       clearInterval(this.confettiInterval);
       this.confettiInterval = null;
     }
-
-    // Limpiar cualquier confeti restante
     confetti.reset();
   }
 
@@ -180,4 +230,3 @@ export class RaffleComponent implements OnInit {
     this.stopConfetti();
   }
 }
-//

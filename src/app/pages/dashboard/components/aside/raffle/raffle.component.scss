@@ -1,42 +1,128 @@
 .raffle-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1e3a8a, #6b21a8, #db2777);
+  background: linear-gradient(135deg, rgba(101, 41, 43, 0.93), #770c1c);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; /* Esto distribuye el espacio */
   align-items: center;
   color: white;
-  padding: 3rem;
+  padding: 1rem;
   position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/bike/bike-ride.png');
+    opacity: 0.4;
+    background-size: 40%;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 0;
+  }
 }
 
 .title {
-  margin-top: 1rem;
-  font-size: 2.5rem;
+  //margin-top: rem;
+  font-size: 2.2rem;
   font-weight: 800;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   text-align: center;
+  color: #e6c204;
+  //margin-bottom: 2rem;
+}
+
+/* CONTENEDOR PRINCIPAL CON LAYOUT DE DOS COLUMNAS */
+.content-wrapper {
+  display: flex;
+  //gap: 3rem;
+  width: 100%;
+  //max-width: 1400px;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 1; /* Ocupa todo el espacio disponible */
+  //margin-bottom: 2rem; /* Espacio antes de los botones */
+}
+
+/* CONTENEDOR DEL VIDEO (LADO IZQUIERDO) */
+.video-container {
+  flex: 0 0 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: sticky;
+  top: 2rem;
+}
+
+.video-player {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow:
+    0 0 30px rgba(0, 0, 0, 0.5),
+    0 0 60px rgba(255, 215, 0, 0.2);
+  border: 3px solid gold;
+  background: #000;
+
+  /* Efecto de bordes que desaparecen */
+  -webkit-mask-image:
+    linear-gradient(to top, transparent 0%, black 10%, black 90%, transparent 100%),
+    linear-gradient(to left, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-composite: intersect;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+
+  mask-image:
+    linear-gradient(to top, transparent 0%, black 10%, black 90%, transparent 100%),
+    linear-gradient(to left, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-composite: intersect;
+  mask-repeat: no-repeat;
+  mask-size: cover;
+}
+
+/* CONTENEDOR DE LA ANIMACIÓN (LADO DERECHO) */
+.animation-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 600px;
 }
 
 .ball-zone {
   position: relative;
-  width: 90%;
-  max-width: 1000px;
-  flex: 1;
+  width: 100%;
+  max-width: 800px;
+  height: 500px;
   border-radius: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  overflow: visible; /* Cambiado de hidden a visible */
+
+  /* ELIMINAMOS el fondo y bordes para que esté libre */
+  background: transparent; /* Sin fondo */
+  border: none; /* Sin borde */
+  box-shadow: none; /* Sin sombra */
+
+  /* Opcional: si quieres un efecto muy sutil */
+  /* background: rgba(255, 255, 255, 0.02); */
+  /* border: 1px solid rgba(255, 255, 255, 0.05); */
 }
 
 /* 🌐 BASE DE LAS BOLAS */
 .ball {
   position: absolute;
-  width: 33px; /* Un poco más grande */
+  width: 33px;
   height: 33px;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #fff, #1e3a8a);
+  background: radial-gradient(circle at 30% 30%, #fff, var(--ball-color, #1e3a8a));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,11 +133,15 @@
   top: 50%;
   opacity: 0;
   transform-origin: center;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    inset 0 0 10px rgba(255, 255, 255, 0.3),
+    0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Trofeo dentro de la bola */
 .trophy {
-  font-size: 1.5rem;
+  font-size: 2rem;
   animation: trophyGlow 2s ease-in-out infinite;
   filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.8));
 }
@@ -72,7 +162,6 @@
   opacity: 1;
 }
 
-/* Usando la misma estructura pero con diferentes velocidades y direcciones */
 .ball.spin.orbit-1 { animation: orbit-spin-1 3s linear infinite; }
 .ball.spin.orbit-2 { animation: orbit-spin-2 5s linear infinite reverse; }
 .ball.spin.orbit-3 { animation: orbit-spin-3 4s linear infinite; }
@@ -80,41 +169,36 @@
 .ball.spin.orbit-5 { animation: orbit-spin-5 6s linear infinite; }
 .ball.spin.orbit-6 { animation: orbit-spin-6 8s linear infinite reverse; }
 .ball.spin.orbit-7 { animation: orbit-spin-7 5s linear infinite; }
-//.ball.spin.orbit-8 { animation: orbit-spin-8 10s linear infinite reverse; }
 
 /* Animaciones para cada órbita */
 @keyframes orbit-spin-1 {
-  from { transform: rotate(var(--angle)) translate(calc(35px * 1)) rotate(0deg); }
-  to { transform: rotate(calc(var(--angle) + 360deg)) translate(calc(35px * 1)) rotate(-360deg); }
+  from { transform: rotate(var(--angle)) translate(calc(35px * 1.5)) rotate(0deg); }
+  to { transform: rotate(calc(var(--angle) + 360deg)) translate(calc(35px * 1.5)) rotate(-360deg); }
 }
 @keyframes orbit-spin-2 {
-  from { transform: rotate(var(--angle)) translate(calc(35px * 2)) rotate(0deg); }
-  to { transform: rotate(calc(var(--angle) - 360deg)) translate(calc(35px * 2)) rotate(360deg); }
+  from { transform: rotate(var(--angle)) translate(calc(35px * 2.5)) rotate(0deg); }
+  to { transform: rotate(calc(var(--angle) - 360deg)) translate(calc(35px * 2.5)) rotate(360deg); }
 }
 @keyframes orbit-spin-3 {
-  from { transform: rotate(var(--angle)) translate(calc(35px * 3)) rotate(0deg); }
-  to { transform: rotate(calc(var(--angle) + 360deg)) translate(calc(35px * 3)) rotate(-360deg); }
+  from { transform: rotate(var(--angle)) translate(calc(35px * 3.5)) rotate(0deg); }
+  to { transform: rotate(calc(var(--angle) + 360deg)) translate(calc(35px * 3.5)) rotate(-360deg); }
 }
 @keyframes orbit-spin-4 {
-  from { transform: rotate(var(--angle)) translate(calc(35px * 4)) rotate(0deg); }
-  to { transform: rotate(calc(var(--angle) - 360deg)) translate(calc(35px * 4)) rotate(360deg); }
+  from { transform: rotate(var(--angle)) translate(calc(35px * 4.5)) rotate(0deg); }
+  to { transform: rotate(calc(var(--angle) - 360deg)) translate(calc(35px * 4.5)) rotate(360deg); }
 }
 @keyframes orbit-spin-5 {
-  from { transform: rotate(var(--angle)) translate(calc(35px * 5)) rotate(0deg); }
-  to { transform: rotate(calc(var(--angle) + 360deg)) translate(calc(35px * 5)) rotate(-360deg); }
+  from { transform: rotate(var(--angle)) translate(calc(35px * 5.5)) rotate(0deg); }
+  to { transform: rotate(calc(var(--angle) + 360deg)) translate(calc(35px * 5.5)) rotate(-360deg); }
 }
 @keyframes orbit-spin-6 {
-  from { transform: rotate(var(--angle)) translate(calc(35px * 6)) rotate(0deg); }
-  to { transform: rotate(calc(var(--angle) - 360deg)) translate(calc(35px * 6)) rotate(360deg); }
+  from { transform: rotate(var(--angle)) translate(calc(35px * 6.5)) rotate(0deg); }
+  to { transform: rotate(calc(var(--angle) - 360deg)) translate(calc(35px * 6.5)) rotate(360deg); }
 }
 @keyframes orbit-spin-7 {
-  from { transform: rotate(var(--angle)) translate(calc(35px * 7)) rotate(0deg); }
-  to { transform: rotate(calc(var(--angle) + 360deg)) translate(calc(35px * 7)) rotate(-360deg); }
+  from { transform: rotate(var(--angle)) translate(calc(35px * 7.5)) rotate(0deg); }
+  to { transform: rotate(calc(var(--angle) + 360deg)) translate(calc(35px * 7.5)) rotate(-360deg); }
 }
-//@keyframes orbit-spin-8 {
-//  from { transform: rotate(var(--angle)) translate(calc(35px * 8)) rotate(0deg); }
-//  to { transform: rotate(calc(var(--angle) - 360deg)) translate(calc(35px * 8)) rotate(360deg); }
-//}
 
 /* 💥 EXPLOSIÓN - TODAS LAS BOLAS SALEN DISPARADAS */
 .ball.explode {
@@ -172,8 +256,8 @@
 .ball.move-to-center {
   opacity: 1;
   animation: moveToCenter 2s ease-in-out forwards;
-  background: radial-gradient(circle at 30% 30%, #fff, gold);
-  box-shadow: 0 0 20px gold;
+  background: radial-gradient(circle at 30% 30%, #fff, var(--ball-color, gold));
+  box-shadow: 0 0 20px var(--ball-color, gold);
 }
 
 @keyframes moveToCenter {
@@ -200,22 +284,22 @@
       translate(-50%, -50%)
       scale(1.6);
     opacity: 1;
-    background: radial-gradient(circle at 30% 30%, #fff, gold);
+    background: radial-gradient(circle at 30% 30%, #fff, var(--ball-color, gold));
   }
   100% {
     transform:
       translate(-50%, -50%)
-      scale(2); /* Más grande */
+      scale(2);
     opacity: 1;
-    background: radial-gradient(circle, gold, orange);
-    box-shadow: 0 0 40px gold;
+    background: radial-gradient(circle, var(--ball-color, gold), orange);
+    box-shadow: 0 0 40px var(--ball-color, gold);
   }
 }
 
-/* 🏆 GANADOR - BOLA MÁS GRANDE CON TROFEO */
+/* 🏆 GANADOR - Mantener el color dorado especial */
 .ball.winner {
   opacity: 1;
-  transform: translate(-50%, -50%) scale(2.2); /* Más grande */
+  transform: translate(-50%, -50%) scale(2.2);
   background: radial-gradient(circle, gold, orange);
   box-shadow:
     0 0 50px gold,
@@ -225,11 +309,12 @@
   transition: all 0.5s ease;
   animation: winnerPulse 2s ease-in-out infinite;
   z-index: 100;
-  width: 60px; /* Más grande */
-  height: 60px;
+  width: 80px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 3px solid rgba(255, 255, 255, 0.5);
 }
 
 .ball.winner:hover {
@@ -241,7 +326,7 @@
 }
 
 .ball.winner .trophy {
-  font-size: 2rem; /* Trofeo más grande */
+  font-size: 3rem;
   animation: trophySpin 3s ease-in-out infinite;
 }
 
@@ -279,11 +364,42 @@
   }
 }
 
-/* 🎛️ BOTONES */
-.buttons {
-  margin-top: 3rem;
+/* BOTONES EN LA PARTE INFERIOR DE TODO */
+.buttons-container {
+  width: 100%;
   display: flex;
-  gap: 1rem;
+  justify-content: space-between; /* Botones al centro, imagen a la derecha */
+  align-items: center;
+  padding: 2rem 2rem;
+  //background: rgba(0, 0, 0, 0.3);
+  //border-top: 2px solid rgba(255, 215, 0, 0.3);
+  margin-top: auto;
+  position: relative; /* Para posicionamiento absoluto de los botones */
+}
+
+.buttons {
+  display: flex;
+  gap: 2rem;
+  position: absolute; /* Posicionamos los botones absolutamente */
+  left: 50%; /* Centramos horizontalmente */
+  transform: translateX(-50%); /* Ajuste para centrado perfecto */
+}
+
+/* Estilos para la imagen del auspiciador */
+.auspiciador-img {
+  height: 80px;
+  width: auto;
+  max-width: 100px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  //opacity: 0.8;
+  transition: all 0.3s ease;
+  margin-left: auto; /* Empuja la imagen a la derecha */
+}
+
+.auspiciador-img:hover {
+  opacity: 1;
+  filter: brightness(0) invert(1) drop-shadow(0 0 10px gold);
 }
 
 button {
@@ -292,19 +408,28 @@ button {
   font-weight: bold;
   border: none;
   border-radius: 12px;
-  padding: 10px 20px;
+  padding: 15px 30px;
   cursor: pointer;
   transition: all 0.3s;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 button:hover {
   background: #fbbf24;
   transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
-/* ... (mantén todos los estilos anteriores) ... */
 
-/* 🎊 CANVAS DEL CONFETI - DELANTE DEL MODAL */
-/* 🎊 CANVAS DEL CONFETI - DETRÁS DEL MODAL PERO VISIBLE */
+button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* 🎊 CANVAS DEL CONFETI */
 #confetti-canvas {
   position: fixed;
   top: 0;
@@ -312,32 +437,28 @@ button:hover {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 1001; /* Detrás del modal pero delante del fondo */
+  z-index: 1001;
 }
 
-/* 🏆 MODAL DEL GANADOR SEMI-TRANSPARENTE */
+/* 🏆 MODAL DEL GANADOR */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  //background: rgba(0, 0, 0, 0.8); /* Más oscuro para mejor contraste */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1002; /* Encima del canvas */
+  z-index: 1002;
   animation: fadeIn 0.3s ease;
 }
 
 .modal-content {
-  background: linear-gradient(135deg,
-    rgba(30, 58, 138, 0.9),
-    rgba(107, 33, 168, 0.9)
-  ); /* Semi-transparente */
+  background: linear-gradient(135deg, rgba(106, 26, 29, 0.93), #770c1c);
   border-radius: 20px;
   padding: 2rem;
-  max-width: 500px;
+  max-width: 700px;
   width: 90%;
   border: 3px solid gold;
   box-shadow:
@@ -346,8 +467,9 @@ button:hover {
   animation: modalPopIn 0.5s ease;
   position: relative;
   z-index: 1003;
-  backdrop-filter: blur(10px); /* Efecto de desenfoque del fondo */
+  backdrop-filter: blur(10px);
 }
+
 @keyframes modalPopIn {
   0% {
     transform: scale(0.5) translateY(-100px);
@@ -375,7 +497,7 @@ button:hover {
 .modal-header h2 {
   margin: 0;
   color: gold;
-  font-size: 2rem;
+  font-size: 3rem;
   text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
   animation: textGlow 2s ease-in-out infinite;
 }
@@ -417,25 +539,25 @@ button:hover {
 }
 
 .winner-info {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .winner-ball {
-  font-size: 4rem;
+  font-size: 5rem;
   margin-bottom: 1rem;
   animation: bounce 1s ease infinite;
   filter: drop-shadow(0 0 10px gold);
 }
 
 .winner-info h3 {
-  font-size: 1.8rem;
-  margin: 0.5rem 0;
+  font-size: 4rem;
+  margin: 0.6rem 0;
   color: gold;
   text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
 }
 
 .winner-info p {
-  font-size: 1.2rem;
+  font-size: 2.5rem;
   margin: 0.5rem 0;
   color: white;
 }
@@ -449,7 +571,7 @@ button:hover {
 }
 
 .confetti-message {
-  font-size: 1.3rem;
+  font-size: 2rem;
   color: gold;
   margin-top: 1rem;
   padding: 0.5rem;
@@ -496,14 +618,228 @@ button:hover {
   box-shadow: 0 0 25px gold;
 }
 
-/* Asegurar que el canvas del confeti esté detrás del modal pero sobre el fondo */
-#confetti-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 999;
+/* RESPONSIVE PARA DISPOSITIVOS MÓVILES */
+@media (max-width: 1024px) {
+  .buttons-container {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    justify-content: center;
+  }
+
+  .buttons {
+    position: static; /* Quitamos posicionamiento absoluto en móviles */
+    transform: none;
+    left: auto;
+    flex-direction: column;
+    gap: 1rem;
+    order: 1; /* Botones primero */
+  }
+
+  .auspiciador-img {
+    margin-left: 0;
+    order: 2; /* Imagen después */
+    height: 40px;
+    max-width: 150px;
+  }
 }
 
+@media (max-width: 768px) {
+  .buttons-container {
+    padding: 1rem;
+  }
+
+  .auspiciador-img {
+    height: 35px;
+    max-width: 120px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .raffle-container {
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .video-player {
+    max-width: 350px;
+  }
+
+  .ball-zone {
+    height: 350px;
+  }
+
+  .buttons-container {
+    padding: 1.5rem 0;
+  }
+
+  button {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+}
+.info-message {
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  //margin: 1.5rem auto 2rem;
+  max-width: 1200px;
+  //padding: 0.1rem;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 140, 0, 0.1));
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.info-message p {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0.8rem 0;
+  color: #FFD700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.4;
+}
+
+.info-message p:first-child {
+  font-size: 1.6rem;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.info-message p:last-child {
+  font-size: 1.7rem;
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efecto de brillo intermitente */
+.info-message {
+  animation: gentleGlow 3s ease-in-out infinite;
+}
+
+@keyframes gentleGlow {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 30px rgba(255, 215, 0, 0.3);
+    border-color: rgba(255, 215, 0, 0.6);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .info-message {
+    margin: 1rem auto 1.5rem;
+    padding: 1rem;
+    max-width: 90%;
+  }
+
+  .info-message p {
+    font-size: 1.1rem;
+  }
+
+  .info-message p:first-child {
+    font-size: 1.2rem;
+  }
+
+  .info-message p:last-child {
+    font-size: 1rem;
+  }
+}
+/* PARTÍCULAS FLOTANTES */
+.floating-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: float 6s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-100px) translateX(20px);
+  }
+}
+
+.idle-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background: linear-gradient(135deg, rgba(101, 41, 43, 0.93), #770c1c);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 2px solid gold;
+  animation: pulseGlow 2s infinite;
+}
+
+.idle-message h3 {
+  color: gold;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  animation: textPulse 2s infinite;
+}
+
+.idle-message p {
+  color: white;
+  font-size: 1.2rem;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.7);
+  }
+}
+
+@keyframes textPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
