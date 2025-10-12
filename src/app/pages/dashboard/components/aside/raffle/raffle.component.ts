@@ -1,6 +1,8 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { NgClass, NgForOf, NgIf } from '@angular/common';
 import confetti from 'canvas-confetti';
+import { ParticipantsService } from '../../../../../core/services/participants.service'
+import { ParticipantsModel } from '../../../../../core/models/participants.model'
 
 interface Participant {
   id: number;
@@ -8,7 +10,7 @@ interface Participant {
   email: string;
   orbit: number;
   angle: number;
-  color: string; // Nueva propiedad para el color
+  color: string;
 }
 
 @Component({
@@ -19,6 +21,9 @@ interface Participant {
 })
 export class RaffleComponent implements OnInit,AfterViewInit{
   @ViewChild('videoPlayer', { static: false }) videoPlayer!: ElementRef<HTMLVideoElement>;
+  participantsService = inject(ParticipantsService)
+  currentWinner = signal<ParticipantsModel | null>(null)
+  loadingWinner = signal(false);
 
   // Para la opción 2 - Partículas flotantes
   floatingParticles: any[] = [];
@@ -78,7 +83,6 @@ ngAfterViewInit(): void {
     this.generateParticipants();
     this.generateFloatingParticles();
   }
-  // Método para generar partículas flotantes (Opción 2)
   private generateFloatingParticles() {
     this.floatingParticles = [];
     for (let i = 0; i < 15; i++) {
@@ -110,7 +114,26 @@ ngAfterViewInit(): void {
     }
   }
 
-  // Método para obtener color aleatorio de la paleta
+  gerWinner() {
+    this.loadingWinner.set(true)
+    this.participantsService.getWinner().subscribe({
+      next: (winner: ParticipantsModel) => {
+        if (winner) {
+          console.log(winner)
+          this.loadingWinner.set(false)
+          this.currentWinner.set(winner)
+        }
+      } ,
+      error: (err) => {
+        if (err.status === 404) {
+          this.loadingWinner.set(false)
+        }
+      },
+      complete: () => {
+        this.loadingWinner.set(false)
+      }
+    })
+  }
   private getRandomColor(): string {
     const randomIndex = Math.floor(Math.random() * this.colorPalette.length);
     return this.colorPalette[randomIndex];
@@ -139,7 +162,7 @@ ngAfterViewInit(): void {
           this.isRunning = false;
         }, 2000);
       }, 1500);
-    }, 5000);
+    }, 10000);
   }
 
   reset() {
@@ -158,12 +181,14 @@ ngAfterViewInit(): void {
 
   showWinnerInfo() {
     this.showWinnerModal = true;
+    this.gerWinner()
     this.startConfetti();
   }
 
   closeWinnerModal() {
     this.showWinnerModal = false;
     this.stopConfetti();
+    this.reset()
   }
 
   startConfetti() {
@@ -220,6 +245,7 @@ ngAfterViewInit(): void {
 
   stopConfetti() {
     if (this.confettiInterval) {
+      // this.reset()
       clearInterval(this.confettiInterval);
       this.confettiInterval = null;
     }

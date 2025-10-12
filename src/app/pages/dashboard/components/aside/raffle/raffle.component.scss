@@ -27,8 +27,8 @@
 }
 
 .title {
-  //margin-top: rem;
-  font-size: 2.2rem;
+  margin-top: 2.5rem;
+  font-size: 3rem;
   font-weight: 800;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   text-align: center;
@@ -41,11 +41,11 @@
   display: flex;
   //gap: 3rem;
   width: 100%;
-  //max-width: 1400px;
+  //max-width: 1200px;
   align-items: flex-start;
   justify-content: center;
   flex: 1; /* Ocupa todo el espacio disponible */
-  //margin-bottom: 2rem; /* Espacio antes de los botones */
+  margin-bottom: -2.5rem; /* Espacio antes de los botones */
 }
 
 /* CONTENEDOR DEL VIDEO (LADO IZQUIERDO) */
@@ -536,6 +536,7 @@ button:disabled {
 
 .modal-body {
   text-align: center;
+  display: inline-block;
 }
 
 .winner-info {
@@ -557,12 +558,15 @@ button:disabled {
 }
 
 .winner-info p {
-  font-size: 2.5rem;
+  //display: inline-block;
+  font-size: 3rem;
   margin: 0.5rem 0;
   color: white;
 }
 
 .winner-details {
+  display: inline-block;
+
   background: rgba(255, 255, 255, 0.1);
   padding: 1rem;
   border-radius: 10px;
@@ -682,39 +686,47 @@ button:disabled {
     font-size: 1rem;
   }
 }
-.info-message {
-  padding-left: 10px;
-  padding-right: 10px;
-  text-align: center;
-  //margin: 1.5rem auto 2rem;
-  max-width: 1200px;
-  //padding: 0.1rem;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 140, 0, 0.1));
-  border: 2px solid rgba(255, 215, 0, 0.3);
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  animation: fadeInUp 0.8s ease-out;
-}
+  .info-message {
+    //padding: 1.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    text-align: center;
+    display: inline-block;
+    //margin-left: 200px;
+    //max-width: 1500px;
+    //padding: 0.1rem;
+    background: linear-gradient(135deg, rgba(101, 41, 43, 0.93), #770c1c);
+    //background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 140, 0, 0.1));
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    //animation: fadeInUp 0.8s ease-out;
+    animation: pulseGlow 2s infinite
+  }
 
 .info-message p {
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 0.8rem 0;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0.8rem;
   color: #FFD700;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   line-height: 1.4;
 }
 
 .info-message p:first-child {
-  font-size: 1.6rem;
+  font-size: 2.2rem;
   color: #FFFFFF;
   font-weight: 700;
+  animation: textPulse 2s infinite;
+
 }
 
 .info-message p:last-child {
-  font-size: 1.7rem;
+  font-size: 2.2rem;
   color: #FFFFFF;
-  font-weight: 500;
+  font-weight: 700;
+  animation: textPulse 2s infinite;
+
 }
 
 /* Animación de entrada */
@@ -816,14 +828,14 @@ button:disabled {
 
 .idle-message h3 {
   color: gold;
-  font-size: 2rem;
+  font-size: 3.3rem;
   margin-bottom: 1rem;
   animation: textPulse 2s infinite;
 }
 
 .idle-message p {
   color: white;
-  font-size: 1.2rem;
+  font-size: 2.4rem;
 }
 
 @keyframes pulseGlow {
@@ -831,7 +843,7 @@ button:disabled {
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px rgba(255, 215, 0, 0.7);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
   }
 }
 

@@ -12,6 +12,8 @@ const NG_MODULES = [RouterLink, RouterLinkActive]
 })
 export class AsideComponent implements OnInit {
   isAdmin: boolean = false;
+  isSidebarHidden = false;
+
 
   constructor(
     private authService: AuthService
@@ -25,5 +27,9 @@ export class AsideComponent implements OnInit {
     this.authService.getUser().subscribe((user) => {
       this.isAdmin = this.authService.isAdmin();
     });
+  }
+
+  toggleSidebar() {
+    this.isSidebarHidden = !this.isSidebarHidden;
   }
 }

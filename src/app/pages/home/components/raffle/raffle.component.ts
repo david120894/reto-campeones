@@ -34,6 +34,9 @@ export class RaffleComponent implements OnInit {
     return colors[Math.floor(Math.random() * colors.length)];
   }
 
+  getWinner(){
+    this.participantsService.getWinner().subscribe()
+  }
   createConfetti() {
     const left = Math.random() * 100; // porcentaje ancho pantalla
     const delay = Math.random() * 10; // delay para que caigan desfasados
