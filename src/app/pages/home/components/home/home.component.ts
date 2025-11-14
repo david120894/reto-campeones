@@ -11,6 +11,7 @@ import { FeaturesComponent } from '../features/features.component';
 import { FixtureComponent } from '../fixture/fixture.component'
 import { PresentationComponent } from '../presentation/presentation.component'
 import { BracketComponent } from '../bracket/bracket.component'
+import { SectionGalleryComponent } from '../main-gallery/section-gallery/section-gallery.component'
 
 const DECLARATIONS = [
   SectionHomeComponent, GalleryComponent, ContactComponent, CarrouselComponent, AboutComponent, FeaturesComponent,
@@ -19,7 +20,7 @@ const DECLARATIONS = [
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [EmailFormComponent, FixtureComponent, NgParticlesModule, PresentationComponent, GalleryComponent, CarrouselComponent, AboutComponent, SectionHomeComponent, BracketComponent],
+  imports: [EmailFormComponent, FixtureComponent, NgParticlesModule, PresentationComponent, GalleryComponent, CarrouselComponent, AboutComponent, SectionHomeComponent, BracketComponent, SectionGalleryComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

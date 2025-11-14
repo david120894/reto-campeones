@@ -1,0 +1,33 @@
+<!-- photo-card.component.html -->
+<div
+  (click)="onClick()"
+  class="relative overflow-hidden rounded-lg cursor-pointer group h-64 sm:h-72 w-full">
+
+  <!-- Loading State -->
+  <div
+    *ngIf="isLoading"
+    class="absolute inset-0 bg-muted animate-pulse">
+  </div>
+
+  <!-- Image or Error State -->
+  <img
+    *ngIf="!imageError"
+    [src]="photo.url"
+    [alt]="photo.alt"
+    (load)="onImageLoad()"
+    (error)="onImageError()"
+    class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+    [class.hidden]="isLoading">
+
+  <!-- Error State -->
+  <div
+    *ngIf="imageError"
+    class="absolute inset-0 bg-muted flex items-center justify-center">
+    <span class="text-muted-foreground text-2xl">📷</span>
+  </div>
+
+  <!-- Hover Overlay -->
+  <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+    <div class="text-white text-3xl">🔍</div>
+  </div>
+</div>

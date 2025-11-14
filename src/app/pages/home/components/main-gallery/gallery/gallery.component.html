@@ -1,0 +1,26 @@
+<!-- gallery.component.html -->
+<div class="bg-background">
+  <app-header class="text-center text-white"></app-header>
+
+  <main class="px-4 sm:px-6 lg:px-8 py-12">
+    <div class="mx-auto">
+      <app-category-tabs
+        [categories]="categories"
+        [activeCategory]="activeCategory"
+        (categoryChange)="onCategoryChange($event)">
+      </app-category-tabs>
+
+      <app-photo-grid
+        [photos]="photos"
+        (photoClick)="onPhotoClick($event)">
+      </app-photo-grid>
+    </div>
+  </main>
+
+  <app-light-box-modal
+    *ngIf="selectedPhoto"
+    [imageUrl]="selectedPhoto"
+    [isOpen]="lightboxOpen"
+    (close)="onLightboxClose()">
+  </app-light-box-modal>
+</div>

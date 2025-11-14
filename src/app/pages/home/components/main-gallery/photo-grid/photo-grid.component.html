@@ -1,0 +1,21 @@
+<!-- photo-grid.component.html -->
+<div>
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 auto-rows-max">
+    <app-photo-card
+      *ngFor="let photo of visiblePhotos"
+      [photo]="photo"
+      (photoClick)="photoClick.emit($event)">
+    </app-photo-card>
+  </div>
+
+  <!-- Load More Button -->
+  <div *ngIf="hasMore" class="flex justify-center mt-12">
+    <button
+      (click)="loadMore()"
+      [disabled]="isLoading"
+      class="px-8 py-3 bg-primary bg-red-950 text-white text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+      type="button">
+      {{ isLoading ? 'Cargando...' : 'Ver más fotos' }}
+    </button>
+  </div>
+</div>
