@@ -22,6 +22,7 @@ interface Match {
   team1: Team | null;
   team2: Team | null;
   winner?: Team | null;
+  winner2?: Team | null;
 }
 
 @Component({
@@ -48,20 +49,20 @@ export class BracketComponent {
       { id: 'R16-8', team1: { name: 'I.E SAN FRANCISCO DE BORJA' }, team2: { name: 'I.E HUMBERTO LUNA' } },
 
       // Cuartos (4 matches)
-      { id: 'QF-1', team1: null, team2: null },
-      { id: 'QF-2', team1: null, team2: null },
-      { id: 'QF-3', team1: null, team2: null },
-      { id: 'QF-4', team1: null, team2: null },
+      { id: 'QF-1', team1: { name: 'I.E INCA GARCILAZO DE LA VEGA' }, team2: { name: 'I.E MARISCAL GAMARRA' } },
+      { id: 'QF-2', team1: { name: 'I.E SAN VICENTE DE PAUL' }, team2: { name: 'I.E CIENCIAS' } },
+      { id: 'QF-3', team1: { name: 'I.E SIMON BOLIVAR' }, team2: { name: 'I.E ASHIT KUMAR BAHL' } },
+      { id: 'QF-4', team1: { name: 'I.E DIEGO QUISPE TTITO' }, team2: { name: 'I.E SAN FRANCISCO DE BORJA' } },
 
       // Semifinales (2 matches)
-      { id: 'SF-1', team1: null, team2: null },
-      { id: 'SF-2', team1: null, team2: null },
+      { id: 'SF-1', team1:{ name: 'I.E MARISCAL GAMARRA' }, team2: { name: 'I.E CIENCIAS' } },
+      { id: 'SF-2', team1: { name: 'I.E SIMON BOLIVAR' }, team2: { name: 'I.E DIEGO QUISPE TTITO' } },
 
       // Final
-      { id: 'F-1', team1: null, team2: null },
+      { id: 'F-1', team1: { name: 'I.E CIENCIAS' }, team2: { name: 'I.E DIEGO QUISPE TTITO' }, winner:{ name: '1° I.E CIENCIAS' }, winner2:{ name: '2° I.E DIEGO QUISPE TTITO' } },
 
       // 3er puesto
-      { id: '3P-1', team1: null, team2: null }
+      { id: '3P-1', team1: { name: '3° I.E SIMON BOLIVAR' }, team2: { name: '4° I.E MARISCAL GAMARRA' } }
     ],
     'futbol-secundaria': [
       // Cuartos
@@ -70,32 +71,32 @@ export class BracketComponent {
       { id: 'QF-3', team1: { name: 'I.E CIENCIAS' }, team2: { name: 'I.E ROSARIO' } },
       { id: 'QF-4', team1: { name: 'I.E HUMBERTO LUNA' }, team2: { name: 'I.E MIGUEL GRAU SEMINARIO' } },
       // Semifinales
-      { id: 'SF-1', team1: null, team2: null },
-      { id: 'SF-2', team1: null, team2: null },
+      { id: 'SF-1', team1: { name: 'I.E SAN FRANCISCO DE BORJA' }, team2: { name: 'I.E INCA GARCILAZO DE LA VEGA' } },
+      { id: 'SF-2', team1:  { name: 'I.E ROSARIO' }, team2: { name: 'I.E MIGUEL GRAU SEMINARIO' } },
       // Final
-      { id: 'F-1', team1: null, team2: null },
+      { id: 'F-1', team1: { name: 'I.E INCA GARCILAZO DE LA VEGA' }, team2:  { name: 'I.E ROSARIO' }, winner:{ name: '1° I.E INCA GARCILAZO DE LA VEGA' },winner2:  { name: '2° I.E ROSARIO' }},
       // 3er puesto
-      { id: '3P-1', team1: null, team2: null }
+      { id: '3P-1', team1: { name: '3° I.E SAN FRANCISCO DE BORJA' }, team2: { name: '4° I.E MIGUEL GRAU SEMINARIO' } }
     ],
     'voley-primaria': [
       { id: 'QF-1', team1: { name: 'I.E MIGUEL GRAU SEMINARIO' }, team2: { name: 'I.E SIMON BOLIVAR' } },
       { id: 'QF-2', team1: { name: 'I.E URIEL GARCIA' }, team2: { name: 'I.E CLORINDA MATTO DE TURNER' } },
       { id: 'QF-3', team1: { name: 'I.E ASHIT KUMAR BAHAL' }, team2: { name: 'I.E MARIA DE LA MERCED' } },
       { id: 'QF-4', team1: { name: 'I.E SAGRADO CORAZON DE JESUS' }, team2: { name: 'I.E HUMBERTO LUNA' } },
-      { id: 'SF-1', team1: null, team2: null },
-      { id: 'SF-2', team1: null, team2: null },
-      { id: 'F-1', team1: null, team2: null },
-      { id: '3P-1', team1: null, team2: null }
+      { id: 'SF-1', team1: { name: 'I.E SIMON BOLIVAR' }, team2: { name: 'I.E CLORINDA MATTO DE TURNER' } },
+      { id: 'SF-2', team1: { name: 'I.E MARIA DE LA MERCED' }, team2:  { name: 'I.E HUMBERTO LUNA' } },
+      { id: 'F-1', team1: { name: 'I.E CLORINDA MATTO DE TURNER' }, team2: { name: 'I.E MARIA DE LA MERCED' },winner:{ name: '1° I.E MARIA DE LA MERCED' }, winner2: { name: '2° I.E CLORINDA MATTO DE TURNER' }},
+      { id: '3P-1', team1: { name: '3° I.E SIMON BOLIVAR' }, team2:  { name: '4° I.E HUMBERTO LUNA' } }
     ],
     'voley-secundaria': [
       { id: 'QF-1', team1: { name: 'I.E MIGUEL GRAU SEMINARIO' }, team2: { name: 'I.E EDUCANDAS' } },
       { id: 'QF-2', team1: { name: 'I.E URIEL GARCIA' }, team2: { name: 'I.E MARIA DE LA MERCED' } },
       { id: 'QF-3', team1: { name: 'I.E COMERCIO 41' }, team2: { name: 'I.E SAGRADO CORAZON DE JESUS' } },
       { id: 'QF-4', team1: { name: 'I.E CLORINDA MATTO DE TURNER' }, team2: { name: 'I.E ROSARIO' } },
-      { id: 'SF-1', team1: null, team2: null },
-      { id: 'SF-2', team1: null, team2: null },
-      { id: 'F-1', team1: null, team2: null },
-      { id: '3P-1', team1: null, team2: null }
+      { id: 'SF-1', team1: { name: 'I.E EDUCANDAS' }, team2: { name: 'I.E MARIA DE LA MERCED' } },
+      { id: 'SF-2', team1: { name: 'I.E SAGRADO CORAZON DE JESUS' }, team2: { name: 'I.E CLORINDA MATTO DE TURNER' } },
+      { id: 'F-1', team1: { name: 'I.E EDUCANDAS' }, team2: { name: 'I.E CLORINDA MATTO DE TURNER' }, winner: { name: '1° I.E EDUCANDAS' },winner2: { name: '2° I.E CLORINDA MATTO DE TURNER' } },
+      { id: '3P-1', team1: { name: '3° I.E MARIA DE LA MERCED' }, team2: { name: '4° I.E SAGRADO CORAZON DE JESUS' } }
     ]
   };
 

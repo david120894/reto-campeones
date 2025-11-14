@@ -52,13 +52,18 @@
         <!-- Final con copa -->
         <div class="relative flex flex-col items-center">
           <div class="">
-            <img src="championship/cup.png" alt="Copa" class="w-40 h-40 mx-auto drop-shadow-lg">
+            <img src="championship/cup.png" alt="Copa" class="w-40 h-40 mx-auto drop-shadow-lg -mt-[200px]">
           </div>
+          <div *ngFor="let match of getRounds('F')" class="bg-gradient-to-r from-yellow-400 to-yellow-600 p-4 rounded-xl w-80 text-black text-center shadow-lg">
+          <div *ngIf="match.winner" class="mt-3 font-bold text-xl text-indigo-900">🏆 {{ match.winner.name }}</div>
+          <div *ngIf="match.winner2" class="mt-3 font-bold text-xl text-indigo-900">{{ match.winner2.name }}</div>
+          </div>
+
           <h2 class="text-xl font-bold mb-2">FINAL</h2>
-          <div *ngFor="let match of getRounds('F')" class="bg-gradient-to-r from-yellow-400 to-yellow-600 p-4 rounded-xl w-56 text-black text-center shadow-lg">
-            <div class="mb-2 font-semibold">{{ match.team1?.name || '---' }}</div>
-            <div class="font-semibold">{{ match.team2?.name || '---' }}</div>
-            <div *ngIf="match.winner" class="mt-3 font-bold text-xl text-indigo-900">🏆 {{ match.winner.name }}</div>
+          <div *ngFor="let match of getRounds('F')" class="bg-slate-600 p-4 rounded-xl w-56 text-black text-center shadow-lg">
+            <div class="mb-2 font-semibold text-yellow-400">{{ match.team1?.name || '---' }}</div>
+            <h2 class="font-bold">VS</h2>
+            <div class="font-semibold text-yellow-400">{{ match.team2?.name || '---' }}</div>
           </div>
         </div>
 
@@ -115,13 +120,19 @@
         <!-- Final con copa -->
         <div class="relative flex flex-col items-center">
           <div class="mb-2">
-            <img src="championship/cup.png" alt="Copa" class="w-40 h-40 mx-auto drop-shadow-lg">
+            <img src="championship/cup.png" alt="Copa" class="w-40 h-40 mx-auto drop-shadow-lg -mt-[50px]">
+          </div>
+          <div *ngFor="let match of getRounds('F')" class="bg-gradient-to-r from-yellow-400 to-yellow-600 p-4 rounded-xl w-80 text-black text-center shadow-lg">
+            <div *ngIf="match.winner" class="mt-3 font-bold text-xl text-indigo-900">🏆 {{ match.winner.name }}</div>
+            <div *ngIf="match.winner2" class="mt-3 font-bold text-xl text-indigo-900">{{ match.winner2.name }}</div>
           </div>
           <h2 class="text-xl font-bold mb-2">FINAL</h2>
-          <div *ngFor="let match of getRounds('F')" class="bg-gradient-to-r from-yellow-400 to-yellow-600 p-4 rounded-xl w-56 text-black text-center shadow-lg">
-            <div class="mb-2 font-semibold">{{ match.team1?.name || '---' }}</div>
-            <div class="font-semibold">{{ match.team2?.name || '---' }}</div>
-            <div *ngIf="match.winner" class="mt-2 font-bold text-xl text-indigo-900">🏆 {{ match.winner.name }}</div>
+          <div *ngFor="let match of getRounds('F')" class="bg-slate-600 p-4 rounded-xl w-56 text-black text-center shadow-lg">
+            <div class="mb-2 font-semibold text-yellow-400">{{ match.team1?.name || '---' }}</div>
+            <div class="font-bold">
+              VS
+            </div>
+            <div class="font-semibold text-yellow-400">{{ match.team2?.name || '---' }}</div>
           </div>
         </div>
 

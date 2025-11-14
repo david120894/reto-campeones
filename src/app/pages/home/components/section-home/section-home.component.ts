@@ -122,8 +122,8 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
 
   selectItem(index: number) {
     const item: Record<string, string> = {
-      0:"bike-ride",
-      1:"challenge-champions",
+      0:"challenge-champions",
+      1:"bike-ride",
       // 3:"interscholastic-championship",
     }
     this.selectedItem = item[index] || '';
