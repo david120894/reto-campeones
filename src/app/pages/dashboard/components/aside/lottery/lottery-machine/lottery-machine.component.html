@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="header">
+    <h1>SORTEO EVENTO DE CICLISMO</h1>
+    <p>Gira de la Fortuna - Selección del Ganador</p>
+  </div>
+
+  <div class="controls">
+    <button
+      class="btn btn-primary"
+      (click)="startLottery()"
+      [disabled]="isRunning">
+      <i class="fas fa-play"></i> Iniciar Sorteo
+    </button>
+    <button class="btn btn-secondary" (click)="resetLottery()">
+      <i class="fas fa-redo"></i> Reiniciar
+    </button>
+  </div>
+
+  <div class="counter">
+    Participantes: <span>{{ participants.length }}</span>
+  </div>
+
+  <div class="lottery-machine" #lotteryMachine>
+    <div class="machine-base">
+      <div class="machine-opening"></div>
+    </div>
+    <!-- Las bolas se generan dinámicamente -->
+  </div>
+
+  <div class="participants-list">
+    <h3>Lista de Participantes</h3>
+    <div class="participants-container">
+      <div class="participant-item" *ngFor="let participant of participants">
+        <span class="participant-name">{{ participant.name }}</span>
+        <span class="participant-number">{{ participant.number }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" [class.active]="showWinnerCard"></div>
+
+<app-winner-card
+  [winner]="winner"
+  [visible]="showWinnerCard"
+  (close)="onCloseWinnerCard()">
+</app-winner-card>

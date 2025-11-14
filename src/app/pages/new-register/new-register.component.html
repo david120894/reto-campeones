@@ -1,0 +1,361 @@
+
+<div class="container">
+  <div class="p-2">
+<!--    <div>-->
+<!--      {{ formGroupRegister.value | json }}-->
+<!--    </div>-->
+    <div [formGroup]="formGroupRegister">
+      <div class="row">
+        <div class="col-md-12">
+          <label>DNI</label>
+          <input class="form-control" formControlName="dni" />
+        </div>
+        <div class="col-md-12">
+          <label>Nombressss *</label>
+          <input class="form-control"
+                 placeholder="Ejemplo: Juan"
+                 formControlName="name" />
+
+        </div>
+        <div class="col-md-12">
+          <label class="form-label">Apellido *</label>
+          <input class="form-control"
+                 placeholder="Ejemplo: Juan"
+                 formControlName="lastName" />
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label>Nro. Celular</label>
+          <input class="form-control" formControlName="phone" />
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label>Correo</label>
+          <div class="mb-3">
+            <input type="email"
+                   formControlName="email"
+                   class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Género *</label>
+          <div class="form-check">
+            <input
+              type="radio"
+              class="form-check-input"
+              formControlName="gender"
+              id="male"
+              value="Masculino"
+              (change)="selectCategory()"
+            />
+
+            <label class="form-check-label" for="male">Masculino</label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              formControlName="gender"
+              id="female"
+              value="Femenino"
+              (change)="selectCategory()"
+            />
+            <label class="form-check-label" for="female">Femenino</label>
+          </div>
+        </div>
+        <!-- Fecha de Nacimiento -->
+        <div class="col-md-4">
+          <label class="form-label">Fecha de nacimiento</label>
+          <input
+            class="form-control"
+            formControlName="birthDate"
+            (change)="calculateAge($event)"
+          />
+        </div>
+        <!-- Edad -->
+        <div class="col-md-4">
+          <label class="form-label">Edad *</label>
+          <input
+            type="number"
+            class="form-control"
+            formControlName="age"
+            placeholder="Ejemplo: 25"
+          />
+        </div>
+
+        <div class="mt-3">
+          <label class="form-label">¿Qué categoría participarás?</label>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              formControlName="category"
+              id="cat1"
+              value="Categoria I"
+            />
+            <label class="form-check-label" for="cat1"
+            >Categoría I: Varones de 12 a 17 años, 10 km</label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              formControlName="category"
+              id="cat2"
+              value="Categoria II"
+            />
+            <label class="form-check-label" for="cat2"
+            >Categoría II: Damas de 12 a 17 años, 10 km</label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              formControlName="category"
+              id="cat3"
+              value="Categoria III"
+            />
+            <label class="form-check-label" for="cat3"
+            >Categoría III: Varones 18-39 años, 10km</label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              formControlName="category"
+              id="cat4"
+              value="Categoria IV"
+            />
+            <label class="form-check-label" for="cat4"
+            >Categoría IV: Damas 18-39 años, 10km</label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              formControlName="category"
+              id="cat5"
+              value="Categoria V"
+            />
+            <label class="form-check-label" for="cat5"
+            >Categoría V: Master en damas de 40 años a 60 años, 10 km</label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              formControlName="category"
+              id="cat6"
+              value="Categoria VI"
+            />
+            <label class="form-check-label" for="cat6"
+            >Categoría VI: Master en varones de 40 años a 60 años, 10
+              km</label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              formControlName="category"
+              id="cat7"
+              value="Categoria VII"
+            />
+            <label class="form-check-label" for="cat7"
+            >Categoría VII: Libre, caminantes y personas con discapacidad,
+              varones y mujeres, 10 km</label
+            >
+          </div>
+          <!-- Agrega más categorías según necesidad -->
+        </div>
+        <!-- Distrito o Provincia -->
+        <div class="col-md-12">
+          <label class="form-label">Distrito o Provincia *</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="district"
+            placeholder="Ejemplo: Lima"
+          />
+        </div>
+
+        <!-- Nuevo campo: Contacto de emergencia -->
+        <div class="col-md-12">
+          <label class="form-label"
+          >Persona en caso de emergencia - Nombre - Celular*</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            formControlName="emergencyContact"
+            required
+          />
+          <div
+            *ngIf="
+              formGroupRegister.get('emergencyContact')?.invalid &&
+              (formGroupRegister.get('emergencyContact')?.dirty ||
+                formGroupRegister.get('emergencyContact')?.touched)
+            "
+            class="text-danger"
+          >
+            Campo requerido
+          </div>
+        </div>
+        <!-- Nuevo campo: Alergias/Medicamentos -->
+        <div class="col-md-12">
+          <label class="form-label"
+          >Indicar si posee alergias, lesiones y/o está tomando algún
+            medicamento.</label
+          >
+          <textarea
+            class="form-control"
+            formControlName="medicalInfo"
+          ></textarea>
+        </div>
+        <!-- Nuevo campo: Seguro de salud -->
+        <div class="col-md-6">
+          <label class="form-label"
+          >Indicar tipo de seguro de salud y número de afiliación*</label
+          >
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              formControlName="healthInsurance"
+              id="sis"
+              value="SIS"
+            />
+            <label class="form-check-label" for="sis">SIS</label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              formControlName="healthInsurance"
+              id="essalud"
+              value="ESSALUD"
+            />
+            <label class="form-check-label" for="essalud">ESSALUD</label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              formControlName="healthInsurance"
+              id="ninguno"
+              value="NINGUNO"
+            />
+            <label class="form-check-label" for="ninguno">NINGUNO</label>
+          </div>
+          <div
+            *ngIf="
+              formGroupRegister.get('healthInsurance')?.invalid &&
+              (formGroupRegister.get('healthInsurance')?.dirty ||
+                formGroupRegister.get('healthInsurance')?.touched)
+            "
+            class="text-danger"
+          >
+            Campo requerido
+          </div>
+        </div>
+
+        <!-- Nuevo campo: Talla de camiseta -->
+        <div class="col-md-6">
+          <label class="form-label">Talla de Camiseta*</label>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              formControlName="shirtSize"
+              id="s"
+              value="S"
+            />
+            <label class="form-check-label" for="s">S</label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              formControlName="shirtSize"
+              id="m"
+              value="M"
+            />
+            <label class="form-check-label" for="m">M</label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              formControlName="shirtSize"
+              id="l"
+              value="L"
+            />
+            <label class="form-check-label" for="l">L</label>
+          </div>
+          <div
+            *ngIf="
+              formGroupRegister.get('shirtSize')?.invalid &&
+              (formGroupRegister.get('shirtSize')?.dirty ||
+                formGroupRegister.get('shirtSize')?.touched)
+            "
+            class="text-danger"
+          >
+            Campo requerido
+          </div>
+        </div>
+
+        <!-- Nuevo campo: Categoría -->
+
+        <div *ngIf="parentalPermissionRequired" class="mt-3">
+          <!-- Campo para adjuntar el archivo de permiso del padre -->
+          <div class="col-md-12">
+            <label class="form-label">Permiso del Padre *</label>
+            <input
+              type="file"
+              class="form-control"
+              formControlName="parentalPermission"
+            />
+            <div
+              *ngIf="
+                formGroupRegister.get('parentalPermission')?.invalid &&
+                (formGroupRegister.get('parentalPermission')?.dirty ||
+                  formGroupRegister.get('parentalPermission')?.touched)
+              "
+              class="text-danger"
+            >
+              Campo requerido
+            </div>
+          </div>
+
+          <!-- Campo para los datos del padre -->
+          <div class="col-md-12">
+            <label class="form-label">Datos del Padre *</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="parentDetails"
+              placeholder="Nombre y contacto del padre"
+            />
+            <div
+              *ngIf="
+                formGroupRegister.get('parentDetails')?.invalid &&
+                (formGroupRegister.get('parentDetails')?.dirty ||
+                  formGroupRegister.get('parentDetails')?.touched)
+              "
+              class="text-danger"
+            >
+              Campo requerido
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <button class="btn btn-success">Register</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

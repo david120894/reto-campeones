@@ -1,0 +1,244 @@
+  <!-- Hero Section -->
+  <section id="home"
+           class="hero-section relative min-h-screen flex items-center justify-center bg-black"
+           style="background-image: url('championship/fondo-cusco.jpeg');
+           background-size: cover;
+           background-position: center;
+           background-repeat: no-repeat;">
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black bg-opacity-50">
+    </div>
+
+    <div class="container mx-auto px-4 relative z-8">
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-10">
+
+        <!-- Left Content -->
+        <div class="w-full lg:w-1/2 text-center lg:text-left">
+
+          <!-- Texto -->
+          @if (selectedItem === 'challenge-champions') {
+            <div class="flex justify-center lg:justify-start mt-[100px] sm:mt-32 md:mt-20 w-full">
+              <img src="championship/logo1.png"
+                   alt="Logo Cusco"
+                   class="w-full max-w-[200px] sm:max-w-[300px] md:max-w-[200px] lg:max-w-[500px] h-auto object-contain">
+            </div>
+            <p class="text-base pl-6 pr-8 md:text-lg lg:text-xl text-white mb-6 max-w-md mx-auto lg:mx-0">
+              El torneo escolar más competitivo del año donde las mejores Instituciones Educativas se enfrentarán por el
+              título de campeón.
+            </p>
+          } @else {
+            <div class="lg:w-1/2 text-center mt-[80px] lg:text-left mb-10 lg:mb-3">
+              <span class="text-orange-500 text-4xl md:text-4xl lg:text-5xl font-bold font-bebas tracking-wide">12 OCTUBRE</span><br>
+              <h1 class="text-4xl md:text-4xl lg:text-4 xl font-bold text-white mb-6 font-bebas tracking-wide">
+                1RA GRAN BICICLETEADA<br>
+                <span class="text-orange-500">FAMILIAR</span><br>
+                "KUSKA MUYUSUNCHIS 2025"
+              </h1>
+              <p class="text-lg md:text-xl text-justify text-white max-w-lg mx-auto lg:mx-0">
+                Recuerda que la inscripción se validará con la entrega de útiles escolares, artículos de limpieza y pañales para adulto mayor
+              </p>
+              <p class="text-lg md:text-xl text-justify text-orange-400 mb-8 font-semibold" >
+                “Pedalea con el corazón, Llega a la meta con el Propósito de compartir y promueve la solidaridad”
+              </p>
+              <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <a routerLink="/user-register"
+                   class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-300 transform hover:scale-105">
+                  ¡Inscribete!
+                </a>
+                <a (click)="openModal()"
+                   class="bg-pink-800 hover:bg-pink-900 text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-300 transform hover:scale-105">
+                  ¡Ver Registro!
+                </a>
+              </div>
+
+            </div>
+
+          }
+          <!-- Video -->
+            <div class="flex justify-center lg:justify-start">
+            @if (selectedItem === 'challenge-champions') {
+              <video
+                #videoPlayer
+                src="https://taqe.cusco.gob.pe/publico/web/campeonato/Spot_fin.mp4"
+                type="video/mp4"
+                autoplay
+                loop
+                muted
+                playsinline
+                class="w-full max-w-[480px] rounded-lg shadow-lg aspect-video fade-edges">
+              </video>
+            }@else {
+  <!--            <img src="bike/bike-ride.png">-->
+            }
+          </div>
+        </div>
+
+        <!-- Right Content (Llama + efectos) -->
+        <div class="w-full relative flex flex-col items-center">
+          <div class="flex justify-center lg:justify-start">
+            @if (selectedItem === 'challenge-champions') {
+              <video
+                #videoPlayer2
+                src="https://taqe.cusco.gob.pe/publico/web/campeonato/FC.mp4"
+                type="video/mp4"
+                autoplay
+                loop
+                muted
+                playsinline
+                class="w-full h-[800px] rounded-lg shadow-lg aspect-video fade-edges2">
+              </video>
+            } @else {
+              <div>
+                <div class="relative
+              -mt-[50px] sm:-mt-[100px] md:-mt-[150px] lg:-mt-[200px]
+              left-0 sm:left-[50px] md:left-[100px] lg:left-[150px]
+              flex justify-center z-10">
+                  <div class="bg-gradient-to-r from-orange-600 via-pink-600 to-purple-700
+                text-white p-4 sm:p-6 rounded-2xl border-4 border-yellow-400
+                animate-pulse-glow w-[90%] sm:max-w-md md:max-w-lg lg:max-w-xl
+                text-center font-bebas md:mx-[150px]">
+                    <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold mb-2 tracking-wide uppercase">
+                      🚴‍♂️ Sábado 11 de Octubre 🚴‍♀️
+                    </h3>
+                    <p class="text-sm sm:text-base md:text-lg font-semibold">
+                      De <span class="text-yellow-300">9:00 am a 1:00 pm</span>
+                      | Parque cerrado
+                      <span class="block mt-2 text-pink-200 italic">
+          Mantenimiento preventivo de bicicletas, previa validacion de la inscripción de su código QR
+        </span>
+                      📍 Plaza San Pedro
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+              <div class=" h-[2px] absolute top-[100px] left-[300px] right-0 bottom-0 ">
+                <img class="" src="bike/bike-ride.png">
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+      <div class="carousel-container relative max-w-4xl mx-auto mt-12">
+        <!-- Título -->
+        <h2 class="text-4xl md:text-4xl font-extrabold text-yellow-400 whitespace-nowrap
+               animate-marquee">
+          🚀 Próximos eventos 🚀 Próximos eventos 🚀 Próximos eventos
+        </h2>
+        <!-- Contenido del carrusel -->
+        <div class="carousel-content relative overflow-hidden rounded-2xl shadow-lg">
+          <ng-container *ngIf="currentItem.type === 'image'">
+            <img [src]="currentItem.src"
+                 [alt]="currentItem.title"
+                 class="w-full h-[200px] object-contain transition-opacity duration-700 ease-in-out fade-edges" />
+          </ng-container>
+          <ng-container *ngIf="currentItem.type === 'video'">
+            <video [src]="currentItem.src"
+                   autoplay
+                   loop
+                   muted
+                   playsinline
+                   controls
+                   class="w-full h-[500px] object-cover transition-opacity duration-700 ease-in-out fade-edges"></video>
+          </ng-container>
+
+          <!-- Botones de navegación (flechas) -->
+          <button (click)="prev()"
+                  class="absolute top-1/2 left-3 transform -translate-y-1/2 bg-black/60 text-white p-3 rounded-full hover:bg-black/80 transition z-10">
+            ⟨
+          </button>
+          <button (click)="next()"
+                  class="absolute top-1/2 right-3 transform -translate-y-1/2 bg-black/60 text-white p-3 rounded-full hover:bg-black/80 transition z-10">
+            ⟩
+          </button>
+        </div>
+
+        <!-- Indicadores -->
+        <div class="flex justify-center mt-4 gap-2">
+      <span *ngFor="let item of items; let i = index"
+            (click)="selectItem(i)"
+            class="w-3 h-3 rounded-full cursor-pointer transition-all duration-300"
+            [ngClass]="i === currentIndex ? 'bg-yellow-400 scale-110' : 'bg-gray-400 hover:bg-gray-300'">
+      </span>
+        </div>
+      </div>
+      <!-- Modal principal (siempre encima) -->
+      <!-- Modal principal (siempre encima de todo) -->
+      <div id="myModal"
+           class="fixed inset-0 z-9999 block bg-gray-800 bg-opacity-50 flex items-center justify-center"
+           *ngIf="showModal">
+        <div class="modal-content bg-white rounded-xl p-6 max-w-lg w-full mx-4 relative z-[10000]">
+          <h2 class="no-print text-xl font-bold mb-4">Guarde o Imprime su código QR</h2>
+
+          <img [src]="imageModal" alt="Imagen" class="max-w-full mx-auto mb-4">
+
+          <div class="text-center mb-4">
+            <h5>Fecha Inscripción: {{ objectRegister?.createAt | date:'yyyy-MM-dd HH:mm' }}</h5>
+            <h5>DNI: {{ objectRegister?.dni }}</h5>
+            <h5>Nombre: {{ objectRegister?.name }} {{ objectRegister?.lastName }}</h5>
+            <h5>Tramo: {{ objectRegister?.category }}</h5>
+            <h5>Talla: {{ objectRegister?.shirtSize }}</h5>
+          </div>
+
+          <div class="flex flex-col sm:flex-row justify-center gap-3 mt-4">
+            <!-- Botón imprimir -->
+            <button (click)="printModal()"
+                    class="no-print flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium px-5 py-2.5 rounded-xl shadow-md transition-transform transform hover:scale-105">
+              <i class="fa-solid fa-print"></i>
+              <span>Imprimir</span>
+            </button>
+
+            <!-- Botón compartir -->
+            <button (click)="shareModal()"
+                    class="no-print flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-medium px-5 py-2.5 rounded-xl shadow-md transition-transform transform hover:scale-105">
+              <i class="fa-solid fa-share-alt"></i>
+              <span>Compartir</span>
+            </button>
+
+            <!-- Botón cerrar -->
+            <button (click)="closeModalPrint()"
+                    class="no-print flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-medium px-5 py-2.5 rounded-xl shadow-md transition-transform transform hover:scale-105">
+              <i class="fa-solid fa-xmark"></i>
+              <span>Cerrar</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div [formGroup]="formSearchDni" *ngIf="isModalOpen" class="fixed inset-0 z-10 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg p-6 w-full max-w-md mx-4 sm:mx-0">
+          <h3 class="text-xl font-semibold mb-4">Buscar Registro por DNI</h3>
+          <div>
+            <div class="mb-4">
+              <label for="dniInput" class="block text-sm font-medium text-gray-700">DNI</label>
+              <input
+                type="text"
+                id="dniInput"
+                formControlName="searchDni"
+                required
+                maxlength="30"
+                class="rounded-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-[#2D3136] focus:border-[#2D3136] w-full p-2"
+                placeholder="Ingrese su DNI"
+              />
+            </div>
+            <div *ngIf="showMessage" class="bg-red-500 border border-red-400 text-white px-4 py-2 rounded mb-4">
+              {{ mensajeExito }}
+            </div>
+            <button (click)="searchByDni()" type="submit" class="w-full py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+              Buscar
+            </button>
+          </div>
+          <button (click)="closeModal()" class="mt-4 w-full py-2 bg-gray-300 text-black rounded-lg hover:bg-gray-400">
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Aviso especial -->
+
+
+  </section>
