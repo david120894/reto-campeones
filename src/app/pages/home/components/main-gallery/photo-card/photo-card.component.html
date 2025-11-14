@@ -2,11 +2,11 @@
 <div
   (click)="onClick()"
   class="relative overflow-hidden rounded-lg cursor-pointer group h-64 sm:h-72 w-full"
-  [class.pointer-events-none]="showLoading">
+  [class.pointer-events-none]="isLoading">
 
   <!-- Loading State -->
   <div
-    *ngIf="showLoading"
+    *ngIf="isLoading"
     class="absolute inset-0 bg-gray-100 flex items-center justify-center rounded-lg z-10">
 
     <!-- Spinner giratorio -->
@@ -26,16 +26,16 @@
   <!-- Image -->
   <img
     *ngIf="!imageError"
-    [src]="photo.url"
+    [src]="imageSrc"
     [alt]="photo.alt"
     (load)="onImageLoad()"
     (error)="onImageError()"
     class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
-    [class.hidden]="showLoading">
+    [class.hidden]="isLoading">
 
   <!-- Error State -->
   <div
-    *ngIf="imageError && !showLoading"
+    *ngIf="imageError && !isLoading"
     class="absolute inset-0 bg-gray-200 flex items-center justify-center rounded-lg">
     <div class="text-center">
       <span class="text-gray-400 text-4xl mb-2 block">📷</span>
@@ -45,7 +45,7 @@
 
   <!-- Hover Overlay -->
   <div
-    *ngIf="!showLoading && !imageError"
+    *ngIf="!isLoading && !imageError"
     class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
     <div class="text-white text-3xl transform scale-75 group-hover:scale-100 transition-transform duration-300">🔍</div>
   </div>
