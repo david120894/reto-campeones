@@ -12,21 +12,28 @@ import { Photo } from '../photo.service'
 })
 export class PhotoCardComponent {
   @Input() photo!: Photo;
+  @Input() isLoading: boolean = true; // Estado desde el grid (para nuevas fotos)
   @Output() photoClick = new EventEmitter<string>();
 
-  isLoading: boolean = true;
+  imageLoaded: boolean = false; // Estado interno de carga de imagen
   imageError: boolean = false;
 
+  get showLoading(): boolean {
+    return this.isLoading || !this.imageLoaded;
+  }
+
   onImageLoad(): void {
-    this.isLoading = false;
+    this.imageLoaded = true;
   }
 
   onImageError(): void {
-    this.isLoading = false;
+    this.imageLoaded = true;
     this.imageError = true;
   }
 
   onClick(): void {
-    this.photoClick.emit(this.photo.url);
+    if (this.imageLoaded && !this.imageError) {
+      this.photoClick.emit(this.photo.url);
+    }
   }
 }

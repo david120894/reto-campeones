@@ -2,8 +2,9 @@
 <div>
   <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 auto-rows-max">
     <app-photo-card
-      *ngFor="let photo of visiblePhotos"
+      *ngFor="let photo of visiblePhotos; let i = index"
       [photo]="photo"
+      [isLoading]="isPhotoLoading(i)"
       (photoClick)="photoClick.emit($event)">
     </app-photo-card>
   </div>
@@ -13,7 +14,7 @@
     <button
       (click)="loadMore()"
       [disabled]="isLoading"
-      class="px-8 py-3 bg-primary bg-red-950 text-white text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+      class="px-8 py-3 bg-red-950 text-white rounded-lg font-semibold hover:bg-red-900 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
       type="button">
       {{ isLoading ? 'Cargando...' : 'Ver más fotos' }}
     </button>
