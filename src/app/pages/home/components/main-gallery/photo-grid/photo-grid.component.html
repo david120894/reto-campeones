@@ -2,9 +2,8 @@
 <div>
   <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 auto-rows-max">
     <app-photo-card
-      *ngFor="let photo of visiblePhotos; let i = index"
+      *ngFor="let photo of visiblePhotos"
       [photo]="photo"
-      [isLoading]="isPhotoLoading(i)"
       (photoClick)="photoClick.emit($event)">
     </app-photo-card>
   </div>

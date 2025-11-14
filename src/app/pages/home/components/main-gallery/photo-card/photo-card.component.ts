@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges } from '@angular/core'
 import { NgIf } from '@angular/common'
 import { Photo } from '../photo.service'
 
@@ -10,29 +10,36 @@ import { Photo } from '../photo.service'
   templateUrl: './photo-card.component.html',
   styleUrl: './photo-card.component.scss'
 })
-export class PhotoCardComponent {
+export class PhotoCardComponent implements OnChanges {
   @Input() photo!: Photo;
-  @Input() isLoading: boolean = true; // Estado desde el grid (para nuevas fotos)
   @Output() photoClick = new EventEmitter<string>();
 
-  imageLoaded: boolean = false; // Estado interno de carga de imagen
+  isLoading: boolean = true;
   imageError: boolean = false;
+  imageSrc: string = '';
 
-  get showLoading(): boolean {
-    return this.isLoading || !this.imageLoaded;
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['photo']) {
+      // Resetear estado cuando cambia la foto
+      this.isLoading = true;
+      this.imageError = false;
+
+      // Forzar recarga de la imagen añadiendo timestamp
+      this.imageSrc = this.photo.url + '?t=' + new Date().getTime();
+    }
   }
 
   onImageLoad(): void {
-    this.imageLoaded = true;
+    this.isLoading = false;
   }
 
   onImageError(): void {
-    this.imageLoaded = true;
+    this.isLoading = false;
     this.imageError = true;
   }
 
   onClick(): void {
-    if (this.imageLoaded && !this.imageError) {
+    if (!this.isLoading && !this.imageError) {
       this.photoClick.emit(this.photo.url);
     }
   }
