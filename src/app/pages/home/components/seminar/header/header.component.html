@@ -1,0 +1,36 @@
+<section id="seminar-header">
+  <header class="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a routerLink="/" class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center text-primary-foreground font-bold text-lg">
+            VU
+          </div>
+          <span class="font-bold text-lg text-foreground">Vacaciones Útiles</span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="#cursos" class="text-muted-foreground hover:text-foreground transition">Cursos</a>
+          <a href="#beneficios" class="text-muted-foreground hover:text-foreground transition">Beneficios</a>
+          <a href="#inscripcion" class="text-muted-foreground hover:text-foreground transition">Inscripción</a>
+          <a href="#contacto" class="text-muted-foreground hover:text-foreground transition">Contacto</a>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <button (click)="toggleMenu()" class="md:hidden text-foreground">
+          <span *ngIf="!isOpen">☰</span>
+          <span *ngIf="isOpen">✕</span>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <nav *ngIf="isOpen" class="md:hidden pb-4 space-y-3">
+        <a href="#cursos" class="block text-muted-foreground hover:text-foreground">Cursos</a>
+        <a href="#beneficios" class="block text-muted-foreground hover:text-foreground">Beneficios</a>
+        <a href="#inscripcion" class="block text-muted-foreground hover:text-foreground">Inscripción</a>
+        <a href="#contacto" class="block text-muted-foreground hover:text-foreground">Contacto</a>
+      </nav>
+    </div>
+  </header>
+</section>

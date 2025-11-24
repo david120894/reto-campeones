@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 import { Router, RouterLink, RouterLinkActive } from '@angular/router'
 import { initFlowbite } from 'flowbite'
 import { AuthService } from '../../services/auth.service'
@@ -16,6 +16,8 @@ import { IUserInfo } from '../../models/userInfo.model'
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit {
+
+  @Input() typeSection: string = ''
 
   user: IUserInfo | null = null
   userPrefix: string = ''
@@ -58,6 +60,34 @@ export class HeaderComponent implements OnInit {
 
   scrollTablePositions() {
     const tablePositions = document.getElementById('table-positions')
+    if (tablePositions) {
+      tablePositions.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  scrollSeminarCourses() {
+    const tablePositions = document.getElementById('seminar-courses')
+    if (tablePositions) {
+      tablePositions.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  scrollSeminarBenefits() {
+    const tablePositions = document.getElementById('seminar-benefits')
+    if (tablePositions) {
+      tablePositions.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  scrollSeminarInscriptions() {
+    const tablePositions = document.getElementById('seminar-inscriptions')
+    if (tablePositions) {
+      tablePositions.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  scrollSeminarContact() {
+    const tablePositions = document.getElementById('seminar-contact')
     if (tablePositions) {
       tablePositions.scrollIntoView({ behavior: 'smooth' })
     }

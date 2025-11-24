@@ -14,7 +14,6 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { ReservationService } from '../../../../core/services/reservation.service'
 import html2canvas from 'html2canvas';
 
-
 interface CarouselItem {
   type: 'image' | 'video';
   src: string;
@@ -48,7 +47,6 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
   mensajeExito: string | null = null;
   showMessage: boolean = false;
 
-
   formSearchDni: FormGroup = new FormGroup({
     searchDni: new FormControl(''),
   });
@@ -56,14 +54,18 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
   get search() {
     return this.formSearchDni.controls;
   }
+
   @Output() sectionChanged = new EventEmitter<string>();
+
   items: CarouselItem[] = [
-    { type: 'image', src: 'bike/bike-ride.png', title: 'Imagen 2' },
-    { type: 'image', src: 'championship/logo1.png', title: 'Imagen 1' },
+    { type: 'image', src: 'bike/bike-ride.png', title: 'Bicicleteada Familiar' },
+    { type: 'image', src: 'championship/logo1.png', title: 'Challenge Champions' },
+    { type: 'image', src: 'championship/logo1.png', title: 'Seminarios' },
+    { type: 'image', src: 'championship/logo1.png', title: 'Vacaciones Útiles' },
   ];
 
-  selectedItem = ''
-  currentIndex = 0;
+  selectedItem = 'bike-ride';
+  currentIndex = 1; // Iniciar con la bicicleteada
 
   days: string = '00';
   hours: string = '00';
@@ -74,12 +76,20 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
 
   constructor(
     private reservationService: ReservationService,
-    ) {}
+  ) {}
 
   ngOnInit() {
-    this.updateCountdown();
-    this.intervalId = setInterval(() => this.updateCountdown(), 1000);
-    this.selectItem(0);
+    this.selectItem(1); // Iniciar con la bicicleteada
+  }
+
+  // Método para las clases de las pestañas
+  getTabClasses(event: string) {
+    const baseClasses = 'flex items-center px-6 py-3 rounded-xl font-semibold transition-all duration-300';
+    if (this.selectedItem === event) {
+      return `${baseClasses} bg-gradient-to-r from-orange-500 to-pink-600 text-white shadow-lg`;
+    } else {
+      return `${baseClasses} bg-transparent text-gray-300 hover:text-white hover:bg-white/5`;
+    }
   }
 
   searchByDni() {
@@ -100,12 +110,12 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
     });
   }
 
-
   ngOnDestroy() {
     if (this.intervalId) {
       clearInterval(this.intervalId);
     }
   }
+
   get currentItem(): CarouselItem {
     return this.items[this.currentIndex];
   }
@@ -122,40 +132,18 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
 
   selectItem(index: number) {
     const item: Record<string, string> = {
-      0:"challenge-champions",
-      1:"bike-ride",
-      // 3:"interscholastic-championship",
+      0: "challenge-champions",
+      1: "bike-ride",
+      2: "seminar",
+      3: "useful-vacations",
     }
     this.selectedItem = item[index] || '';
     this.currentIndex = index;
     this.sectionChanged.emit(this.selectedItem);
   }
 
-  private updateCountdown() {
-    const eventDate = new Date('August 16, 2025 00:00:00').getTime();
-    const now = new Date().getTime();
-    const distance = eventDate - now;
-
-    if (distance <= 0) {
-      this.days = this.hours = this.minutes = this.seconds = '00';
-      clearInterval(this.intervalId);
-      return;
-    }
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    this.days = days.toString().padStart(2, '0');
-    this.hours = hours.toString().padStart(2, '0');
-    this.minutes = minutes.toString().padStart(2, '0');
-    this.seconds = seconds.toString().padStart(2, '0');
-  }
-
   @ViewChild('videoPlayer', { static: false }) videoPlayer!: ElementRef<HTMLVideoElement>;
   @ViewChild('videoPlayer2', { static: false }) videoPlayer2!: ElementRef<HTMLVideoElement>;
-  @ViewChild('videoPlayer3', { static: false }) videoPlayer3!: ElementRef<HTMLVideoElement>;
 
   ngAfterViewInit(): void {
     if (this.videoPlayer) {
@@ -167,12 +155,6 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
 
     if (this.videoPlayer2) {
       const video2 = this.videoPlayer2.nativeElement;
-      video2.muted = true;
-      video2.playsInline = true;
-      video2.play().catch(err => console.warn('Autoplay bloqueado:', err));
-    }
-    if (this.videoPlayer3) {
-      const video2 = this.videoPlayer3.nativeElement;
       video2.muted = true;
       video2.playsInline = true;
       video2.play().catch(err => console.warn('Autoplay bloqueado:', err));
@@ -244,12 +226,12 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
     this.isModalOpen = false;
     this.showMessage = false;
     this.formSearchDni.reset();
-    // this.mensajeExito = false
   }
 
   closeModalPrint() {
     this.showModal = false;
   }
+
   async shareModal() {
     const modalElement = document.querySelector('.modal-content') as HTMLElement;
 
@@ -258,19 +240,15 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
       return;
     }
 
-    // Generar canvas ignorando elementos con la clase "no-print"
     const canvas = await html2canvas(modalElement, {
       ignoreElements: (element) => element.classList.contains('no-print')
     });
 
     const dataUrl = canvas.toDataURL("image/png");
-
-    // Pasar a Blob
     const response = await fetch(dataUrl);
     const blob = await response.blob();
     const file = new File([blob], "inscripcion.png", { type: blob.type });
 
-    // Si navegador soporta compartir (móvil con WhatsApp, Telegram, etc.)
     if (navigator.share && navigator.canShare({ files: [file] })) {
       await navigator.share({
         title: "Inscripción",
@@ -278,12 +256,10 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
         files: [file]
       });
     } else {
-      // En PC → descarga la imagen
       const link = document.createElement("a");
       link.href = dataUrl;
       link.download = "inscripcion.png";
       link.click();
     }
   }
-
 }

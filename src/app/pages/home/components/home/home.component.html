@@ -1,5 +1,7 @@
 <!--<app-section-home />-->
-<app-section-home (sectionChanged)="onSectionChanged($event)"></app-section-home>
+<app-section-home class="" (sectionChanged)="onSectionChanged($event)"></app-section-home>
+<app-header [typeSection]="sectionChangedValue"></app-header>
+<app-seminar/>
 <div class="bg-section">
   <app-presentation [typeSection]="sectionChangedValue" />
   <app-section-gallery [typeSection]="sectionChangedValue"></app-section-gallery>
