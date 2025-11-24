@@ -1,68 +1,90 @@
 <nav class="bg-[#1a1a1d] w-full z-20 top-0 start-0 border-b border-gray-200 fixed">
-    <div class="flex flex-wrap items-center justify-around max-w-screen-xl p-4 mx-auto">
-        <div class="text-4xl font-bold text-white span-org">
-            <a (click)="scrollToHome()" class="cursor-pointer">
-                <img src="images/round_log.png" class="h-12" alt="logo sol">
-            </a>
-        </div>
-        <div class="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
-          <button data-collapse-toggle="navbar-sticky" type="button"
-                  class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
-                  aria-controls="navbar-sticky" aria-expanded="false">
-            <span class="sr-only">Abrir menú</span>
-            <i class="fa-solid fa-bars text-xl"></i>
-          </button>
-
-        </div>
-        <div id="navbar-sticky"
-            class="absolute left-0 hidden w-full bg-gray-100 shadow-lg top-20 md:top-0 md:relative md:flex md:items-center md:w-auto md:bg-transparent md:shadow-none">
-            <ul
-                class="flex flex-col p-4 font-medium border border-gray-100 rounded-lg md:p-0 md:space-x-8 rtl:space-x-reverse md:flex-row md:border-0 md:text-white">
-                <li class="flex md:justify-center md:items-center">
-                    <a (click)="scrollToService()"
-                        class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0"
-                        aria-current="page">Inicio</a>
-                </li>
-              <li class="flex md:justify-center md:items-center">
-                <a (click)="scrollTablePositions()"
-                   class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Tabla de Posiciones</a>
-              </li>
-                <li class="flex md:justify-center md:items-center">
-                    <a (click)="scrollToGallery()"
-                        class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Bases</a>
-                </li>
-                <li class="flex md:justify-center md:items-center">
-                    <a (click)="scrollToContacts()"
-                        class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Fixture</a>
-                </li>
-                <li class="flex md:justify-center md:items-center">
-                    <a (click)="scrollToAbout()"
-                        class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Organizadores</a>
-                </li>
-              <li class="flex md:justify-center md:items-center">
-                <a (click)="scrollRegister()"
-                   class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Colegios por disciplina</a>
-              </li>
-<!--                @if (isAuth !== true) {-->
-<!--                <li>-->
-<!--                    <a routerLinkActive="active">-->
-<!--                        <button type="button"-->
-<!--                                routerLink="/register"-->
-<!--                            class="text-white bg-[#8d0c28] hover:bg-[#740938] focus:ring-4 focus:outline-none focus:ring-[#F4C151] font-medium rounded-lg text-sm px-4 py-2 text-center">-->
-<!--                          Inscripción-->
-<!--                        </button>-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                }-->
-<!--              <li>-->
-                <a routerLinkActive="active">
-                  <button type="button"
-                          routerLink="/login"
-                          class="text-white bg-[#8d0c28] hover:bg-[#740938] focus:ring-4 focus:outline-none focus:ring-[#F4C151] font-medium rounded-lg text-sm px-4 py-2 text-center">
-                    Iniciar Sesión
-                  </button>
-                </a>
-            </ul>
-        </div>
+  <div class="flex flex-wrap items-center justify-around max-w-screen-xl p-4 mx-auto">
+    <div class="text-4xl font-bold text-white span-org">
+      <a (click)="scrollToHome()" class="cursor-pointer">
+        <img src="images/round_log.png" class="h-12" alt="logo sol">
+      </a>
     </div>
+    <div class="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
+      <button data-collapse-toggle="navbar-sticky" type="button"
+              class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+              aria-controls="navbar-sticky" aria-expanded="false">
+        <span class="sr-only">Abrir menú</span>
+        <i class="fa-solid fa-bars text-xl"></i>
+      </button>
+
+    </div>
+    <div id="navbar-sticky"
+         class="absolute left-0 hidden w-full bg-gray-100 shadow-lg top-20 md:top-0 md:relative md:flex md:items-center md:w-auto md:bg-transparent md:shadow-none">
+      <ul
+        class="flex flex-col p-4 font-medium border border-gray-100 rounded-lg md:p-0 md:space-x-8 rtl:space-x-reverse md:flex-row md:border-0 md:text-white">
+
+
+        @if (typeSection === 'seminar') {
+          <li class="flex md:justify-center md:items-center">
+            <a (click)="scrollSeminarCourses()"
+               class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Cursos</a>
+          </li>
+          <li class="flex md:justify-center md:items-center">
+            <a (click)="scrollSeminarBenefits()"
+               class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Beneficios</a>
+          </li>
+          <li class="flex md:justify-center md:items-center">
+            <a (click)="scrollSeminarInscriptions()"
+               class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Inscripcion</a>
+          </li>
+          <li class="flex md:justify-center md:items-center">
+            <a (click)="scrollSeminarContact()"
+               class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Contacto</a>
+          </li>
+        } @else {
+          <li class="flex md:justify-center md:items-center">
+            <a (click)="scrollToService()"
+               class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0"
+               aria-current="page">Inicio</a>
+          </li>
+          <li class="flex md:justify-center md:items-center">
+            <a (click)="scrollTablePositions()"
+               class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Tabla de Posiciones</a>
+          </li>
+          <li class="flex md:justify-center md:items-center">
+            <a (click)="scrollToGallery()"
+               class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Bases</a>
+          </li>
+          <li class="flex md:justify-center md:items-center">
+            <a (click)="scrollToContacts()"
+               class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Fixture</a>
+          </li>
+          <li class="flex md:justify-center md:items-center">
+            <a (click)="scrollToAbout()"
+               class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Organizadores</a>
+          </li>
+          <li class="flex md:justify-center md:items-center">
+            <a (click)="scrollRegister()"
+               class="block px-3 py-2 rounded-sm cursor-pointer md:bg-transparent md:p-0">Colegios por disciplina</a>
+          </li>
+        }
+
+        <!--                @if (isAuth !== true) {-->
+        <!--                <li>-->
+        <!--                    <a routerLinkActive="active">-->
+        <!--                        <button type="button"-->
+        <!--                                routerLink="/register"-->
+        <!--                            class="text-white bg-[#8d0c28] hover:bg-[#740938] focus:ring-4 focus:outline-none focus:ring-[#F4C151] font-medium rounded-lg text-sm px-4 py-2 text-center">-->
+        <!--                          Inscripción-->
+        <!--                        </button>-->
+        <!--                    </a>-->
+        <!--                </li>-->
+        <!--                }-->
+        <!--              <li>-->
+        <a routerLinkActive="active">
+          <button type="button"
+                  routerLink="/login"
+                  class="text-white bg-[#8d0c28] hover:bg-[#740938] focus:ring-4 focus:outline-none focus:ring-[#F4C151] font-medium rounded-lg text-sm px-4 py-2 text-center">
+            Iniciar Sesión
+          </button>
+        </a>
+      </ul>
+    </div>
+  </div>
 </nav>
