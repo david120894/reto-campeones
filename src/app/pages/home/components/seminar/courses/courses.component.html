@@ -1,16 +1,18 @@
-<section id="seminar-courses" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+<section id="seminar-courses" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 background">
   <div class="text-center mb-16">
-    <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-4">Nuestros Cursos por Grupo de Edad</h2>
-    <p class="text-foreground/60 text-lg">Actividades adaptadas a cada etapa de desarrollo</p>
+    <h2 class="text-3xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text text-transparent">
+      Nuestros Cursos por Grupo de Edad
+    </h2>
+    <p class="text-foreground/60 text-lg bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text text-transparent">Actividades adaptadas a cada etapa de desarrollo</p>
   </div>
 
   <div class="space-y-12">
     <div *ngFor="let group of ageGroups; let groupIdx = index">
-      <h3 class="text-2xl font-bold text-foreground mb-6 pb-4 border-b-2 border-primary">{{group.age}}</h3>
+      <h3 class="text-2xl font-bold text-yellow-500 mb-6 pb-4 border-b-2 border-primary">{{group.age}}</h3>
 
       <div class="grid md:grid-cols-3 gap-6">
         <div *ngFor="let course of group.groups; let courseIdx = index"
-             [class]="'rounded-xl border-2 ' + getCategoryColors(course.category).bg + ' bg-card p-6 space-y-4 hover:shadow-lg transition'">
+             [class]="'rounded-xl border-2 ' + getCategoryColors(course.category).bg + 'bg-card-foreground p-6 bg-blue-100 space-y-4 hover:shadow-lg'">
           <div class="space-y-3">
             <span [class]="'px-3 py-1 rounded-full text-xs font-medium ' + getCategoryColors(course.category).badge">
               {{course.category}}
@@ -36,7 +38,8 @@
             </ul>
           </div>
 
-          <button class="w-full mt-4 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg font-semibold transition text-sm">
+          <button class="w-full mt-4 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg font-semibold transition text-sm"
+          (click)="goUsefulVacations()">
             Inscribirse
           </button>
         </div>
@@ -44,7 +47,7 @@
     </div>
   </div>
 
-  <div class="mt-12 p-6 rounded-lg bg-primary/10 border border-primary/20">
+  <div class="mt-12 p-6 rounded-lg bg-blue-100 border border-primary/20">
     <h3 class="font-bold text-foreground mb-2">Sábados - Desempeño Especial</h3>
     <p class="text-foreground/70 text-sm">
       Actividades de desempeño deportivo y cultural todos los sábados (8:00 am - 1:00 pm)

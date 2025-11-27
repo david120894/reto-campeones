@@ -104,4 +104,11 @@ export class CoursesComponent {
   getCategoryColors(category: string) {
     return this.categoryColors[category] || { badge: "bg-gray-100 text-gray-800", bg: "border-gray-200" };
   }
+
+  goUsefulVacations() {
+    const tablePositions = document.getElementById('useful-inscriptions')
+    if (tablePositions) {
+      tablePositions.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
 }
