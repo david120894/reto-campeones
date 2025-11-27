@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core'
 
 @Component({
   selector: 'app-footer',
@@ -6,7 +6,12 @@ import { Component } from '@angular/core';
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'
 })
-export class FooterComponent {
+export class FooterComponent implements OnInit{
+  @Input() typeSection!: string;
+
+  ngOnInit() {
+    console.log(this.typeSection)
+  }
 
   contactOne() {
     const phoneNumber = '+51942743899'; // Número de destino
