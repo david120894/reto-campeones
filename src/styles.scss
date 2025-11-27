@@ -20,10 +20,13 @@ body{
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.98 0.01 70);
+  --background: oklch(0.326 0.129 24.831 / 0.85);
   --foreground: oklch(0.15 0.02 280);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.15 0.02 280);
+  --card-burgundy-elegant: oklch(0.45 0.08 18.5 / 0.85);
+  --card-burgundy-light: oklch(0.55 0.06 18.5 / 0.80);
+  --card-gold-subtle: oklch(0.65 0.12 85 / 0.90);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.15 0.02 280);
   --primary: oklch(0.64 0.24 37);
@@ -139,5 +142,65 @@ body{
   body {
     background-color: var(--background);
     color: var(--foreground);
+  }
+}
+
+:host {
+  /* Colores personalizados para guinda y dorado */
+  --color-burgundy: #800020;
+  --color-burgundy-dark: #600018;
+  --color-burgundy-light: #a00028;
+  --color-gold: #d4af37;
+  --color-gold-dark: #b8941f;
+  --color-gold-light: #e6c158;
+}
+
+.bg-burgundy { background-color: var(--color-burgundy); }
+.bg-burgundy-dark { background-color: var(--color-burgundy-dark); }
+.text-burgundy { color: var(--color-burgundy); }
+.border-burgundy { border-color: var(--color-burgundy); }
+
+.bg-gold { background-color: var(--color-gold); }
+.bg-gold-dark { background-color: var(--color-gold-dark); }
+.text-gold { color: var(--color-gold); }
+.border-gold { border-color: var(--color-gold); }
+
+/* Fondo principal con degradado guinda */
+#seminar-courses {
+  background: linear-gradient(135deg, var(--color-burgundy) 0%, var(--color-burgundy-dark) 100%);
+}
+
+#seminar-benefits {
+  background: linear-gradient(135deg, var(--color-burgundy-dark) 0%, var(--color-burgundy) 100%);
+}
+.bg-burgundy { background-color: var(--color-burgundy); }
+.bg-burgundy-dark { background-color: var(--color-burgundy-dark); }
+.text-burgundy { color: var(--color-burgundy); }
+.border-burgundy { border-color: var(--color-burgundy); }
+
+.bg-gold { background-color: var(--color-gold); }
+.bg-gold-dark { background-color: var(--color-gold-dark); }
+.text-gold { color: var(--color-gold); }
+.border-gold { border-color: var(--color-gold); }
+
+/* Patrón decorativo sutil */
+.bg-pattern {
+  background-image: radial-gradient(circle at 25% 25%, var(--color-gold) 1px, transparent 1px),
+  radial-gradient(circle at 75% 75%, var(--color-gold) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Transiciones suaves */
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+/* Mejoras de accesibilidad */
+@media (max-width: 640px) {
+  #seminar-courses,
+  #seminar-benefits,
+  #seminar-inscriptions {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }

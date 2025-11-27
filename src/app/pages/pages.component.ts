@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core'
 import { HeaderComponent } from '../core/components/header/header.component';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from '../core/components/footer/footer.component';
@@ -15,11 +15,17 @@ const DECLARATIONS = [HeaderComponent, FooterComponent];
   templateUrl: './pages.component.html',
   styleUrl: './pages.component.scss',
 })
-export class PagesComponent {
+export class PagesComponent implements OnInit{
+  @Input() typeSection!: string;
+
   loading$: Observable<boolean>;
 
   constructor(private loadingService: LoadingService) {
     this.loading$ = this.loadingService.loading$;
+  }
+
+  ngOnInit(): void {
+    console.log(this.typeSection);
   }
 }
 
