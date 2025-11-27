@@ -1,134 +1,342 @@
-<section id="seminar-inscriptions" class="py-4 background">
-  <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl sm:text-4xl font-bold text-yellow-500 mb-4">Inscríbete al Seminario</h2>
+<section id="seminar-inscriptions" class="py-8 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-4xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-bold text-yellow-500 mb-2">Registro de Seminario</h1>
+      <p class="text-lg text-yellow-500">Complete sus datos para inscribirse en el seminario</p>
     </div>
 
-    <div class="p-8 rounded-xl border border-blue-200 bg-blue-100 shadow-lg">
-      <div *ngIf="submitted" class="text-center py-12">
-        <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
-          <span class="text-3xl text-blue-600">✓</span>
-        </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2">¡Inscripción recibida!</h3>
-        <p class="text-gray-600">Te enviaremos la confirmación a tu correo electrónico</p>
-      </div>
+    <!-- Form Container -->
+    <div class="bg-blue-100 shadow-xl rounded-2xl overflow-hidden">
+      <form [formGroup]="formSeminar" (ngSubmit)="onSubmit()" class="p-6 sm:p-8">
 
-      <form *ngIf="!submitted" (ngSubmit)="onSubmit()" class="space-y-6">
-        <div class="grid sm:grid-cols-2 gap-6">
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Nombre completo *</label>
-            <input
-              type="text"
-              name="nombre"
-              [(ngModel)]="formData.nombre"
-              required
-              class="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              placeholder="Juan Pérez"
-            />
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-            <input
-              type="email"
-              name="email"
-              [(ngModel)]="formData.email"
-              required
-              class="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              placeholder="correo@ejemplo.com"
-            />
+        <!-- Información Personal -->
+        <div class="mb-10">
+          <h2 class="text-xl font-semibold text-gray-800 mb-6 pb-2 border-b border-gray-200">
+            <i class="fas fa-user text-blue-600 mr-2"></i>
+            Información Personal
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Nombre -->
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
+                Nombres *
+              </label>
+              <input
+                id="name"
+                type="text"
+                formControlName="name"
+                [class]="hasError('name', 'required') ?
+                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
+                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'"
+                placeholder="Ingrese sus nombres">
+              <div *ngIf="hasError('name', 'required')" class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                Este campo es requerido
+              </div>
+            </div>
+
+            <!-- Apellidos -->
+            <div>
+              <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">
+                Apellidos *
+              </label>
+              <input
+                id="lastName"
+                type="text"
+                formControlName="lastName"
+                [class]="hasError('lastName', 'required') ?
+                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
+                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'"
+                placeholder="Ingrese sus apellidos">
+              <div *ngIf="hasError('lastName', 'required')" class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                Este campo es requerido
+              </div>
+            </div>
+
+            <!-- DNI -->
+            <div>
+              <label for="dni" class="block text-sm font-medium text-gray-700 mb-2">
+                DNI *
+              </label>
+              <input
+                id="dni"
+                type="text"
+                formControlName="dni"
+                (input)="onDniInput($event)"
+                maxlength="8"
+                [class]="hasError('dni', 'required') || hasError('dni', 'pattern') ?
+      'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
+      'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'"
+                placeholder="Ingrese 8 dígitos">
+
+              <!-- Mensajes de error -->
+              <div *ngIf="hasError('dni', 'required') || hasError('dni', 'pattern')"
+                   class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                {{ getDniErrorMessage() }}
+              </div>
+
+              <!-- Mensaje de éxito cuando es válido -->
+              <div *ngIf="formSeminar.get('dni')?.valid && formSeminar.get('dni')?.touched"
+                   class="mt-1 text-sm text-green-600 flex items-center">
+                <i class="fas fa-check-circle mr-1"></i>
+                DNI válido
+              </div>
+            </div>
+
+            <!-- Fecha de Nacimiento -->
+            <div>
+              <label for="birthDate" class="block text-sm font-medium text-gray-700 mb-2">
+                Fecha de Nacimiento *
+              </label>
+              <input
+                id="birthDate"
+                type="date"
+                formControlName="birthDate"
+                [class]="hasError('birthDate', 'required') ?
+                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
+                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'">
+              <div *ngIf="hasError('birthDate', 'required')" class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                Este campo es requerido
+              </div>
+            </div>
+
+            <!-- Edad (Calculada automáticamente) -->
+            <div>
+              <label for="age" class="block text-sm font-medium text-gray-700 mb-2">
+                Edad
+              </label>
+              <div class="relative">
+                <input
+                  id="age"
+                  type="text"
+                  formControlName="age"
+                  readonly
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-700 cursor-not-allowed"
+                  [placeholder]="getAgeText()">
+                <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                  <i class="fas fa-calculator text-gray-400"></i>
+                </div>
+              </div>
+              <p class="mt-1 text-xs text-gray-500 flex items-center">
+                <i class="fas fa-info-circle mr-1"></i>
+                Calculado automáticamente
+              </p>
+            </div>
+
+            <!-- Género -->
+            <div>
+              <label for="gender" class="block text-sm font-medium text-gray-700 mb-2">
+                Género *
+              </label>
+              <select
+                id="gender"
+                formControlName="gender"
+                [class]="hasError('gender', 'required') ?
+                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
+                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'">
+                <option value="">Seleccione su género</option>
+                <option *ngFor="let gender of genders" [value]="gender.value">
+                  {{ gender.label }}
+                </option>
+              </select>
+              <div *ngIf="hasError('gender', 'required')" class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                Este campo es requerido
+              </div>
+            </div>
+
+            <!-- Teléfono -->
+            <div>
+              <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
+                Teléfono *
+              </label>
+              <input
+                id="phone"
+                type="tel"
+                formControlName="phone"
+                (input)="onPhoneInput($event)"
+                maxlength="9"
+                [class]="hasError('phone', 'required') ?
+                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
+                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'"
+                placeholder="Ingrese su teléfono">
+              <div *ngIf="hasError('phone', 'required') || hasError('phone', 'pattern')"
+                   class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                {{ getPhoneErrorMessage() }}
+              </div>
+
+              <!-- Mensaje de éxito cuando es válido -->
+              <div *ngIf="formSeminar.get('phone')?.valid && formSeminar.get('phone')?.touched"
+                   class="mt-1 text-sm text-green-600 flex items-center">
+                <i class="fas fa-check-circle mr-1"></i>
+                Telefono válido
+              </div>
+            </div>
+            <div class="">
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                Correo Electrónico *
+              </label>
+              <input
+                id="email"
+                type="email"
+                formControlName="email"
+                [class]="hasError('email', 'required') || hasError('email', 'email') ?
+                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
+                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'"
+                placeholder="ejemplo@correo.com">
+              <div *ngIf="hasError('email', 'required')" class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                Este campo es requerido
+              </div>
+              <div *ngIf="hasError('email', 'email')" class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                Ingrese un correo válido
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="grid sm:grid-cols-2 gap-6">
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Teléfono *</label>
-            <input
-              type="tel"
-              name="telefono"
-              [(ngModel)]="formData.telefono"
-              required
-              class="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              placeholder="555-0000"
-            />
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Institución/Organización *</label>
-            <input
-              type="text"
-              name="institucion"
-              [(ngModel)]="formData.institucion"
-              required
-              class="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              placeholder="Nombre de institución"
-            />
-          </div>
-        </div>
+        <!-- Información Profesional -->
+        <div class="mb-10">
+          <h2 class="text-xl font-semibold text-gray-800 mb-6 pb-2 border-b border-gray-200">
+            <i class="fas fa-briefcase text-purple-600 mr-2"></i>
+            Información Profesional
+          </h2>
 
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-2">Cargo/Posición *</label>
-          <input
-            type="text"
-            name="cargo"
-            [(ngModel)]="formData.cargo"
-            required
-            class="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            placeholder="Ej: Docente de EF, Técnico, Dirigente, etc."
-          />
-        </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Grado Académico -->
+            <div>
+              <label for="academicDegree" class="block text-sm font-medium text-gray-700 mb-2">
+                Grado Académico *
+              </label>
+              <input
+                id="academicDegree"
+                type="text"
+                formControlName="academicDegree"
+                [class]="hasError('profession', 'required') ?
+                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
+                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'"
+                placeholder="Ingrese su profesión">
+              <div *ngIf="hasError('academicDegree', 'required')" class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                Este campo es requerido
+              </div>
+            </div>
 
-        <div class="grid sm:grid-cols-2 gap-6">
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Grupo de participante *</label>
-            <select
-              name="publicoTarget"
-              [(ngModel)]="formData.publicoTarget"
-              required
-              class="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            >
-              <option value="">Selecciona tu perfil</option>
-              <option value="docente">Docente de Educación Física</option>
-              <option value="tecnico">Técnico Deportivo</option>
-              <option value="deportista">Deportista</option>
-              <option value="dirigente">Dirigente Deportivo</option>
-              <option value="otro">Otro</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Años de experiencia *</label>
-            <select
-              name="experiencia"
-              [(ngModel)]="formData.experiencia"
-              required
-              class="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            >
-              <option value="">Selecciona</option>
-              <option value="0-2">0 - 2 años</option>
-              <option value="2-5">2 - 5 años</option>
-              <option value="5-10">5 - 10 años</option>
-              <option value="10+">10+ años</option>
-            </select>
+            <!-- Profesión -->
+            <div>
+              <label for="profession" class="block text-sm font-medium text-gray-700 mb-2">
+                Profesión *
+              </label>
+              <input
+                id="profession"
+                type="text"
+                formControlName="profession"
+                [class]="hasError('profession', 'required') ?
+                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
+                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'"
+                placeholder="Ingrese su profesión">
+              <div *ngIf="hasError('profession', 'required')" class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                Este campo es requerido
+              </div>
+            </div>
+
+            <!-- Lugar de Trabajo -->
+            <div class="md:col-span-2">
+              <label for="workplace" class="block text-sm font-medium text-gray-700 mb-2">
+                Lugar de Trabajo *
+              </label>
+              <input
+                id="workplace"
+                type="text"
+                formControlName="workplace"
+                [class]="hasError('workplace', 'required') ?
+                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
+                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'"
+                placeholder="Ingrese su lugar de trabajo">
+              <div *ngIf="hasError('workplace', 'required')" class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                Este campo es requerido
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="flex items-start gap-3">
-          <input
-            type="checkbox"
-            name="aceptaTerminos"
-            [(ngModel)]="formData.aceptaTerminos"
-            required
-            class="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-          />
-          <label class="text-sm text-gray-600">
-            Acepto los términos y condiciones del seminario y autorizo el procesamiento de mis datos personales *
-          </label>
+        <!-- Información del Seminario -->
+        <div class="mb-10">
+          <h2 class="text-xl font-semibold text-gray-800 mb-6 pb-2 border-b border-gray-200">
+            <i class="fas fa-calendar-alt text-orange-600 mr-2"></i>
+            Información del Seminario
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Modalidad -->
+            <div>
+              <label for="modality" class="block text-sm font-medium text-gray-700 mb-2">
+                Modalidad *
+              </label>
+              <select
+                id="modality"
+                formControlName="modality"
+                [class]="hasError('modality', 'required') ?
+                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
+                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'">
+                <option value="">Seleccione la modalidad</option>
+                <option *ngFor="let modality of modalities" [value]="modality.value">
+                  {{ modality.label }}
+                </option>
+              </select>
+              <div *ngIf="hasError('modality', 'required')" class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                Este campo es requerido
+              </div>
+            </div>
+
+            <!-- Fecha de Inicio -->
+            <div>
+              <label for="dateStart" class="block text-sm font-medium text-gray-700 mb-2">
+                Fecha de Inicio *
+              </label>
+              <input
+                id="dateStart"
+                type="date"
+                formControlName="dateStart"
+                [class]="hasError('dateStart', 'required') ?
+                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
+                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'">
+              <div *ngIf="hasError('dateStart', 'required')" class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                Este campo es requerido
+              </div>
+            </div>
+          </div>
         </div>
 
-        <button
-          type="submit"
-          class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 font-semibold rounded-lg transition focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-        >
-          Confirmar Inscripción
-        </button>
+        <!-- Botones de Acción -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-end pt-6 border-t border-gray-200">
+          <button
+            type="button"
+            (click)="resetForm()"
+            class="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition-colors flex items-center justify-center">
+            <i class="fas fa-redo mr-2"></i>
+            Limpiar Formulario
+          </button>
+
+          <button
+            type="submit"
+            [disabled]="formSeminar.invalid"
+            class="px-8 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center">
+            <i class="fas fa-paper-plane mr-2"></i>
+            Enviar Registro
+          </button>
+        </div>
       </form>
     </div>
   </div>
