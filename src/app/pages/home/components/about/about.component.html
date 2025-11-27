@@ -1,406 +1,409 @@
-<!-- Fixture Section -->
-<section class="about-section" id="nosotros">
-  <div class="p-2 mb-4 text-4xl text-center text-white font-extrabold big-title md:text-6xl">
-    <p class="mb-4 text-7xl">Organizadores</p>
-  </div>
+@if(typeSection !== "useful-vacations" && typeSection !== "seminar") {
+  <!-- Fixture Section -->
+  <section class="about-section" id="nosotros">
+    <div class="p-2 mb-4 text-4xl text-center text-white font-extrabold big-title md:text-6xl">
+      <p class="mb-4 text-7xl">Organizadores</p>
+    </div>
 
-  <div class="mx-auto px-4">
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-12 gallery-container-cards">
+    <div class="mx-auto px-4">
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-12 gallery-container-cards">
 
-      <!-- CARD 1 -->
-      <article
-        class="relative group w-full max-w-sm mx-auto rounded-2xl p-6 shadow-md hover:shadow-2xl
-           transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-pointer overflow-hidden"
-        style="background-color: #550a0a"
-      >
-        <div class="relative z-10 flex flex-col items-center text-center text-white">
-          <h3
-            class="font-extrabold text-lg md:text-xl mb-4 border-b-2 border-yellow-400 pb-1
-               transition-colors group-hover:text-yellow-400"
-          >
-            Municipalidad Provincial del Cusco
-          </h3>
-          <div class="w-full flex justify-center">
-            <img
-              src="images/round_log.png"
-              alt="cusco"
-              class="w-40 h-40 object-contain drop-shadow-lg transition-transform duration-500 group-hover:scale-110"
-            />
-          </div>
-        </div>
-      </article>
-
-      <!-- CARD 2 -->
-      <article
-        *ngIf="inputTitle==='bike-ride'"
-        class="relative group w-full max-w-sm mx-auto rounded-2xl p-6 shadow-md hover:shadow-2xl
-           transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-pointer overflow-hidden"
-        style="background-color: #550a0a"
-      >
-        <div class="relative z-10 flex flex-col items-center text-center text-white">
-          <h3
-            class="font-extrabold text-lg md:text-xl mb-4 border-b-2 border-yellow-400 pb-1
-               transition-colors group-hover:text-yellow-400"
-          >
-            Policía Nacional del Perú
-          </h3>
-          <div class="w-full flex justify-center">
-            <img
-              src="organizadores/pnpupdate.png"
-              alt="pnp"
-              class="w-40 h-40 object-contain drop-shadow-lg transition-transform duration-500 group-hover:scale-110"
-            />
-          </div>
-        </div>
-      </article>
-
-      <!-- CARD 3 -->
-      <article
-        class="relative group w-full max-w-sm mx-auto rounded-2xl p-6 shadow-md hover:shadow-2xl
-           transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-pointer overflow-hidden"
-        style="background-color: #550a0a"
-      >
-        <div class="relative z-10 flex flex-col items-center text-center text-white">
-          <h3
-            class="font-extrabold text-lg md:text-xl mb-4 border-b-2 border-yellow-400 pb-1
-               transition-colors group-hover:text-yellow-400"
-          >
-            Sociedad de Beneficencia del Cusco
-          </h3>
-          <div class="w-full flex justify-center">
-            <img
-              src="championship/bene_blanco.png"
-              alt="beneficencia"
-              class="w-40 h-40 object-contain drop-shadow-lg transition-transform duration-500 group-hover:scale-110"
-            />
-          </div>
-        </div>
-      </article>
-
-      <!-- CARD 4 -->
-      <article
-        class="relative group w-full max-w-sm mx-auto rounded-2xl p-6 shadow-md hover:shadow-2xl
-           transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-pointer overflow-hidden"
-        style="background-color: #550a0a"
-      >
-        <div class="relative z-10 flex flex-col items-center text-center text-white">
-          <h3
-            class="font-extrabold text-lg md:text-xl mb-4 border-b-2 border-yellow-400 pb-1
-               transition-colors group-hover:text-yellow-400"
-          >
-            Instituto Peruano del Deporte - Cusco
-          </h3>
-          <div class="w-full flex justify-center">
-            <img
-              src="championship/ipd-fh.png"
-              alt="ipd"
-              class="w-40 h-40 object-contain drop-shadow-lg transition-transform duration-500 group-hover:scale-110"
-            />
-          </div>
-        </div>
-      </article>
-
-      <!-- CARD 5 -->
-      <article
-        class="relative group w-full max-w-sm mx-auto rounded-2xl p-6 shadow-md hover:shadow-2xl
-           transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-pointer overflow-hidden"
-        style="background-color: #550a0a"
-      >
-        <div class="relative z-10 flex flex-col items-center text-center text-white">
-          <h3
-            class="font-extrabold text-lg md:text-xl mb-4 border-b-2 border-yellow-400 pb-1
-               transition-colors group-hover:text-yellow-400"
-          >
-            Proyecto Cusco Deportes
-          </h3>
-          <div class="w-full flex justify-center">
-            <img
-              src="auspiciadores/pdc.jpeg"
-              alt="pdc"
-              class="w-40 h-40 object-contain drop-shadow-lg transition-transform duration-500 group-hover:scale-110"
-            />
-          </div>
-        </div>
-      </article>
-
-      <!-- CARD 6 (solo si bike-ride) -->
-      @if (inputTitle==='bike-ride') {
+        <!-- CARD 1 -->
         <article
           class="relative group w-full max-w-sm mx-auto rounded-2xl p-6 shadow-md hover:shadow-2xl
-             transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-pointer overflow-hidden"
+           transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-pointer overflow-hidden"
           style="background-color: #550a0a"
         >
           <div class="relative z-10 flex flex-col items-center text-center text-white">
             <h3
               class="font-extrabold text-lg md:text-xl mb-4 border-b-2 border-yellow-400 pb-1
-                 transition-colors group-hover:text-yellow-400"
+               transition-colors group-hover:text-yellow-400"
             >
-              Inka's Bike Perú
+              Municipalidad Provincial del Cusco
             </h3>
             <div class="w-full flex justify-center">
               <img
-                src="championship/inkas-bike.png"
-                alt="inkas-bike"
+                src="images/round_log.png"
+                alt="cusco"
                 class="w-40 h-40 object-contain drop-shadow-lg transition-transform duration-500 group-hover:scale-110"
               />
             </div>
           </div>
         </article>
-      }
 
-    </div>
-
-
-  </div>
-  <div class="py-2 px-4 about-section" *ngIf="inputTitle==='bike-ride'">
-    <!-- Copia esto en la plantilla donde quieres mostrar los coorganizadores -->
-    <div class="mx-auto px-4">
-      <div class="p-2 mb-4 text-4xl text-center text-white font-extrabold big-title md:text-6xl">
-        <p class="mb-4 text-7xl">Coorganizadores</p>
-      </div>
-      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-12 gallery-container-cards">
-
-        <!-- Card 1 -->
+        <!-- CARD 2 -->
         <article
-          class="relative group w-full max-w-sm mx-auto rounded-2xl p-6 shadow-lg
-           bg-[#550a0a] overflow-hidden cursor-pointer
-           transition-all duration-500 transform hover:-translate-y-3 hover:scale-105
-           hover:shadow-yellow-400/50"
+          *ngIf="inputTitle==='bike-ride'"
+          class="relative group w-full max-w-sm mx-auto rounded-2xl p-6 shadow-md hover:shadow-2xl
+           transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-pointer overflow-hidden"
+          style="background-color: #550a0a"
         >
-          <div class="absolute inset-0 rounded-2xl border-2 border-transparent
-                group-hover:border-yellow-400/80 transition-all duration-500"></div>
-
           <div class="relative z-10 flex flex-col items-center text-center text-white">
             <h3
-              class="font-extrabold text-lg md:text-xl mb-4
-               border-b-2 border-yellow-400 pb-1
+              class="font-extrabold text-lg md:text-xl mb-4 border-b-2 border-yellow-400 pb-1
                transition-colors group-hover:text-yellow-400"
             >
-              Municipalidad Distrital de San Jerónimo
+              Policía Nacional del Perú
             </h3>
             <div class="w-full flex justify-center">
               <img
-                src="championship/san jeronimo.png"
-                alt="San Jeronimo"
-                class="w-40 h-40 object-contain drop-shadow-lg
-                 transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3"
+                src="organizadores/pnpupdate.png"
+                alt="pnp"
+                class="w-40 h-40 object-contain drop-shadow-lg transition-transform duration-500 group-hover:scale-110"
               />
             </div>
           </div>
         </article>
 
-        <!-- Card 2 -->
+        <!-- CARD 3 -->
         <article
-          class="relative group w-full max-w-sm mx-auto rounded-2xl p-6 shadow-lg
-           bg-[#550a0a] overflow-hidden cursor-pointer
-           transition-all duration-500 transform hover:-translate-y-3 hover:scale-105
-           hover:shadow-yellow-400/50"
+          class="relative group w-full max-w-sm mx-auto rounded-2xl p-6 shadow-md hover:shadow-2xl
+           transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-pointer overflow-hidden"
+          style="background-color: #550a0a"
         >
-          <div class="absolute inset-0 rounded-2xl border-2 border-transparent
-                group-hover:border-yellow-400/80 transition-all duration-500"></div>
-
           <div class="relative z-10 flex flex-col items-center text-center text-white">
             <h3
-              class="font-extrabold text-lg md:text-xl mb-4
-               border-b-2 border-yellow-400 pb-1
+              class="font-extrabold text-lg md:text-xl mb-4 border-b-2 border-yellow-400 pb-1
                transition-colors group-hover:text-yellow-400"
             >
-              Municipalidad Distrital de San Sebastián
+              Sociedad de Beneficencia del Cusco
             </h3>
             <div class="w-full flex justify-center">
               <img
-                src="championship/logo-sebastian.png"
-                alt="San Sebastian"
-                class="w-40 h-40 object-contain drop-shadow-lg
-                 transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3"
+                src="championship/bene_blanco.png"
+                alt="beneficencia"
+                class="w-40 h-40 object-contain drop-shadow-lg transition-transform duration-500 group-hover:scale-110"
               />
             </div>
           </div>
         </article>
 
-        <!-- Card 3 -->
+        <!-- CARD 4 -->
         <article
-          class="relative group w-full max-w-sm mx-auto rounded-2xl p-6 shadow-lg
-           bg-[#550a0a] overflow-hidden cursor-pointer
-           transition-all duration-500 transform hover:-translate-y-3 hover:scale-105
-           hover:shadow-yellow-400/50"
+          class="relative group w-full max-w-sm mx-auto rounded-2xl p-6 shadow-md hover:shadow-2xl
+           transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-pointer overflow-hidden"
+          style="background-color: #550a0a"
         >
-          <div class="absolute inset-0 rounded-2xl border-2 border-transparent
-                group-hover:border-yellow-400/80 transition-all duration-500"></div>
-
           <div class="relative z-10 flex flex-col items-center text-center text-white">
             <h3
-              class="font-extrabold text-lg md:text-xl mb-4
-               border-b-2 border-yellow-400 pb-1
+              class="font-extrabold text-lg md:text-xl mb-4 border-b-2 border-yellow-400 pb-1
                transition-colors group-hover:text-yellow-400"
             >
-              Municipalidad Distrital de Santiago
+              Instituto Peruano del Deporte - Cusco
             </h3>
             <div class="w-full flex justify-center">
               <img
-                src="championship/santiago.png"
-                alt="Santiago"
-                class="w-40 h-40 object-contain drop-shadow-lg
-                 transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3"
+                src="championship/ipd-fh.png"
+                alt="ipd"
+                class="w-40 h-40 object-contain drop-shadow-lg transition-transform duration-500 group-hover:scale-110"
               />
             </div>
           </div>
         </article>
 
-        <!-- Card 4 -->
+        <!-- CARD 5 -->
         <article
-          class="relative group w-full max-w-sm mx-auto rounded-2xl p-6 shadow-lg
-           bg-[#550a0a] overflow-hidden cursor-pointer
-           transition-all duration-500 transform hover:-translate-y-3 hover:scale-105
-           hover:shadow-yellow-400/50"
+          class="relative group w-full max-w-sm mx-auto rounded-2xl p-6 shadow-md hover:shadow-2xl
+           transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-pointer overflow-hidden"
+          style="background-color: #550a0a"
         >
-          <div class="absolute inset-0 rounded-2xl border-2 border-transparent
-                group-hover:border-yellow-400/80 transition-all duration-500"></div>
-
           <div class="relative z-10 flex flex-col items-center text-center text-white">
             <h3
-              class="font-extrabold text-lg md:text-xl mb-4
-               border-b-2 border-yellow-400 pb-1
+              class="font-extrabold text-lg md:text-xl mb-4 border-b-2 border-yellow-400 pb-1
                transition-colors group-hover:text-yellow-400"
             >
-              Quinta Brigada de Montaña - Cusco
+              Proyecto Cusco Deportes
             </h3>
             <div class="w-full flex justify-center">
               <img
-                src="championship/5t.png"
-                alt="Quinta Brigada"
-                class="w-40 h-40 object-contain drop-shadow-lg
-                 transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3"
+                src="auspiciadores/pdc.jpeg"
+                alt="pdc"
+                class="w-40 h-40 object-contain drop-shadow-lg transition-transform duration-500 group-hover:scale-110"
               />
             </div>
           </div>
         </article>
 
-        <!-- Card 5 -->
-        <article
-          class="relative group w-full max-w-sm mx-auto rounded-2xl p-6 shadow-lg
-           bg-[#550a0a] overflow-hidden cursor-pointer
-           transition-all duration-500 transform hover:-translate-y-3 hover:scale-105
-           hover:shadow-yellow-400/50"
-        >
-          <div class="absolute inset-0 rounded-2xl border-2 border-transparent
-                group-hover:border-yellow-400/80 transition-all duration-500"></div>
-
-          <div class="relative z-10 flex flex-col items-center text-center text-white">
-            <h3
-              class="font-extrabold text-lg md:text-xl mb-4
-               border-b-2 border-yellow-400 pb-1
-               transition-colors group-hover:text-yellow-400"
-            >
-              Prefectura Regional Cusco
-            </h3>
-            <div class="w-full flex justify-center">
-              <img
-                src="championship/prefectura.jpeg"
-                alt="Prefectura Cusco"
-                class="w-40 h-40 object-contain drop-shadow-lg
-                 transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3"
-              />
+        <!-- CARD 6 (solo si bike-ride) -->
+        @if (inputTitle==='bike-ride') {
+          <article
+            class="relative group w-full max-w-sm mx-auto rounded-2xl p-6 shadow-md hover:shadow-2xl
+             transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-pointer overflow-hidden"
+            style="background-color: #550a0a"
+          >
+            <div class="relative z-10 flex flex-col items-center text-center text-white">
+              <h3
+                class="font-extrabold text-lg md:text-xl mb-4 border-b-2 border-yellow-400 pb-1
+                 transition-colors group-hover:text-yellow-400"
+              >
+                Inka's Bike Perú
+              </h3>
+              <div class="w-full flex justify-center">
+                <img
+                  src="championship/inkas-bike.png"
+                  alt="inkas-bike"
+                  class="w-40 h-40 object-contain drop-shadow-lg transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
+        }
 
       </div>
 
-    </div>
 
-
-
-    <div class="relative gallery-container-cards overflow-hidden pb-10">
-      <h2>
-        <p class="mb-4 text-4xl md:text-6xl text-center text-white font-extrabold big-title pb-10">
-          Auspiciadores
-        </p>
-      </h2>
-      <div class="flex animate-marquee">
-        <img src="bike-auspiciadores/monark.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="2">
-        <img src="auspiciadores/procasa.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
-        <img src="bike-auspiciadores/logoisofeli.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="3">
-        <img src="bike-auspiciadores/aqua.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="4">
-        <img src="bike-auspiciadores/lumire.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="5">
-        <img src="bike-auspiciadores/cajacusco.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
-        <img src="auspiciadores/depo.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
-        <img src="auspiciadores/cuscoFc.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
-        <img src="auspiciadores/artesanal.jpeg" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
-        <img src="auspiciadores/totale.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
-<!--        // Repetir las imágenes para un efecto continuo-->
-        <img src="bike-auspiciadores/monark.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="2">
-        <img src="auspiciadores/procasa.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
-        <img src="bike-auspiciadores/logoisofeli.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="3">
-        <img src="bike-auspiciadores/aqua.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="4">
-        <img src="bike-auspiciadores/lumire.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="5">
-        <img src="bike-auspiciadores/cajacusco.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
-        <img src="auspiciadores/depo.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
-        <img src="auspiciadores/cuscoFc.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
-        <img src="auspiciadores/artesanal.jpeg" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
-        <img src="auspiciadores/procasa.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
-        <img src="auspiciadores/totale.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
-      </div>
     </div>
-    <div class="p-2 mb-4 text-4xl text-center text-white font-extrabold big-title md:text-6xl">
-      <p class="mb-4 text-6xl">Ruta del Recorrido</p>
-      <div class="border-4 border-yellow-500 rounded-2xl inline-block p-2 shadow-lg">
-        <img src="bike/ruta1.jpg" alt="mapa" class="mx-auto">
-      </div>
-    </div>
-  </div>
-  @if(inputTitle === 'challenge-champions') {
-    <div class="py-2 px-4 about-section">
+    <div class="py-2 px-4 about-section" *ngIf="inputTitle==='bike-ride'">
+      <!-- Copia esto en la plantilla donde quieres mostrar los coorganizadores -->
       <div class="mx-auto px-4">
         <div class="p-2 mb-4 text-4xl text-center text-white font-extrabold big-title md:text-6xl">
-          <p class="mb-4 text-7xl">Auspiciadores</p>
+          <p class="mb-4 text-7xl">Coorganizadores</p>
         </div>
-        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-12 gallery-container-cards">
-          <div class="bg-white p-6 rounded-lg shadow-lg text-center card-sponsor glow-effect">
-            <div
-              class="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center pulse-border">
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-12 gallery-container-cards">
+
+          <!-- Card 1 -->
+          <article
+            class="relative group w-full max-w-sm mx-auto rounded-2xl p-6 shadow-lg
+           bg-[#550a0a] overflow-hidden cursor-pointer
+           transition-all duration-500 transform hover:-translate-y-3 hover:scale-105
+           hover:shadow-yellow-400/50"
+          >
+            <div class="absolute inset-0 rounded-2xl border-2 border-transparent
+                group-hover:border-yellow-400/80 transition-all duration-500"></div>
+
+            <div class="relative z-10 flex flex-col items-center text-center text-white">
+              <h3
+                class="font-extrabold text-lg md:text-xl mb-4
+               border-b-2 border-yellow-400 pb-1
+               transition-colors group-hover:text-yellow-400"
+              >
+                Municipalidad Distrital de San Jerónimo
+              </h3>
+              <div class="w-full flex justify-center">
+                <img
+                  src="championship/san jeronimo.png"
+                  alt="San Jeronimo"
+                  class="w-40 h-40 object-contain drop-shadow-lg
+                 transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3"
+                />
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article
+            class="relative group w-full max-w-sm mx-auto rounded-2xl p-6 shadow-lg
+           bg-[#550a0a] overflow-hidden cursor-pointer
+           transition-all duration-500 transform hover:-translate-y-3 hover:scale-105
+           hover:shadow-yellow-400/50"
+          >
+            <div class="absolute inset-0 rounded-2xl border-2 border-transparent
+                group-hover:border-yellow-400/80 transition-all duration-500"></div>
+
+            <div class="relative z-10 flex flex-col items-center text-center text-white">
+              <h3
+                class="font-extrabold text-lg md:text-xl mb-4
+               border-b-2 border-yellow-400 pb-1
+               transition-colors group-hover:text-yellow-400"
+              >
+                Municipalidad Distrital de San Sebastián
+              </h3>
+              <div class="w-full flex justify-center">
+                <img
+                  src="championship/logo-sebastian.png"
+                  alt="San Sebastian"
+                  class="w-40 h-40 object-contain drop-shadow-lg
+                 transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3"
+                />
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article
+            class="relative group w-full max-w-sm mx-auto rounded-2xl p-6 shadow-lg
+           bg-[#550a0a] overflow-hidden cursor-pointer
+           transition-all duration-500 transform hover:-translate-y-3 hover:scale-105
+           hover:shadow-yellow-400/50"
+          >
+            <div class="absolute inset-0 rounded-2xl border-2 border-transparent
+                group-hover:border-yellow-400/80 transition-all duration-500"></div>
+
+            <div class="relative z-10 flex flex-col items-center text-center text-white">
+              <h3
+                class="font-extrabold text-lg md:text-xl mb-4
+               border-b-2 border-yellow-400 pb-1
+               transition-colors group-hover:text-yellow-400"
+              >
+                Municipalidad Distrital de Santiago
+              </h3>
+              <div class="w-full flex justify-center">
+                <img
+                  src="championship/santiago.png"
+                  alt="Santiago"
+                  class="w-40 h-40 object-contain drop-shadow-lg
+                 transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3"
+                />
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article
+            class="relative group w-full max-w-sm mx-auto rounded-2xl p-6 shadow-lg
+           bg-[#550a0a] overflow-hidden cursor-pointer
+           transition-all duration-500 transform hover:-translate-y-3 hover:scale-105
+           hover:shadow-yellow-400/50"
+          >
+            <div class="absolute inset-0 rounded-2xl border-2 border-transparent
+                group-hover:border-yellow-400/80 transition-all duration-500"></div>
+
+            <div class="relative z-10 flex flex-col items-center text-center text-white">
+              <h3
+                class="font-extrabold text-lg md:text-xl mb-4
+               border-b-2 border-yellow-400 pb-1
+               transition-colors group-hover:text-yellow-400"
+              >
+                Quinta Brigada de Montaña - Cusco
+              </h3>
+              <div class="w-full flex justify-center">
+                <img
+                  src="championship/5t.png"
+                  alt="Quinta Brigada"
+                  class="w-40 h-40 object-contain drop-shadow-lg
+                 transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3"
+                />
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article
+            class="relative group w-full max-w-sm mx-auto rounded-2xl p-6 shadow-lg
+           bg-[#550a0a] overflow-hidden cursor-pointer
+           transition-all duration-500 transform hover:-translate-y-3 hover:scale-105
+           hover:shadow-yellow-400/50"
+          >
+            <div class="absolute inset-0 rounded-2xl border-2 border-transparent
+                group-hover:border-yellow-400/80 transition-all duration-500"></div>
+
+            <div class="relative z-10 flex flex-col items-center text-center text-white">
+              <h3
+                class="font-extrabold text-lg md:text-xl mb-4
+               border-b-2 border-yellow-400 pb-1
+               transition-colors group-hover:text-yellow-400"
+              >
+                Prefectura Regional Cusco
+              </h3>
+              <div class="w-full flex justify-center">
+                <img
+                  src="championship/prefectura.jpeg"
+                  alt="Prefectura Cusco"
+                  class="w-40 h-40 object-contain drop-shadow-lg
+                 transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3"
+                />
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="relative gallery-container-cards overflow-hidden pb-10">
+        <h2>
+          <p class="mb-4 text-4xl md:text-6xl text-center text-white font-extrabold big-title pb-10">
+            Auspiciadores
+          </p>
+        </h2>
+        <div class="flex animate-marquee">
+          <img src="bike-auspiciadores/monark.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="2">
+          <img src="auspiciadores/procasa.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
+          <img src="bike-auspiciadores/logoisofeli.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="3">
+          <img src="bike-auspiciadores/aqua.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="4">
+          <img src="bike-auspiciadores/lumire.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="5">
+          <img src="bike-auspiciadores/cajacusco.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
+          <img src="auspiciadores/depo.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
+          <img src="auspiciadores/cuscoFc.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
+          <img src="auspiciadores/artesanal.jpeg" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
+          <img src="auspiciadores/totale.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
+          <!--        // Repetir las imágenes para un efecto continuo-->
+          <img src="bike-auspiciadores/monark.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="2">
+          <img src="auspiciadores/procasa.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
+          <img src="bike-auspiciadores/logoisofeli.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="3">
+          <img src="bike-auspiciadores/aqua.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="4">
+          <img src="bike-auspiciadores/lumire.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="5">
+          <img src="bike-auspiciadores/cajacusco.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
+          <img src="auspiciadores/depo.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
+          <img src="auspiciadores/cuscoFc.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
+          <img src="auspiciadores/artesanal.jpeg" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
+          <img src="auspiciadores/procasa.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
+          <img src="auspiciadores/totale.png" class="h-44 h-44 mx-4 object-contain rounded-lg shadow bg-white p-2" alt="6">
+        </div>
+      </div>
+      <div class="p-2 mb-4 text-4xl text-center text-white font-extrabold big-title md:text-6xl">
+        <p class="mb-4 text-6xl">Ruta del Recorrido</p>
+        <div class="border-4 border-yellow-500 rounded-2xl inline-block p-2 shadow-lg">
+          <img src="bike/ruta1.jpg" alt="mapa" class="mx-auto">
+        </div>
+      </div>
+    </div>
+    @if(inputTitle === 'challenge-champions') {
+      <div class="py-2 px-4 about-section">
+        <div class="mx-auto px-4">
+          <div class="p-2 mb-4 text-4xl text-center text-white font-extrabold big-title md:text-6xl">
+            <p class="mb-4 text-7xl">Auspiciadores</p>
+          </div>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-12 gallery-container-cards">
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center card-sponsor glow-effect">
+              <div
+                class="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center pulse-border">
             <span class="text-white font-bold text-xl">
               <img src="auspiciadores/artesanal.jpeg" alt="Artesanal" class="h-24 mr-4">
             </span>
+              </div>
+              <h3 class="text-lg font-bold mb-2">El Marquez</h3>
+              <p class="text-gray-600 text-sm">Asociación Artesanal de Productores</p>
             </div>
-            <h3 class="text-lg font-bold mb-2">El Marquez</h3>
-            <p class="text-gray-600 text-sm">Asociación Artesanal de Productores</p>
-          </div>
 
-          <div class="bg-white p-6 rounded-lg shadow-lg text-center card-sponsor glow-effect">
-            <div
-              class="w-24 h-24 bg-gradient-to-br from-green-500 to-teal-600 rounded-full mx-auto mb-4 flex items-center justify-center pulse-border">
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center card-sponsor glow-effect">
+              <div
+                class="w-24 h-24 bg-gradient-to-br from-green-500 to-teal-600 rounded-full mx-auto mb-4 flex items-center justify-center pulse-border">
             <span class="text-white font-bold text-xl">
               <img src="auspiciadores/aspan.jpg" alt="aspan" class="h-24 mr-4">
             </span>
+              </div>
+              <h3 class="text-lg font-bold mb-2">ASPAN</h3>
+              <p class="text-gray-600 text-sm">Asociación de panificadores de Oropesa</p>
             </div>
-            <h3 class="text-lg font-bold mb-2">ASPAN</h3>
-            <p class="text-gray-600 text-sm">Asociación de panificadores de Oropesa</p>
-          </div>
 
-          <div class="bg-white p-6 rounded-lg shadow-lg text-center card-sponsor glow-effect">
-            <div
-              class="w-24 h-24 bg-gradient-to-br from-red-500 to-orange-600 rounded-full mx-auto mb-4 flex items-center justify-center pulse-border">
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center card-sponsor glow-effect">
+              <div
+                class="w-24 h-24 bg-gradient-to-br from-red-500 to-orange-600 rounded-full mx-auto mb-4 flex items-center justify-center pulse-border">
             <span class="text-white font-bold text-xl">
               <img src="auspiciadores/cuscoFc.png" alt="PowerDrink" class="h-24 mr-4">
             </span>
+              </div>
+              <h3 class="text-lg font-bold mb-2">Futbol Club Cusco</h3>
+              <p class="text-gray-600 text-sm"></p>
             </div>
-            <h3 class="text-lg font-bold mb-2">Futbol Club Cusco</h3>
-            <p class="text-gray-600 text-sm"></p>
-          </div>
 
-          <div class="bg-white p-6 rounded-lg shadow-lg text-center card-sponsor glow-effect">
-            <div
-              class="w-24 h-24 bg-gradient-to-br from-indigo-500 to-pink-600 rounded-full mx-auto mb-4 flex items-center justify-center pulse-border">
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center card-sponsor glow-effect">
+              <div
+                class="w-24 h-24 bg-gradient-to-br from-indigo-500 to-pink-600 rounded-full mx-auto mb-4 flex items-center justify-center pulse-border">
             <span class="text-white font-bold text-xl">
               <img src="auspiciadores/depo.png" alt="SportsMedia" class="h-24 mr-4">
             </span>
+              </div>
+              <h3 class="text-lg font-bold mb-2">Club Deportivo Garcilazo</h3>
+              <!--          <p class="text-gray-600 text-sm">Transmisión Oficial</p>-->
             </div>
-            <h3 class="text-lg font-bold mb-2">Club Deportivo Garcilazo</h3>
-            <!--          <p class="text-gray-600 text-sm">Transmisión Oficial</p>-->
           </div>
         </div>
       </div>
-    </div>
-  }
-</section>
+    }
+  </section>
+
+}

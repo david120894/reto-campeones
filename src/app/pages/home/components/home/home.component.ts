@@ -12,9 +12,10 @@ import { FixtureComponent } from '../fixture/fixture.component'
 import { PresentationComponent } from '../presentation/presentation.component'
 import { BracketComponent } from '../bracket/bracket.component'
 import { SectionGalleryComponent } from '../main-gallery/section-gallery/section-gallery.component'
-import { SeminarComponent } from '../seminar/seminar/seminar.component'
 import { HeaderComponent } from '../../../../core/components/header/header.component'
-
+import { FooterComponent } from '../../../../core/components/footer/footer.component'
+import { UsefulVacationsComponent } from '../seminar/useful-vacations/useful-vacations.component'
+import { SeminarComponent } from '../seminar1/seminar/seminar.component'
 const DECLARATIONS = [
   SectionHomeComponent, GalleryComponent, ContactComponent, CarrouselComponent, AboutComponent, FeaturesComponent,
 ]
@@ -22,7 +23,7 @@ const DECLARATIONS = [
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [EmailFormComponent, FixtureComponent, NgParticlesModule, PresentationComponent, GalleryComponent, CarrouselComponent, AboutComponent, SectionHomeComponent, BracketComponent, SectionGalleryComponent, SeminarComponent, HeaderComponent],
+  imports: [EmailFormComponent, FixtureComponent, NgParticlesModule, PresentationComponent, GalleryComponent, CarrouselComponent, AboutComponent, SectionHomeComponent, BracketComponent, SectionGalleryComponent, UsefulVacationsComponent, SeminarComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
@@ -35,5 +36,6 @@ export class HomeComponent implements OnInit {
 
   onSectionChanged(newSection: string) {
     this.sectionChangedValue = newSection;
+    console.log(this.sectionChangedValue)
   }
 }

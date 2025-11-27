@@ -1,5 +1,5 @@
-
-<section class="gallery-container block" id="gallery">
+@if (typeSection !== 'useful-vacations' && typeSection !== 'seminar') {
+<section class="gallery-container block background" id="gallery">
   <div class="flex items-center justify-center">
     @if (typeSection == 'challenge-champions') {
       <h2 class="text-7xl font-bold text-center my-4 mb-3 text-white"
@@ -93,3 +93,4 @@
     }
   </div>
 </section>
+}

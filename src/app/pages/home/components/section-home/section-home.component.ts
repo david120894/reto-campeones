@@ -25,8 +25,6 @@ interface CarouselItem {
   standalone: true,
   imports: [
     NgIf,
-    NgForOf,
-    NgClass,
     DatePipe,
     FormsModule,
     ReactiveFormsModule,
@@ -115,6 +113,7 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
       clearInterval(this.intervalId);
     }
   }
+
 
   get currentItem(): CarouselItem {
     return this.items[this.currentIndex];
@@ -260,6 +259,19 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
       link.href = dataUrl;
       link.download = "inscripcion.png";
       link.click();
+    }
+  }
+  goUsefulVacations() {
+    const tablePositions = document.getElementById('useful-inscriptions')
+    if (tablePositions) {
+      tablePositions.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  goSeminarRegistration() {
+    const tablePositions = document.getElementById('seminar-inscriptions')
+    if (tablePositions) {
+      tablePositions.scrollIntoView({ behavior: 'smooth' })
     }
   }
 }
