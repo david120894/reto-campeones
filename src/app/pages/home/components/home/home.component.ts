@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core'
 import { NgParticlesModule } from 'ng-particles';
 
 import { SectionHomeComponent } from '../section-home/section-home.component';
@@ -16,6 +16,7 @@ import { HeaderComponent } from '../../../../core/components/header/header.compo
 import { FooterComponent } from '../../../../core/components/footer/footer.component'
 import { UsefulVacationsComponent } from '../seminar/useful-vacations/useful-vacations.component'
 import { SeminarComponent } from '../seminar1/seminar/seminar.component'
+import { ActivatedRoute } from '@angular/router'
 const DECLARATIONS = [
   SectionHomeComponent, GalleryComponent, ContactComponent, CarrouselComponent, AboutComponent, FeaturesComponent,
 ]
@@ -30,8 +31,12 @@ const DECLARATIONS = [
 export class HomeComponent implements OnInit {
 
 
+  activaRouter = inject(ActivatedRoute)
   sectionChangedValue: string = '';
   ngOnInit() {
+    const params = this.activaRouter.snapshot.params['id']
+    this.onSectionChanged(params)
+    console.log(params)
   }
 
   onSectionChanged(newSection: string) {

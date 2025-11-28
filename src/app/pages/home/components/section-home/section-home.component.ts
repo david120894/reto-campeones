@@ -2,13 +2,13 @@ import {
   AfterViewInit,
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  ElementRef, EventEmitter,
+  ElementRef, EventEmitter, inject,
   OnDestroy,
   OnInit, Output,
   ViewChild,
-} from '@angular/core';
+} from '@angular/core'
 import { DatePipe, NgClass, NgForOf, NgIf } from '@angular/common'
-import { RouterLink } from '@angular/router'
+import { ActivatedRoute, Router, RouterLink } from '@angular/router'
 import { ResponseRegisterModels } from '../../../../core/models/response.register.models'
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { ReservationService } from '../../../../core/services/reservation.service'
@@ -37,6 +37,8 @@ interface CarouselItem {
 export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  {
 
   objectRegister: ResponseRegisterModels | null = null;
+  router = inject(Router)
+  activaRouter = inject(ActivatedRoute)
 
   isModalOpen = false;
   imageModal: string = '';
@@ -45,6 +47,24 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
   mensajeExito: string | null = null;
   showMessage: boolean = false;
 
+  arraySection= [
+    {
+      id: 0,
+      name:'bike-ride',
+    },
+    {
+      id: 1,
+      name:'challenge-champions',
+    },
+    {
+      id: 2,
+      name:'seminar',
+    },
+    {
+      id: 3,
+      name:'useful-vacations',
+    },
+  ];
   formSearchDni: FormGroup = new FormGroup({
     searchDni: new FormControl(''),
   });
@@ -78,6 +98,10 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
 
   ngOnInit() {
     this.selectItem(1); // Iniciar con la bicicleteada
+    const params = this.activaRouter.snapshot.params['id']
+    const selectSection = this.arraySection.find(section => section.name=== params)
+    console.log(selectSection)
+    this.selectItem(selectSection?.id!)
   }
 
   // Método para las clases de las pestañas
@@ -136,8 +160,10 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
       2: "seminar",
       3: "useful-vacations",
     }
+    console.log('index',index)
     this.selectedItem = item[index] || '';
     this.currentIndex = index;
+    console.log('send value register',this.selectedItem)
     this.sectionChanged.emit(this.selectedItem);
   }
 
@@ -269,9 +295,10 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
   }
 
   goSeminarRegistration() {
-    const tablePositions = document.getElementById('seminar-inscriptions')
-    if (tablePositions) {
-      tablePositions.scrollIntoView({ behavior: 'smooth' })
-    }
+    // const tablePositions = document.getElementById('seminar-inscriptions')
+    // if (tablePositions) {
+    //   tablePositions.scrollIntoView({ behavior: 'smooth' })
+    // }
+    this.router.navigate(['/seminar-register']);
   }
 }
