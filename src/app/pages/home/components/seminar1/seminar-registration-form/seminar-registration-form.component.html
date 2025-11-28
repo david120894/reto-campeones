@@ -1,13 +1,14 @@
 <section id="seminar-inscriptions" class="py-8 px-4 sm:px-6 lg:px-8">
   <div class="max-w-4xl mx-auto">
-    <!-- Header -->
-    <div class="text-center mb-8">
-      <h1 class="text-3xl font-bold text-yellow-500 mb-2">Registro de Seminario</h1>
-      <p class="text-lg text-yellow-500">Complete sus datos para inscribirse en el seminario</p>
-    </div>
+    <div class="bg-white shadow-xl rounded-2xl overflow-hidden">
+      <div class="w-full flex justify-center items-center bg-gray-50 py-6 border-b border-gray-200">
+        <img
+          src="/seminar/logo2.png"
+          alt="Seminar Logo"
+          class="max-h-48 w-auto object-contain"
+        >
+      </div>
 
-    <!-- Form Container -->
-    <div class="bg-blue-100 shadow-xl rounded-2xl overflow-hidden">
       <form [formGroup]="formSeminar" (ngSubmit)="onSubmit()" class="p-6 sm:p-8">
 
         <!-- Información Personal -->
@@ -247,9 +248,10 @@
                 Este campo es requerido
               </div>
             </div>
-
             <!-- Lugar de Trabajo -->
-            <div class="md:col-span-2">
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
+            <div>
               <label for="workplace" class="block text-sm font-medium text-gray-700 mb-2">
                 Lugar de Trabajo *
               </label>
@@ -266,76 +268,91 @@
                 Este campo es requerido
               </div>
             </div>
+<!--            <div>-->
+<!--              <label for="participant" class="block text-sm font-medium text-gray-700 mb-2">-->
+<!--                Tipo de Participante *-->
+<!--              </label>-->
+<!--              <select-->
+<!--                id="participant"-->
+<!--                formControlName="typeParticipant"-->
+<!--                [class]="hasError('participant', 'required') ?-->
+<!--                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :-->
+<!--                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'">-->
+<!--                <option value="">Seleccione la modalidad</option>-->
+<!--                <option *ngFor="let participant of participant" [value]="participant.value">-->
+<!--                  {{ participant.label }}-->
+<!--                </option>-->
+<!--              </select>-->
+<!--              <div *ngIf="hasError('participant', 'required')" class="mt-1 text-sm text-red-600 flex items-center">-->
+<!--                <i class="fas fa-exclamation-circle mr-1"></i>-->
+<!--                Este campo es requerido-->
+<!--              </div>-->
+<!--            </div>-->
           </div>
+
         </div>
 
         <!-- Información del Seminario -->
-        <div class="mb-10">
-          <h2 class="text-xl font-semibold text-gray-800 mb-6 pb-2 border-b border-gray-200">
-            <i class="fas fa-calendar-alt text-orange-600 mr-2"></i>
-            Información del Seminario
-          </h2>
+<!--        <div class="mb-10">-->
+<!--          <h2 class="text-xl font-semibold text-gray-800 mb-6 pb-2 border-b border-gray-200">-->
+<!--            <i class="fas fa-calendar-alt text-orange-600 mr-2"></i>-->
+<!--            Información del Seminario-->
+<!--          </h2>-->
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Modalidad -->
-            <div>
-              <label for="modality" class="block text-sm font-medium text-gray-700 mb-2">
-                Modalidad *
-              </label>
-              <select
-                id="modality"
-                formControlName="modality"
-                [class]="hasError('modality', 'required') ?
-                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
-                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'">
-                <option value="">Seleccione la modalidad</option>
-                <option *ngFor="let modality of modalities" [value]="modality.value">
-                  {{ modality.label }}
-                </option>
-              </select>
-              <div *ngIf="hasError('modality', 'required')" class="mt-1 text-sm text-red-600 flex items-center">
-                <i class="fas fa-exclamation-circle mr-1"></i>
-                Este campo es requerido
-              </div>
-            </div>
-
-            <!-- Fecha de Inicio -->
-            <div>
-              <label for="dateStart" class="block text-sm font-medium text-gray-700 mb-2">
-                Fecha de Inicio *
-              </label>
-              <input
-                id="dateStart"
-                type="date"
-                formControlName="dateStart"
-                [class]="hasError('dateStart', 'required') ?
-                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
-                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'">
-              <div *ngIf="hasError('dateStart', 'required')" class="mt-1 text-sm text-red-600 flex items-center">
-                <i class="fas fa-exclamation-circle mr-1"></i>
-                Este campo es requerido
-              </div>
-            </div>
-          </div>
-        </div>
+<!--          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">-->
+<!--            &lt;!&ndash; Modalidad &ndash;&gt;-->
+<!--            <div>-->
+<!--              <label for="modality" class="block text-sm font-medium text-gray-700 mb-2">-->
+<!--                Modalidad *-->
+<!--              </label>-->
+<!--              <select-->
+<!--                id="modality"-->
+<!--                formControlName="modality"-->
+<!--                [class]="hasError('modality', 'required') ?-->
+<!--                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :-->
+<!--                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'">-->
+<!--                <option value="">Seleccione la modalidad</option>-->
+<!--                <option *ngFor="let modality of modalities" [value]="modality.value">-->
+<!--                  {{ modality.label }}-->
+<!--                </option>-->
+<!--              </select>-->
+<!--              <div *ngIf="hasError('modality', 'required')" class="mt-1 text-sm text-red-600 flex items-center">-->
+<!--                <i class="fas fa-exclamation-circle mr-1"></i>-->
+<!--                Este campo es requerido-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
 
         <!-- Botones de Acción -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-end pt-6 border-t border-gray-200">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-gray-200">
+          <!-- Botón de regresar a la izquierda -->
           <button
             type="button"
-            (click)="resetForm()"
-            class="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition-colors flex items-center justify-center">
-            <i class="fas fa-redo mr-2"></i>
-            Limpiar Formulario
+            [routerLink]="['/main','seminar']"
+            class="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition-colors flex items-center justify-center order-1 sm:order-1">
+            <i class="fas fa-arrow-left mr-2"></i>
+            Regresar
           </button>
 
-          <button
-            type="submit"
-            [disabled]="formSeminar.invalid"
-            class="px-8 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center">
-            <i class="fas fa-paper-plane mr-2"></i>
-            Enviar Registro
-          </button>
+          <!-- Contenedor de botones a la derecha -->
+          <div class="flex flex-col sm:flex-row gap-4 order-2 sm:order-2">
+            <button
+              type="button"
+              (click)="resetForm()"
+              class="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition-colors flex items-center justify-center">
+              <i class="fas fa-redo mr-2"></i>
+              Limpiar Formulario
+            </button>
+
+            <button
+              type="submit"
+              [disabled]="formSeminar.invalid"
+              class="px-8 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center">
+              <i class="fas fa-paper-plane mr-2"></i>
+              Enviar Registro
+            </button>
+          </div>
         </div>
       </form>
     </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms'
 import { NgForOf, NgIf } from '@angular/common'
+import { RouterLink, RouterLinkActive } from '@angular/router'
 
 @Component({
   selector: 'app-seminar-registration-form',
@@ -9,6 +10,8 @@ import { NgForOf, NgIf } from '@angular/common'
     NgIf,
     ReactiveFormsModule,
     NgForOf,
+    RouterLink,
+    RouterLinkActive,
   ],
   templateUrl: './seminar-registration-form.component.html',
   styleUrl: './seminar-registration-form.component.scss',
@@ -27,8 +30,6 @@ export class SeminarRegistrationFormComponent implements OnInit {
     academicDegree: new FormControl(null, [Validators.required]),
     profession: new FormControl(null, [Validators.required]),
     workplace: new FormControl(null, [Validators.required]),
-    modality: new FormControl(null, [Validators.required]),
-    dateStart: new FormControl(null, [Validators.required]),
   })
 
   // Opciones para los select
@@ -40,6 +41,21 @@ export class SeminarRegistrationFormComponent implements OnInit {
   modalities = [
     { value: 'presential', label: 'Presencial' },
     { value: 'hybrid', label: 'Híbrido' },
+  ]
+
+  participant = [
+    {
+      value: 'organizer',
+      label: 'Organizador'
+    },
+    {
+      value: 'participant',
+      label: 'Paticipante'
+    },
+    {
+      value: 'speaker',
+      label: 'Ponente'
+    }
   ]
 
   ngOnInit() {
