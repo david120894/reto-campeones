@@ -97,11 +97,13 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
   ) {}
 
   ngOnInit() {
-    this.selectItem(1); // Iniciar con la bicicleteada
     const params = this.activaRouter.snapshot.params['id']
     const selectSection = this.arraySection.find(section => section.name=== params)
-    console.log(selectSection)
-    this.selectItem(selectSection?.id!)
+    if(selectSection !== undefined) {
+      this.selectItem(selectSection?.id!)
+    }else {
+      this.selectItem(1)
+    }
   }
 
   // Método para las clases de las pestañas
@@ -160,10 +162,8 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
       2: "seminar",
       3: "useful-vacations",
     }
-    console.log('index',index)
     this.selectedItem = item[index] || '';
     this.currentIndex = index;
-    console.log('send value register',this.selectedItem)
     this.sectionChanged.emit(this.selectedItem);
   }
 

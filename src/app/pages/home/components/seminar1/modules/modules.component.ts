@@ -18,40 +18,52 @@ interface Module {
 export class ModulesComponent {
   modules: Module[] = [
     {
-      title: "Introducción y Fundamentos Teóricos",
+      title: "Funcionamiento Registro nacional de deporte",
       duration: "15 horas",
       content: "Conceptos clave, marco conceptual, historia y terminología de la gestión deportiva.",
       activities: ["Debate guiado", "Ensayo corto"],
     },
     {
-      title: "Metodologías Actuales",
+      title: "Gestión deportiva y organización de eventos ",
       duration: "15 horas",
-      content: "Métodos, herramientas y tendencias contemporáneas en gestión deportiva.",
+      content: "Métodos, herramientas, tendencias.",
       activities: ["Debate guiado", "Ensayo corto"],
     },
     {
-      title: "Aplicación Práctica y Resolución de Casos",
+      title: "Planificación curricular en el marco del CNEB; niveles de concreción (PEI, PCI Modulo programación anual: criterios distribución de competencias y calendarización de unidades",
       duration: "15 horas",
-      content: "Análisis de casos reales, talleres prácticos y estudio de campo.",
+      content: "Casos reales, simulaciones estudio de campo.",
       activities: ["Análisis de lecturas", "Talleres prácticos"],
     },
     {
-      title: "Enfoque y Metodologías de Aplicación",
+      title: "Diseño de unidades de aprendizaje secuencias: didáctica, propósito, situación significativa a y evaluación",
       duration: "15 horas",
       content: "Casos reales, simulaciones y estudio de campo práctico.",
       activities: ["Trabajo grupal", "Presentaciones"],
     },
     {
-      title: "Diseño de Proyecto o Propuesta Final",
+      title: "Elaboración de sesiones de aprendizaje: estructura, estrategias motrices, recursos y gestión del tiempo",
       duration: "15 horas",
-      content: "Elaboración de un proyecto o intervención aplicada en gestión deportiva.",
+      content: "Elaboración de un proyecto o intervención.",
       activities: ["Proyecto aplicado", "Tutoría"],
     },
     {
-      title: "Evaluación y Retroalimentación",
+      title: "Proyectos integrados en educación física: articulación con otras áreas y enfoques transversales",
       duration: "15 horas",
-      content: "Presentación de proyectos, autoevaluación y cierre del seminario.",
+      content: "Métodos, herramienta, tendencia.",
       activities: ["Exposición final", "Informe final"],
     },
+    {
+      title: "Elaboración de la planificación curricular",
+      duration: "15 horas",
+      content: "Métodos, herramienta, tendencia.",
+      activities: ["Exposición final", "Informe final"],
+    },
+    {
+      title: "Proyectos de aprendizaje",
+      duration: "15 horas",
+      content: "Métodos, herramienta, tendencia.",
+      activities: ["Exposición final", "Informe final"],
+    }
   ];
 }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Inject, OnInit } from '@angular/core'
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms'
 import { NgForOf, NgIf } from '@angular/common'
 import { RouterLink, RouterLinkActive } from '@angular/router'
+import { ReservationService } from '../../../../../core/services/reservation.service'
 
 @Component({
   selector: 'app-seminar-registration-form',
@@ -11,12 +12,16 @@ import { RouterLink, RouterLinkActive } from '@angular/router'
     ReactiveFormsModule,
     NgForOf,
     RouterLink,
-    RouterLinkActive,
   ],
   templateUrl: './seminar-registration-form.component.html',
   styleUrl: './seminar-registration-form.component.scss',
 })
 export class SeminarRegistrationFormComponent implements OnInit {
+
+
+  constructor(private seminarService : ReservationService) {
+  }
+  // reservationService = Inject(ReservationService)
 
   formSeminar: FormGroup = new FormGroup({
     name: new FormControl(null, [Validators.required]),
@@ -132,6 +137,14 @@ export class SeminarRegistrationFormComponent implements OnInit {
       this.formSeminar.get('age')?.disable()
 
       console.log('Formulario enviado:', formData)
+      this.seminarService.saveSeminar(formData).subscribe({
+        next: (res: any) => {
+          console.log(res)
+        },
+        error: (err: any) => {
+          console.log(err)
+        }
+      })
       // Aquí tu lógica de envío
     } else {
       this.markAllFieldsAsTouched()
