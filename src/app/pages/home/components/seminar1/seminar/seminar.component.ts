@@ -5,6 +5,7 @@ import { ModulesComponent } from '../modules/modules.component'
 import { ScheduleComponent } from '../schedule/schedule.component'
 import { TargetAudienceComponent } from '../target-audience/target-audience.component'
 import { SeminarRegistrationFormComponent } from '../seminar-registration-form/seminar-registration-form.component'
+import { SponsorsComponent } from '../sponsors/sponsors.component'
 
 @Component({
   selector: 'app-seminar',
@@ -13,7 +14,7 @@ import { SeminarRegistrationFormComponent } from '../seminar-registration-form/s
     ModulesComponent,
     ScheduleComponent,
     TargetAudienceComponent,
-    SeminarRegistrationFormComponent,
+    SponsorsComponent,
   ],
   templateUrl: './seminar.component.html',
   styleUrl: './seminar.component.scss'

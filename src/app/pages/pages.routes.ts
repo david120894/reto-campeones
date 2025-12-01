@@ -14,7 +14,7 @@ import { PagesComponent } from './pages.component'
 export const pagesRoutes: Routes = [
   // first screen to any poeple
   {
-    path: 'main',
+    path: '',
     loadComponent: () => import('./pages.component').then((m) => m.PagesComponent),
     children: [
       {

@@ -43,7 +43,7 @@ export class ScheduleComponent {
         },
         {
           time: "3:30 - 4:30 pm",
-          activity: "Entrenamiento psicológico del CAR Cusco",
+          activity: "La importancia de los nuevos talentos",
           speaker: "Club Cienciano",
         },
         {
@@ -71,16 +71,26 @@ export class ScheduleComponent {
     {
       day: "Viernes 12 de diciembre",
       activities: [
-        { time: "12:30 - 01:00 pm", activity: "Clases magistrales de los temas expuestos", speaker: "Ponentes" },
+        { time: "12:30 - 01:00 pm", activity: "Elaboración de planificación curricular P.A.", speaker: "Ponentes" },
       ],
     },
     {
       day: "Sábado 13 de diciembre",
       activities: [
         {
-          time: "9:30 - 12:00 pm",
-          activity: "Clausura del seminario",
-          speaker: "Comité organizador / Autoridades invitadas",
+          time: "9:30 - 04:00 pm",
+          activity: "Proyectos de aprendizaje",
+          speaker: "Ponente",
+        },
+      ],
+    },
+    {
+      day: 'Lunes 15 de diciembre',
+      activities: [
+        {
+          time: '9:00 - 04:00 pm',
+          activity: 'Revisión y recepción de trabajos',
+          speaker: 'Ponente',
         },
       ],
     },

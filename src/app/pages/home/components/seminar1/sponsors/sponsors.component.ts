@@ -1,20 +1,22 @@
 import { Component } from '@angular/core';
 import { NgForOf } from '@angular/common'
 
-@Component({
-  selector: 'app-sponsors',
-  imports: [
-    NgForOf,
-  ],
-  templateUrl: './sponsors.component.html',
-  styleUrl: './sponsors.component.scss'
-})
 interface Sponsor {
   name: string;
   logo: string;
   url?: string;
   category: string;
 }
+
+@Component({
+  selector: 'app-sponsors',
+  imports: [
+    NgForOf
+  ],
+  templateUrl: './sponsors.component.html',
+  styleUrl: './sponsors.component.scss'
+})
+
 export class SponsorsComponent {
   currentIndex = 0;
   autoPlay = true;

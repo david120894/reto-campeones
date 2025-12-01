@@ -35,12 +35,15 @@ export class HomeComponent implements OnInit {
   sectionChangedValue: string = '';
   ngOnInit() {
     const params = this.activaRouter.snapshot.params['id']
-    this.onSectionChanged(params)
-    console.log(params)
+    this.onSectionChanged(params? params : 1)
   }
 
   onSectionChanged(newSection: string) {
-    this.sectionChangedValue = newSection;
-    console.log(this.sectionChangedValue)
+    if (newSection!== '') {
+      this.sectionChangedValue = newSection;
+
+    }else {
+      this.sectionChangedValue = 'bike-ride';
+    }
   }
 }
