@@ -20,7 +20,7 @@ export class ModulesComponent {
     {
       title: "Funcionamiento Registro nacional de deporte",
       duration: "15 horas",
-      content: "Conceptos clave, marco conceptual, historia y terminología de la gestión deportiva.",
+      content: "Conceptos clave, marco conceptual, historia y terminología.",
       activities: ["Debate guiado", "Ensayo corto"],
     },
     {
@@ -32,25 +32,25 @@ export class ModulesComponent {
     {
       title: "Planificación curricular en el marco del CNEB; niveles de concreción (PEI, PCI Modulo programación anual: criterios distribución de competencias y calendarización de unidades",
       duration: "15 horas",
-      content: "Casos reales, simulaciones estudio de campo.",
-      activities: ["Análisis de lecturas", "Talleres prácticos"],
+      content: "Métodos, herramienta, tendencia.",
+      activities: ["Análisis de lecturas talleres prácticos"],
     },
     {
       title: "Diseño de unidades de aprendizaje secuencias: didáctica, propósito, situación significativa a y evaluación",
       duration: "15 horas",
-      content: "Casos reales, simulaciones y estudio de campo práctico.",
+      content: "Casos reales, simulaciones y estudio de campo.",
       activities: ["Trabajo grupal", "Presentaciones"],
     },
     {
       title: "Elaboración de sesiones de aprendizaje: estructura, estrategias motrices, recursos y gestión del tiempo",
       duration: "15 horas",
       content: "Elaboración de un proyecto o intervención.",
-      activities: ["Proyecto aplicado", "Tutoría"],
+      activities: ["Proyecto aplicado tutoría"],
     },
     {
-      title: "Proyectos integrados en educación física: articulación con otras áreas y enfoques transversales",
+      title: "Proyectos integrados en educación física: articulación con otras áreas y enfoques transversales.",
       duration: "15 horas",
-      content: "Métodos, herramienta, tendencia.",
+      content: "Presentación de proyectos autoevaluación.",
       activities: ["Exposición final", "Informe final"],
     },
     {

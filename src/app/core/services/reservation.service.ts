@@ -25,6 +25,10 @@ export class ReservationService {
     return this.http.post<ResponseRegisterModels>(`${this.apiUrl}/participants/create`, body);
   }
 
+  searchByDniRegisterSeminar(dni: string) {
+    return this.http.get<ResponseRegisterModels>(`${this.apiUrl}/seminar/participants/search?dni=${dni}`)
+  }
+
   saveSeminar(body: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/seminar/participants/create`, body);
   }

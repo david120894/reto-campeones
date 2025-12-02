@@ -1,6 +1,6 @@
 <!-- Hero Section -->
 <section id="home"
-         class="hero-section min-h-screen bg-gradient-to-br from-red-900/30 via-red-900/30 to-red-900/30 overflow-hidden">
+         class="hero-section min-h-screen overflow-hidden">
 
   <!-- Background Elements -->
   <div class="absolute inset-0">
@@ -24,9 +24,11 @@
       <!-- -->
 
       <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light">
-        Eventos deportivos y culturales diseñados para crear
-        <span class="text-orange-400 font-semibold">momentos inolvidables</span>
-        y fortalecer nuestra comunidad
+<!--        Eventos deportivos y culturales diseñados para crear-->
+        Eventos deportivos diseñados  para impulsar tu rendimiento;
+        crear momentos inolvidables para fortalecer la pasión por el deporte en nuestra comunidad cusqueña
+<!--        <span class="text-orange-400 font-semibold">momentos inolvidables</span>-->
+<!--        y fortalecer nuestra comunidad-->
       </p>
     </div>
 
@@ -65,15 +67,15 @@
             </svg>
             Seminario
           </button>
-          <button
-            (click)="selectItem(3)"
-            [class]="getTabClasses('useful-vacations')"
-            class="flex items-center px-6 py-3 rounded-xl font-semibold transition-all duration-300">
-            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path>
-            </svg>
-            Vacaciones Útiles
-          </button>
+<!--          <button-->
+<!--            (click)="selectItem(3)"-->
+<!--            [class]="getTabClasses('useful-vacations')"-->
+<!--            class="flex items-center px-6 py-3 rounded-xl font-semibold transition-all duration-300">-->
+<!--            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
+<!--              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path>-->
+<!--            </svg>-->
+<!--            Vacaciones Útiles-->
+<!--          </button>-->
         </div>
       </div>
     </div>
@@ -85,7 +87,7 @@
       <div *ngIf="selectedItem === 'bike-ride'" class="group relative">
         <!-- Background Effect -->
         <div
-          class="absolute inset-0 bg-gradient-to-r from-purple-500/90 via-pink-500/20 to-purple-500/90 rounded-4xl blur-2xl group-hover:blur-3xl transition-all duration-500 -z-10"></div>
+          class="absolute inset-0 bg-gradient-to-r from-pink-500/30 via-pink-500/20 to-purple-500/30 rounded-4xl blur-2xl group-hover:blur-3xl transition-all duration-500 -z-10"></div>
 
         <div
           class="bg-gradient-to-br from-red-900/90 to-red-900 backdrop-blur-xl rounded-4xl border border-white/10 p-8 shadow-2xl"
@@ -234,7 +236,7 @@
       <div *ngIf="selectedItem === 'challenge-champions'" class="group relative">
         <!-- Background Effect -->
         <div
-          class="absolute inset-0 bg-gradient-to-r from-purple-500/90 via-pink-500/20 to-purple-500/90 rounded-4xl blur-2xl group-hover:blur-3xl transition-all duration-500 -z-10"
+          class="absolute inset-0 bg-gradient-to-r from-pink-500/30 via-pink-500/20 to-purple-500/30 rounded-4xl blur-2xl group-hover:blur-3xl transition-all duration-500 -z-10"
           style="border-radius: 20px"></div>
 
         <div
@@ -345,7 +347,7 @@
       <div *ngIf="selectedItem === 'useful-vacations'" class="group relative">
         <!-- Background Effect -->
         <div
-          class="absolute inset-0 bg-gradient-to-r from-purple-500/90 via-pink-500/20 to-purple-500/90 rounded-4xl blur-2xl group-hover:blur-3xl transition-all duration-500 -z-10"></div>
+          class="absolute inset-0 bg-gradient-to-r from-pink-500/30 via-pink-500/20 to-purple-500/30 rounded-4xl blur-2xl group-hover:blur-3xl transition-all duration-500 -z-10"></div>
 
         <div
           class="bg-gradient-to-br from-red-900/90 to-red-900 backdrop-blur-xl rounded-4xl border border-white/10 p-8 shadow-2xl"
@@ -485,7 +487,7 @@
       <div *ngIf="selectedItem === 'seminar'" class="group relative">
         <!-- Background Effect -->
         <div
-          class="absolute inset-0 bg-gradient-to-r from-purple-500/90 via-pink-500/20 to-purple-500/90 rounded-4xl blur-2xl group-hover:blur-3xl transition-all duration-500 -z-10"></div>
+          class="absolute inset-0 bg-gradient-to-r from-pink-500/30 via-pink-500/20 to-purple-500/30 rounded-4xl blur-2xl group-hover:blur-3xl transition-all duration-500 -z-10"></div>
 
         <div
           class="mb-2 bg-gradient-to-br from-red-900/90 to-red-900 backdrop-blur-xl rounded-4xl border border-white/10 p-8 shadow-2xl"
@@ -614,7 +616,8 @@
             </span>
                 </button>
 
-                <a (click)="openModal()"
+                <a href="https://drive.google.com/drive/u/0/my-drive"
+                   target="_blank"
                    class="group/btn flex-1 bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl border border-gray-700 text-center cursor-pointer">
             <span class="flex items-center justify-center gap-3">
               <svg class="w-6 h-6 group-hover/btn:scale-110 transition-transform" fill="none"
@@ -622,9 +625,20 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
               </svg>
-              Ver Programa Completo
+              Herramientas de trabajo
             </span>
                 </a>
+                <a (click)="openModal()"
+                       class="group/btn flex-1 bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl border border-gray-700 text-center cursor-pointer">
+            <span class="flex items-center justify-center gap-3">
+              <svg class="w-6 h-6 group-hover/btn:scale-110 transition-transform" fill="none"
+                   stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+              Ver Inscripcion
+            </span>
+              </a>
               </div>
             </div>
 
@@ -724,8 +738,9 @@
 
   <!-- Modal Components -->
   <div id="myModal"
-       class="fixed inset-0 z-9999 block bg-gray-900/80 backdrop-blur-sm flex items-center justify-center"
-       *ngIf="showModal">
+       class="fixed inset-0 z-[9999] bg-gray-900/80 backdrop-blur-sm flex items-center justify-center p-4"
+       *ngIf="showModal"
+       style="isolation: isolate;">
     <div
       class="modal-content bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 max-w-lg w-full mx-4 relative z-[10000] border border-gray-700/50 shadow-2xl">
       <h2 class="no-print text-2xl font-bold mb-6 text-white text-center">Guarde o Imprima su código QR</h2>
@@ -741,9 +756,9 @@
           <p class="text-sm"><span
             class="text-orange-400 font-semibold">Nombre:</span> {{ objectRegister?.name }} {{ objectRegister?.lastName }}
           </p>
-          <p class="text-sm"><span class="text-orange-400 font-semibold">Tramo:</span> {{ objectRegister?.category }}
+          <p *ngIf="selectedItem!=='seminar'" class="text-sm"><span class="text-orange-400 font-semibold">Tramo:</span> {{ objectRegister?.category }}
           </p>
-          <p class="text-sm"><span class="text-orange-400 font-semibold">Talla:</span> {{ objectRegister?.shirtSize }}
+          <p *ngIf="selectedItem!=='seminar'" class="text-sm"><span class="text-orange-400 font-semibold">Talla:</span> {{ objectRegister?.shirtSize }}
           </p>
         </div>
       </div>
