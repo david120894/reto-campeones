@@ -235,3 +235,32 @@ a:focus {
     }
   }
 }
+
+//animacion
+.christmas-lights {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 1;
+}
+
+.light {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  animation: blink 2s infinite;
+}
+
+.red { background: #ff0000; animation-delay: 0s; }
+.green { background: #00ff00; animation-delay: 0.5s; }
+.blue { background: #0066ff; animation-delay: 1s; }
+.yellow { background: #ffff00; animation-delay: 1.5s; }
+.purple { background: #ff00ff; animation-delay: 0.25s; }
+
+@keyframes blink {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 20px currentColor; }
+}
