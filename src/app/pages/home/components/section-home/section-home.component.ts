@@ -102,7 +102,7 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
     if(selectSection !== undefined) {
       this.selectItem(selectSection?.id!)
     }else {
-      this.selectItem(1)
+      this.selectItem(2)
     }
   }
 
