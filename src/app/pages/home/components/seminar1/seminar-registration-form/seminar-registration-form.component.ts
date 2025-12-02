@@ -1,8 +1,22 @@
-import { Component, Inject, OnInit } from '@angular/core'
+import { Component, OnInit, signal } from '@angular/core'
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms'
-import { NgForOf, NgIf } from '@angular/common'
-import { RouterLink, RouterLinkActive } from '@angular/router'
+import { DatePipe, NgForOf, NgIf } from '@angular/common'
+import { RouterLink } from '@angular/router'
 import { ReservationService } from '../../../../../core/services/reservation.service'
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser'
+
+interface SeminarResponse {
+  dni: string
+  name: string
+  lastName: string
+  createAt: string
+  qrCode: {
+    image: string
+    message: string
+    error: any
+    success: boolean
+  }
+}
 
 @Component({
   selector: 'app-seminar-registration-form',
@@ -12,23 +26,28 @@ import { ReservationService } from '../../../../../core/services/reservation.ser
     ReactiveFormsModule,
     NgForOf,
     RouterLink,
+    DatePipe,
   ],
   templateUrl: './seminar-registration-form.component.html',
-  styleUrl: './seminar-registration-form.component.scss',
+  styleUrls: ['./seminar-registration-form.component.scss'],
 })
 export class SeminarRegistrationFormComponent implements OnInit {
+  loading = signal(false)
+  showSuccessModal = signal(false)
+  seminarResponse = signal<SeminarResponse | null>(null)
+  qrImageUrl: SafeUrl = ''
 
-
-  constructor(private seminarService : ReservationService) {
-  }
-  // reservationService = Inject(ReservationService)
+  constructor(
+    private seminarService: ReservationService,
+    private sanitizer: DomSanitizer
+  ) {}
 
   formSeminar: FormGroup = new FormGroup({
     name: new FormControl(null, [Validators.required]),
     lastName: new FormControl(null, [Validators.required]),
     dni: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]{8}$')]),
     birthDate: new FormControl(null, [Validators.required]),
-    age: new FormControl({ value: null, disabled: true }), // Campo calculado
+    age: new FormControl({ value: null, disabled: true }),
     gender: new FormControl(null, [Validators.required]),
     email: new FormControl(null, [Validators.required, Validators.email]),
     phone: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]{9}$')]),
@@ -37,7 +56,6 @@ export class SeminarRegistrationFormComponent implements OnInit {
     workplace: new FormControl(null, [Validators.required]),
   })
 
-  // Opciones para los select
   genders = [
     { value: 'M', label: 'Masculino' },
     { value: 'F', label: 'Femenino' },
@@ -49,63 +67,47 @@ export class SeminarRegistrationFormComponent implements OnInit {
   ]
 
   participant = [
-    {
-      value: 'organizer',
-      label: 'Organizador'
-    },
-    {
-      value: 'participant',
-      label: 'Paticipante'
-    },
-    {
-      value: 'speaker',
-      label: 'Ponente'
-    }
+    { value: 'organizer', label: 'Organizador' },
+    { value: 'participant', label: 'Participante' },
+    { value: 'speaker', label: 'Ponente' }
   ]
 
   ngOnInit() {
-    // Suscribirse a cambios en la fecha de nacimiento
     this.formSeminar.get('birthDate')?.valueChanges.subscribe(birthDate => {
       this.calculateAge(birthDate)
     })
   }
 
-  // Método para obtener mensajes de error específicos para DNI
   getDniErrorMessage(): string {
     const dniControl = this.formSeminar.get('dni')
-
     if (dniControl?.hasError('required')) {
       return 'El DNI es requerido'
     } else if (dniControl?.hasError('pattern')) {
       return 'El DNI debe tener exactamente 8 dígitos numéricos'
     }
-
     return ''
   }
 
   getPhoneErrorMessage(): string {
     const phoneControl = this.formSeminar.get('phone')
-
     if (phoneControl?.hasError('required')) {
       return 'El teléfono es requerido'
     } else if (phoneControl?.hasError('pattern')) {
       return 'El teléfono debe tener exactamente 9 dígitos numéricos'
     }
-
     return ''
   }
 
   onPhoneInput(event: any) {
     const input = event.target
-    const value = input.value.replace(/[^0-9]/g, '') // Remover caracteres no numéricos
+    const value = input.value.replace(/[^0-9]/g, '')
     input.value = value
     this.formSeminar.get('phone')?.setValue(value)
   }
 
-  // Método para prevenir entrada no numérica
   onDniInput(event: any) {
     const input = event.target
-    const value = input.value.replace(/[^0-9]/g, '') // Remover caracteres no numéricos
+    const value = input.value.replace(/[^0-9]/g, '')
     input.value = value
     this.formSeminar.get('dni')?.setValue(value)
   }
@@ -114,15 +116,11 @@ export class SeminarRegistrationFormComponent implements OnInit {
     if (birthDate) {
       const today = new Date()
       const birth = new Date(birthDate)
-
       let age = today.getFullYear() - birth.getFullYear()
       const monthDiff = today.getMonth() - birth.getMonth()
-
-      // Ajustar si aún no ha pasado el mes de cumpleaños este año
       if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
         age--
       }
-
       this.formSeminar.get('age')?.setValue(age)
     } else {
       this.formSeminar.get('age')?.setValue(null)
@@ -131,21 +129,26 @@ export class SeminarRegistrationFormComponent implements OnInit {
 
   onSubmit() {
     if (this.formSeminar.valid) {
-      // Habilitar el campo age temporalmente para obtener su valor
       this.formSeminar.get('age')?.enable()
       const formData = this.formSeminar.value
       this.formSeminar.get('age')?.disable()
 
-      console.log('Formulario enviado:', formData)
+      this.loading.set(true)
       this.seminarService.saveSeminar(formData).subscribe({
-        next: (res: any) => {
-          console.log(res)
+        next: (res: SeminarResponse) => {
+          this.loading.set(false)
+          this.seminarResponse.set(res)
+          this.qrImageUrl = this.sanitizer.bypassSecurityTrustUrl(res.qrCode.image)
+          this.showSuccessModal.set(true)
+          this.resetForm()
         },
         error: (err: any) => {
-          console.log(err)
+          this.loading.set(false)
+          alert(err.error.message)
+          console.error('Error al guardar:', err)
+          alert('Error al guardar los datos. Por favor, intente nuevamente.')
         }
       })
-      // Aquí tu lógica de envío
     } else {
       this.markAllFieldsAsTouched()
     }
@@ -174,5 +177,45 @@ export class SeminarRegistrationFormComponent implements OnInit {
       return 'Edad'
     }
     return `${age} años`
+  }
+
+  formatDate(dateString: string): string {
+    const date = new Date(dateString)
+    return date.toLocaleDateString('es-PE', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    })
+  }
+
+  closeModal() {
+    this.showSuccessModal.set(false)
+    this.seminarResponse.set(null)
+  }
+
+  printRegistration() {
+    const printContent = document.getElementById('printable-content')
+    if (printContent) {
+      const originalContents = document.body.innerHTML
+      const printContents = printContent.innerHTML
+
+      document.body.innerHTML = printContents
+      window.print()
+      document.body.innerHTML = originalContents
+      window.location.reload()
+    }
+  }
+
+  downloadQRCode() {
+    if (this.seminarResponse()) {
+      const link = document.createElement('a')
+      link.href = this.seminarResponse()!.qrCode.image
+      link.download = `QR-${this.seminarResponse()!.dni}-${this.seminarResponse()!.lastName}.png`
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    }
   }
 }
