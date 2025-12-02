@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core'
 import { NgForOf } from '@angular/common'
 
 interface Sponsor {
@@ -17,7 +17,7 @@ interface Sponsor {
   styleUrl: './sponsors.component.scss'
 })
 
-export class SponsorsComponent {
+export class SponsorsComponent implements OnInit, OnDestroy{
   currentIndex = 0;
   autoPlay = true;
   private autoPlayInterval: any;
@@ -25,23 +25,35 @@ export class SponsorsComponent {
   // Datos de ejemplo - reemplaza con tu data real
   allSponsors: Sponsor[] = [
     {
-      name: 'Sponsor 1',
-      logo: '/assets/images/sponsor1.png',
+      name: 'Casa de la Cultura Cusco',
+      logo: '/seminar/cc.png',
       url: 'https://sponsor1.com',
-      category: 'principal'
+      category: ''
     },
     {
-      name: 'Sponsor 2',
-      logo: '/assets/images/sponsor2.png',
+      name: 'Municipalidad Pronvicial del Cusco',
+      logo: '/seminar/muni_cusco.jpg',
       url: 'https://sponsor2.com',
-      category: 'secundario'
+      category: ''
     },
     {
-      name: 'Sponsor 3',
-      logo: '/assets/images/sponsor3.png',
+      name: 'Proyecto Cusco Deportes',
+      logo: '/seminar/pcd.jpg',
       url: 'https://sponsor3.com',
-      category: 'terciario'
-    }
+      category: ''
+    },
+    {
+      name: 'QOSQO Hatun Llaqta',
+      logo: '/seminar/qosqo.jpg',
+      url: 'https://sponsor3.com',
+      category: ''
+    },
+    {
+      name: 'UGEL',
+      logo: '/seminar/ugel.jpg',
+      url: 'https://sponsor3.com',
+      category: '',
+    },
     // Agrega más auspiciadores según necesites
   ];
 
@@ -58,7 +70,7 @@ export class SponsorsComponent {
     if (this.autoPlay) {
       this.autoPlayInterval = setInterval(() => {
         this.goToNext();
-      }, 4000);
+      }, 2000);
     }
   }
 
@@ -69,20 +81,20 @@ export class SponsorsComponent {
   }
 
   goToPrevious() {
-    this.autoPlay = false;
+    this.autoPlay = true;
     this.currentIndex = (this.currentIndex - 1 + this.allSponsors.length) % this.allSponsors.length;
     this.startAutoPlay();
   }
 
   goToNext() {
-    this.autoPlay = false;
+    this.autoPlay = true;
     this.currentIndex = (this.currentIndex + 1) % this.allSponsors.length;
     this.startAutoPlay();
   }
 
   goToSlide(idx: number) {
     this.currentIndex = idx;
-    this.autoPlay = false;
+    this.autoPlay = true;
     this.startAutoPlay();
   }
 
