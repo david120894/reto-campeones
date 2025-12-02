@@ -24,54 +24,56 @@ export class ScheduleComponent {
     {
       day: "Miércoles 10 de diciembre",
       activities: [
-        { time: "8:30 - 9:00 am", activity: "Registro e inscripción de participantes", speaker: "Comité organizador" },
-        { time: "9:00 - 9:30 am", activity: "Ceremonia de inauguración", speaker: "Comité organizador" },
+        { time: "8:30 - 9:30 am", activity: "Registro e inscripción de participantes ceremonia de inauguración ", speaker: "Comité organizador" },
+        { time: "9:30 - 11:00 am", activity: "Funcionamiento del Registro Nacional de Deporte" +
+            "Retos y desafíos de la gestión deportiva en el Perú", speaker: "Abg. José Antonio Reyes especialista IPD - Lima" },
         {
-          time: "9:30 - 11:00 am",
-          activity: '"Funcionamiento del Registro Nacional de Deporte"',
-          speaker: "Abg. José Antonio Reyes - IPD",
+          time: "11:15 - 1:00 am",
+          activity: 'Gestión deportiva y organización de eventos Análisis de casos',
+          speaker: "Lic. Luis Morales Ramon especialista IPD - Lima",
         },
         {
-          time: "11:15 - 1:00 pm",
-          activity: 'Gestión deportiva y organización de eventos"',
-          speaker: "Lic. Luis Morales Ramon IPD",
+          time: "2:00 - 3:00 pm",
+          activity: 'Entrenamiento técnico deportivo en el Centro del Alto Rendimiento (CAR) IPD Cusco',
+          speaker: "Lic.  Omar Molina\n" +
+            "Técnico deportivo responsable del CAR IPD \n",
         },
         {
-          time: "2:30 - 3:30 pm",
-          activity: "Entrenamiento técnico deportivo en el CAR -Cusco",
-          speaker: "Omar Molina ",
+          time: "3:00 - 4:00 pm",
+          activity: "Nutrición deportiva",
+          speaker: "Especialista IPD ",
         },
         {
-          time: "3:30 - 4:30 pm",
-          activity: "La importancia de los nuevos talentos",
-          speaker: "Club Cienciano",
+          time: "4:00 - 5:00 pm",
+          activity: "Gestión y Desarrollo de Nuevos Talentos en el Deporte Cusqueño”\n" +
+            "Descripción de casos\n",
+          speaker: "Club Deportivo Cienciano",
         },
         {
-          time: '4:30 - 5:30 pm',
-          activity: 'Experiencia deportiva',
-          speaker: 'Ayde Loayza Huamán' +
-            'Julio Chacón  Ordoñez',
+          time: '5:00 - 6:00 pm',
+          activity: 'Experiencia deportiva en eventos nacionales e internacionales ',
+          speaker: 'Deportista Aydee Loayza Huamán\n' +
+            'Deportista Julio Chacón Ordoñez\n',
         },
       ],
     },
     {
       day: "Jueves 11 de diciembre",
       activities: [
-        { time: "9:00 - 10:00 am", activity: "La planificación curricular en el marco del CNEB", speaker: "UGEL-CUSCO" },
+        { time: "9:00 - 11:00 am", activity: "La planificación curricular en el marco del CNEB", speaker: "Mgt. Raul Guillermo Cáceres Cairo - Especialista de la UGEL Cusco" },
         {
-          time: "10:00 - 11:00 am",
-          activity: "La Programación Anual: criterios, distribución de competencias y calendarización de unidades",
-          speaker: "UGEL-CUSCO",
+          time: "11:15 - 1:00 pm",
+          activity: "Diseño de Unidades de Aprendizaje: secuencia didáctica, propósito, situación significativa y evaluación",
+          speaker: "Mgt. Raul Guillermo Cáceres Cairo - Especialista de la UGEL Cusco",
         },
-        { time: "11:15 - 01:00 pm", activity: "Diseño de Unidades de Aprendizaje: secuencia didáctica, propósito, situación significativa y evaluación", speaker: "UGEL-CUSCO" },
-        { time: "2:30 - 3:30 pm", activity: "Elaboración de Sesiones de Aprendizaje: estructura, estrategias motrices, recursos y gestión del tiempo", speaker: "UGEL-CUSCO" },
-        { time: "3:30 - 4:30 pm", activity: "Proyectos integradores en Educación Física: articulación con otras áreas y enfoques transversales", speaker: "UGEL-CUSCO" },
+        { time: "2:30 - 3:30 pm", activity: "Elaboración de Sesiones de Aprendizaje: estructura, estrategias motrices, recursos y gestión del tiempo.", speaker: "Mgt. Raul Guillermo Cáceres Cairo - Especialista de la UGEL Cusco" },
+        { time: "3:30 - 4:30 pm", activity: "Proyectos integradores en Educación Física: articulación con otras áreas y enfoques transversales.", speaker: "Mgt. Raul Guillermo Cáceres Cairo - Especialista de la UGEL Cusco" }
       ],
     },
     {
       day: "Viernes 12 de diciembre",
       activities: [
-        { time: "12:30 - 01:00 pm", activity: "Elaboración de planificación curricular P.A.", speaker: "Ponentes" },
+        { time: "12:30 - 01:00 pm", activity: "Elaboración de planificación curricular P.A.", speaker: "Mgt. Raul Guillermo Cáceres Cairo - Especialista de la UGEL Cusco" },
       ],
     },
     {
@@ -80,7 +82,7 @@ export class ScheduleComponent {
         {
           time: "9:30 - 04:00 pm",
           activity: "Proyectos de aprendizaje",
-          speaker: "Ponente",
+          speaker: "Mgt. Raul Guillermo Cáceres Cairo - Especialista de la UGEL Cusco",
         },
       ],
     },
@@ -90,7 +92,7 @@ export class ScheduleComponent {
         {
           time: '9:00 - 04:00 pm',
           activity: 'Revisión y recepción de trabajos',
-          speaker: 'Ponente',
+          speaker: 'Mgt. Raul Guillermo Cáceres Cairo - Especialista de la UGEL Cusco',
         },
       ],
     },

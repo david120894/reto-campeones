@@ -26,33 +26,39 @@ export class SponsorsComponent implements OnInit, OnDestroy{
   allSponsors: Sponsor[] = [
     {
       name: 'Casa de la Cultura Cusco',
+      logo: '/seminar/ipd.jpg',
+      url: 'https://sponsor1.com',
+      category: 'Principal Coorganizador'
+    },
+    {
+      name: 'Casa de la Cultura Cusco',
       logo: '/seminar/cc.png',
       url: 'https://sponsor1.com',
-      category: ''
+      category: 'Coorganizador',
     },
     {
       name: 'Municipalidad Pronvicial del Cusco',
       logo: '/seminar/muni_cusco.jpg',
       url: 'https://sponsor2.com',
-      category: ''
+      category: 'Organizador'
     },
     {
       name: 'Proyecto Cusco Deportes',
       logo: '/seminar/pcd.jpg',
       url: 'https://sponsor3.com',
-      category: ''
+      category: 'Organizador'
     },
     {
-      name: 'QOSQO Hatun Llaqta',
+      name: 'Qosqo Hatun Llaqta',
       logo: '/seminar/qosqo.jpg',
       url: 'https://sponsor3.com',
-      category: ''
+      category: 'Organizador'
     },
     {
       name: 'UGEL',
       logo: '/seminar/ugel.jpg',
       url: 'https://sponsor3.com',
-      category: '',
+      category: 'Coorganizador',
     },
     // Agrega más auspiciadores según necesites
   ];
@@ -70,7 +76,7 @@ export class SponsorsComponent implements OnInit, OnDestroy{
     if (this.autoPlay) {
       this.autoPlayInterval = setInterval(() => {
         this.goToNext();
-      }, 2000);
+      }, 3000);
     }
   }
 

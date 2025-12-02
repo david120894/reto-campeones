@@ -117,21 +117,39 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
   }
 
   searchByDni() {
+    console.log(this.selectedItem)
     const dni = this.search['searchDni'].value;
-    this.reservationService.searchByDni(dni).subscribe({
-      next: (response) => {
-        this.objectRegister = response;
-        this.imageModal = this.objectRegister.qrCode.image;
-        this.showModal = true;
-        this.formSearchDni.reset();
-        this.closeModal();
-      },
-      error: (error) => {
-        console.error('Usuario no registrado aun');
-        this.showMessage = true;
-        this.mensajeExito = 'El DNI ingresado no está registrado.';
-      },
-    });
+    if (this.selectedItem === 'seminar') {
+      this.reservationService.searchByDniRegisterSeminar(dni).subscribe({
+        next: (response) => {
+          this.objectRegister = response;
+          this.imageModal = this.objectRegister.qrCode.image;
+          this.showModal = true;
+          this.formSearchDni.reset();
+          this.closeModal();
+        },
+        error: (error) => {
+          console.error('Usuario no registrado aun');
+          this.showMessage = true;
+          this.mensajeExito = 'El DNI ingresado no está registrado.';
+        },
+      })
+    }else{
+      this.reservationService.searchByDni(dni).subscribe({
+        next: (response) => {
+          this.objectRegister = response;
+          this.imageModal = this.objectRegister.qrCode.image;
+          this.showModal = true;
+          this.formSearchDni.reset();
+          this.closeModal();
+        },
+        error: (error) => {
+          console.error('Usuario no registrado aun');
+          this.showMessage = true;
+          this.mensajeExito = 'El DNI ingresado no está registrado.';
+        },
+      });
+    }
   }
 
   ngOnDestroy() {
@@ -258,35 +276,86 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
   }
 
   async shareModal() {
-    const modalElement = document.querySelector('.modal-content') as HTMLElement;
+    const original = document.querySelector('.modal-content') as HTMLElement;
 
-    if (!modalElement) {
+    if (!original) {
       console.error("No se encontró el modal");
       return;
     }
 
-    const canvas = await html2canvas(modalElement, {
-      ignoreElements: (element) => element.classList.contains('no-print')
+    // Clonar modal
+    const clone = original.cloneNode(true) as HTMLElement;
+    clone.style.position = 'fixed';
+    clone.style.top = '-9999px';
+    clone.style.left = '-9999px';
+    clone.style.zIndex = '999999';
+
+    // Quitar TODAS las clases Tailwind (que generan oklch)
+    this.removeTailwindClasses(clone);
+
+    // Colores seguros
+    clone.style.background = "#1f2937";      // gris oscuro estable
+    clone.style.color = "#ffffff";          // texto blanco
+    clone.style.border = "1px solid #4b5563";
+    clone.style.padding = "20px";
+    clone.style.borderRadius = "12px";
+
+    // Arreglar imágenes internas
+    clone.querySelectorAll("img").forEach((img: any) => {
+      img.style.boxShadow = "0 4px 12px rgba(0,0,0,0.25)";
+      img.style.borderRadius = "8px";
     });
 
+    document.body.appendChild(clone);
+
+    const canvas = await html2canvas(clone, {
+      backgroundColor: "#1f2937",
+      useCORS: true,
+      scale: 2,
+    });
+
+    document.body.removeChild(clone);
+
     const dataUrl = canvas.toDataURL("image/png");
-    const response = await fetch(dataUrl);
-    const blob = await response.blob();
+    const blob = await (await fetch(dataUrl)).blob();
     const file = new File([blob], "inscripcion.png", { type: blob.type });
 
     if (navigator.share && navigator.canShare({ files: [file] })) {
       await navigator.share({
         title: "Inscripción",
         text: "Aquí está mi inscripción con QR",
-        files: [file]
+        files: [file],
       });
     } else {
-      const link = document.createElement("a");
-      link.href = dataUrl;
-      link.download = "inscripcion.png";
-      link.click();
+      const a = document.createElement("a");
+      a.href = dataUrl;
+      a.download = "inscripcion.png";
+      a.click();
     }
   }
+
+  /** ELIMINA TODAS LAS CLASES TAILWIND DEL CLON */
+  removeTailwindClasses(element: HTMLElement) {
+    // Para el nodo principal
+    if ("className" in element && typeof element.className === "string") {
+      element.className = "";
+    } else if (element instanceof SVGElement) {
+      element.removeAttribute("class");
+    }
+
+    // Para todos sus hijos
+    element.querySelectorAll("*").forEach((el: any) => {
+      if ("className" in el && typeof el.className === "string") {
+        el.className = "";
+      } else if (el instanceof SVGElement) {
+        el.removeAttribute("class");
+      }
+    });
+  }
+
+
+
+
   goUsefulVacations() {
     const tablePositions = document.getElementById('useful-inscriptions')
     if (tablePositions) {
