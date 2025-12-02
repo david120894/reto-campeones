@@ -144,7 +144,7 @@ export class SeminarRegistrationFormComponent implements OnInit {
         },
         error: (err: any) => {
           this.loading.set(false)
-          alert(err.error.message)
+          // alert(err.error.message)
           console.error('Error al guardar:', err)
           alert('Error al guardar los datos. Por favor, intente nuevamente.')
         }
