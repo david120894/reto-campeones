@@ -1,6 +1,8 @@
-// Estilos para el diseño moderno
+// Main section with background and layout
 .hero-section {
   position: relative;
+  background-color: var(--background);
+  color: var(--foreground);
 
   &::before {
     content: '';
@@ -9,217 +11,135 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background:
-      radial-gradient(circle at 20% 80%, rgba(249, 115, 22, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+    background: radial-gradient(
+      circle at 20% 80%, 
+      oklch(0.9 0.1 25 / 0.1) 0%, 
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%, 
+      oklch(0.9 0.1 60 / 0.1) 0%, 
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 40%, 
+      oklch(0.9 0.1 280 / 0.05) 0%, 
+      transparent 50%
+    );
     pointer-events: none;
   }
 }
 
-// Animaciones personalizadas
+// Animations
 @keyframes float {
   0%, 100% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translateY(0) rotate(0deg);
   }
   50% {
-    transform: translateY(-20px) rotate(180deg);
+    transform: translateY(-20px) rotate(5deg);
   }
 }
 
 @keyframes glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+    box-shadow: 0 0 20px var(--ring);
   }
   50% {
-    box-shadow: 0 0 40px rgba(249, 115, 22, 0.6),
-    0 0 60px rgba(249, 115, 22, 0.3);
+    box-shadow: 0 0 40px var(--ring), 0 0 60px var(--ring);
   }
 }
 
-// Efectos de tarjeta
+// Card styles
 .event-card {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
 
   &:hover {
     transform: translateY(-8px);
-
-    .card-content {
-      &::before {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-  }
-
-  .card-content {
-    position: relative;
-    overflow: hidden;
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(45deg,
-        rgba(249, 115, 22, 0.1) 0%,
-        rgba(236, 72, 153, 0.1) 50%,
-        rgba(139, 92, 246, 0.1) 100%);
-      opacity: 0;
-      transform: scale(0.8);
-      transition: all 0.4s ease;
-      pointer-events: none;
-    }
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   }
 }
 
-// Efectos de texto
+// Text effects
 .text-gradient {
-  background: linear-gradient(135deg,
-    #f97316 0%,
-    #ec4899 25%,
-    #a855f7 50%,
-    #6366f1 75%,
-    #06b6d4 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--accent) 50%,
+    var(--secondary) 100%
+  );
   background-size: 200% 200%;
-  animation: gradientShift 3s ease infinite;
+  animation: gradientShift 6s ease infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 @keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
-// Efectos de brillo interactivo
+// Interactive elements
 .glow-on-hover {
   transition: all 0.3s ease;
-
+  
   &:hover {
     animation: glow 2s ease-in-out infinite;
   }
 }
 
-// Partículas flotantes
-.floating-shapes {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-
-  .shape {
-    position: absolute;
-    opacity: 0.1;
-    animation: float 6s ease-in-out infinite;
-
-    &:nth-child(1) {
-      top: 20%;
-      left: 10%;
-      width: 40px;
-      height: 40px;
-      background: #f97316;
-      border-radius: 50%;
-      animation-delay: 0s;
-    }
-
-    &:nth-child(2) {
-      top: 60%;
-      right: 10%;
-      width: 60px;
-      height: 60px;
-      background: #ec4899;
-      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-      animation-delay: 2s;
-    }
-
-    &:nth-child(3) {
-      bottom: 20%;
-      left: 20%;
-      width: 50px;
-      height: 50px;
-      background: #8b5cf6;
-      border-radius: 50%;
-      animation-delay: 4s;
-    }
-  }
-}
-
-// Mejoras responsive
+// Responsive design
 @media (max-width: 1024px) {
   .hero-section {
     .container {
       padding-top: 2rem;
       padding-bottom: 2rem;
     }
-
-    .text-8xl {
-      font-size: 4rem;
-    }
-
-    .text-6xl {
-      font-size: 3rem;
-    }
   }
 }
 
 @media (max-width: 768px) {
   .hero-section {
-    .text-8xl {
-      font-size: 3rem;
-    }
-
-    .text-6xl {
-      font-size: 2.5rem;
-    }
-
-    .text-4xl {
-      font-size: 2rem;
-    }
-
+    .text-8xl { font-size: 3.5rem; }
+    .text-6xl { font-size: 2.5rem; }
+    .text-4xl { font-size: 1.875rem; }
+    
     .flex-col {
-      gap: 2rem;
-    }
-
-    .p-8 {
-      padding: 1.5rem;
+      gap: 1.5rem;
     }
   }
 }
 
-// Efectos de scroll suave
-.scroll-smooth {
-  scroll-behavior: smooth;
-}
-
-// Mejoras de accesibilidad
+// Accessibility
 @media (prefers-reduced-motion: reduce) {
-  .hero-section {
-    * {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
-// Estados de focus mejorados
+// Focus states
 button:focus,
 a:focus {
-  outline: 2px solid #f97316;
+  outline: 2px solid var(--ring);
   outline-offset: 2px;
 }
 
-// Mejoras de rendimiento
+// Performance optimizations
 .will-change-transform {
   will-change: transform;
 }
 
-// Optimizaciones para móviles
+// Mobile optimizations
 @media (max-width: 640px) {
   .hero-section {
     .grid-cols-2 {
@@ -236,31 +156,95 @@ a:focus {
   }
 }
 
-//animacion
+// Christmas lights animation
 .christmas-lights {
   position: absolute;
   top: 20px;
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 20px;
-  z-index: 1;
+  gap: 15px;
+  z-index: 3;
+  padding: 10px 0;
+  background: oklch(0.2 0.05 280 / 0.3);
+  backdrop-filter: blur(5px);
+  border-bottom: 1px solid oklch(1 0 0 / 0.1);
 }
 
 .light {
-  width: 15px;
-  height: 15px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   animation: blink 2s infinite;
+  box-shadow: 0 0 10px currentColor;
+  
+  &.red { 
+    background: linear-gradient(45deg, oklch(0.7 0.3 25), oklch(0.5 0.2 25));
+    animation-delay: 0s;
+  }
+  
+  &.yellow { 
+    background: linear-gradient(45deg, oklch(0.9 0.2 60), oklch(0.7 0.15 60));
+    animation-delay: 0.3s;
+  }
+  
+  &.blue { 
+    background: linear-gradient(45deg, oklch(0.7 0.2 240), oklch(0.5 0.15 240));
+    animation-delay: 0.6s;
+  }
 }
 
-.red { background: #ff0000; animation-delay: 0s; }
-.green { background: #00ff00; animation-delay: 0.5s; }
-.blue { background: #0066ff; animation-delay: 1s; }
-.yellow { background: #ffff00; animation-delay: 1.5s; }
-.purple { background: #ff00ff; animation-delay: 0.25s; }
-
 @keyframes blink {
-  0%, 100% { opacity: 0.3; transform: scale(0.8); }
-  50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 20px currentColor; }
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.8);
+    box-shadow: 0 0 5px currentColor;
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+    box-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+}
+
+// Snowflakes animation
+.snowflakes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.snowflake {
+  position: absolute;
+  top: -30px;
+  color: oklch(1 0 0 / 0.9);
+  font-size: 1em;
+  text-shadow:
+    0 0 8px oklch(1 0 0 / 0.7),
+    0 0 15px oklch(0.8 0.1 220 / 0.5);
+  animation: snowfall linear infinite;
+  user-select: none;
+  filter: drop-shadow(0 0 3px oklch(1 0 0 / 0.5));
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translateY(-30px) rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg) translateX(50px);
+    opacity: 0;
+  }
 }

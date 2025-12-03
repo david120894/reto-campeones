@@ -1,509 +1,509 @@
-//.raffle-container {
-//  min-height: 100vh;
-//  background: linear-gradient(135deg, #1e3a8a, #6b21a8, #db2777);
-//  display: flex;
-//  flex-direction: column;
-//  justify-content: space-between;
-//  align-items: center;
-//  color: white;
-//  padding: 3rem;
-//  position: relative;
+.raffle-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e3a8a, #6b21a8, #db2777);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 3rem;
+  position: relative;
+}
+
+.title {
+  margin-top: 1rem;
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.ball-zone {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  flex: 1;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* 🌐 BASE DE LAS BOLAS */
+.ball {
+  position: absolute;
+  width: 33px; /* Un poco más grande */
+  height: 33px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff, #1e3a8a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 5px black;
+  left: 50%;
+  top: 50%;
+  opacity: 0;
+  transform-origin: center;
+}
+
+/* Trofeo dentro de la bola */
+.trophy {
+  font-size: 1.5rem;
+  animation: trophyGlow 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.8));
+}
+
+@keyframes trophyGlow {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.8));
+  }
+  50% {
+    transform: scale(1.2) rotate(10deg);
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 1));
+  }
+}
+
+/* 🌪️ FASE SPIN - DIFERENTES VELOCIDADES Y DIRECCIONES */
+.ball.spin {
+  opacity: 1;
+}
+
+/* Usando la misma estructura pero con diferentes velocidades y direcciones */
+.ball.spin.orbit-1 { animation: orbit-spin-1 3s linear infinite; }
+.ball.spin.orbit-2 { animation: orbit-spin-2 5s linear infinite reverse; }
+.ball.spin.orbit-3 { animation: orbit-spin-3 4s linear infinite; }
+.ball.spin.orbit-4 { animation: orbit-spin-4 7s linear infinite reverse; }
+.ball.spin.orbit-5 { animation: orbit-spin-5 6s linear infinite; }
+.ball.spin.orbit-6 { animation: orbit-spin-6 8s linear infinite reverse; }
+.ball.spin.orbit-7 { animation: orbit-spin-7 5s linear infinite; }
+//.ball.spin.orbit-8 { animation: orbit-spin-8 10s linear infinite reverse; }
+
+/* Animaciones para cada órbita */
+@keyframes orbit-spin-1 {
+  from { transform: rotate(var(--angle)) translate(calc(35px * 1)) rotate(0deg); }
+  to { transform: rotate(calc(var(--angle) + 360deg)) translate(calc(35px * 1)) rotate(-360deg); }
+}
+@keyframes orbit-spin-2 {
+  from { transform: rotate(var(--angle)) translate(calc(35px * 2)) rotate(0deg); }
+  to { transform: rotate(calc(var(--angle) - 360deg)) translate(calc(35px * 2)) rotate(360deg); }
+}
+@keyframes orbit-spin-3 {
+  from { transform: rotate(var(--angle)) translate(calc(35px * 3)) rotate(0deg); }
+  to { transform: rotate(calc(var(--angle) + 360deg)) translate(calc(35px * 3)) rotate(-360deg); }
+}
+@keyframes orbit-spin-4 {
+  from { transform: rotate(var(--angle)) translate(calc(35px * 4)) rotate(0deg); }
+  to { transform: rotate(calc(var(--angle) - 360deg)) translate(calc(35px * 4)) rotate(360deg); }
+}
+@keyframes orbit-spin-5 {
+  from { transform: rotate(var(--angle)) translate(calc(35px * 5)) rotate(0deg); }
+  to { transform: rotate(calc(var(--angle) + 360deg)) translate(calc(35px * 5)) rotate(-360deg); }
+}
+@keyframes orbit-spin-6 {
+  from { transform: rotate(var(--angle)) translate(calc(35px * 6)) rotate(0deg); }
+  to { transform: rotate(calc(var(--angle) - 360deg)) translate(calc(35px * 6)) rotate(360deg); }
+}
+@keyframes orbit-spin-7 {
+  from { transform: rotate(var(--angle)) translate(calc(35px * 7)) rotate(0deg); }
+  to { transform: rotate(calc(var(--angle) + 360deg)) translate(calc(35px * 7)) rotate(-360deg); }
+}
+//@keyframes orbit-spin-8 {
+//  from { transform: rotate(var(--angle)) translate(calc(35px * 8)) rotate(0deg); }
+//  to { transform: rotate(calc(var(--angle) - 360deg)) translate(calc(35px * 8)) rotate(360deg); }
 //}
-//
-//.title {
-//  margin-top: 1rem;
-//  font-size: 2.5rem;
-//  font-weight: 800;
-//  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-//  text-align: center;
-//}
-//
-//.ball-zone {
-//  position: relative;
-//  width: 90%;
-//  max-width: 1000px;
-//  flex: 1;
-//  border-radius: 40px;
-//  display: flex;
-//  justify-content: center;
-//  align-items: center;
-//  overflow: hidden;
-//}
-//
-///* 🌐 BASE DE LAS BOLAS */
-//.ball {
-//  position: absolute;
-//  width: 33px; /* Un poco más grande */
-//  height: 33px;
-//  border-radius: 50%;
-//  background: radial-gradient(circle at 30% 30%, #fff, #1e3a8a);
-//  display: flex;
-//  align-items: center;
-//  justify-content: center;
-//  font-weight: bold;
-//  color: white;
-//  text-shadow: 0 0 5px black;
-//  left: 50%;
-//  top: 50%;
-//  opacity: 0;
-//  transform-origin: center;
-//}
-//
-///* Trofeo dentro de la bola */
-//.trophy {
-//  font-size: 1.5rem;
-//  animation: trophyGlow 2s ease-in-out infinite;
-//  filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.8));
-//}
-//
-//@keyframes trophyGlow {
-//  0%, 100% {
-//    transform: scale(1) rotate(0deg);
-//    filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.8));
-//  }
-//  50% {
-//    transform: scale(1.2) rotate(10deg);
-//    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 1));
-//  }
-//}
-//
-///* 🌪️ FASE SPIN - DIFERENTES VELOCIDADES Y DIRECCIONES */
-//.ball.spin {
-//  opacity: 1;
-//}
-//
-///* Usando la misma estructura pero con diferentes velocidades y direcciones */
-//.ball.spin.orbit-1 { animation: orbit-spin-1 3s linear infinite; }
-//.ball.spin.orbit-2 { animation: orbit-spin-2 5s linear infinite reverse; }
-//.ball.spin.orbit-3 { animation: orbit-spin-3 4s linear infinite; }
-//.ball.spin.orbit-4 { animation: orbit-spin-4 7s linear infinite reverse; }
-//.ball.spin.orbit-5 { animation: orbit-spin-5 6s linear infinite; }
-//.ball.spin.orbit-6 { animation: orbit-spin-6 8s linear infinite reverse; }
-//.ball.spin.orbit-7 { animation: orbit-spin-7 5s linear infinite; }
-////.ball.spin.orbit-8 { animation: orbit-spin-8 10s linear infinite reverse; }
-//
-///* Animaciones para cada órbita */
-//@keyframes orbit-spin-1 {
-//  from { transform: rotate(var(--angle)) translate(calc(35px * 1)) rotate(0deg); }
-//  to { transform: rotate(calc(var(--angle) + 360deg)) translate(calc(35px * 1)) rotate(-360deg); }
-//}
-//@keyframes orbit-spin-2 {
-//  from { transform: rotate(var(--angle)) translate(calc(35px * 2)) rotate(0deg); }
-//  to { transform: rotate(calc(var(--angle) - 360deg)) translate(calc(35px * 2)) rotate(360deg); }
-//}
-//@keyframes orbit-spin-3 {
-//  from { transform: rotate(var(--angle)) translate(calc(35px * 3)) rotate(0deg); }
-//  to { transform: rotate(calc(var(--angle) + 360deg)) translate(calc(35px * 3)) rotate(-360deg); }
-//}
-//@keyframes orbit-spin-4 {
-//  from { transform: rotate(var(--angle)) translate(calc(35px * 4)) rotate(0deg); }
-//  to { transform: rotate(calc(var(--angle) - 360deg)) translate(calc(35px * 4)) rotate(360deg); }
-//}
-//@keyframes orbit-spin-5 {
-//  from { transform: rotate(var(--angle)) translate(calc(35px * 5)) rotate(0deg); }
-//  to { transform: rotate(calc(var(--angle) + 360deg)) translate(calc(35px * 5)) rotate(-360deg); }
-//}
-//@keyframes orbit-spin-6 {
-//  from { transform: rotate(var(--angle)) translate(calc(35px * 6)) rotate(0deg); }
-//  to { transform: rotate(calc(var(--angle) - 360deg)) translate(calc(35px * 6)) rotate(360deg); }
-//}
-//@keyframes orbit-spin-7 {
-//  from { transform: rotate(var(--angle)) translate(calc(35px * 7)) rotate(0deg); }
-//  to { transform: rotate(calc(var(--angle) + 360deg)) translate(calc(35px * 7)) rotate(-360deg); }
-//}
-////@keyframes orbit-spin-8 {
-////  from { transform: rotate(var(--angle)) translate(calc(35px * 8)) rotate(0deg); }
-////  to { transform: rotate(calc(var(--angle) - 360deg)) translate(calc(35px * 8)) rotate(360deg); }
-////}
-//
-///* 💥 EXPLOSIÓN - TODAS LAS BOLAS SALEN DISPARADAS */
-//.ball.explode {
-//  animation: explodeBall 1.5s ease-out forwards;
-//}
-//
-//@keyframes explodeBall {
-//  0% {
-//    opacity: 1;
-//    transform:
-//      rotate(var(--angle))
-//      translate(calc(35px * var(--orbit)))
-//      rotate(0deg)
-//      scale(1);
-//  }
-//  20% {
-//    opacity: 1;
-//    transform:
-//      translate(
-//          calc(-50% + (50px - 100px * random())),
-//          calc(-50% + (50px - 100px * random()))
-//      )
-//      scale(1.1);
-//  }
-//  50% {
-//    opacity: 0.8;
-//    transform:
-//      translate(
-//          calc(-50% + (200px - 400px * random())),
-//          calc(-50% + (200px - 400px * random()))
-//      )
-//      scale(0.8);
-//  }
-//  80% {
-//    opacity: 0.3;
-//    transform:
-//      translate(
-//          calc(-50% + (400px - 800px * random())),
-//          calc(-50% + (400px - 800px * random()))
-//      )
-//      scale(0.3);
-//  }
-//  100% {
-//    opacity: 0;
-//    transform:
-//      translate(
-//          calc(-50% + (600px - 1200px * random())),
-//          calc(-50% + (600px - 1200px * random()))
-//      )
-//      scale(0);
-//  }
-//}
-//
-///* 🎯 MOVIMIENTO AL CENTRO - SOLO LA BOLA GANADORA */
-//.ball.move-to-center {
-//  opacity: 1;
-//  animation: moveToCenter 2s ease-in-out forwards;
-//  background: radial-gradient(circle at 30% 30%, #fff, gold);
-//  box-shadow: 0 0 20px gold;
-//}
-//
-//@keyframes moveToCenter {
-//  0% {
-//    transform:
-//      translate(
-//          calc(-50% + (200px - 400px * random())),
-//          calc(-50% + (200px - 400px * random()))
-//      )
-//      scale(1);
-//    opacity: 1;
-//  }
-//  30% {
-//    transform:
-//      translate(
-//          calc(-50% + (100px - 200px * random())),
-//          calc(-50% + (100px - 200px * random()))
-//      )
-//      scale(1.3);
-//    opacity: 1;
-//  }
-//  60% {
-//    transform:
-//      translate(-50%, -50%)
-//      scale(1.6);
-//    opacity: 1;
-//    background: radial-gradient(circle at 30% 30%, #fff, gold);
-//  }
-//  100% {
-//    transform:
-//      translate(-50%, -50%)
-//      scale(2); /* Más grande */
-//    opacity: 1;
-//    background: radial-gradient(circle, gold, orange);
-//    box-shadow: 0 0 40px gold;
-//  }
-//}
-//
-///* 🏆 GANADOR - BOLA MÁS GRANDE CON TROFEO */
-//.ball.winner {
-//  opacity: 1;
-//  transform: translate(-50%, -50%) scale(2.2); /* Más grande */
-//  background: radial-gradient(circle, gold, orange);
-//  box-shadow:
-//    0 0 50px gold,
-//    0 0 100px rgba(255, 215, 0, 0.6),
-//    inset 0 0 20px rgba(255, 255, 255, 0.3);
-//  cursor: pointer;
-//  transition: all 0.5s ease;
-//  animation: winnerPulse 2s ease-in-out infinite;
-//  z-index: 100;
-//  width: 60px; /* Más grande */
-//  height: 60px;
-//  display: flex;
-//  align-items: center;
-//  justify-content: center;
-//}
-//
-//.ball.winner:hover {
-//  transform: translate(-50%, -50%) scale(2.5);
-//  box-shadow:
-//    0 0 70px gold,
-//    0 0 150px rgba(255, 215, 0, 0.8),
-//    inset 0 0 30px rgba(255, 255, 255, 0.4);
-//}
-//
-//.ball.winner .trophy {
-//  font-size: 2rem; /* Trofeo más grande */
-//  animation: trophySpin 3s ease-in-out infinite;
-//}
-//
-//@keyframes winnerPulse {
-//  0%, 100% {
-//    transform: translate(-50%, -50%) scale(2.2);
-//    box-shadow:
-//      0 0 50px gold,
-//      0 0 100px rgba(255, 215, 0, 0.6);
-//  }
-//  50% {
-//    transform: translate(-50%, -50%) scale(2.4);
-//    box-shadow:
-//      0 0 70px gold,
-//      0 0 140px rgba(255, 215, 0, 0.8);
-//  }
-//}
-//
-//@keyframes trophySpin {
-//  0%, 100% {
-//    transform: scale(1) rotate(0deg);
-//    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 1));
-//  }
-//  25% {
-//    transform: scale(1.1) rotate(5deg);
-//    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 1));
-//  }
-//  50% {
-//    transform: scale(1.2) rotate(0deg);
-//    filter: drop-shadow(0 0 12px rgba(255, 215, 0, 1));
-//  }
-//  75% {
-//    transform: scale(1.1) rotate(-5deg);
-//    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 1));
-//  }
-//}
-//
-///* 🎛️ BOTONES */
-//.buttons {
-//  margin-top: 3rem;
-//  display: flex;
-//  gap: 1rem;
-//}
-//
-//button {
-//  background: #facc15;
-//  color: black;
-//  font-weight: bold;
-//  border: none;
-//  border-radius: 12px;
-//  padding: 10px 20px;
-//  cursor: pointer;
-//  transition: all 0.3s;
-//}
-//
-//button:hover {
-//  background: #fbbf24;
-//  transform: scale(1.05);
-//}
-///* ... (mantén todos los estilos anteriores) ... */
-//
-///* 🎊 CANVAS DEL CONFETI - DELANTE DEL MODAL */
-///* 🎊 CANVAS DEL CONFETI - DETRÁS DEL MODAL PERO VISIBLE */
-//#confetti-canvas {
-//  position: fixed;
-//  top: 0;
-//  left: 0;
-//  width: 100%;
-//  height: 100%;
-//  pointer-events: none;
-//  z-index: 1001; /* Detrás del modal pero delante del fondo */
-//}
-//
-///* 🏆 MODAL DEL GANADOR SEMI-TRANSPARENTE */
-//.modal-overlay {
-//  position: fixed;
-//  top: 0;
-//  left: 0;
-//  width: 100%;
-//  height: 100%;
-//  //background: rgba(0, 0, 0, 0.8); /* Más oscuro para mejor contraste */
-//  display: flex;
-//  justify-content: center;
-//  align-items: center;
-//  z-index: 1002; /* Encima del canvas */
-//  animation: fadeIn 0.3s ease;
-//}
-//
-//.modal-content {
-//  background: linear-gradient(135deg,
-//    rgba(30, 58, 138, 0.9),
-//    rgba(107, 33, 168, 0.9)
-//  ); /* Semi-transparente */
-//  border-radius: 20px;
-//  padding: 2rem;
-//  max-width: 500px;
-//  width: 90%;
-//  border: 3px solid gold;
-//  box-shadow:
-//    0 0 50px rgba(255, 215, 0, 0.5),
-//    0 0 100px rgba(255, 215, 0, 0.3);
-//  animation: modalPopIn 0.5s ease;
-//  position: relative;
-//  z-index: 1003;
-//  backdrop-filter: blur(10px); /* Efecto de desenfoque del fondo */
-//}
-//@keyframes modalPopIn {
-//  0% {
-//    transform: scale(0.5) translateY(-100px);
-//    opacity: 0;
-//  }
-//  70% {
-//    transform: scale(1.1) translateY(10px);
-//    opacity: 1;
-//  }
-//  100% {
-//    transform: scale(1) translateY(0);
-//    opacity: 1;
-//  }
-//}
-//
-//.modal-header {
-//  display: flex;
-//  justify-content: space-between;
-//  align-items: center;
-//  margin-bottom: 1.5rem;
-//  border-bottom: 2px solid gold;
-//  padding-bottom: 1rem;
-//}
-//
-//.modal-header h2 {
-//  margin: 0;
-//  color: gold;
-//  font-size: 2rem;
-//  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-//  animation: textGlow 2s ease-in-out infinite;
-//}
-//
-//@keyframes textGlow {
-//  0%, 100% {
-//    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-//  }
-//  50% {
-//    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6);
-//  }
-//}
-//
-//.close-btn {
-//  background: rgba(255, 215, 0, 0.2);
-//  border: 2px solid gold;
-//  color: gold;
-//  font-size: 1.5rem;
-//  cursor: pointer;
-//  padding: 0;
-//  width: 40px;
-//  height: 40px;
-//  display: flex;
-//  align-items: center;
-//  justify-content: center;
-//  border-radius: 50%;
-//  transition: all 0.3s ease;
-//}
-//
-//.close-btn:hover {
-//  background: gold;
-//  color: black;
-//  transform: scale(1.1) rotate(90deg);
-//  box-shadow: 0 0 15px gold;
-//}
-//
-//.modal-body {
-//  text-align: center;
-//}
-//
-//.winner-info {
-//  margin-bottom: 1.5rem;
-//}
-//
-//.winner-ball {
-//  font-size: 4rem;
-//  margin-bottom: 1rem;
-//  animation: bounce 1s ease infinite;
-//  filter: drop-shadow(0 0 10px gold);
-//}
-//
-//.winner-info h3 {
-//  font-size: 1.8rem;
-//  margin: 0.5rem 0;
-//  color: gold;
-//  text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
-//}
-//
-//.winner-info p {
-//  font-size: 1.2rem;
-//  margin: 0.5rem 0;
-//  color: white;
-//}
-//
-//.winner-details {
-//  background: rgba(255, 255, 255, 0.1);
-//  padding: 1rem;
-//  border-radius: 10px;
-//  margin-top: 1rem;
-//  border: 1px solid rgba(255, 215, 0, 0.3);
-//}
-//
-//.confetti-message {
-//  font-size: 1.3rem;
-//  color: gold;
-//  margin-top: 1rem;
-//  padding: 0.5rem;
-//  background: rgba(255, 215, 0, 0.1);
-//  border-radius: 10px;
-//  animation: pulse 2s ease-in-out infinite;
-//  border: 1px solid gold;
-//}
-//
-//@keyframes pulse {
-//  0%, 100% {
-//    transform: scale(1);
-//    background: rgba(255, 215, 0, 0.1);
-//  }
-//  50% {
-//    transform: scale(1.05);
-//    background: rgba(255, 215, 0, 0.2);
-//  }
-//}
-//
-//.modal-footer {
-//  text-align: center;
-//  margin-top: 1.5rem;
-//  border-top: 2px solid gold;
-//  padding-top: 1rem;
-//}
-//
-//.celebrate-btn {
-//  background: linear-gradient(135deg, gold, #ffd700);
-//  color: black;
-//  border: none;
-//  padding: 12px 30px;
-//  font-size: 1.2rem;
-//  font-weight: bold;
-//  border-radius: 25px;
-//  cursor: pointer;
-//  transition: all 0.3s;
-//  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-//}
-//
-//.celebrate-btn:hover {
-//  background: linear-gradient(135deg, #ffd700, gold);
-//  transform: scale(1.1);
-//  box-shadow: 0 0 25px gold;
-//}
-//
-///* Asegurar que el canvas del confeti esté detrás del modal pero sobre el fondo */
-//#confetti-canvas {
-//  position: fixed;
-//  top: 0;
-//  left: 0;
-//  width: 100%;
-//  height: 100%;
-//  pointer-events: none;
-//  z-index: 999;
-//}
-//
+
+/* 💥 EXPLOSIÓN - TODAS LAS BOLAS SALEN DISPARADAS */
+.ball.explode {
+  animation: explodeBall 1.5s ease-out forwards;
+}
+
+@keyframes explodeBall {
+  0% {
+    opacity: 1;
+    transform:
+      rotate(var(--angle))
+      translate(calc(35px * var(--orbit)))
+      rotate(0deg)
+      scale(1);
+  }
+  20% {
+    opacity: 1;
+    transform:
+      translate(
+          calc(-50% + (50px - 100px * random())),
+          calc(-50% + (50px - 100px * random()))
+      )
+      scale(1.1);
+  }
+  50% {
+    opacity: 0.8;
+    transform:
+      translate(
+          calc(-50% + (200px - 400px * random())),
+          calc(-50% + (200px - 400px * random()))
+      )
+      scale(0.8);
+  }
+  80% {
+    opacity: 0.3;
+    transform:
+      translate(
+          calc(-50% + (400px - 800px * random())),
+          calc(-50% + (400px - 800px * random()))
+      )
+      scale(0.3);
+  }
+  100% {
+    opacity: 0;
+    transform:
+      translate(
+          calc(-50% + (600px - 1200px * random())),
+          calc(-50% + (600px - 1200px * random()))
+      )
+      scale(0);
+  }
+}
+
+/* 🎯 MOVIMIENTO AL CENTRO - SOLO LA BOLA GANADORA */
+.ball.move-to-center {
+  opacity: 1;
+  animation: moveToCenter 2s ease-in-out forwards;
+  background: radial-gradient(circle at 30% 30%, #fff, gold);
+  box-shadow: 0 0 20px gold;
+}
+
+@keyframes moveToCenter {
+  0% {
+    transform:
+      translate(
+          calc(-50% + (200px - 400px * random())),
+          calc(-50% + (200px - 400px * random()))
+      )
+      scale(1);
+    opacity: 1;
+  }
+  30% {
+    transform:
+      translate(
+          calc(-50% + (100px - 200px * random())),
+          calc(-50% + (100px - 200px * random()))
+      )
+      scale(1.3);
+    opacity: 1;
+  }
+  60% {
+    transform:
+      translate(-50%, -50%)
+      scale(1.6);
+    opacity: 1;
+    background: radial-gradient(circle at 30% 30%, #fff, gold);
+  }
+  100% {
+    transform:
+      translate(-50%, -50%)
+      scale(2); /* Más grande */
+    opacity: 1;
+    background: radial-gradient(circle, gold, orange);
+    box-shadow: 0 0 40px gold;
+  }
+}
+
+/* 🏆 GANADOR - BOLA MÁS GRANDE CON TROFEO */
+.ball.winner {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(2.2); /* Más grande */
+  background: radial-gradient(circle, gold, orange);
+  box-shadow:
+    0 0 50px gold,
+    0 0 100px rgba(255, 215, 0, 0.6),
+    inset 0 0 20px rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.5s ease;
+  animation: winnerPulse 2s ease-in-out infinite;
+  z-index: 100;
+  width: 60px; /* Más grande */
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ball.winner:hover {
+  transform: translate(-50%, -50%) scale(2.5);
+  box-shadow:
+    0 0 70px gold,
+    0 0 150px rgba(255, 215, 0, 0.8),
+    inset 0 0 30px rgba(255, 255, 255, 0.4);
+}
+
+.ball.winner .trophy {
+  font-size: 2rem; /* Trofeo más grande */
+  animation: trophySpin 3s ease-in-out infinite;
+}
+
+@keyframes winnerPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(2.2);
+    box-shadow:
+      0 0 50px gold,
+      0 0 100px rgba(255, 215, 0, 0.6);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(2.4);
+    box-shadow:
+      0 0 70px gold,
+      0 0 140px rgba(255, 215, 0, 0.8);
+  }
+}
+
+@keyframes trophySpin {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 1));
+  }
+  25% {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 1));
+  }
+  50% {
+    transform: scale(1.2) rotate(0deg);
+    filter: drop-shadow(0 0 12px rgba(255, 215, 0, 1));
+  }
+  75% {
+    transform: scale(1.1) rotate(-5deg);
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 1));
+  }
+}
+
+/* 🎛️ BOTONES */
+.buttons {
+  margin-top: 3rem;
+  display: flex;
+  gap: 1rem;
+}
+
+button {
+  background: #facc15;
+  color: black;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+button:hover {
+  background: #fbbf24;
+  transform: scale(1.05);
+}
+/* ... (mantén todos los estilos anteriores) ... */
+
+/* 🎊 CANVAS DEL CONFETI - DELANTE DEL MODAL */
+/* 🎊 CANVAS DEL CONFETI - DETRÁS DEL MODAL PERO VISIBLE */
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1001; /* Detrás del modal pero delante del fondo */
+}
+
+/* 🏆 MODAL DEL GANADOR SEMI-TRANSPARENTE */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  //background: rgba(0, 0, 0, 0.8); /* Más oscuro para mejor contraste */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1002; /* Encima del canvas */
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background: linear-gradient(135deg,
+    rgba(30, 58, 138, 0.9),
+    rgba(107, 33, 168, 0.9)
+  ); /* Semi-transparente */
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  border: 3px solid gold;
+  box-shadow:
+    0 0 50px rgba(255, 215, 0, 0.5),
+    0 0 100px rgba(255, 215, 0, 0.3);
+  animation: modalPopIn 0.5s ease;
+  position: relative;
+  z-index: 1003;
+  backdrop-filter: blur(10px); /* Efecto de desenfoque del fondo */
+}
+@keyframes modalPopIn {
+  0% {
+    transform: scale(0.5) translateY(-100px);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.1) translateY(10px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid gold;
+  padding-bottom: 1rem;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: gold;
+  font-size: 2rem;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  animation: textGlow 2s ease-in-out infinite;
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6);
+  }
+}
+
+.close-btn {
+  background: rgba(255, 215, 0, 0.2);
+  border: 2px solid gold;
+  color: gold;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background: gold;
+  color: black;
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 0 15px gold;
+}
+
+.modal-body {
+  text-align: center;
+}
+
+.winner-info {
+  margin-bottom: 1.5rem;
+}
+
+.winner-ball {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: bounce 1s ease infinite;
+  filter: drop-shadow(0 0 10px gold);
+}
+
+.winner-info h3 {
+  font-size: 1.8rem;
+  margin: 0.5rem 0;
+  color: gold;
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+.winner-info p {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  color: white;
+}
+
+.winner-details {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 10px;
+  margin-top: 1rem;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.confetti-message {
+  font-size: 1.3rem;
+  color: gold;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: 10px;
+  animation: pulse 2s ease-in-out infinite;
+  border: 1px solid gold;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    background: rgba(255, 215, 0, 0.1);
+  }
+  50% {
+    transform: scale(1.05);
+    background: rgba(255, 215, 0, 0.2);
+  }
+}
+
+.modal-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  border-top: 2px solid gold;
+  padding-top: 1rem;
+}
+
+.celebrate-btn {
+  background: linear-gradient(135deg, gold, #ffd700);
+  color: black;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.celebrate-btn:hover {
+  background: linear-gradient(135deg, #ffd700, gold);
+  transform: scale(1.1);
+  box-shadow: 0 0 25px gold;
+}
+
+/* Asegurar que el canvas del confeti esté detrás del modal pero sobre el fondo */
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999;
+}
+

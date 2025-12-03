@@ -4,98 +4,128 @@
 @tailwind utilities;
 @import 'swiper/swiper-bundle.css';
 
-
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
 }
 
-body{
-    overflow-x: hidden;
+body {
+  overflow-x: hidden;
 }
+
 @import "@ng-select/ng-select/themes/default.theme.css";
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:is(.dark *));
 
+/* ==========================
+   ROOT (LIGHT MODE)
+========================== */
 :root {
-  --background: oklch(0.326 0.129 24.831 / 0.85);
-  --foreground: oklch(0.15 0.02 280);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.15 0.02 280);
-  --card-burgundy-elegant: oklch(0.45 0.08 18.5 / 0.85);
-  --card-burgundy-light: oklch(0.55 0.06 18.5 / 0.80);
-  --card-gold-subtle: oklch(0.65 0.12 85 / 0.90);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.15 0.02 280);
-  --primary: oklch(0.64 0.24 37);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.72 0.22 300);
-  --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.92 0.01 70);
-  --muted-foreground: oklch(0.5 0.02 280);
-  --accent: oklch(0.59 0.21 150);
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.93 0.02 70);
-  --input: oklch(0.95 0.01 70);
-  --ring: oklch(0.64 0.24 37);
-  --chart-1: oklch(0.64 0.24 37);
-  --chart-2: oklch(0.59 0.21 150);
-  --chart-3: oklch(0.72 0.22 300);
-  --chart-4: oklch(0.68 0.25 30);
-  --chart-5: oklch(0.65 0.20 340);
+  --background: rgb(250, 249, 246);
+  --foreground: rgb(40, 40, 60);
+  --card: rgb(255, 255, 255);
+  --card-foreground: rgb(40, 40, 60);
+  --popover: rgb(255, 255, 255);
+  --popover-foreground: rgb(40, 40, 60);
+
+  /* Burgundy */
+  --primary: oklch(0.326 0.129 24.831);
+  --primary-foreground: rgb(255, 255, 255);
+
+  /* Gold */
+  --secondary: rgb(220, 170, 80);
+  --secondary-foreground: rgb(40, 40, 60);
+
+  --muted: rgb(235, 235, 240);
+  --muted-foreground: rgb(90, 90, 120);
+
+  --accent: rgb(220, 170, 80);
+  --accent-foreground: rgb(40, 40, 60);
+
+  --destructive: rgb(190, 60, 50);
+  --destructive-foreground: rgb(255, 255, 255);
+
+  --border: rgb(225, 225, 230);
+  --input: rgb(240, 240, 245);
+  --ring: rgb(92, 44, 45);
+
+  /* Chart colors */
+  --chart-1: rgb(92, 44, 45);
+  --chart-2: rgb(220, 170, 80);
+  --chart-3: rgb(120, 80, 40);
+  --chart-4: rgb(200, 150, 70);
+  --chart-5: rgb(80, 50, 35);
+
   --radius: 0.625rem;
-  --sidebar: oklch(0.98 0.01 70);
-  --sidebar-foreground: oklch(0.15 0.02 280);
-  --sidebar-primary: oklch(0.64 0.24 37);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.59 0.21 150);
-  --sidebar-accent-foreground: oklch(1 0 0);
-  --sidebar-border: oklch(0.93 0.02 70);
-  --sidebar-ring: oklch(0.64 0.24 37);
+
+  --sidebar: rgb(250, 249, 246);
+  --sidebar-foreground: rgb(40, 40, 60);
+  --sidebar-primary: rgb(92, 44, 45);
+  --sidebar-primary-foreground: rgb(255, 255, 255);
+  --sidebar-accent: rgb(220, 170, 80);
+  --sidebar-accent-foreground: rgb(40, 40, 60);
+  --sidebar-border: rgb(225, 225, 230);
+  --sidebar-ring: rgb(92, 44, 45);
 }
 
+/* ==========================
+   DARK MODE
+========================== */
 .dark {
-  --background: oklch(0.15 0.02 280);
-  --foreground: oklch(0.98 0.01 70);
-  --card: oklch(0.2 0.02 280);
-  --card-foreground: oklch(0.98 0.01 70);
-  --popover: oklch(0.2 0.02 280);
-  --popover-foreground: oklch(0.98 0.01 70);
-  --primary: oklch(0.72 0.22 37);
-  --primary-foreground: oklch(0.15 0.02 280);
-  --secondary: oklch(0.6 0.2 300);
-  --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.3 0.02 280);
-  --muted-foreground: oklch(0.7 0.02 70);
-  --accent: oklch(0.68 0.2 150);
-  --accent-foreground: oklch(0.15 0.02 280);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.3 0.02 280);
-  --input: oklch(0.25 0.02 280);
-  --ring: oklch(0.72 0.22 37);
-  --chart-1: oklch(0.72 0.22 37);
-  --chart-2: oklch(0.68 0.2 150);
-  --chart-3: oklch(0.6 0.2 300);
-  --chart-4: oklch(0.65 0.22 30);
-  --chart-5: oklch(0.70 0.19 340);
-  --sidebar: oklch(0.15 0.02 280);
-  --sidebar-foreground: oklch(0.98 0.01 70);
-  --sidebar-primary: oklch(0.72 0.22 37);
-  --sidebar-primary-foreground: oklch(0.15 0.02 280);
-  --sidebar-accent: oklch(0.68 0.2 150);
-  --sidebar-accent-foreground: oklch(0.15 0.02 280);
-  --sidebar-border: oklch(0.3 0.02 280);
-  --sidebar-ring: oklch(0.72 0.22 37);
+  --background: rgb(40, 40, 60);
+  --foreground: rgb(250, 249, 246);
+
+  --card: rgb(45, 45, 70);
+  --card-foreground: rgb(250, 249, 246);
+
+  --popover: rgb(45, 45, 70);
+  --popover-foreground: rgb(250, 249, 246);
+
+  --primary: rgb(140, 70, 70);
+  --primary-foreground: rgb(255, 255, 255);
+
+  --secondary: rgb(230, 180, 90);
+  --secondary-foreground: rgb(250, 249, 246);
+
+  --muted: rgb(70, 70, 100);
+  --muted-foreground: rgb(200, 200, 220);
+
+  --accent: rgb(230, 180, 90);
+  --accent-foreground: rgb(250, 249, 246);
+
+  --destructive: rgb(150, 50, 40);
+  --destructive-foreground: rgb(255, 180, 180);
+
+  --border: rgb(70, 70, 100);
+  --input: rgb(60, 60, 90);
+  --ring: rgb(140, 70, 70);
+
+  --chart-1: rgb(140, 70, 70);
+  --chart-2: rgb(230, 180, 90);
+  --chart-3: rgb(160, 100, 60);
+  --chart-4: rgb(210, 160, 80);
+  --chart-5: rgb(140, 90, 60);
+
+  --sidebar: rgb(40, 40, 60);
+  --sidebar-foreground: rgb(250, 249, 246);
+  --sidebar-primary: rgb(140, 70, 70);
+  --sidebar-primary-foreground: rgb(255, 255, 255);
+  --sidebar-accent: rgb(230, 180, 90);
+  --sidebar-accent-foreground: rgb(250, 249, 246);
+  --sidebar-border: rgb(70, 70, 100);
+  --sidebar-ring: rgb(140, 70, 70);
 }
 
+/* ==========================
+   TAILWIND THEME MAPPING
+========================== */
 @theme inline {
-  --font-sans: 'Geist', 'Geist Fallback';
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-sans: "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -120,10 +150,12 @@ body{
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -132,75 +164,4 @@ body{
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-}
-
-@layer base {
-  * {
-    border-color: var(--border);
-    outline-color: color-mix(in oklch, var(--ring) 50%, transparent);
-  }
-  body {
-    background-color: var(--background);
-    color: var(--foreground);
-  }
-}
-
-:host {
-  /* Colores personalizados para guinda y dorado */
-  --color-burgundy: #800020;
-  --color-burgundy-dark: #600018;
-  --color-burgundy-light: #a00028;
-  --color-gold: #d4af37;
-  --color-gold-dark: #b8941f;
-  --color-gold-light: #e6c158;
-}
-
-.bg-burgundy { background-color: var(--color-burgundy); }
-.bg-burgundy-dark { background-color: var(--color-burgundy-dark); }
-.text-burgundy { color: var(--color-burgundy); }
-.border-burgundy { border-color: var(--color-burgundy); }
-
-.bg-gold { background-color: var(--color-gold); }
-.bg-gold-dark { background-color: var(--color-gold-dark); }
-.text-gold { color: var(--color-gold); }
-.border-gold { border-color: var(--color-gold); }
-
-/* Fondo principal con degradado guinda */
-#seminar-courses {
-  background: linear-gradient(135deg, var(--color-burgundy) 0%, var(--color-burgundy-dark) 100%);
-}
-
-#seminar-benefits {
-  background: linear-gradient(135deg, var(--color-burgundy-dark) 0%, var(--color-burgundy) 100%);
-}
-.bg-burgundy { background-color: var(--color-burgundy); }
-.bg-burgundy-dark { background-color: var(--color-burgundy-dark); }
-.text-burgundy { color: var(--color-burgundy); }
-.border-burgundy { border-color: var(--color-burgundy); }
-
-.bg-gold { background-color: var(--color-gold); }
-.bg-gold-dark { background-color: var(--color-gold-dark); }
-.text-gold { color: var(--color-gold); }
-.border-gold { border-color: var(--color-gold); }
-
-/* Patrón decorativo sutil */
-.bg-pattern {
-  background-image: radial-gradient(circle at 25% 25%, var(--color-gold) 1px, transparent 1px),
-  radial-gradient(circle at 75% 75%, var(--color-gold) 1px, transparent 1px);
-  background-size: 50px 50px;
-}
-
-/* Transiciones suaves */
-.transition-all {
-  transition: all 0.3s ease;
-}
-
-/* Mejoras de accesibilidad */
-@media (max-width: 640px) {
-  #seminar-courses,
-  #seminar-benefits,
-  #seminar-inscriptions {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
 }
