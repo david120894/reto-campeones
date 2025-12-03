@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { ParticipantsModel } from '../models/participants.model';
+import { ParticipantSeminar } from '../models/model.seminar'
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +14,10 @@ export class ParticipantsService {
 
   getAllParticipants(): Observable<ParticipantsModel[]> {
     return this.http.get<ParticipantsModel[]>(`${environment.apiUrl}/participants`);
+  }
+
+  getAllParticipantsSeminar():Observable<ParticipantSeminar[]> {
+    return this.http.get<ParticipantSeminar[]>(`${environment.apiUrl}/seminar/participants`);
   }
 
   getParticipantsById(dni: string): Observable<string> {

@@ -1,11 +1,12 @@
-<div class="raffle-container">
-  <h1 class="title">🎉 Sorteo Gran Bicicleteada 2025 🚴‍♂️</h1>
+<div class="p-4 sm:ml-64">
+  <div class="raffle-container">
+    <h1 class="title">🎉 Sorteo Gran Bicicleteada 2025 🚴‍♂️</h1>
 
-  <div class="ball-zone" [ngClass]="phase">
-    <div
-      *ngFor="let participant of visibleBalls"
-      class="ball"
-      [ngClass]="{
+    <div class="ball-zone" [ngClass]="phase">
+      <div
+        *ngFor="let participant of visibleBalls"
+        class="ball"
+        [ngClass]="{
         spin: phase === 'spin',
         explode: phase === 'explode',
         'move-to-center': phase === 'moveToCenter',
@@ -19,44 +20,45 @@
         'orbit-7': participant.orbit === 7,
         'orbit-8': participant.orbit === 8,
       }"
-      [style.--angle.deg]="participant.angle"
-      [style.--orbit]="participant.orbit"
-      (click)="phase === 'winner' ? showWinnerInfo() : null"
-    >
-      <!-- Trofeo solo en la bola ganadora cuando está en fase winner -->
-      <div *ngIf="phase === 'winner'" class="trophy">🏆</div>
+        [style.--angle.deg]="participant.angle"
+        [style.--orbit]="participant.orbit"
+        (click)="phase === 'winner' ? showWinnerInfo() : null"
+      >
+        <!-- Trofeo solo en la bola ganadora cuando está en fase winner -->
+        <div *ngIf="phase === 'winner'" class="trophy">🏆</div>
+      </div>
     </div>
-  </div>
 
-  <div class="buttons">
-    <button (click)="startRaffle()" [disabled]="isRunning">🎲 Iniciar Sorteo</button>
-    <button (click)="reset()">🔄 Reiniciar</button>
-  </div>
+    <div class="buttons">
+      <button (click)="startRaffle()" [disabled]="isRunning">🎲 Iniciar Sorteo</button>
+      <button (click)="reset()">🔄 Reiniciar</button>
+    </div>
 
-  <!-- Canvas para el confeti - DEBE IR ANTES DEL MODAL -->
-  <canvas id="confetti-canvas"></canvas>
+    <!-- Canvas para el confeti - DEBE IR ANTES DEL MODAL -->
+    <canvas id="confetti-canvas"></canvas>
 
-  <!-- Modal del Ganador -->
-  <div *ngIf="showWinnerModal" class="modal-overlay" (click)="closeWinnerModal()">
-    <div class="modal-content" (click)="$event.stopPropagation()">
-      <div class="modal-header">
-        <h2>🎉 ¡FELICIDADES! 🎉</h2>
-        <button class="close-btn" (click)="closeWinnerModal()">×</button>
-      </div>
-      <div class="modal-body">
-        <div class="winner-info">
-          <div class="winner-ball">🏆</div>
-          <h3>{{ winner?.name }}</h3>
-          <p>{{ winner?.email }}</p>
-          <div class="winner-details">
-            <p><strong>ID:</strong> {{ winner?.id }}</p>
-            <p><strong>Órbita:</strong> {{ winner?.orbit }}</p>
-          </div>
+    <!-- Modal del Ganador -->
+    <div *ngIf="showWinnerModal" class="modal-overlay" (click)="closeWinnerModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h2>🎉 ¡FELICIDADES! 🎉</h2>
+          <button class="close-btn" (click)="closeWinnerModal()">×</button>
         </div>
-        <div class="confetti-message">🎊 ¡Confeti por todas partes! 🎊</div>
-      </div>
-      <div class="modal-footer">
-        <button class="celebrate-btn" (click)="closeWinnerModal()">Cerrar Celebración</button>
+        <div class="modal-body">
+          <div class="winner-info">
+            <div class="winner-ball">🏆</div>
+            <h3>{{ winner?.name }}</h3>
+            <p>{{ winner?.email }}</p>
+            <div class="winner-details">
+              <p><strong>ID:</strong> {{ winner?.id }}</p>
+              <p><strong>Órbita:</strong> {{ winner?.orbit }}</p>
+            </div>
+          </div>
+          <div class="confetti-message">🎊 ¡Confeti por todas partes! 🎊</div>
+        </div>
+        <div class="modal-footer">
+          <button class="celebrate-btn" (click)="closeWinnerModal()">Cerrar Celebración</button>
+        </div>
       </div>
     </div>
   </div>

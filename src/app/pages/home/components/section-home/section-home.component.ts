@@ -29,6 +29,8 @@ interface CarouselItem {
     FormsModule,
     ReactiveFormsModule,
     RouterLink,
+    NgForOf,
+    NgClass,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './section-home.component.html',
@@ -36,6 +38,7 @@ interface CarouselItem {
 })
 export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  {
 
+  selectedTab: string = 'bike-ride';
   objectRegister: ResponseRegisterModels | null = null;
   router = inject(Router)
   activaRouter = inject(ActivatedRoute)
@@ -108,13 +111,20 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
 
   // Método para las clases de las pestañas
   getTabClasses(event: string) {
-    const baseClasses = 'flex items-center px-6 py-3 rounded-xl font-semibold transition-all duration-300';
+    const base =
+      'flex items-center px-6 py-3 rounded-xl font-semibold transition-all duration-300 border';
+
+    // Seleccionado
     if (this.selectedItem === event) {
-      return `${baseClasses} bg-gradient-to-r from-orange-500 to-pink-600 text-white shadow-lg`;
-    } else {
-      return `${baseClasses} bg-transparent text-gray-300 hover:text-white hover:bg-white/5`;
+      return `${base} bg-primary text-white border-primary shadow-md`;
     }
+
+    // No seleccionado
+    return `${base} bg-transparent text-primary border-primary hover:bg-primary/10 hover:text-primary`;
   }
+
+
+
 
   searchByDni() {
     console.log(this.selectedItem)
@@ -370,4 +380,14 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
     // }
     this.router.navigate(['/seminar-register']);
   }
+
+  // En tu componente TypeScript
+  snowflakes = Array.from({ length: 20 }, (_, i) => ({
+    left: `${Math.random() * 100}%`,
+    size: `${0.8 + Math.random() * 1.2}em`,
+    color: `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.5})`,
+    duration: `${10 + Math.random() * 15}s`,
+    delay: `${Math.random() * 10}s`,
+    symbol: ['❄', '❅', '❆', '✻', '✼'][Math.floor(Math.random() * 5)]
+  }));
 }
