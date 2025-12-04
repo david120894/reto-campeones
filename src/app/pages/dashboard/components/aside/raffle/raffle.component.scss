@@ -3,12 +3,11 @@
   background: linear-gradient(135deg, rgba(101, 41, 43, 0.93), #770c1c);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; /* Esto distribuye el espacio */
   align-items: center;
   color: white;
   padding: 1rem;
   position: relative;
-  overflow-x: hidden;
 
   &::before {
     content: '';
@@ -34,79 +33,29 @@
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   text-align: center;
   color: #e6c204;
-
-  @media (max-width: 1024px) {
-    font-size: 2.5rem;
-    margin-top: 2rem;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 2rem;
-    margin-top: 1.5rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1.6rem;
-    margin-top: 1rem;
-  }
+  //margin-bottom: 2rem;
 }
 
+/* CONTENEDOR PRINCIPAL CON LAYOUT DE DOS COLUMNAS */
 .content-wrapper {
   display: flex;
+  //gap: 3rem;
   width: 100%;
-  max-width: 1400px;
+  //max-width: 1200px;
   align-items: flex-start;
   justify-content: center;
-  flex: 1;
-  margin-bottom: -2.5rem;
-  gap: 3rem;
-  padding: 0 2rem;
-  box-sizing: border-box;
-
-  @media (max-width: 1200px) {
-    gap: 2rem;
-    padding: 0 1.5rem;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    padding: 0 1rem;
-  }
-
-  @media (max-width: 768px) {
-    gap: 1.5rem;
-    margin-bottom: -1rem;
-  }
+  flex: 1; /* Ocupa todo el espacio disponible */
+  margin-bottom: -2.5rem; /* Espacio antes de los botones */
 }
 
+/* CONTENEDOR DEL VIDEO (LADO IZQUIERDO) */
 .video-container {
-  flex: 0 0 400px;
+  flex: 0 0 450px;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: sticky;
   top: 2rem;
-
-  @media (max-width: 1200px) {
-    flex: 0 0 400px;
-  }
-
-  @media (max-width: 1024px) {
-    position: static;
-    flex: none;
-    width: 100%;
-    max-width: 500px;
-  }
-
-  @media (max-width: 768px) {
-    max-width: 400px;
-  }
-
-  @media (max-width: 480px) {
-    max-width: 350px;
-  }
 }
 
 .video-player {
@@ -120,6 +69,7 @@
   border: 3px solid gold;
   background: #000;
 
+  /* Efecto de bordes que desaparecen */
   -webkit-mask-image:
     linear-gradient(to top, transparent 0%, black 10%, black 90%, transparent 100%),
     linear-gradient(to left, transparent 0%, black 10%, black 90%, transparent 100%);
@@ -133,24 +83,9 @@
   mask-composite: intersect;
   mask-repeat: no-repeat;
   mask-size: cover;
-
-  @media (max-width: 1200px) {
-    max-width: 400px;
-  }
-
-  @media (max-width: 1024px) {
-    max-width: 100%;
-  }
-
-  @media (max-width: 768px) {
-    max-width: 380px;
-  }
-
-  @media (max-width: 480px) {
-    max-width: 320px;
-  }
 }
 
+/* CONTENEDOR DE LA ANIMACIÓN (LADO DERECHO) */
 .animation-container {
   flex: 1;
   display: flex;
@@ -158,19 +93,6 @@
   align-items: center;
   justify-content: center;
   min-height: 600px;
-  width: 100%;
-
-  @media (max-width: 1024px) {
-    min-height: 500px;
-  }
-
-  @media (max-width: 768px) {
-    min-height: 400px;
-  }
-
-  @media (max-width: 480px) {
-    min-height: 350px;
-  }
 }
 
 .ball-zone {
@@ -182,26 +104,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: visible;
-  background: transparent;
-  border: none;
-  box-shadow: none;
+  overflow: visible; /* Cambiado de hidden a visible */
 
-  @media (max-width: 1024px) {
-    height: 450px;
-    max-width: 700px;
-  }
+  /* ELIMINAMOS el fondo y bordes para que esté libre */
+  background: transparent; /* Sin fondo */
+  border: none; /* Sin borde */
+  box-shadow: none; /* Sin sombra */
 
-  @media (max-width: 768px) {
-    height: 350px;
-    max-width: 90vw;
-  }
-
-  @media (max-width: 480px) {
-    height: 300px;
-  }
+  /* Opcional: si quieres un efecto muy sutil */
+  /* background: rgba(255, 255, 255, 0.02); */
+  /* border: 1px solid rgba(255, 255, 255, 0.05); */
 }
 
+/* 🌐 BASE DE LAS BOLAS */
 .ball {
   position: absolute;
   width: 33px;
@@ -222,26 +137,13 @@
   box-shadow:
     inset 0 0 10px rgba(255, 255, 255, 0.3),
     0 0 10px rgba(0, 0, 0, 0.3);
-
-  @media (max-width: 768px) {
-    width: 28px;
-    height: 28px;
-  }
-
-  @media (max-width: 480px) {
-    width: 24px;
-    height: 24px;
-  }
 }
 
+/* Trofeo dentro de la bola */
 .trophy {
   font-size: 2rem;
   animation: trophyGlow 2s ease-in-out infinite;
   filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.8));
-
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
-  }
 }
 
 @keyframes trophyGlow {
@@ -255,6 +157,7 @@
   }
 }
 
+/* 🌪️ FASE SPIN - DIFERENTES VELOCIDADES Y DIRECCIONES */
 .ball.spin {
   opacity: 1;
 }
@@ -267,41 +170,37 @@
 .ball.spin.orbit-6 { animation: orbit-spin-6 8s linear infinite reverse; }
 .ball.spin.orbit-7 { animation: orbit-spin-7 5s linear infinite; }
 
+/* Animaciones para cada órbita */
 @keyframes orbit-spin-1 {
   from { transform: rotate(var(--angle)) translate(calc(35px * 1.5)) rotate(0deg); }
   to { transform: rotate(calc(var(--angle) + 360deg)) translate(calc(35px * 1.5)) rotate(-360deg); }
 }
-
 @keyframes orbit-spin-2 {
   from { transform: rotate(var(--angle)) translate(calc(35px * 2.5)) rotate(0deg); }
   to { transform: rotate(calc(var(--angle) - 360deg)) translate(calc(35px * 2.5)) rotate(360deg); }
 }
-
 @keyframes orbit-spin-3 {
   from { transform: rotate(var(--angle)) translate(calc(35px * 3.5)) rotate(0deg); }
   to { transform: rotate(calc(var(--angle) + 360deg)) translate(calc(35px * 3.5)) rotate(-360deg); }
 }
-
 @keyframes orbit-spin-4 {
   from { transform: rotate(var(--angle)) translate(calc(35px * 4.5)) rotate(0deg); }
   to { transform: rotate(calc(var(--angle) - 360deg)) translate(calc(35px * 4.5)) rotate(360deg); }
 }
-
 @keyframes orbit-spin-5 {
   from { transform: rotate(var(--angle)) translate(calc(35px * 5.5)) rotate(0deg); }
   to { transform: rotate(calc(var(--angle) + 360deg)) translate(calc(35px * 5.5)) rotate(-360deg); }
 }
-
 @keyframes orbit-spin-6 {
   from { transform: rotate(var(--angle)) translate(calc(35px * 6.5)) rotate(0deg); }
   to { transform: rotate(calc(var(--angle) - 360deg)) translate(calc(35px * 6.5)) rotate(360deg); }
 }
-
 @keyframes orbit-spin-7 {
   from { transform: rotate(var(--angle)) translate(calc(35px * 7.5)) rotate(0deg); }
   to { transform: rotate(calc(var(--angle) + 360deg)) translate(calc(35px * 7.5)) rotate(-360deg); }
 }
 
+/* 💥 EXPLOSIÓN - TODAS LAS BOLAS SALEN DISPARADAS */
 .ball.explode {
   animation: explodeBall 1.5s ease-out forwards;
 }
@@ -353,6 +252,7 @@
   }
 }
 
+/* 🎯 MOVIMIENTO AL CENTRO - SOLO LA BOLA GANADORA */
 .ball.move-to-center {
   opacity: 1;
   animation: moveToCenter 2s ease-in-out forwards;
@@ -396,6 +296,7 @@
   }
 }
 
+/* 🏆 GANADOR - Mantener el color dorado especial */
 .ball.winner {
   opacity: 1;
   transform: translate(-50%, -50%) scale(2.2);
@@ -414,29 +315,19 @@
   align-items: center;
   justify-content: center;
   border: 3px solid rgba(255, 255, 255, 0.5);
+}
 
-  &:hover {
-    transform: translate(-50%, -50%) scale(2.5);
-    box-shadow:
-      0 0 70px gold,
-      0 0 150px rgba(255, 215, 0, 0.8),
-      inset 0 0 30px rgba(255, 255, 255, 0.4);
-  }
+.ball.winner:hover {
+  transform: translate(-50%, -50%) scale(2.5);
+  box-shadow:
+    0 0 70px gold,
+    0 0 150px rgba(255, 215, 0, 0.8),
+    inset 0 0 30px rgba(255, 255, 255, 0.4);
+}
 
-  .trophy {
-    font-size: 3rem;
-    animation: trophySpin 3s ease-in-out infinite;
-
-    @media (max-width: 768px) {
-      font-size: 2.5rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-    width: 70px;
-    height: 70px;
-    transform: translate(-50%, -50%) scale(2);
-  }
+.ball.winner .trophy {
+  font-size: 3rem;
+  animation: trophySpin 3s ease-in-out infinite;
 }
 
 @keyframes winnerPulse {
@@ -473,71 +364,42 @@
   }
 }
 
+/* BOTONES EN LA PARTE INFERIOR DE TODO */
 .buttons-container {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Botones al centro, imagen a la derecha */
   align-items: center;
   padding: 2rem 2rem;
+  //background: rgba(0, 0, 0, 0.3);
+  //border-top: 2px solid rgba(255, 215, 0, 0.3);
   margin-top: auto;
-  position: relative;
-  max-width: 1400px;
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 1.5rem;
-  }
-
-  @media (max-width: 768px) {
-    padding: 1rem;
-  }
+  position: relative; /* Para posicionamiento absoluto de los botones */
 }
 
 .buttons {
   display: flex;
   gap: 2rem;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-
-  @media (max-width: 1024px) {
-    position: static;
-    transform: none;
-    flex-direction: column;
-    gap: 1rem;
-    order: 1;
-  }
-
-  @media (max-width: 768px) {
-    gap: 0.8rem;
-  }
+  position: absolute; /* Posicionamos los botones absolutamente */
+  left: 50%; /* Centramos horizontalmente */
+  transform: translateX(-50%); /* Ajuste para centrado perfecto */
 }
 
+/* Estilos para la imagen del auspiciador */
 .auspiciador-img {
   height: 80px;
   width: auto;
   max-width: 100px;
   object-fit: contain;
   filter: brightness(0) invert(1);
+  //opacity: 0.8;
   transition: all 0.3s ease;
-  margin-left: auto;
+  margin-left: auto; /* Empuja la imagen a la derecha */
+}
 
-  &:hover {
-    opacity: 1;
-    filter: brightness(0) invert(1) drop-shadow(0 0 10px gold);
-  }
-
-  @media (max-width: 1024px) {
-    margin-left: 0;
-    order: 2;
-    height: 50px;
-  }
-
-  @media (max-width: 768px) {
-    height: 40px;
-    max-width: 80px;
-  }
+.auspiciador-img:hover {
+  opacity: 1;
+  filter: brightness(0) invert(1) drop-shadow(0 0 10px gold);
 }
 
 button {
@@ -551,37 +413,23 @@ button {
   transition: all 0.3s;
   font-size: 1.5rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  white-space: nowrap;
-
-  &:hover {
-    background: #fbbf24;
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-  }
-
-  &:disabled {
-    background: #cccccc;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  }
-
-  @media (max-width: 1024px) {
-    font-size: 1.3rem;
-    padding: 12px 25px;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 1.1rem;
-    padding: 10px 20px;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1rem;
-    padding: 8px 16px;
-  }
 }
 
+button:hover {
+  background: #fbbf24;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* 🎊 CANVAS DEL CONFETI */
 #confetti-canvas {
   position: fixed;
   top: 0;
@@ -592,6 +440,7 @@ button {
   z-index: 1001;
 }
 
+/* 🏆 MODAL DEL GANADOR */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -619,15 +468,6 @@ button {
   position: relative;
   z-index: 1003;
   backdrop-filter: blur(10px);
-
-  @media (max-width: 768px) {
-    padding: 1.5rem;
-    margin: 1rem;
-  }
-
-  @media (max-width: 480px) {
-    padding: 1rem;
-  }
 }
 
 @keyframes modalPopIn {
@@ -652,11 +492,6 @@ button {
   margin-bottom: 1.5rem;
   border-bottom: 2px solid gold;
   padding-bottom: 1rem;
-
-  @media (max-width: 768px) {
-    margin-bottom: 1rem;
-    padding-bottom: 0.8rem;
-  }
 }
 
 .modal-header h2 {
@@ -665,18 +500,6 @@ button {
   font-size: 3rem;
   text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
   animation: textGlow 2s ease-in-out infinite;
-
-  @media (max-width: 1024px) {
-    font-size: 2.5rem;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 2rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1.6rem;
-  }
 }
 
 @keyframes textGlow {
@@ -702,19 +525,13 @@ button {
   justify-content: center;
   border-radius: 50%;
   transition: all 0.3s ease;
+}
 
-  &:hover {
-    background: gold;
-    color: black;
-    transform: scale(1.1) rotate(90deg);
-    box-shadow: 0 0 15px gold;
-  }
-
-  @media (max-width: 768px) {
-    width: 35px;
-    height: 35px;
-    font-size: 1.2rem;
-  }
+.close-btn:hover {
+  background: gold;
+  color: black;
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 0 15px gold;
 }
 
 .modal-body {
@@ -724,10 +541,6 @@ button {
 
 .winner-info {
   margin-bottom: 2rem;
-
-  @media (max-width: 768px) {
-    margin-bottom: 1.5rem;
-  }
 }
 
 .winner-ball {
@@ -735,14 +548,6 @@ button {
   margin-bottom: 1rem;
   animation: bounce 1s ease infinite;
   filter: drop-shadow(0 0 10px gold);
-
-  @media (max-width: 768px) {
-    font-size: 4rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 3rem;
-  }
 }
 
 .winner-info h3 {
@@ -750,49 +555,23 @@ button {
   margin: 0.6rem 0;
   color: gold;
   text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
-
-  @media (max-width: 1024px) {
-    font-size: 3rem;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 2.5rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 2rem;
-  }
 }
 
 .winner-info p {
+  //display: inline-block;
   font-size: 3rem;
   margin: 0.5rem 0;
   color: white;
-
-  @media (max-width: 1024px) {
-    font-size: 2.2rem;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 1.8rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1.5rem;
-  }
 }
 
 .winner-details {
   display: inline-block;
+
   background: rgba(255, 255, 255, 0.1);
   padding: 1rem;
   border-radius: 10px;
   margin-top: 1rem;
   border: 1px solid rgba(255, 215, 0, 0.3);
-
-  @media (max-width: 768px) {
-    padding: 0.8rem;
-  }
 }
 
 .confetti-message {
@@ -804,14 +583,6 @@ button {
   border-radius: 10px;
   animation: pulse 2s ease-in-out infinite;
   border: 1px solid gold;
-
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1.2rem;
-  }
 }
 
 @keyframes pulse {
@@ -830,11 +601,6 @@ button {
   margin-top: 1.5rem;
   border-top: 2px solid gold;
   padding-top: 1rem;
-
-  @media (max-width: 768px) {
-    margin-top: 1rem;
-    padding-top: 0.8rem;
-  }
 }
 
 .celebrate-btn {
@@ -848,43 +614,94 @@ button {
   cursor: pointer;
   transition: all 0.3s;
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
 
-  &:hover {
-    background: linear-gradient(135deg, #ffd700, gold);
-    transform: scale(1.1);
-    box-shadow: 0 0 25px gold;
+.celebrate-btn:hover {
+  background: linear-gradient(135deg, #ffd700, gold);
+  transform: scale(1.1);
+  box-shadow: 0 0 25px gold;
+}
+
+/* RESPONSIVE PARA DISPOSITIVOS MÓVILES */
+@media (max-width: 1024px) {
+  .buttons-container {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    justify-content: center;
   }
 
-  @media (max-width: 768px) {
-    padding: 10px 25px;
-    font-size: 1.1rem;
+  .buttons {
+    position: static; /* Quitamos posicionamiento absoluto en móviles */
+    transform: none;
+    left: auto;
+    flex-direction: column;
+    gap: 1rem;
+    order: 1; /* Botones primero */
+  }
+
+  .auspiciador-img {
+    margin-left: 0;
+    order: 2; /* Imagen después */
+    height: 40px;
+    max-width: 150px;
   }
 }
 
-.info-message {
-  padding: 1rem 2rem;
-  text-align: center;
-  display: inline-block;
-  background: linear-gradient(135deg, rgba(101, 41, 43, 0.93), #770c1c);
-  border: 2px solid rgba(255, 215, 0, 0.3);
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  animation: pulseGlow 2s infinite;
-  margin: 1rem auto;
-  max-width: 90%;
-
-  @media (max-width: 1024px) {
-    padding: 1rem 1.5rem;
-  }
-
-  @media (max-width: 768px) {
-    margin: 1rem auto 1.5rem;
+@media (max-width: 768px) {
+  .buttons-container {
     padding: 1rem;
   }
 
-  @media (max-width: 480px) {
-    padding: 0.8rem;
+  .auspiciador-img {
+    height: 35px;
+    max-width: 120px;
   }
+}
+
+
+@media (max-width: 768px) {
+  .raffle-container {
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .video-player {
+    max-width: 350px;
+  }
+
+  .ball-zone {
+    height: 350px;
+  }
+
+  .buttons-container {
+    padding: 1.5rem 0;
+  }
+
+  button {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+}
+.info-message {
+  //padding: 1.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  text-align: center;
+  display: inline-block;
+  //margin-left: 200px;
+  //max-width: 1500px;
+  //padding: 0.1rem;
+  background: linear-gradient(135deg, rgba(101, 41, 43, 0.93), #770c1c);
+  //background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 140, 0, 0.1));
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  //animation: fadeInUp 0.8s ease-out;
+  animation: pulseGlow 2s infinite
 }
 
 .info-message p {
@@ -894,42 +711,25 @@ button {
   color: #FFD700;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   line-height: 1.4;
-
-  @media (max-width: 1024px) {
-    font-size: 2rem;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
-    margin: 0.5rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1.2rem;
-    margin: 0.3rem;
-  }
 }
 
-.info-message p:first-child,
+.info-message p:first-child {
+  font-size: 2.2rem;
+  color: #FFFFFF;
+  font-weight: 700;
+  animation: textPulse 2s infinite;
+
+}
+
 .info-message p:last-child {
   font-size: 2.2rem;
   color: #FFFFFF;
   font-weight: 700;
   animation: textPulse 2s infinite;
 
-  @media (max-width: 1024px) {
-    font-size: 1.8rem;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 1.4rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1.1rem;
-  }
 }
 
+/* Animación de entrada */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -941,6 +741,7 @@ button {
   }
 }
 
+/* Efecto de brillo intermitente */
 .info-message {
   animation: gentleGlow 3s ease-in-out infinite;
 }
@@ -956,6 +757,27 @@ button {
   }
 }
 
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .info-message {
+    margin: 1rem auto 1.5rem;
+    padding: 1rem;
+    max-width: 90%;
+  }
+
+  .info-message p {
+    font-size: 1.1rem;
+  }
+
+  .info-message p:first-child {
+    font-size: 1.2rem;
+  }
+
+  .info-message p:last-child {
+    font-size: 1rem;
+  }
+}
+/* PARTÍCULAS FLOTANTES */
 .floating-particles {
   position: absolute;
   top: 0;
@@ -992,9 +814,8 @@ button {
 }
 
 .idle-message {
-  display: inline-block; /* Esto hace que se ajuste al contenido */
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -1003,66 +824,18 @@ button {
   border-radius: 15px;
   border: 2px solid gold;
   animation: pulseGlow 2s infinite;
-  /* REMOVEMOS el width fijo y min/max */
-  /* width: min(90%, 500px); */ /* ← Elimina esta línea */
-
-  /* Agregamos un padding mínimo y máximo responsivo */
-  padding: clamp(1.5rem, 3vw, 2rem);
-
-  /* Aseguramos que no sea más ancho que la pantalla */
-  max-width: 90vw;
-
-  /* Espacio mínimo alrededor del texto */
-  min-width: min-content;
-  white-space: nowrap;
-
-  @media (max-width: 1024px) {
-    padding: 1.5rem;
-    max-width: 85vw;
-  }
-
-  @media (max-width: 768px) {
-    padding: 1.25rem;
-    max-width: 80vw;
-    white-space: normal; /* Permite que el texto se divida en móviles */
-  }
-
-  @media (max-width: 480px) {
-    padding: 1rem;
-    max-width: 75vw;
-  }
 }
 
 .idle-message h3 {
   color: gold;
-  font-size: clamp(1.8rem, 4vw, 2.5rem); /* Tamaño responsive */
+  font-size: 3.3rem;
   margin-bottom: 1rem;
   animation: textPulse 2s infinite;
-  line-height: 1.2;
-
-  /* Asegurar que el texto no se desborde */
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-
-  @media (max-width: 768px) {
-    margin-bottom: 0.8rem;
-    line-height: 1.3;
-  }
 }
 
 .idle-message p {
   color: white;
-  font-size: clamp(1rem, 3vw, 2rem); /* Tamaño responsive */
-  line-height: 1.3;
-  margin: 0;
-
-  /* Asegurar que el texto no se desborde */
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-
-  @media (max-width: 768px) {
-    line-height: 1.4;
-  }
+  font-size: 2.4rem;
 }
 
 @keyframes pulseGlow {
@@ -1080,26 +853,5 @@ button {
   }
   50% {
     transform: scale(1.05);
-  }
-}
-
-@media (max-width: 768px) {
-  .raffle-container {
-    padding: 1.5rem;
-  }
-
-  .title {
-    font-size: 2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .raffle-container {
-    padding: 1rem;
-  }
-
-  .title {
-    font-size: 1.6rem;
-    margin-top: 1rem;
   }
 }

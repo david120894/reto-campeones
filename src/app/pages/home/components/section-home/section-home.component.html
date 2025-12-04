@@ -232,12 +232,12 @@
             <!-- Video -->
             <div class="flex-shrink-0">
               <div class="relative group/img">
-                <div class="w-96 h-96 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl flex items-center justify-center p-8">
+                <div class="w-80 h-96 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl flex items-center justify-center p-8">
                   <div class="text-center">
                     <div class="relative group/video">
                       <video
                         #videoPlayer
-                        src="https://taqe.cusco.gob.pe/publico/web/campeonato/FC.mp4"
+                        src="https://taqe.cusco.gob.pe/publico/web/campeonato/Video.mp4"
                         type="video/mp4"
                         autoplay loop muted playsinline
                         class="w-full rounded-2xl shadow-lg transform group-hover/video:scale-[1.02] transition-all duration-300 border-2 border-white/10 group-hover/video:border-secondary/30">
@@ -266,132 +266,237 @@
       </div>
 
       <!-- Championship Event Card -->
-      <div *ngIf="selectedItem === 'challenge-champions'" class="group relative">
-        <!-- Background Effect -->
-        <div
-          class="absolute inset-0 bg-gradient-to-r from-pink-500/30 via-pink-500/20 to-purple-500/30 rounded-4xl blur-2xl group-hover:blur-3xl transition-all duration-500 -z-10"
-          style="border-radius: 20px"></div>
+      <div *ngIf="selectedItem === 'challenge-champions'" class="group">
+        <!-- Container Principal -->
+        <div class=" rounded-3xl border border-gray-100 overflow-hidden">
 
-        <div
-          class="mb-2 bg-gradient-to-br from-red-900/90 to-red-900/95 backdrop-blur-xl rounded-3xl border border-white/10 p-8 shadow-2xl"
-        >
-          <div class="flex flex-col lg:flex-row gap-8 items-center">
+          <!-- Header con Fondo Acabado -->
+          <div class="relative bg-gradient-to-r from-primary to-secondary text-white py-8 px-8 lg:px-12">
+            <div class="absolute inset-0 "></div>
 
-            <!-- Visual -->
-            <div class="flex-shrink-0">
-              <div class="relative group/img">
-                <div
-                  class="w-80 h-80 bg-white/5 rounded-3xl flex items-center justify-center p-8 border border-white/10 group-hover/img:border-purple-400/40 transition-all"
-                >
-                  <img src="championship/logo1.png"
-                       alt="Challenge Champions"
-                       class="w-48 h-48 object-contain transform group-hover/img:scale-110 transition-transform duration-300">
+            <div class="relative flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+              <div>
+                <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-4">
+                  <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                  <span class="text-sm font-semibold tracking-wide">EVENTO PRINCIPAL 2025</span>
                 </div>
 
-                <div
-                  class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-3xl opacity-0 group-hover/img:opacity-100 transition-opacity duration-300">
-                </div>
+                <h1 class="text-3xl lg:text-4xl font-bold mb-2">
+                  Primer Campeonato Interescolar
+                </h1>
+                <p class="text-white/90 text-lg">
+                  Competición de excelencia deportiva y académica
+                </p>
+              </div>
+
+              <!-- Logo del Evento -->
+              <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
+                <img src="championship/logo1.png"
+                     alt="Logo Campeonato"
+                     class="w-32 h-32 object-contain">
               </div>
             </div>
+          </div>
 
-            <!-- Content -->
-            <div class="flex-1 space-y-6">
+          <!-- Contenido Principal - Grid de 3 Columnas -->
+          <div class="p-8 lg:p-12">
+            <div class="grid lg:grid-cols-3 gap-8">
 
-              <!-- Badge -->
-              <div
-                class="inline-flex items-center gap-3 bg-orange-500/20 border border-orange-400/40 rounded-2xl px-4 py-2"
-              >
-                <div class="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
-                <span class="text-orange-300 font-bold text-sm uppercase tracking-wider">
-          Competencia
-        </span>
-              </div>
+              <!-- Columna 1: Información del Evento -->
+              <div class="lg:col-span-2 space-y-8">
 
-              <!-- Title -->
-              <h2 class="text-4xl md:text-5xl font-bold text-white">
-                Primer Campeonato Interescolar
-                <span class="block text-2xl md:text-3xl text-orange-400 mt-2">
-          Torneo Interescolar
-        </span>
-              </h2>
+                <!-- Descripción -->
+                <div class="space-y-4">
+                  <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-3">
+                    <div class="w-2 h-8 bg-primary rounded-full"></div>
+                    Sobre el Campeonato
+                  </h2>
 
-              <!-- Description -->
-              <p class="text-lg text-gray-300 leading-relaxed">
-                La competencia escolar más esperada del año donde las mejores instituciones educativas
-                se enfrentan por el título de
-                <span class="text-purple-300 font-semibold">campeón absoluto</span>.
-                Deporte, disciplina y excelencia académica en un solo evento.
-              </p>
+                  <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+                    <p class="text-gray-700 leading-relaxed text-lg">
+                      La competencia escolar más prestigiosa del año reúne a las mejores instituciones educativas
+                      en un torneo que combina <span class="text-primary font-semibold">excelencia deportiva</span>,
+                      <span class="text-primary font-semibold">disciplina</span> y
+                      <span class="text-primary font-semibold">valores académicos</span>.
+                      Un evento diseñado para potenciar el talento juvenil nacional.
+                    </p>
+                  </div>
+                </div>
 
-              <!-- Video Section -->
-              <div class="space-y-4">
-                <h3 class="text-xl font-bold text-white flex items-center gap-3">
-                  <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                  </svg>
-                  Mira el Evento
-                </h3>
+                <!-- Estadísticas -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  <div class="bg-white border border-gray-200 rounded-2xl p-5 text-center">
+                    <div class="text-3xl font-bold text-primary mb-1">50+</div>
+                    <div class="text-gray-600 text-sm font-medium">Instituciones</div>
+                  </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                  <div class="bg-white border border-gray-200 rounded-2xl p-5 text-center">
+                    <div class="text-3xl font-bold text-secondary mb-1">3+</div>
+                    <div class="text-gray-600 text-sm font-medium">Disciplinas</div>
+                  </div>
 
-                  <!-- Video 1 -->
-                  <div class="relative group/video">
-                    <video
-                      src="https://taqe.cusco.gob.pe/publico/web/campeonato/Spot_fin.mp4"
-                      autoplay loop muted playsinline
-                      class="w-full h-[300px] md:h-[350px] lg:h-[400px] object-cover rounded-2xl shadow-lg
-                     transform group-hover/video:scale-[1.02] transition-all duration-300
-                     border-2 border-white/10 group-hover/video:border-purple-400/40"
-                    ></video>
+                  <div class="bg-white border border-gray-200 rounded-2xl p-5 text-center">
+                    <div class="text-3xl font-bold text-primary mb-1">50+</div>
+                    <div class="text-gray-600 text-sm font-medium">Participantes</div>
+                  </div>
 
-                    <div
-                      class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-2xl opacity-0
-                     group-hover/video:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                    >
-                      <div
-                        class="bg-white/20 backdrop-blur-sm rounded-full p-4 transform scale-0
-                       group-hover/video:scale-100 transition-transform duration-300"
-                      >
-                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
+<!--                  <div class="bg-white border border-gray-200 rounded-2xl p-5 text-center">-->
+<!--                    <div class="text-3xl font-bold text-secondary mb-1">5</div>-->
+<!--                    <div class="text-gray-600 text-sm font-medium">Días</div>-->
+<!--                  </div>-->
+                </div>
+
+                <!-- Videos -->
+                <div class="space-y-6">
+                  <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-3">
+                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                    Multimedia del Evento
+                  </h2>
+
+                  <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Video 1 -->
+                    <div class="group/video">
+                      <div class="relative overflow-hidden rounded-2xl border border-gray-300">
+                        <video
+                          src="https://taqe.cusco.gob.pe/publico/web/campeonato/Spot_fin.mp4"
+                          autoplay loop muted playsinline
+                          class="w-full h-96 object-cover group-hover/video:scale-105 transition-transform duration-500"
+                        ></video>
+
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                          <h3 class="text-white font-semibold">Spot Promocional</h3>
+                          <p class="text-white/80 text-sm">Resumen del evento</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Video 2 -->
+                    <div class="group/video">
+                      <div class="relative overflow-hidden rounded-2xl border border-gray-300">
+                        <video
+                          src="https://taqe.cusco.gob.pe/publico/web/campeonato/FC.mp4"
+                          autoplay loop muted playsinline
+                          class="w-full h-96 object-cover group-hover/video:scale-105 transition-transform duration-500"
+                        ></video>
+
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                          <h3 class="text-white font-semibold">Ceremonia Final</h3>
+                          <p class="text-white/80 text-sm">Momentos destacados</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-
-                  <!-- Video 2 -->
-                  <div class="relative group/video">
-                    <video
-                      src="https://taqe.cusco.gob.pe/publico/web/campeonato/FC.mp4"
-                      autoplay loop muted playsinline
-                      class="w-full h-[300px] md:h-[350px] lg:h-[400px] object-cover rounded-2xl shadow-lg
-                     transform group-hover/video:scale-[1.02] transition-all duration-300
-                     border-2 border-white/10 group-hover/video:border-purple-400/40"
-                    ></video>
-
-                    <div
-                      class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-2xl opacity-0
-                     group-hover/video:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                    >
-                      <div
-                        class="bg-white/20 backdrop-blur-sm rounded-full p-4 transform scale-0
-                       group-hover/video:scale-100 transition-transform duration-300"
-                      >
-                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-
                 </div>
               </div>
 
+              <!-- Columna 2: Sidebar de Información -->
+              <div class="space-y-6">
+
+                <!-- Información Importante -->
+                <div class="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl p-6 border border-primary/20">
+                  <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Detalles Clave
+                  </h3>
+
+                  <div class="space-y-4">
+                    <div class="flex items-start gap-3">
+                      <div class="mt-1">
+                        <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                      </div>
+                      <div>
+                        <h4 class="font-semibold text-gray-800">Fecha</h4>
+                        <p class="text-gray-600 text-sm">11 Octubre 2025</p>
+                      </div>
+                    </div>
+
+<!--                    <div class="flex items-start gap-3">-->
+<!--                      <div class="mt-1">-->
+<!--                        <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
+<!--                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
+<!--                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>-->
+<!--                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
+<!--                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>-->
+<!--                        </svg>-->
+<!--                      </div>-->
+<!--                      <div>-->
+<!--                        <h4 class="font-semibold text-gray-800">Ubicación</h4>-->
+<!--                        <p class="text-gray-600 text-sm">Estadio Nacional</p>-->
+<!--                      </div>-->
+<!--                    </div>-->
+
+<!--                    <div class="flex items-start gap-3">-->
+<!--                      <div class="mt-1">-->
+<!--                        <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
+<!--                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
+<!--                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>-->
+<!--                        </svg>-->
+<!--                      </div>-->
+<!--                      <div>-->
+<!--                        <h4 class="font-semibold text-gray-800">Horarios</h4>-->
+<!--                        <p class="text-gray-600 text-sm">8:00 AM - 6:00 PM</p>-->
+<!--                      </div>-->
+<!--                    </div>-->
+                  </div>
+                </div>
+
+                <!-- Disciplinas -->
+                <div class="bg-white rounded-2xl border border-gray-200 p-6">
+                  <h3 class="text-xl font-bold text-gray-900 mb-4">Disciplinas</h3>
+
+                  <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                      <span class="text-gray-700">Ajedrez</span>
+                      <span class="text-primary font-semibold">✓</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="text-gray-700">Fútbol</span>
+                      <span class="text-primary font-semibold">✓</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="text-gray-700">Voleibol</span>
+                      <span class="text-primary font-semibold">✓</span>
+                    </div>
+<!--                    <div class="flex items-center justify-between">-->
+<!--                      <span class="text-gray-700">Básquetbol</span>-->
+<!--                      <span class="text-primary font-semibold">✓</span>-->
+<!--                    </div>-->
+<!--                    <div class="flex items-center justify-between">-->
+<!--                      <span class="text-gray-700">Natación</span>-->
+<!--                      <span class="text-primary font-semibold">✓</span>-->
+<!--                    </div>-->
+                  </div>
+
+                  <div class="mt-4 pt-4 border-t border-gray-200">
+                    <button class="text-primary font-medium text-sm hover:text-primary/80 transition-colors">
+                      + Ver todas las disciplinas
+                    </button>
+                  </div>
+                </div>
+
+                <!-- CTA -->
+<!--                <div class="space-y-4">-->
+<!--                  <button class="w-full bg-primary text-white font-semibold py-3 px-6 rounded-xl hover:bg-primary/90 transition-colors">-->
+<!--                    Más Información-->
+<!--                  </button>-->
+
+<!--                  <button class="w-full border-2 border-primary text-primary font-semibold py-3 px-6 rounded-xl hover:bg-primary/5 transition-colors">-->
+<!--                    Contactar Organización-->
+<!--                  </button>-->
+<!--                </div>-->
+              </div>
             </div>
           </div>
         </div>
-
       </div>
 
       <!-- Useful Vacations Event Card -->

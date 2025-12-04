@@ -36,7 +36,7 @@ export class RaffleComponent implements OnInit,AfterViewInit{
   orbitCount = 7;
   showWinnerModal = false;
   confettiInterval: any;
-ngAfterViewInit(): void {
+  ngAfterViewInit(): void {
     if (this.videoPlayer) {
       const video = this.videoPlayer.nativeElement;
       video.muted = true;

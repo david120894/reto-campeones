@@ -1,64 +1,100 @@
-<div class="p-4 sm:ml-64">
-  <div class="raffle-container">
-    <h1 class="title">🎉 Sorteo Gran Bicicleteada 2025 🚴‍♂️</h1>
-
-    <div class="ball-zone" [ngClass]="phase">
-      <div
-        *ngFor="let participant of visibleBalls"
-        class="ball"
-        [ngClass]="{
-        spin: phase === 'spin',
-        explode: phase === 'explode',
-        'move-to-center': phase === 'moveToCenter',
-        winner: phase === 'winner',
-        'orbit-1': participant.orbit === 1,
-        'orbit-2': participant.orbit === 2,
-        'orbit-3': participant.orbit === 3,
-        'orbit-4': participant.orbit === 4,
-        'orbit-5': participant.orbit === 5,
-        'orbit-6': participant.orbit === 6,
-        'orbit-7': participant.orbit === 7,
-        'orbit-8': participant.orbit === 8,
-      }"
-        [style.--angle.deg]="participant.angle"
-        [style.--orbit]="participant.orbit"
-        (click)="phase === 'winner' ? showWinnerInfo() : null"
-      >
-        <!-- Trofeo solo en la bola ganadora cuando está en fase winner -->
-        <div *ngIf="phase === 'winner'" class="trophy">🏆</div>
-      </div>
+<div class="raffle-container">
+  <h1 class="title">🎉 PRIMERA GRAN BICICLETEADA KUSKA MUYUSUNCHIS 2025 🚴‍♂️</h1>
+  <div class="info-message">
+    <p>Gracias por tu participación en esta fiesta que celebra la solidaridad y la actividad física.</p>
+    <p>Para validar tu participación presenta la numeración de tu bicicleta.</p>
+  </div>
+  <!-- Partículas flotantes en estado idle -->
+  <div *ngIf="phase === 'idle'" class="floating-particles">
+    <div *ngFor="let particle of floatingParticles" class="particle"
+         [style.left]="particle.x + '%'"
+         [style.animation-delay]="particle.delay + 's'"
+         [style.background]="particle.color">
     </div>
 
+    <div class="idle-message">
+      <h3>🎲 Presiona "Iniciar Sorteo" 🎲</h3>
+      <p>La emoción está por comenzar...</p>
+    </div>
+  </div>
+  <div class="content-wrapper">
+    <!-- Video en el lado izquierdo -->
+    <div class="video-container">
+      <video
+        #videoPlayer
+        src="https://taqe.cusco.gob.pe/publico/web/campeonato/Video.mp4"
+        type="video/mp4"
+        autoplay
+        loop
+        muted
+        playsinline
+        class="video-player">
+      </video>
+    </div>
+
+    <!-- Animación de bolas en el lado derecho -->
+    <div class="animation-container">
+      <div class="ball-zone" [ngClass]="phase">
+        <div
+          *ngFor="let participant of visibleBalls"
+          class="ball"
+          [ngClass]="{
+            spin: phase === 'spin',
+            explode: phase === 'explode',
+            'move-to-center': phase === 'moveToCenter',
+            winner: phase === 'winner',
+            'orbit-1': participant.orbit === 1,
+            'orbit-2': participant.orbit === 2,
+            'orbit-3': participant.orbit === 3,
+            'orbit-4': participant.orbit === 4,
+            'orbit-5': participant.orbit === 5,
+            'orbit-6': participant.orbit === 6,
+            'orbit-7': participant.orbit === 7,
+          }"
+          [style.--angle.deg]="participant.angle"
+          [style.--ball-color]="participant.color"
+          (click)="phase === 'winner' ? showWinnerInfo() : null"
+        >
+          <div *ngIf="phase === 'winner'" class="trophy">🏆</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botones en la parte inferior de todo -->
+  <div class="buttons-container">
     <div class="buttons">
       <button (click)="startRaffle()" [disabled]="isRunning">🎲 Iniciar Sorteo</button>
       <button (click)="reset()">🔄 Reiniciar</button>
     </div>
 
-    <!-- Canvas para el confeti - DEBE IR ANTES DEL MODAL -->
-    <canvas id="confetti-canvas"></canvas>
+    <!-- Imagen del auspiciador al lado derecho -->
+    <img src="auspiciadores/cusco.png" alt="Gobierno Regional Cusco" class="auspiciador-img">
+  </div>
 
-    <!-- Modal del Ganador -->
-    <div *ngIf="showWinnerModal" class="modal-overlay" (click)="closeWinnerModal()">
-      <div class="modal-content" (click)="$event.stopPropagation()">
-        <div class="modal-header">
-          <h2>🎉 ¡FELICIDADES! 🎉</h2>
-          <button class="close-btn" (click)="closeWinnerModal()">×</button>
-        </div>
-        <div class="modal-body">
-          <div class="winner-info">
-            <div class="winner-ball">🏆</div>
-            <h3>{{ winner?.name }}</h3>
-            <p>{{ winner?.email }}</p>
-            <div class="winner-details">
-              <p><strong>ID:</strong> {{ winner?.id }}</p>
-              <p><strong>Órbita:</strong> {{ winner?.orbit }}</p>
-            </div>
+  <!-- Canvas para el confeti -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Modal del Ganador -->
+  <div *ngIf="showWinnerModal" class="modal-overlay" (click)="closeWinnerModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2>🎉 ¡FELICIDADES! 🎉</h2>
+        <button class="close-btn" (click)="closeWinnerModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="winner-info">
+          <div class="winner-ball">🏆</div>
+          <div class="winner-details">
+            <p>{{currentWinner()?.name}} {{currentWinner()?.lastName}}</p>
+            <p>{{currentWinner()?.dni}}</p>
+            <p>{{currentWinner()?.category}}</p>
           </div>
-          <div class="confetti-message">🎊 ¡Confeti por todas partes! 🎊</div>
         </div>
-        <div class="modal-footer">
-          <button class="celebrate-btn" (click)="closeWinnerModal()">Cerrar Celebración</button>
-        </div>
+        <div class="confetti-message">🎊 ¡GANADOR! 🎊</div>
+      </div>
+      <div class="modal-footer">
+        <button class="celebrate-btn" (click)="closeWinnerModal()">Cerrar Celebración</button>
       </div>
     </div>
   </div>
