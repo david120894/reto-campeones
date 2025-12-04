@@ -2,18 +2,17 @@ import {
   AfterViewInit,
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  ElementRef, EventEmitter,
+  ElementRef, EventEmitter, inject,
   OnDestroy,
   OnInit, Output,
   ViewChild,
-} from '@angular/core';
+} from '@angular/core'
 import { DatePipe, NgClass, NgForOf, NgIf } from '@angular/common'
-import { RouterLink } from '@angular/router'
+import { ActivatedRoute, Router, RouterLink } from '@angular/router'
 import { ResponseRegisterModels } from '../../../../core/models/response.register.models'
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { ReservationService } from '../../../../core/services/reservation.service'
 import html2canvas from 'html2canvas';
-
 
 interface CarouselItem {
   type: 'image' | 'video';
@@ -26,12 +25,12 @@ interface CarouselItem {
   standalone: true,
   imports: [
     NgIf,
-    NgForOf,
-    NgClass,
     DatePipe,
     FormsModule,
     ReactiveFormsModule,
     RouterLink,
+    NgForOf,
+    NgClass,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './section-home.component.html',
@@ -39,7 +38,10 @@ interface CarouselItem {
 })
 export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  {
 
+  selectedTab: string = 'bike-ride';
   objectRegister: ResponseRegisterModels | null = null;
+  router = inject(Router)
+  activaRouter = inject(ActivatedRoute)
 
   isModalOpen = false;
   imageModal: string = '';
@@ -48,7 +50,24 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
   mensajeExito: string | null = null;
   showMessage: boolean = false;
 
-
+  arraySection= [
+    {
+      id: 0,
+      name:'bike-ride',
+    },
+    {
+      id: 1,
+      name:'challenge-champions',
+    },
+    {
+      id: 2,
+      name:'seminar',
+    },
+    {
+      id: 3,
+      name:'useful-vacations',
+    },
+  ];
   formSearchDni: FormGroup = new FormGroup({
     searchDni: new FormControl(''),
   });
@@ -56,14 +75,18 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
   get search() {
     return this.formSearchDni.controls;
   }
+
   @Output() sectionChanged = new EventEmitter<string>();
+
   items: CarouselItem[] = [
-    { type: 'image', src: 'bike/bike-ride.png', title: 'Imagen 2' },
-    { type: 'image', src: 'championship/logo1.png', title: 'Imagen 1' },
+    { type: 'image', src: 'bike/bike-ride.png', title: 'Bicicleteada Familiar' },
+    { type: 'image', src: 'championship/logo1.png', title: 'Challenge Champions' },
+    { type: 'image', src: 'championship/logo1.png', title: 'Seminarios' },
+    { type: 'image', src: 'championship/logo1.png', title: 'Vacaciones Útiles' },
   ];
 
-  selectedItem = ''
-  currentIndex = 0;
+  selectedItem = 'bike-ride';
+  currentIndex = 1; // Iniciar con la bicicleteada
 
   days: string = '00';
   hours: string = '00';
@@ -74,38 +97,78 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
 
   constructor(
     private reservationService: ReservationService,
-    ) {}
+  ) {}
 
   ngOnInit() {
-    this.updateCountdown();
-    this.intervalId = setInterval(() => this.updateCountdown(), 1000);
-    this.selectItem(0);
+    const params = this.activaRouter.snapshot.params['id']
+    const selectSection = this.arraySection.find(section => section.name=== params)
+    if(selectSection !== undefined) {
+      this.selectItem(selectSection?.id!)
+    }else {
+      this.selectItem(2)
+    }
   }
+
+  // Método para las clases de las pestañas
+  getTabClasses(event: string) {
+    const base =
+      'flex items-center px-6 py-3 rounded-xl font-semibold transition-all duration-300 border';
+
+    // Seleccionado
+    if (this.selectedItem === event) {
+      return `${base} bg-primary text-white border-primary shadow-md`;
+    }
+
+    // No seleccionado
+    return `${base} bg-transparent text-primary border-primary hover:bg-primary/10 hover:text-primary`;
+  }
+
+
+
 
   searchByDni() {
+    console.log(this.selectedItem)
     const dni = this.search['searchDni'].value;
-    this.reservationService.searchByDni(dni).subscribe({
-      next: (response) => {
-        this.objectRegister = response;
-        this.imageModal = this.objectRegister.qrCode.image;
-        this.showModal = true;
-        this.formSearchDni.reset();
-        this.closeModal();
-      },
-      error: (error) => {
-        console.error('Usuario no registrado aun');
-        this.showMessage = true;
-        this.mensajeExito = 'El DNI ingresado no está registrado.';
-      },
-    });
+    if (this.selectedItem === 'seminar') {
+      this.reservationService.searchByDniRegisterSeminar(dni).subscribe({
+        next: (response) => {
+          this.objectRegister = response;
+          this.imageModal = this.objectRegister.qrCode.image;
+          this.showModal = true;
+          this.formSearchDni.reset();
+          this.closeModal();
+        },
+        error: (error) => {
+          console.error('Usuario no registrado aun');
+          this.showMessage = true;
+          this.mensajeExito = 'El DNI ingresado no está registrado.';
+        },
+      })
+    }else{
+      this.reservationService.searchByDni(dni).subscribe({
+        next: (response) => {
+          this.objectRegister = response;
+          this.imageModal = this.objectRegister.qrCode.image;
+          this.showModal = true;
+          this.formSearchDni.reset();
+          this.closeModal();
+        },
+        error: (error) => {
+          console.error('Usuario no registrado aun');
+          this.showMessage = true;
+          this.mensajeExito = 'El DNI ingresado no está registrado.';
+        },
+      });
+    }
   }
-
 
   ngOnDestroy() {
     if (this.intervalId) {
       clearInterval(this.intervalId);
     }
   }
+
+
   get currentItem(): CarouselItem {
     return this.items[this.currentIndex];
   }
@@ -122,40 +185,18 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
 
   selectItem(index: number) {
     const item: Record<string, string> = {
-      0:"bike-ride",
-      1:"challenge-champions",
-      // 3:"interscholastic-championship",
+      0: "challenge-champions",
+      1: "bike-ride",
+      2: "seminar",
+      3: "useful-vacations",
     }
     this.selectedItem = item[index] || '';
     this.currentIndex = index;
     this.sectionChanged.emit(this.selectedItem);
   }
 
-  private updateCountdown() {
-    const eventDate = new Date('August 16, 2025 00:00:00').getTime();
-    const now = new Date().getTime();
-    const distance = eventDate - now;
-
-    if (distance <= 0) {
-      this.days = this.hours = this.minutes = this.seconds = '00';
-      clearInterval(this.intervalId);
-      return;
-    }
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    this.days = days.toString().padStart(2, '0');
-    this.hours = hours.toString().padStart(2, '0');
-    this.minutes = minutes.toString().padStart(2, '0');
-    this.seconds = seconds.toString().padStart(2, '0');
-  }
-
   @ViewChild('videoPlayer', { static: false }) videoPlayer!: ElementRef<HTMLVideoElement>;
   @ViewChild('videoPlayer2', { static: false }) videoPlayer2!: ElementRef<HTMLVideoElement>;
-  @ViewChild('videoPlayer3', { static: false }) videoPlayer3!: ElementRef<HTMLVideoElement>;
 
   ngAfterViewInit(): void {
     if (this.videoPlayer) {
@@ -167,12 +208,6 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
 
     if (this.videoPlayer2) {
       const video2 = this.videoPlayer2.nativeElement;
-      video2.muted = true;
-      video2.playsInline = true;
-      video2.play().catch(err => console.warn('Autoplay bloqueado:', err));
-    }
-    if (this.videoPlayer3) {
-      const video2 = this.videoPlayer3.nativeElement;
       video2.muted = true;
       video2.playsInline = true;
       video2.play().catch(err => console.warn('Autoplay bloqueado:', err));
@@ -244,46 +279,115 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
     this.isModalOpen = false;
     this.showMessage = false;
     this.formSearchDni.reset();
-    // this.mensajeExito = false
   }
 
   closeModalPrint() {
     this.showModal = false;
   }
-  async shareModal() {
-    const modalElement = document.querySelector('.modal-content') as HTMLElement;
 
-    if (!modalElement) {
+  async shareModal() {
+    const original = document.querySelector('.modal-content') as HTMLElement;
+
+    if (!original) {
       console.error("No se encontró el modal");
       return;
     }
 
-    // Generar canvas ignorando elementos con la clase "no-print"
-    const canvas = await html2canvas(modalElement, {
-      ignoreElements: (element) => element.classList.contains('no-print')
+    // Clonar modal
+    const clone = original.cloneNode(true) as HTMLElement;
+    clone.style.position = 'fixed';
+    clone.style.top = '-9999px';
+    clone.style.left = '-9999px';
+    clone.style.zIndex = '999999';
+
+    // Quitar TODAS las clases Tailwind (que generan oklch)
+    this.removeTailwindClasses(clone);
+
+    // Colores seguros
+    clone.style.background = "#1f2937";      // gris oscuro estable
+    clone.style.color = "#ffffff";          // texto blanco
+    clone.style.border = "1px solid #4b5563";
+    clone.style.padding = "20px";
+    clone.style.borderRadius = "12px";
+
+    // Arreglar imágenes internas
+    clone.querySelectorAll("img").forEach((img: any) => {
+      img.style.boxShadow = "0 4px 12px rgba(0,0,0,0.25)";
+      img.style.borderRadius = "8px";
     });
 
-    const dataUrl = canvas.toDataURL("image/png");
+    document.body.appendChild(clone);
 
-    // Pasar a Blob
-    const response = await fetch(dataUrl);
-    const blob = await response.blob();
+    const canvas = await html2canvas(clone, {
+      backgroundColor: "#1f2937",
+      useCORS: true,
+      scale: 2,
+    });
+
+    document.body.removeChild(clone);
+
+    const dataUrl = canvas.toDataURL("image/png");
+    const blob = await (await fetch(dataUrl)).blob();
     const file = new File([blob], "inscripcion.png", { type: blob.type });
 
-    // Si navegador soporta compartir (móvil con WhatsApp, Telegram, etc.)
     if (navigator.share && navigator.canShare({ files: [file] })) {
       await navigator.share({
         title: "Inscripción",
         text: "Aquí está mi inscripción con QR",
-        files: [file]
+        files: [file],
       });
     } else {
-      // En PC → descarga la imagen
-      const link = document.createElement("a");
-      link.href = dataUrl;
-      link.download = "inscripcion.png";
-      link.click();
+      const a = document.createElement("a");
+      a.href = dataUrl;
+      a.download = "inscripcion.png";
+      a.click();
     }
   }
 
+  /** ELIMINA TODAS LAS CLASES TAILWIND DEL CLON */
+  removeTailwindClasses(element: HTMLElement) {
+    // Para el nodo principal
+    if ("className" in element && typeof element.className === "string") {
+      element.className = "";
+    } else if (element instanceof SVGElement) {
+      element.removeAttribute("class");
+    }
+
+    // Para todos sus hijos
+    element.querySelectorAll("*").forEach((el: any) => {
+      if ("className" in el && typeof el.className === "string") {
+        el.className = "";
+      } else if (el instanceof SVGElement) {
+        el.removeAttribute("class");
+      }
+    });
+  }
+
+
+
+
+  goUsefulVacations() {
+    const tablePositions = document.getElementById('useful-inscriptions')
+    if (tablePositions) {
+      tablePositions.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  goSeminarRegistration() {
+    // const tablePositions = document.getElementById('seminar-inscriptions')
+    // if (tablePositions) {
+    //   tablePositions.scrollIntoView({ behavior: 'smooth' })
+    // }
+    this.router.navigate(['/seminar-register']);
+  }
+
+  // En tu componente TypeScript
+  snowflakes = Array.from({ length: 20 }, (_, i) => ({
+    left: `${Math.random() * 100}%`,
+    size: `${0.8 + Math.random() * 1.2}em`,
+    color: `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.5})`,
+    duration: `${10 + Math.random() * 15}s`,
+    delay: `${Math.random() * 10}s`,
+    symbol: ['❄', '❅', '❆', '✻', '✼'][Math.floor(Math.random() * 5)]
+  }));
 }

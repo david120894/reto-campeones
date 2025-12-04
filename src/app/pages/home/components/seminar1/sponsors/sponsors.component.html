@@ -1,0 +1,67 @@
+<section class="py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header Section -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-yellow-500 mb-4">Nuestros Organizadores y Coorganizadores</h2>
+<!--      <p class="text-lg text-foreground/60 max-w-2xl mx-auto">-->
+<!--        Contamos con el respaldo de instituciones líderes en el sector deportivo y educativo-->
+<!--      </p>-->
+    </div>
+
+    <!-- Slider Container -->
+    <div class="relative bg-card rounded-xl p-12 border border-border">
+
+      <!-- Sponsor Logo -->
+      <div class="flex items-center justify-center h-40">
+          <img
+            [src]="currentSponsor.logo"
+            [alt]="currentSponsor.name"
+            class="max-h-full max-w-full object-contain transition-all duration-300"
+            onerror="this.src='/assets/images/placeholder-logo.png'"
+          />
+      </div>
+
+      <!-- Navigation Buttons -->
+      <button
+        (click)="goToPrevious()"
+        class="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition"
+        aria-label="Sponsor anterior"
+        type="button"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </button>
+
+      <button
+        (click)="goToNext()"
+        class="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition"
+        aria-label="Siguiente sponsor"
+        type="button"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
+
+      <!-- Sponsor Info -->
+      <div class="mt-6 text-center">
+        <p class="text-xl text-foreground/60 mb-2">{{ currentSponsor.name }}</p>
+        <p class="text-md text-primary/70 capitalize font-medium">
+           {{ currentSponsor.category }}
+        </p>
+      </div>
+
+      <!-- Dots Indicator -->
+      <div class="flex justify-center gap-2 mt-4">
+        <button
+          *ngFor="let sponsor of allSponsors; let idx = index"
+          (click)="goToSlide(idx)"
+          [class]="idx === currentIndex ? 'w-2 h-2 rounded-full bg-primary transition' : 'w-2 h-2 rounded-full bg-primary/30 transition'"
+          [attr.aria-label]="'Ir al auspiciador ' + (idx + 1)"
+          type="button"
+        ></button>
+      </div>
+    </div>
+  </div>
+</section>

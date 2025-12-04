@@ -4,42 +4,164 @@
 @tailwind utilities;
 @import 'swiper/swiper-bundle.css';
 
-
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
 }
 
-body{
-    overflow-x: hidden;
+body {
+  overflow-x: hidden;
 }
+
 @import "@ng-select/ng-select/themes/default.theme.css";
 
-/* styles.css o global */
-//.loading-overlay {
-//  position: fixed;
-//  top: 0;
-//  left: 0;
-//  width: 100%;
-//  height: 100%;
-//  background: rgba(255, 255, 255, 0.75);
-//  z-index: 1000;
-//  display: flex;
-//  justify-content: center;
-//  align-items: center;
-//}
-//.spinner {
-//  width: 48px;
-//  height: 48px;
-//  border: 6px solid #ccc;
-//  border-top-color: #3f51b5;
-//  border-radius: 50%;
-//  animation: spin 0.8s linear infinite;
-//}
-//@keyframes spin {
-//  to {
-//    transform: rotate(360deg);
-//  }
-//}
+@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:is(.dark *));
+
+/* ==========================
+   ROOT (LIGHT MODE)
+========================== */
+:root {
+  --background: rgb(250, 249, 246);
+  --foreground: rgb(40, 40, 60);
+  --card: rgb(255, 255, 255);
+  --card-foreground: rgb(40, 40, 60);
+  --popover: rgb(255, 255, 255);
+  --popover-foreground: rgb(40, 40, 60);
+
+  /* Burgundy */
+  --primary: oklch(0.326 0.129 24.831);
+  --primary-foreground: rgb(255, 255, 255);
+
+  /* Gold */
+  --secondary: rgb(220, 170, 80);
+  --secondary-foreground: rgb(40, 40, 60);
+
+  --muted: rgb(235, 235, 240);
+  --muted-foreground: rgb(90, 90, 120);
+
+  --accent: rgb(220, 170, 80);
+  --accent-foreground: rgb(40, 40, 60);
+
+  --destructive: rgb(190, 60, 50);
+  --destructive-foreground: rgb(255, 255, 255);
+
+  --border: rgb(225, 225, 230);
+  --input: rgb(240, 240, 245);
+  --ring: rgb(92, 44, 45);
+
+  /* Chart colors */
+  --chart-1: rgb(92, 44, 45);
+  --chart-2: rgb(220, 170, 80);
+  --chart-3: rgb(120, 80, 40);
+  --chart-4: rgb(200, 150, 70);
+  --chart-5: rgb(80, 50, 35);
+
+  --radius: 0.625rem;
+
+  --sidebar: rgb(250, 249, 246);
+  --sidebar-foreground: rgb(40, 40, 60);
+  --sidebar-primary: rgb(92, 44, 45);
+  --sidebar-primary-foreground: rgb(255, 255, 255);
+  --sidebar-accent: rgb(220, 170, 80);
+  --sidebar-accent-foreground: rgb(40, 40, 60);
+  --sidebar-border: rgb(225, 225, 230);
+  --sidebar-ring: rgb(92, 44, 45);
+}
+
+/* ==========================
+   DARK MODE
+========================== */
+.dark {
+  --background: rgb(40, 40, 60);
+  --foreground: rgb(250, 249, 246);
+
+  --card: rgb(45, 45, 70);
+  --card-foreground: rgb(250, 249, 246);
+
+  --popover: rgb(45, 45, 70);
+  --popover-foreground: rgb(250, 249, 246);
+
+  --primary: rgb(140, 70, 70);
+  --primary-foreground: rgb(255, 255, 255);
+
+  --secondary: rgb(230, 180, 90);
+  --secondary-foreground: rgb(250, 249, 246);
+
+  --muted: rgb(70, 70, 100);
+  --muted-foreground: rgb(200, 200, 220);
+
+  --accent: rgb(230, 180, 90);
+  --accent-foreground: rgb(250, 249, 246);
+
+  --destructive: rgb(150, 50, 40);
+  --destructive-foreground: rgb(255, 180, 180);
+
+  --border: rgb(70, 70, 100);
+  --input: rgb(60, 60, 90);
+  --ring: rgb(140, 70, 70);
+
+  --chart-1: rgb(140, 70, 70);
+  --chart-2: rgb(230, 180, 90);
+  --chart-3: rgb(160, 100, 60);
+  --chart-4: rgb(210, 160, 80);
+  --chart-5: rgb(140, 90, 60);
+
+  --sidebar: rgb(40, 40, 60);
+  --sidebar-foreground: rgb(250, 249, 246);
+  --sidebar-primary: rgb(140, 70, 70);
+  --sidebar-primary-foreground: rgb(255, 255, 255);
+  --sidebar-accent: rgb(230, 180, 90);
+  --sidebar-accent-foreground: rgb(250, 249, 246);
+  --sidebar-border: rgb(70, 70, 100);
+  --sidebar-ring: rgb(140, 70, 70);
+}
+
+/* ==========================
+   TAILWIND THEME MAPPING
+========================== */
+@theme inline {
+  --font-sans: "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}

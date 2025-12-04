@@ -1,0 +1,52 @@
+<!-- photo-card.component.html -->
+<div
+  (click)="onClick()"
+  class="relative overflow-hidden rounded-lg cursor-pointer group h-64 sm:h-72 w-full"
+  [class.pointer-events-none]="isLoading">
+
+  <!-- Loading State -->
+  <div
+    *ngIf="isLoading"
+    class="absolute inset-0 bg-gray-100 flex items-center justify-center rounded-lg z-10">
+
+    <!-- Spinner giratorio -->
+    <div class="text-center">
+      <div class="relative mx-auto">
+        <div class="w-12 h-12 border-4 border-gray-300 rounded-full"></div>
+        <div class="w-12 h-12 border-4 border-red-600 border-t-transparent rounded-full absolute top-0 left-0 animate-spin"></div>
+      </div>
+
+      <div class="mt-3">
+        <span class="text-gray-500 text-sm">Cargando...</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Image -->
+  <img
+    *ngIf="!imageError"
+    [src]="imageSrc"
+    [alt]="photo.alt"
+    (load)="onImageLoad()"
+    (error)="onImageError()"
+    class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+    [class.hidden]="isLoading">
+
+  <!-- Error State -->
+  <div
+    *ngIf="imageError && !isLoading"
+    class="absolute inset-0 bg-gray-200 flex items-center justify-center rounded-lg">
+    <div class="text-center">
+      <span class="text-gray-400 text-4xl mb-2 block">📷</span>
+      <span class="text-gray-500 text-sm">Error al cargar</span>
+    </div>
+  </div>
+
+  <!-- Hover Overlay -->
+  <div
+    *ngIf="!isLoading && !imageError"
+    class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+    <div class="text-white text-3xl transform scale-75 group-hover:scale-100 transition-transform duration-300">🔍</div>
+  </div>
+</div>

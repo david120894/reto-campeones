@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core'
 import { HeaderComponent } from '../core/components/header/header.component';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router'
 import { FooterComponent } from '../core/components/footer/footer.component';
 import { Observable } from 'rxjs';
 import { LoadingService } from '../core/services/loading.service';
@@ -15,11 +15,20 @@ const DECLARATIONS = [HeaderComponent, FooterComponent];
   templateUrl: './pages.component.html',
   styleUrl: './pages.component.scss',
 })
-export class PagesComponent {
+
+export class PagesComponent implements OnInit{
+  @Input() typeSection!: string;
+
+  activaRoute = inject(ActivatedRoute)
   loading$: Observable<boolean>;
 
   constructor(private loadingService: LoadingService) {
     this.loading$ = this.loadingService.loading$;
+  }
+
+  ngOnInit(): void {
+    const params = this.activaRoute.snapshot.params['id']
+    console.log(params)
   }
 }
 

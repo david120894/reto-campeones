@@ -1,0 +1,533 @@
+<section id="seminar-inscriptions" class="py-8 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-4xl mx-auto">
+    <div class="bg-white shadow-xl rounded-2xl overflow-hidden">
+      <div class="w-full flex justify-center items-center bg-gray-50 py-6 border-b border-gray-200">
+        <img
+          src="/seminar/logo2.png"
+          alt="Seminar Logo"
+          class="max-h-48 w-auto object-contain"
+        >
+      </div>
+
+      <form [formGroup]="formSeminar" (ngSubmit)="onSubmit()" class="p-6 sm:p-8">
+
+        <!-- Información Personal -->
+        <div class="mb-10">
+          <h2 class="text-xl font-semibold text-gray-800 mb-6 pb-2 border-b border-gray-200">
+            <i class="fas fa-user text-blue-600 mr-2"></i>
+            Información Personal
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Nombre -->
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
+                Nombres *
+              </label>
+              <input
+                id="name"
+                type="text"
+                formControlName="name"
+                [class]="hasError('name', 'required') ?
+                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
+                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'"
+                placeholder="Ingrese sus nombres">
+              <div *ngIf="hasError('name', 'required')" class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                Este campo es requerido
+              </div>
+            </div>
+
+            <!-- Apellidos -->
+            <div>
+              <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">
+                Apellidos *
+              </label>
+              <input
+                id="lastName"
+                type="text"
+                formControlName="lastName"
+                [class]="hasError('lastName', 'required') ?
+                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
+                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'"
+                placeholder="Ingrese sus apellidos">
+              <div *ngIf="hasError('lastName', 'required')" class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                Este campo es requerido
+              </div>
+            </div>
+
+            <!-- DNI -->
+            <div>
+              <label for="dni" class="block text-sm font-medium text-gray-700 mb-2">
+                DNI *
+              </label>
+              <input
+                id="dni"
+                type="text"
+                formControlName="dni"
+                (input)="onDniInput($event)"
+                maxlength="8"
+                [class]="hasError('dni', 'required') || hasError('dni', 'pattern') ?
+      'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
+      'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'"
+                placeholder="Ingrese 8 dígitos">
+
+              <!-- Mensajes de error -->
+              <div *ngIf="hasError('dni', 'required') || hasError('dni', 'pattern')"
+                   class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                {{ getDniErrorMessage() }}
+              </div>
+
+              <!-- Mensaje de éxito cuando es válido -->
+              <div *ngIf="formSeminar.get('dni')?.valid && formSeminar.get('dni')?.touched"
+                   class="mt-1 text-sm text-green-600 flex items-center">
+                <i class="fas fa-check-circle mr-1"></i>
+                DNI válido
+              </div>
+            </div>
+
+            <!-- Fecha de Nacimiento -->
+            <div>
+              <label for="birthDate" class="block text-sm font-medium text-gray-700 mb-2">
+                Fecha de Nacimiento *
+              </label>
+              <input
+                id="birthDate"
+                type="date"
+                formControlName="birthDate"
+                [class]="hasError('birthDate', 'required') ?
+                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
+                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'">
+              <div *ngIf="hasError('birthDate', 'required')" class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                Este campo es requerido
+              </div>
+            </div>
+
+            <!-- Edad (Calculada automáticamente) -->
+            <div>
+              <label for="age" class="block text-sm font-medium text-gray-700 mb-2">
+                Edad
+              </label>
+              <div class="relative">
+                <input
+                  id="age"
+                  type="text"
+                  formControlName="age"
+                  readonly
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-700 cursor-not-allowed"
+                  [placeholder]="getAgeText()">
+                <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                  <i class="fas fa-calculator text-gray-400"></i>
+                </div>
+              </div>
+              <p class="mt-1 text-xs text-gray-500 flex items-center">
+                <i class="fas fa-info-circle mr-1"></i>
+                Calculado automáticamente
+              </p>
+            </div>
+
+            <!-- Género -->
+            <div>
+              <label for="gender" class="block text-sm font-medium text-gray-700 mb-2">
+                Género *
+              </label>
+              <select
+                id="gender"
+                formControlName="gender"
+                [class]="hasError('gender', 'required') ?
+                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
+                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'">
+                <option value="">Seleccione su género</option>
+                <option *ngFor="let gender of genders" [value]="gender.value">
+                  {{ gender.label }}
+                </option>
+              </select>
+              <div *ngIf="hasError('gender', 'required')" class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                Este campo es requerido
+              </div>
+            </div>
+
+            <!-- Teléfono -->
+            <div>
+              <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
+                Teléfono *
+              </label>
+              <input
+                id="phone"
+                type="tel"
+                formControlName="phone"
+                (input)="onPhoneInput($event)"
+                maxlength="9"
+                [class]="hasError('phone', 'required') ?
+                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
+                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'"
+                placeholder="Ingrese su teléfono">
+              <div *ngIf="hasError('phone', 'required') || hasError('phone', 'pattern')"
+                   class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                {{ getPhoneErrorMessage() }}
+              </div>
+
+              <!-- Mensaje de éxito cuando es válido -->
+              <div *ngIf="formSeminar.get('phone')?.valid && formSeminar.get('phone')?.touched"
+                   class="mt-1 text-sm text-green-600 flex items-center">
+                <i class="fas fa-check-circle mr-1"></i>
+                Telefono válido
+              </div>
+            </div>
+            <div class="">
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                Correo Electrónico *
+              </label>
+              <input
+                id="email"
+                type="email"
+                formControlName="email"
+                [class]="hasError('email', 'required') || hasError('email', 'email') ?
+                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
+                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'"
+                placeholder="ejemplo@correo.com">
+              <div *ngIf="hasError('email', 'required')" class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                Este campo es requerido
+              </div>
+              <div *ngIf="hasError('email', 'email')" class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                Ingrese un correo válido
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Información Profesional -->
+        <div class="mb-10">
+          <h2 class="text-xl font-semibold text-gray-800 mb-6 pb-2 border-b border-gray-200">
+            <i class="fas fa-briefcase text-purple-600 mr-2"></i>
+            Información Profesional
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Grado Académico -->
+            <div>
+              <label for="academicDegree" class="block text-sm font-medium text-gray-700 mb-2">
+                Grado Académico *
+              </label>
+              <input
+                id="academicDegree"
+                type="text"
+                formControlName="academicDegree"
+                [class]="hasError('profession', 'required') ?
+                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
+                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'"
+                placeholder="Ingrese su profesión">
+              <div *ngIf="hasError('academicDegree', 'required')" class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                Este campo es requerido
+              </div>
+            </div>
+
+            <!-- Profesión -->
+            <div>
+              <label for="profession" class="block text-sm font-medium text-gray-700 mb-2">
+                Profesión *
+              </label>
+              <input
+                id="profession"
+                type="text"
+                formControlName="profession"
+                [class]="hasError('profession', 'required') ?
+                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
+                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'"
+                placeholder="Ingrese su profesión">
+              <div *ngIf="hasError('profession', 'required')" class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                Este campo es requerido
+              </div>
+            </div>
+            <!-- Lugar de Trabajo -->
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
+            <div>
+              <label for="workplace" class="block text-sm font-medium text-gray-700 mb-2">
+                Lugar de Trabajo *
+              </label>
+              <input
+                id="workplace"
+                type="text"
+                formControlName="workplace"
+                [class]="hasError('workplace', 'required') ?
+                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :
+                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'"
+                placeholder="Ingrese su lugar de trabajo">
+              <div *ngIf="hasError('workplace', 'required')" class="mt-1 text-sm text-red-600 flex items-center">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                Este campo es requerido
+              </div>
+            </div>
+            <!--            <div>-->
+            <!--              <label for="participant" class="block text-sm font-medium text-gray-700 mb-2">-->
+            <!--                Tipo de Participante *-->
+            <!--              </label>-->
+            <!--              <select-->
+            <!--                id="participant"-->
+            <!--                formControlName="typeParticipant"-->
+            <!--                [class]="hasError('participant', 'required') ?-->
+            <!--                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :-->
+            <!--                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'">-->
+            <!--                <option value="">Seleccione la modalidad</option>-->
+            <!--                <option *ngFor="let participant of participant" [value]="participant.value">-->
+            <!--                  {{ participant.label }}-->
+            <!--                </option>-->
+            <!--              </select>-->
+            <!--              <div *ngIf="hasError('participant', 'required')" class="mt-1 text-sm text-red-600 flex items-center">-->
+            <!--                <i class="fas fa-exclamation-circle mr-1"></i>-->
+            <!--                Este campo es requerido-->
+            <!--              </div>-->
+            <!--            </div>-->
+          </div>
+
+        </div>
+
+        <!-- Información del Seminario -->
+        <!--        <div class="mb-10">-->
+        <!--          <h2 class="text-xl font-semibold text-gray-800 mb-6 pb-2 border-b border-gray-200">-->
+        <!--            <i class="fas fa-calendar-alt text-orange-600 mr-2"></i>-->
+        <!--            Información del Seminario-->
+        <!--          </h2>-->
+
+        <!--          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">-->
+        <!--            &lt;!&ndash; Modalidad &ndash;&gt;-->
+        <!--            <div>-->
+        <!--              <label for="modality" class="block text-sm font-medium text-gray-700 mb-2">-->
+        <!--                Modalidad *-->
+        <!--              </label>-->
+        <!--              <select-->
+        <!--                id="modality"-->
+        <!--                formControlName="modality"-->
+        <!--                [class]="hasError('modality', 'required') ?-->
+        <!--                  'w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors' :-->
+        <!--                  'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors'">-->
+        <!--                <option value="">Seleccione la modalidad</option>-->
+        <!--                <option *ngFor="let modality of modalities" [value]="modality.value">-->
+        <!--                  {{ modality.label }}-->
+        <!--                </option>-->
+        <!--              </select>-->
+        <!--              <div *ngIf="hasError('modality', 'required')" class="mt-1 text-sm text-red-600 flex items-center">-->
+        <!--                <i class="fas fa-exclamation-circle mr-1"></i>-->
+        <!--                Este campo es requerido-->
+        <!--              </div>-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--        </div>-->
+
+        <!-- Botones de Acción -->
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-gray-200">
+          <!-- Botón de regresar a la izquierda -->
+          <button
+            type="button"
+            [routerLink]="['/main','seminar']"
+            class="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition-colors flex items-center justify-center order-1 sm:order-1">
+            <i class="fas fa-arrow-left mr-2"></i>
+            Regresar
+          </button>
+
+          <!-- Contenedor de botones a la derecha -->
+          <div class="flex flex-col sm:flex-row gap-4 order-2 sm:order-2">
+            <button
+              type="button"
+              (click)="resetForm()"
+              class="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition-colors flex items-center justify-center">
+              <i class="fas fa-redo mr-2"></i>
+              Limpiar Formulario
+            </button>
+
+            <button
+              type="submit"
+              [disabled]="formSeminar.invalid || loading()"
+              class="px-8 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center min-w-[150px]">
+              <!-- Spinner cuando está cargando -->
+              <div *ngIf="loading()" class="flex items-center justify-center">
+                <svg class="animate-spin h-5 w-5 text-white mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span>Enviando...</span>
+              </div>
+
+              <!-- Texto normal cuando no está cargando -->
+              <div *ngIf="!loading()" class="flex items-center">
+                <i class="fas fa-paper-plane mr-2"></i>
+                <span>Enviar Registro</span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal de Éxito -->
+  <div *ngIf="showSuccessModal()" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+
+      <!-- Header del Modal -->
+      <div class="sticky top-0 bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-4 rounded-t-2xl">
+        <div class="flex justify-between items-center">
+          <div class="text-white">
+            <h2 class="text-xl font-bold">✅ Registro Exitoso</h2>
+            <p class="text-blue-100 text-sm">Su inscripción ha sido procesada correctamente</p>
+          </div>
+          <button
+            (click)="closeModal()"
+            class="text-white hover:text-gray-200 text-2xl"
+          >
+            &times;
+          </button>
+        </div>
+      </div>
+
+      <!-- Contenido del Modal -->
+      <div class="p-6" id="printable-content">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+          <!-- Información Personal -->
+          <div class="space-y-6">
+            <div class="bg-blue-50 p-5 rounded-xl border border-blue-200">
+              <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-user-circle text-blue-600 mr-2"></i>
+                Información del Participante
+              </h3>
+
+              <div class="space-y-3">
+                <div class="flex justify-between items-center border-b border-gray-100 pb-2">
+                  <span class="text-gray-600 font-medium">Nombre Completo:</span>
+                  <span class="text-gray-800 font-semibold">
+                    {{ seminarResponse()?.name }} {{ seminarResponse()?.lastName }}
+                  </span>
+                </div>
+
+                <div class="flex justify-between items-center border-b border-gray-100 pb-2">
+                  <span class="text-gray-600 font-medium">DNI:</span>
+                  <span class="text-gray-800 font-semibold">{{ seminarResponse()?.dni }}</span>
+                </div>
+
+                <div class="flex justify-between items-center border-b border-gray-100 pb-2">
+                  <span class="text-gray-600 font-medium">Fecha de Registro:</span>
+                  <span class="text-gray-800 font-semibold">{{ formatDate(seminarResponse()?.createAt || '') }}</span>
+                </div>
+
+<!--                <div class="flex justify-between items-center border-b border-gray-100 pb-2">-->
+<!--                  <span class="text-gray-600 font-medium">Código Único:</span>-->
+<!--                  <span class="text-blue-600 font-bold">REG-{{ seminarResponse()?.dni }}</span>-->
+<!--                </div>-->
+              </div>
+            </div>
+
+            <!-- Instrucciones -->
+            <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+              <h4 class="font-semibold text-yellow-800 mb-2 flex items-center">
+                <i class="fas fa-info-circle mr-2"></i>
+                Instrucciones Importantes
+              </h4>
+              <ul class="text-sm text-yellow-700 space-y-1">
+                <li>• Guarde este comprobante de registro</li>
+                <li>• Presente el código QR al ingresar al evento</li>
+                <li>• Lleve consigo su documento de identidad</li>
+                <li>• La inscripción es personal e intransferible</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Código QR -->
+          <div class="space-y-6">
+            <div class="bg-white p-5 rounded-xl border border-gray-200 text-center">
+              <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                <i class="fas fa-qrcode text-green-600 mr-2"></i>
+                Código QR de Acceso
+              </h3>
+
+              <!-- Contenedor del QR -->
+              <div class="flex justify-center mb-4">
+                <div class="bg-white p-4 rounded-lg border-2 border-dashed border-gray-300 inline-block">
+                  <img
+                    [src]="qrImageUrl"
+                    alt="Código QR"
+                    class="w-64 h-64 mx-auto"
+                  />
+                </div>
+              </div>
+
+              <p class="text-sm text-gray-600 mb-2">
+                Escanee este código para verificar su asistencia
+              </p>
+              <p class="text-xs text-gray-500">
+                Código generado: {{ seminarResponse()?.createAt | date:'short' }}
+              </p>
+            </div>
+
+            <!-- Logo del Seminario -->
+            <div class="text-center">
+              <div class="inline-block bg-gray-50 p-4 rounded-lg">
+                <img
+                  src="/seminar/logo2.png"
+                  alt="Logo del Seminario"
+                  class="h-20 w-auto mx-auto"
+                />
+                <p class="text-sm text-gray-600 mt-2">Seminario Profesional</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mensaje de confirmación -->
+        <div class="mt-6 p-4 bg-green-50 rounded-lg border border-green-200 text-center">
+          <div class="flex items-center justify-center">
+            <i class="fas fa-check-circle text-green-600 text-2xl mr-3"></i>
+            <div>
+<!--              <p class="font-semibold text-green-800">-->
+<!--                {{ seminarResponse()?.qrCode?.message || 'QR Code generado exitosamente' }}-->
+<!--              </p>-->
+              <p class="text-sm text-green-700 mt-1">
+                Su registro ha sido confirmado y está listo para participar
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botones de Acción del Modal -->
+      <div class="sticky bottom-0 bg-gray-50 px-6 py-4 border-t border-gray-200 rounded-b-2xl">
+        <div class="flex flex-col sm:flex-row gap-3 justify-between">
+          <div class="flex flex-col sm:flex-row gap-3">
+            <button
+              (click)="downloadQRCode()"
+              class="px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center"
+            >
+              <i class="fas fa-download mr-2"></i>
+              Descargar QR
+            </button>
+
+            <button
+              (click)="printRegistration()"
+              class="px-5 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center"
+            >
+              <i class="fas fa-print mr-2"></i>
+              Imprimir Inscripción
+            </button>
+          </div>
+
+          <button
+            (click)="closeModal()"
+            class="px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+          >
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

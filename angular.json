@@ -37,13 +37,6 @@
             "scripts": [
               "node_modules/flowbite/dist/flowbite.min.js",
               "node_modules/simple-datatables/dist/umd/simple-datatables.js"
-            ],
-            "allowedCommonJsDependencies": [
-              "canvg",
-              "html2canvas",
-              "rgbcolor",
-              "raf",
-              "core-js"
             ]
           },
           "configurations": {
@@ -56,8 +49,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "15kB",
-                  "maximumError": "20kB"
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
                 }
               ],
               "outputHashing": "all"
@@ -110,6 +103,6 @@
     }
   },
   "cli": {
-    "analytics": "9d01f2f9-804e-43dc-a561-11132bb94ca7"
+    "analytics": "777ee8eb-2877-44e3-8a70-4590f5352f15"
   }
 }

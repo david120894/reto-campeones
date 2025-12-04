@@ -1,0 +1,34 @@
+<!-- lightbox-modal.component.html -->
+<div
+  *ngIf="isOpen"
+  class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 modal-backdrop"
+  (click)="onBackdropClick($event)">
+
+  <div
+    class="relative w-full max-w-4xl aspect-video"
+    (click)="$event.stopPropagation()">
+
+    <!-- Loading State -->
+    <div
+      *ngIf="isLoading"
+      class="absolute inset-0 bg-muted/20 animate-pulse rounded-lg">
+    </div>
+
+    <!-- Image -->
+    <img
+      [src]="imageUrl"
+      alt="Foto ampliada"
+      (load)="onImageLoad()"
+      class="w-full h-full object-contain rounded-lg"
+      [class.hidden]="isLoading">
+
+    <!-- Close Button -->
+    <button
+      (click)="onClose()"
+      class="absolute -top-12 right-0 text-white hover:text-primary transition-colors text-3xl font-bold"
+      type="button"
+      aria-label="Cerrar">
+      ✕
+    </button>
+  </div>
+</div>

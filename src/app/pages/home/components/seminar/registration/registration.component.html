@@ -1,0 +1,134 @@
+<section id="useful-inscriptions" class="py-4 bg-gradient-to-b from-primary/10 to-accent/10">
+  <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-bold text-yellow-500 mb-4">Inscríbete Ahora</h2>
+    </div>
+
+    <div class="p-8 rounded-xl border border-primary/20 bg-blue-100">
+      <form *ngIf="!submitted; else successTemplate" [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="space-y-6">
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-medium text-foreground mb-2">Nombre del estudiante *</label>
+            <input
+              type="text"
+              formControlName="nombre"
+              class="w-full px-4 py-2 rounded-lg border border-border text-foreground placeholder-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50"
+              placeholder="Juan Pérez"
+            >
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-foreground mb-2">Edad *</label>
+            <input
+              type="number"
+              formControlName="edad"
+              class="w-full px-4 py-2 rounded-lg border border-border text-foreground placeholder-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50"
+              placeholder="12"
+            >
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-medium text-foreground mb-2">Email del apoderado *</label>
+            <input
+              type="email"
+              formControlName="email"
+              class="w-full px-4 py-2 rounded-lg border border-border text-foreground placeholder-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50"
+              placeholder="correo@ejemplo.com"
+            >
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-foreground mb-2">Teléfono *</label>
+            <input
+              type="tel"
+              formControlName="telefono"
+              class="w-full px-4 py-2 rounded-lg border border-border text-foreground placeholder-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50"
+              placeholder="555-0000"
+            >
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-foreground mb-2">Grupo de edad *</label>
+          <select
+            formControlName="grupoEdad"
+            class="w-full px-4 py-2 rounded-lg border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+          >
+            <option value="">Selecciona un grupo de edad</option>
+            <option value="6-9">6 - 9 años</option>
+            <option value="10-12">10 - 12 años</option>
+            <option value="13-16">13 - 16 años</option>
+          </select>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-medium text-foreground mb-2">Categoría *</label>
+            <select
+              formControlName="categoria"
+              [disabled]="!registrationForm.get('grupoEdad')?.value"
+              class="w-full px-4 py-2 rounded-lg border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 disabled:opacity-50"
+            >
+              <option value="">Selecciona una categoría</option>
+              <option value="CULTURAL">Cultural</option>
+              <option value="DEPORTIVO">Deportivo</option>
+              <option value="DE DESARROLLO">De Desarrollo</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-foreground mb-2">Disciplina *</label>
+            <select
+              formControlName="disciplina"
+              [disabled]="!registrationForm.get('categoria')?.value"
+              class="w-full px-4 py-2 rounded-lg border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 disabled:opacity-50"
+            >
+              <option value="">Selecciona una disciplina</option>
+              <option *ngFor="let disc of availableDisciplinas" [value]="disc">
+                {{disc}}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-foreground mb-2">Nombre del apoderado *</label>
+          <input
+            type="text"
+            formControlName="padre"
+            class="w-full px-4 py-2 rounded-lg border border-border text-foreground placeholder-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50"
+            placeholder="Carlos García"
+          >
+        </div>
+
+        <div class="flex items-start gap-3">
+          <input
+            type="checkbox"
+            formControlName="aceptaTerminos"
+            class="mt-1"
+          >
+          <label class="text-sm text-foreground/70">
+            Acepto los términos y condiciones, y autorizo el procesamiento de mis datos personales *
+          </label>
+        </div>
+
+        <button
+          type="submit"
+          [disabled]="!registrationForm.valid"
+          class="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 font-semibold rounded-lg disabled:opacity-50"
+        >
+          Enviar Inscripción
+        </button>
+      </form>
+
+      <ng-template #successTemplate>
+        <div class="text-center py-12">
+          <div class="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">✓</span>
+          </div>
+          <h3 class="text-xl font-bold text-foreground mb-2">¡Inscripción enviada!</h3>
+          <p class="text-foreground/60">Nos pondremos en contacto contigo pronto</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</section>

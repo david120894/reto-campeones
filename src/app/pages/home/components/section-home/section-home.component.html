@@ -1,244 +1,880 @@
-  <!-- Hero Section -->
-  <section id="home"
-           class="hero-section relative min-h-screen flex items-center justify-center bg-black"
-           style="background-image: url('championship/fondo-cusco.jpeg');
-           background-size: cover;
-           background-position: center;
-           background-repeat: no-repeat;">
+<!-- Hero Section -->
+<!-- Agrega esto al principio del hero-section, después del opening tag -->
+<!-- Agrega esto en el background elements -->
+<section id="home"
+         class="hero-section min-h-screen overflow-hidden">
+  <!-- Efecto navideño dinámico -->
+  <div class="snowflakes" aria-hidden="true">
+    <div *ngFor="let flake of snowflakes; let i = index"
+         class="snowflake"
+         [style.left]="flake.left"
+         [style.font-size]="flake.size"
+         [style.animation-duration]="flake.duration"
+         [style.color]="flake.color"
+         [style.animation-delay]="flake.delay">
+      {{ flake.symbol }}
+    </div>
+  </div>
 
-    <!-- Overlay -->
-    <div class="absolute inset-0 bg-black bg-opacity-50">
+  <!-- Luces navideñas mejoradas -->
+  <div class="christmas-lights">
+    <div class="light red"></div>
+    <div class="light green"></div>
+    <div class="light blue"></div>
+    <div class="light yellow"></div>
+    <div class="light purple"></div>
+    <div class="light red"></div>
+    <div class="light green"></div>
+    <div class="light blue"></div>
+    <div class="light yellow"></div>
+    <div class="light purple"></div>
+  </div>
+  <!-- Background Elements -->
+  <div class="absolute inset-0">
+    <!-- Animated Gradients -->
+    <div class="absolute top-0 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+    <div
+      class="absolute top-1/4 right-0 w-80 h-80 bg-orange-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+    <div
+      class="absolute bottom-0 left-1/3 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+
+    <!-- Grid Overlay -->
+    <div
+      class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]"></div>
+  </div>
+
+  <div class="relative z-10 container mx-auto px-4 pt-12 rounded-3xl">
+
+    <!-- Header Section -->
+    <div class="text-center my-24 md:my-16">
+
+      <!-- -->
+
+      <h2  class="text-lg md:text-2xl text-yellow-700 rounded-full font-bold max-w-3xl mx-auto leading-relaxed ">
+<!--        Eventos deportivos y culturales diseñados para crear-->
+        Eventos deportivos diseñados  para impulsar tu rendimiento;
+        crear momentos inolvidables para fortalecer la pasión por el deporte en nuestra comunidad cusqueña
+<!--        <span class="text-orange-400 font-semibold">momentos inolvidables</span>-->
+<!--        y fortalecer nuestra comunidad-->
+      </h2>
     </div>
 
-    <div class="container mx-auto px-4 relative z-8">
-      <div class="flex flex-col lg:flex-row items-center justify-between gap-10">
+    <!-- Navigation Tabs -->
+    <div class="flex justify-center mb-1">
+      <div class="flex justify-center mb-1">
+        <div class="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-2">
+          <div class="flex flex-wrap justify-center gap-2">
 
-        <!-- Left Content -->
-        <div class="w-full lg:w-1/2 text-center lg:text-left">
+            <!-- Bicicleteada -->
+            <button
+              (click)="selectItem(1)"
+              [ngClass]="getTabClasses('bike-ride')"
+              class="flex items-center px-6 py-3 rounded-xl font-semibold transition-all duration-300">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+              Bicicleteada
+            </button>
 
-          <!-- Texto -->
-          @if (selectedItem === 'challenge-champions') {
-            <div class="flex justify-center lg:justify-start mt-[100px] sm:mt-32 md:mt-20 w-full">
-              <img src="championship/logo1.png"
-                   alt="Logo Cusco"
-                   class="w-full max-w-[200px] sm:max-w-[300px] md:max-w-[200px] lg:max-w-[500px] h-auto object-contain">
-            </div>
-            <p class="text-base pl-6 pr-8 md:text-lg lg:text-xl text-white mb-6 max-w-md mx-auto lg:mx-0">
-              El torneo escolar más competitivo del año donde las mejores Instituciones Educativas se enfrentarán por el
-              título de campeón.
-            </p>
-          } @else {
-            <div class="lg:w-1/2 text-center mt-[80px] lg:text-left mb-10 lg:mb-3">
-              <span class="text-orange-500 text-4xl md:text-4xl lg:text-5xl font-bold font-bebas tracking-wide">12 OCTUBRE</span><br>
-              <h1 class="text-4xl md:text-4xl lg:text-4 xl font-bold text-white mb-6 font-bebas tracking-wide">
-                1RA GRAN BICICLETEADA<br>
-                <span class="text-orange-500">FAMILIAR</span><br>
-                "KUSKA MUYUSUNCHIS 2025"
-              </h1>
-              <p class="text-lg md:text-xl text-justify text-white max-w-lg mx-auto lg:mx-0">
-                Recuerda que la inscripción se validará con la entrega de útiles escolares, artículos de limpieza y pañales para adulto mayor
-              </p>
-              <p class="text-lg md:text-xl text-justify text-orange-400 mb-8 font-semibold" >
-                “Pedalea con el corazón, Llega a la meta con el Propósito de compartir y promueve la solidaridad”
-              </p>
-              <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <a routerLink="/user-register"
-                   class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-300 transform hover:scale-105">
-                  ¡Inscribete!
-                </a>
-                <a (click)="openModal()"
-                   class="bg-pink-800 hover:bg-pink-900 text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-300 transform hover:scale-105">
-                  ¡Ver Registro!
-                </a>
-              </div>
+            <!-- Campeonato -->
+            <button
+              (click)="selectItem(0)"
+              [ngClass]="getTabClasses('challenge-champions')"
+              class="flex items-center px-6 py-3 rounded-xl font-semibold transition-all duration-300">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+              </svg>
+              Primer Campeonato Interescolar
+            </button>
 
-            </div>
+            <!-- Seminario -->
+            <button
+              (click)="selectItem(2)"
+              [ngClass]="getTabClasses('seminar')"
+              class="flex items-center px-6 py-3 rounded-xl font-semibold transition-all duration-300">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 14l9-5-9-5-9 5 9 5z"></path>
+              </svg>
+              Seminario
+            </button>
 
-          }
-          <!-- Video -->
-            <div class="flex justify-center lg:justify-start">
-            @if (selectedItem === 'challenge-champions') {
-              <video
-                #videoPlayer
-                src="https://taqe.cusco.gob.pe/publico/web/campeonato/Spot_fin.mp4"
-                type="video/mp4"
-                autoplay
-                loop
-                muted
-                playsinline
-                class="w-full max-w-[480px] rounded-lg shadow-lg aspect-video fade-edges">
-              </video>
-            }@else {
-  <!--            <img src="bike/bike-ride.png">-->
-            }
           </div>
         </div>
+      </div>
 
-        <!-- Right Content (Llama + efectos) -->
-        <div class="w-full relative flex flex-col items-center">
-          <div class="flex justify-center lg:justify-start">
-            @if (selectedItem === 'challenge-champions') {
-              <video
-                #videoPlayer2
-                src="https://taqe.cusco.gob.pe/publico/web/campeonato/FC.mp4"
-                type="video/mp4"
-                autoplay
-                loop
-                muted
-                playsinline
-                class="w-full h-[800px] rounded-lg shadow-lg aspect-video fade-edges2">
-              </video>
-            } @else {
-              <div>
-                <div class="relative
-              -mt-[50px] sm:-mt-[100px] md:-mt-[150px] lg:-mt-[200px]
-              left-0 sm:left-[50px] md:left-[100px] lg:left-[150px]
-              flex justify-center z-10">
-                  <div class="bg-gradient-to-r from-orange-600 via-pink-600 to-purple-700
-                text-white p-4 sm:p-6 rounded-2xl border-4 border-yellow-400
-                animate-pulse-glow w-[90%] sm:max-w-md md:max-w-lg lg:max-w-xl
-                text-center font-bebas md:mx-[150px]">
-                    <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold mb-2 tracking-wide uppercase">
-                      🚴‍♂️ Sábado 11 de Octubre 🚴‍♀️
-                    </h3>
-                    <p class="text-sm sm:text-base md:text-lg font-semibold">
-                      De <span class="text-yellow-300">9:00 am a 1:00 pm</span>
-                      | Parque cerrado
-                      <span class="block mt-2 text-pink-200 italic">
-          Mantenimiento preventivo de bicicletas, previa validacion de la inscripción de su código QR
-        </span>
-                      📍 Plaza San Pedro
-                    </p>
+    </div>
+
+    <!-- Main Events Grid -->
+    <div class="space-y-12">
+
+      <!-- Bike Event Card -->
+      <div *ngIf="selectedItem === 'bike-ride'" class="group relative">
+        <!-- Background Effect -->
+        <div
+          class="absolute inset-0 blur-2xl group-hover:blur-3xl transition-all duration-500 -z-10"></div>
+
+        <div class="backdrop-blur-xl border border-white/10 p-8" style="border-radius: 20px">
+          <div class="flex flex-col lg:flex-row gap-8 items-center">
+
+            <!-- Content -->
+            <div class="flex-1 space-y-6">
+
+              <!-- Badge -->
+              <div class="inline-flex items-center gap-3 bg-primary rounded-2xl px-4 py-2">
+                <div class="w-2 h-2 bg-secondary rounded-full animate-pulse"></div>
+                <span class="text-secondary font-bold text-sm uppercase tracking-wider">Evento Principal</span>
+              </div>
+
+              <!-- Title -->
+              <h2 class="text-4xl md:text-5xl font-bold text-black">
+                Bicicleteada Familiar
+                <span class="block text-2xl md:text-3xl text-secondary mt-2">"Kuska Muyusunchis 2025"</span>
+              </h2>
+
+              <!-- Description -->
+              <p class="text-lg text-gray-700 leading-relaxed">
+                Únete a esta gran jornada familiar donde el deporte se encuentra con la solidaridad.
+                <span class="text-secondary font-semibold">Pedalea con propósito</span> y contribuye
+                a una causa noble mientras creas recuerdos invaluables.
+              </p>
+
+              <!-- Details Grid -->
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+
+                  <!-- Fecha -->
+                  <div class="flex items-center gap-4 p-4 bg-primary/10 rounded-2xl">
+                    <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
+                      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="text-black font-semibold">12 Octubre 2025</div>
+                      <div class="text-gray-500 text-sm">9:00 AM - 1:00 PM</div>
+                    </div>
+                  </div>
+
+                  <!-- Ubicación -->
+                  <div class="flex items-center gap-4 p-4 bg-primary/10 rounded-2xl">
+                    <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
+                      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="text-black font-semibold">Plaza San Pedro</div>
+                      <div class="text-gray-500 text-sm">Cusco Centro</div>
+                    </div>
                   </div>
                 </div>
 
+                <div class="space-y-4">
+
+                  <!-- Inscripción Solidaria -->
+                  <div class="p-4 bg-primary/20 border-l-4 border-primary rounded-r-2xl">
+                    <p class="text-black text-sm leading-relaxed">
+                      <span class="font-semibold">Inscripción solidaria:</span>
+                      Válida con donación de útiles escolares, artículos de limpieza o pañales.
+                    </p>
+                  </div>
+
+                  <!-- Mantenimiento -->
+                  <div class="p-4 bg-secondary/10 border-l-4 border-secondary rounded-r-2xl">
+                    <p class="text-secondary text-sm leading-relaxed">
+                      <span class="font-semibold">Mantenimiento gratuito:</span>
+                      Sábado 11 de Octubre en Plaza San Pedro (9AM - 1PM)
+                    </p>
+                  </div>
+
+                </div>
               </div>
-              <div class=" h-[2px] absolute top-[100px] left-[300px] right-0 bottom-0 ">
-                <img class="" src="bike/bike-ride.png">
+
+              <!-- Action Buttons -->
+              <div class="flex flex-col sm:flex-row gap-4 pt-4">
+
+                <!-- Inscribirse -->
+                <a routerLink="/user-register"
+                   class="group/btn flex-1 bg-primary text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg text-center">
+          <span class="flex items-center justify-center gap-3">
+            <svg class="w-6 h-6 group-hover/btn:scale-110 transition-transform" fill="none"
+                 stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+            Inscribirse Ahora
+          </span>
+                </a>
+
+                <!-- Ver Registro -->
+                <a (click)="openModal()"
+                   class="group/btn flex-1 bg-secondary hover:bg-secondary/80 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl border border-gray-700 text-center cursor-pointer">
+          <span class="flex items-center justify-center gap-3">
+            <svg class="w-6 h-6 group-hover/btn:scale-110 transition-transform" fill="none"
+                 stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+            Ver Mi Registro
+          </span>
+                </a>
+
               </div>
-            }
-          </div>
-        </div>
-      </div>
-      <div class="carousel-container relative max-w-4xl mx-auto mt-12">
-        <!-- Título -->
-        <h2 class="text-4xl md:text-4xl font-extrabold text-yellow-400 whitespace-nowrap
-               animate-marquee">
-          🚀 Próximos eventos 🚀 Próximos eventos 🚀 Próximos eventos
-        </h2>
-        <!-- Contenido del carrusel -->
-        <div class="carousel-content relative overflow-hidden rounded-2xl shadow-lg">
-          <ng-container *ngIf="currentItem.type === 'image'">
-            <img [src]="currentItem.src"
-                 [alt]="currentItem.title"
-                 class="w-full h-[200px] object-contain transition-opacity duration-700 ease-in-out fade-edges" />
-          </ng-container>
-          <ng-container *ngIf="currentItem.type === 'video'">
-            <video [src]="currentItem.src"
-                   autoplay
-                   loop
-                   muted
-                   playsinline
-                   controls
-                   class="w-full h-[500px] object-cover transition-opacity duration-700 ease-in-out fade-edges"></video>
-          </ng-container>
-
-          <!-- Botones de navegación (flechas) -->
-          <button (click)="prev()"
-                  class="absolute top-1/2 left-3 transform -translate-y-1/2 bg-black/60 text-white p-3 rounded-full hover:bg-black/80 transition z-10">
-            ⟨
-          </button>
-          <button (click)="next()"
-                  class="absolute top-1/2 right-3 transform -translate-y-1/2 bg-black/60 text-white p-3 rounded-full hover:bg-black/80 transition z-10">
-            ⟩
-          </button>
-        </div>
-
-        <!-- Indicadores -->
-        <div class="flex justify-center mt-4 gap-2">
-      <span *ngFor="let item of items; let i = index"
-            (click)="selectItem(i)"
-            class="w-3 h-3 rounded-full cursor-pointer transition-all duration-300"
-            [ngClass]="i === currentIndex ? 'bg-yellow-400 scale-110' : 'bg-gray-400 hover:bg-gray-300'">
-      </span>
-        </div>
-      </div>
-      <!-- Modal principal (siempre encima) -->
-      <!-- Modal principal (siempre encima de todo) -->
-      <div id="myModal"
-           class="fixed inset-0 z-9999 block bg-gray-800 bg-opacity-50 flex items-center justify-center"
-           *ngIf="showModal">
-        <div class="modal-content bg-white rounded-xl p-6 max-w-lg w-full mx-4 relative z-[10000]">
-          <h2 class="no-print text-xl font-bold mb-4">Guarde o Imprime su código QR</h2>
-
-          <img [src]="imageModal" alt="Imagen" class="max-w-full mx-auto mb-4">
-
-          <div class="text-center mb-4">
-            <h5>Fecha Inscripción: {{ objectRegister?.createAt | date:'yyyy-MM-dd HH:mm' }}</h5>
-            <h5>DNI: {{ objectRegister?.dni }}</h5>
-            <h5>Nombre: {{ objectRegister?.name }} {{ objectRegister?.lastName }}</h5>
-            <h5>Tramo: {{ objectRegister?.category }}</h5>
-            <h5>Talla: {{ objectRegister?.shirtSize }}</h5>
-          </div>
-
-          <div class="flex flex-col sm:flex-row justify-center gap-3 mt-4">
-            <!-- Botón imprimir -->
-            <button (click)="printModal()"
-                    class="no-print flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium px-5 py-2.5 rounded-xl shadow-md transition-transform transform hover:scale-105">
-              <i class="fa-solid fa-print"></i>
-              <span>Imprimir</span>
-            </button>
-
-            <!-- Botón compartir -->
-            <button (click)="shareModal()"
-                    class="no-print flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-medium px-5 py-2.5 rounded-xl shadow-md transition-transform transform hover:scale-105">
-              <i class="fa-solid fa-share-alt"></i>
-              <span>Compartir</span>
-            </button>
-
-            <!-- Botón cerrar -->
-            <button (click)="closeModalPrint()"
-                    class="no-print flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-medium px-5 py-2.5 rounded-xl shadow-md transition-transform transform hover:scale-105">
-              <i class="fa-solid fa-xmark"></i>
-              <span>Cerrar</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-
-
-
-      <div [formGroup]="formSearchDni" *ngIf="isModalOpen" class="fixed inset-0 z-10 bg-gray-800 bg-opacity-50 flex items-center justify-center">
-        <div class="bg-white rounded-lg p-6 w-full max-w-md mx-4 sm:mx-0">
-          <h3 class="text-xl font-semibold mb-4">Buscar Registro por DNI</h3>
-          <div>
-            <div class="mb-4">
-              <label for="dniInput" class="block text-sm font-medium text-gray-700">DNI</label>
-              <input
-                type="text"
-                id="dniInput"
-                formControlName="searchDni"
-                required
-                maxlength="30"
-                class="rounded-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-[#2D3136] focus:border-[#2D3136] w-full p-2"
-                placeholder="Ingrese su DNI"
-              />
             </div>
-            <div *ngIf="showMessage" class="bg-red-500 border border-red-400 text-white px-4 py-2 rounded mb-4">
-              {{ mensajeExito }}
+
+            <!-- Video -->
+            <div class="flex-shrink-0">
+              <div class="relative group/img">
+                <div class="w-96 h-96 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl flex items-center justify-center p-8">
+                  <div class="text-center">
+                    <div class="relative group/video">
+                      <video
+                        #videoPlayer
+                        src="https://taqe.cusco.gob.pe/publico/web/campeonato/FC.mp4"
+                        type="video/mp4"
+                        autoplay loop muted playsinline
+                        class="w-full rounded-2xl shadow-lg transform group-hover/video:scale-[1.02] transition-all duration-300 border-2 border-white/10 group-hover/video:border-secondary/30">
+                      </video>
+
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-2xl opacity-0 group-hover/video:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div class="bg-white/20 backdrop-blur-sm rounded-full p-4 transform scale-0 group-hover/video:scale-100 transition-transform duration-300">
+                          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-3xl opacity-0 group-hover/img:opacity-100 transition-opacity duration-300"></div>
+
+              </div>
             </div>
-            <button (click)="searchByDni()" type="submit" class="w-full py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
-              Buscar
-            </button>
+
           </div>
-          <button (click)="closeModal()" class="mt-4 w-full py-2 bg-gray-300 text-black rounded-lg hover:bg-gray-400">
-            Cerrar
-          </button>
+        </div>
+
+      </div>
+
+      <!-- Championship Event Card -->
+      <div *ngIf="selectedItem === 'challenge-champions'" class="group relative">
+        <!-- Background Effect -->
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-pink-500/30 via-pink-500/20 to-purple-500/30 rounded-4xl blur-2xl group-hover:blur-3xl transition-all duration-500 -z-10"
+          style="border-radius: 20px"></div>
+
+        <div
+          class="mb-2 bg-gradient-to-br from-red-900/90 to-red-900/95 backdrop-blur-xl rounded-3xl border border-white/10 p-8 shadow-2xl"
+        >
+          <div class="flex flex-col lg:flex-row gap-8 items-center">
+
+            <!-- Visual -->
+            <div class="flex-shrink-0">
+              <div class="relative group/img">
+                <div
+                  class="w-80 h-80 bg-white/5 rounded-3xl flex items-center justify-center p-8 border border-white/10 group-hover/img:border-purple-400/40 transition-all"
+                >
+                  <img src="championship/logo1.png"
+                       alt="Challenge Champions"
+                       class="w-48 h-48 object-contain transform group-hover/img:scale-110 transition-transform duration-300">
+                </div>
+
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-3xl opacity-0 group-hover/img:opacity-100 transition-opacity duration-300">
+                </div>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="flex-1 space-y-6">
+
+              <!-- Badge -->
+              <div
+                class="inline-flex items-center gap-3 bg-orange-500/20 border border-orange-400/40 rounded-2xl px-4 py-2"
+              >
+                <div class="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
+                <span class="text-orange-300 font-bold text-sm uppercase tracking-wider">
+          Competencia
+        </span>
+              </div>
+
+              <!-- Title -->
+              <h2 class="text-4xl md:text-5xl font-bold text-white">
+                Primer Campeonato Interescolar
+                <span class="block text-2xl md:text-3xl text-orange-400 mt-2">
+          Torneo Interescolar
+        </span>
+              </h2>
+
+              <!-- Description -->
+              <p class="text-lg text-gray-300 leading-relaxed">
+                La competencia escolar más esperada del año donde las mejores instituciones educativas
+                se enfrentan por el título de
+                <span class="text-purple-300 font-semibold">campeón absoluto</span>.
+                Deporte, disciplina y excelencia académica en un solo evento.
+              </p>
+
+              <!-- Video Section -->
+              <div class="space-y-4">
+                <h3 class="text-xl font-bold text-white flex items-center gap-3">
+                  <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                  </svg>
+                  Mira el Evento
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+
+                  <!-- Video 1 -->
+                  <div class="relative group/video">
+                    <video
+                      src="https://taqe.cusco.gob.pe/publico/web/campeonato/Spot_fin.mp4"
+                      autoplay loop muted playsinline
+                      class="w-full h-[300px] md:h-[350px] lg:h-[400px] object-cover rounded-2xl shadow-lg
+                     transform group-hover/video:scale-[1.02] transition-all duration-300
+                     border-2 border-white/10 group-hover/video:border-purple-400/40"
+                    ></video>
+
+                    <div
+                      class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-2xl opacity-0
+                     group-hover/video:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+                    >
+                      <div
+                        class="bg-white/20 backdrop-blur-sm rounded-full p-4 transform scale-0
+                       group-hover/video:scale-100 transition-transform duration-300"
+                      >
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Video 2 -->
+                  <div class="relative group/video">
+                    <video
+                      src="https://taqe.cusco.gob.pe/publico/web/campeonato/FC.mp4"
+                      autoplay loop muted playsinline
+                      class="w-full h-[300px] md:h-[350px] lg:h-[400px] object-cover rounded-2xl shadow-lg
+                     transform group-hover/video:scale-[1.02] transition-all duration-300
+                     border-2 border-white/10 group-hover/video:border-purple-400/40"
+                    ></video>
+
+                    <div
+                      class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-2xl opacity-0
+                     group-hover/video:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+                    >
+                      <div
+                        class="bg-white/20 backdrop-blur-sm rounded-full p-4 transform scale-0
+                       group-hover/video:scale-100 transition-transform duration-300"
+                      >
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Useful Vacations Event Card -->
+      <div *ngIf="selectedItem === 'useful-vacations'" class="group relative">
+        <!-- Background Effect -->
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-pink-500/30 via-pink-500/20 to-purple-500/30 rounded-4xl blur-2xl group-hover:blur-3xl transition-all duration-500 -z-10"></div>
+
+        <div
+          class="bg-gradient-to-br from-red-900/90 to-red-900 backdrop-blur-xl rounded-4xl border border-white/10 p-8 shadow-2xl"
+          style="border-radius: 20px">
+          <div class="flex flex-col lg:flex-row gap-8 items-center">
+
+            <!-- Content -->
+            <div class="flex-1 space-y-6">
+              <!-- Badge -->
+              <div
+                class="inline-flex items-center gap-3 bg-orange-500/20 border border-orange-500/30 rounded-2xl px-4 py-2">
+                <div class="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
+                <span class="text-orange-300 font-bold text-sm uppercase tracking-wider">Programa Educativo</span>
+              </div>
+
+              <!-- Title -->
+              <h2 class="text-4xl md:text-5xl font-bold text-white">
+                Vacaciones Recreativas 2026
+                <span class="block text-2xl md:text-3xl text-orange-400 mt-2">Aprendizaje y Diversión</span>
+              </h2>
+
+              <!-- Description -->
+              <p class="text-lg text-gray-300 leading-relaxed">
+                Programa educativo diseñado para que niños y jóvenes aprovechen sus vacaciones
+                escolares con <span class="text-green-300 font-semibold">actividades recreativas,
+                deportivas y educativas</span> que fomentan el desarrollo integral.
+              </p>
+
+              <!-- Features Grid -->
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                  <div class="flex items-center gap-4 p-4 bg-white/5 rounded-2xl">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
+                      <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="text-white font-semibold">Talleres Educativos</div>
+                      <div class="text-gray-400 text-sm">Refuerzo escolar y aprendizaje</div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center gap-4 p-4 bg-white/5 rounded-2xl">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                      <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="text-white font-semibold">Actividades Recreativas</div>
+                      <div class="text-gray-400 text-sm">Juegos y entretenimiento</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="space-y-4">
+                  <div class="flex items-center gap-4 p-4 bg-white/5 rounded-2xl">
+                    <div class="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center">
+                      <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="text-white font-semibold">Deportes</div>
+                      <div class="text-gray-400 text-sm">Actividades físicas</div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center gap-4 p-4 bg-white/5 rounded-2xl">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                      <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="text-white font-semibold">Desarrollo Creativo</div>
+                      <div class="text-gray-400 text-sm">Arte y cultura</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                <button
+                  (click)="goUsefulVacations()"
+                  class="group/btn flex-1 bg-gradient-to-r from-red-500 to-orange-600 hover:from-red-600 hover:to-orange-700 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg text-center">
+                  <span class="flex items-center justify-center gap-3">
+                    <svg class="w-6 h-6 group-hover/btn:scale-110 transition-transform" fill="none"
+                         stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                    Inscribirse Ahora
+                  </span>
+                </button>
+
+                <a (click)="openModal()"
+                   class="group/btn flex-1 bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl border border-gray-700 text-center cursor-pointer">
+                  <span class="flex items-center justify-center gap-3">
+                    <svg class="w-6 h-6 group-hover/btn:scale-110 transition-transform" fill="none"
+                         stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    Ver Mi Registro
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Visual -->
+            <div class="flex-shrink-0">
+              <div class="relative group/img">
+                <div
+                  class="w-80 h-80 bg-gradient-to-br from-orange-400/20 to-pink-500/20 rounded-3xl flex items-center justify-center p-8">
+                  <div class="text-center">
+                    <div class="text-6xl mb-4">📚</div>
+                    <div class="text-white font-bold text-lg">Programa Educativo</div>
+                    <div class="text-green-300 text-sm mt-2">Aprender Jugando</div>
+                  </div>
+                </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-3xl opacity-0 group-hover/img:opacity-100 transition-opacity duration-300"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="selectedItem === 'seminar'" class="group relative">
+        <!-- Background Effect -->
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-pink-500/30 via-pink-500/20 to-purple-500/30 rounded-4xl blur-2xl group-hover:blur-3xl transition-all duration-500 -z-10"></div>
+
+        <div
+          class="mb-2 bg-gradient-to-br from-red-900/90 to-red-900 backdrop-blur-xl rounded-4xl border border-white/10 p-8 shadow-2xl"
+          style="border-radius: 20px">
+          <div class="flex flex-col lg:flex-row gap-8 items-center">
+
+            <!-- Content -->
+            <div class="flex-1 space-y-6">
+              <!-- Badge -->
+              <div
+                class="inline-flex items-center gap-3 bg-orange-500/20 border border-orange-500/30 rounded-2xl px-4 py-2">
+                <div class="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
+                <span class="text-orange-300 font-bold text-sm uppercase tracking-wider">Seminario Especializado</span>
+              </div>
+              <!-- Title -->
+              <h2 class="text-4xl md:text-5xl font-bold text-white">
+                I Seminario sobre Gestión Deportiva
+                <span class="block text-2xl md:text-3xl text-orange-400 mt-2">Ciudad del Cusco - Diciembre 2025</span>
+              </h2>
+
+              <!-- Description -->
+              <p class="text-lg text-gray-300 leading-relaxed">
+                Evento académico especializado para <span class="text-red-300 font-semibold">fortalecer las capacidades de gestión,
+          planificación y liderazgo</span> de los actores vinculados al ámbito deportivo en la región Cusco.
+              </p>
+
+              <!-- Key Information -->
+              <div class="grid md:grid-cols-3 gap-4 p-6 bg-blue-50 rounded-2xl">
+                <div class="text-center">
+                  <div class="text-2xl text-orange-400 font-bold">5</div>
+                  <div class="text-gray-400 text-sm">Días de duración</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl text-orange-400 font-bold">300+</div>
+                  <div class="text-gray-400 text-sm">Participantes</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl text-orange-400 font-bold">100%</div>
+                  <div class="text-gray-400 text-sm">Certificación</div>
+                </div>
+              </div>
+
+              <!-- Features Grid -->
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                  <div class="flex items-center gap-4 p-4 bg-blue-50 rounded-2xl">
+                    <div
+                      class="w-12 h-12 bg-gradient-to-br from-orange-400/20 to-pink-500/20 rounded-xl flex items-center justify-center">
+                      <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="text-yellow-500 font-semibold">Gestión Deportiva</div>
+                      <div class="text-gray-400 text-sm">Capacitación especializada</div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center gap-4 p-4 bg-blue-50 rounded-2xl">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                      <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="text-yellow-500 font-semibold">Certificación</div>
+                      <div class="text-gray-400 text-sm">80% de asistencia</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="space-y-4">
+                  <div class="flex items-center gap-4 p-4 bg-blue-50 rounded-2xl">
+                    <div class="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center">
+                      <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="text-yellow-500 font-semibold">Casa de la Cultura</div>
+                      <div class="text-gray-400 text-sm">Sede principal</div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center gap-4 p-4 bg-blue-50 rounded-2xl">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                      <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="text-yellow-500 font-semibold">Proyecto Final</div>
+                      <div class="text-gray-400 text-sm">Aplicación práctica</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Organizers -->
+              <div class="pt-4">
+                <h3 class="text-white font-semibold mb-3">Organizan:</h3>
+                <div class="flex flex-wrap gap-3">
+                  <span class="bg-red-500/20 text-red-300 px-3 py-1 rounded-lg text-sm">Municipalidad Provincial del Cusco</span>
+                  <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-lg text-sm">Proyecto Cusco Deportes</span>
+                  <!--                  <span class="bg-green-500/20 text-green-300 px-3 py-1 rounded-lg text-sm">GEREDU</span>-->
+                  <span class="bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-lg text-sm">UGEL Cusco</span>
+                  <span class="bg-purple-500/20 text-purple-300 px-3 py-1 rounded-lg text-sm">IPD Cusco</span>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="flex flex-col sm:flex-row gap-4 pt-6">
+                <button (click)="goSeminarRegistration()"
+                        class="group/btn flex-1 bg-gradient-to-r from-red-500 to-orange-600 hover:from-red-600 hover:to-orange-700 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg text-center">
+            <span class="flex items-center justify-center gap-3">
+              <svg class="w-6 h-6 group-hover/btn:scale-110 transition-transform" fill="none"
+                   stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+              </svg>
+              Inscribirse al Seminario
+            </span>
+                </button>
+
+                <a href="https://drive.google.com/drive/u/0/my-drive"
+                   target="_blank"
+                   class="group/btn flex-1 bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl border border-gray-700 text-center cursor-pointer">
+            <span class="flex items-center justify-center gap-3">
+              <svg class="w-6 h-6 group-hover/btn:scale-110 transition-transform" fill="none"
+                   stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+              Herramientas de trabajo
+            </span>
+                </a>
+                <a (click)="openModal()"
+                       class="group/btn flex-1 bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl border border-gray-700 text-center cursor-pointer">
+            <span class="flex items-center justify-center gap-3">
+              <svg class="w-6 h-6 group-hover/btn:scale-110 transition-transform" fill="none"
+                   stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+              Ver Inscripcion
+            </span>
+              </a>
+              </div>
+            </div>
+
+            <!-- Visual -->
+            <div class="flex-shrink-0">
+              <div class="relative group/img">
+                <div
+                  class="w-72 h-96 bg-gradient-to-br from-orange-400/20 to-pink-500/20 rounded-3xl flex items-center justify-center p-8">
+                  <div class="text-center">
+                    <div class="relative group/video">
+                      <video
+                        #videoPlayer2
+                        src="https://taqe.cusco.gob.pe/publico/web/deporte/Gestion_Deportes.mp4"
+                        type="video/mp4"
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        class="w-full rounded-2xl shadow-lg transform group-hover/video:scale-[1.02] transition-all duration-300 border-2 border-white/10 group-hover/video:border-purple-400/30">
+                      </video>
+                      <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-2xl opacity-0 group-hover/video:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div
+                          class="bg-white/20 backdrop-blur-sm rounded-full p-4 transform scale-0 group-hover/video:scale-100 transition-transform duration-300">
+                          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <!--                    <div class="text-white font-bold text-lg">Gran Evento Familiar</div>-->
+                    <!--                    <div class="text-orange-300 text-sm mt-2">Pedalea con Propósito</div>-->
+                  </div>
+                </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-3xl opacity-0 group-hover/img:opacity-100 transition-opacity duration-300"></div>
+              </div>
+            </div>
+<!--            <div class="flex-shrink-0">-->
+<!--              <div class="relative group/img">-->
+<!--                <div-->
+<!--                  class="w-80 h-10    0 bg-gradient-to-br from-red-400/20 to-orange-500/20 rounded-3xl flex items-center justify-center p-8">-->
+<!--                  <div class="text-center">-->
+<!--&lt;!&ndash;                    <img src="https://taqe.cusco.gob.pe/publico/web/deporte/Gestion_Deportes.mp4" alt="">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <div class="text-6xl mb-4">🏆</div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <div class="text-white font-bold text-lg">Gestión Deportiva</div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <div class="text-red-300 text-sm mt-2">10-13 Dic 2025</div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <div class="text-gray-400 text-xs mt-2">Casa de la Cultura - Cusco</div>&ndash;&gt;-->
+<!--                    <div class="relative group/video">-->
+<!--                      <video-->
+<!--                        #videoPlayer2-->
+<!--                        src="https://taqe.cusco.gob.pe/publico/web/deporte/Gestion_Deportes.mp4"-->
+<!--                        type="video/mp4"-->
+<!--                        autoplay-->
+<!--                        loop-->
+<!--                        muted-->
+<!--                        playsinline-->
+<!--                        class="w-full rounded-2xl shadow-lg transform group-hover/video:scale-[1.02] transition-all duration-300 border-2 border-white/10 group-hover/video:border-purple-400/30">-->
+<!--                      </video>-->
+<!--                      <div-->
+<!--                        class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-2xl opacity-0 group-hover/video:opacity-100 transition-opacity duration-300 flex items-center justify-center">-->
+<!--                        <div-->
+<!--                          class="bg-white/20 backdrop-blur-sm rounded-full p-4 transform scale-0 group-hover/video:scale-100 transition-transform duration-300">-->
+<!--                          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">-->
+<!--                            <path d="M8 5v14l11-7z" />-->
+<!--                          </svg>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div-->
+<!--                  class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-3xl opacity-0 group-hover/img:opacity-100 transition-opacity duration-300"></div>-->
+<!--              </div>-->
+<!--            </div>-->
+          </div>
+
+          <!-- Additional Information -->
+          <div class="mt-8 grid md:grid-cols-3 gap-6 text-center">
+            <div class="p-4 bg-blue-50 rounded-2xl">
+              <div class="text-red-400 font-bold text-lg">3 Días</div>
+              <div class="text-gray-400 text-sm">Presencial</div>
+            </div>
+            <div class="p-4 bg-blue-50 rounded-2xl">
+              <div class="text-red-400 font-bold text-lg">2 Día</div>
+              <div class="text-gray-400 text-sm">Vituales</div>
+            </div>
+            <div class="p-4 bg-blue-50 rounded-2xl">
+              <div class="text-red-400 font-bold text-lg">8 Módulos</div>
+              <div class="text-gray-400 text-sm">Especializados</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <!-- Aviso especial -->
+  </div>
 
+  <!-- Modal Components -->
+  <div id="myModal"
+       class="fixed inset-0 z-[9999] bg-gray-900/80 backdrop-blur-sm flex items-center justify-center p-4"
+       *ngIf="showModal"
+       style="isolation: isolate;">
+    <div
+      class="modal-content bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 max-w-lg w-full mx-4 relative z-[10000] border border-gray-700/50 shadow-2xl">
+      <h2 class="no-print text-2xl font-bold mb-6 text-white text-center">Guarde o Imprima su código QR</h2>
 
-  </section>
+      <div class="bg-white/5 rounded-xl p-6 mb-6">
+        <img [src]="imageModal" alt="Código QR" class="max-w-48 mx-auto mb-4 rounded-lg shadow-lg">
+
+        <div class="text-center space-y-2 text-gray-300">
+          <p class="text-sm"><span
+            class="text-orange-400 font-semibold">Fecha:</span> {{ objectRegister?.createAt | date:'yyyy-MM-dd HH:mm' }}
+          </p>
+          <p class="text-sm"><span class="text-orange-400 font-semibold">DNI:</span> {{ objectRegister?.dni }}</p>
+          <p class="text-sm"><span
+            class="text-orange-400 font-semibold">Nombre:</span> {{ objectRegister?.name }} {{ objectRegister?.lastName }}
+          </p>
+          <p *ngIf="selectedItem!=='seminar'" class="text-sm"><span class="text-orange-400 font-semibold">Tramo:</span> {{ objectRegister?.category }}
+          </p>
+          <p *ngIf="selectedItem!=='seminar'" class="text-sm"><span class="text-orange-400 font-semibold">Talla:</span> {{ objectRegister?.shirtSize }}
+          </p>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row justify-center gap-3">
+        <button (click)="printModal()"
+                class="no-print flex items-center justify-center gap-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+          </svg>
+          <span>Imprimir</span>
+        </button>
+
+        <button (click)="shareModal()"
+                class="no-print flex items-center justify-center gap-3 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+          </svg>
+          <span>Compartir</span>
+        </button>
+
+        <button (click)="closeModalPrint()"
+                class="no-print flex items-center justify-center gap-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+          <span>Cerrar</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div [formGroup]="formSearchDni" *ngIf="isModalOpen"
+       class="fixed inset-0 z-10 bg-gray-900/80 backdrop-blur-sm flex items-center justify-center">
+    <div
+      class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 w-full max-w-md mx-4 border border-gray-700/50 shadow-2xl">
+      <h3 class="text-2xl font-bold text-white mb-6 text-center">Buscar Registro por DNI</h3>
+      <div class="space-y-6">
+        <div>
+          <label for="dniInput" class="block text-sm font-medium text-gray-300 mb-2">Número de DNI</label>
+          <input
+            type="text"
+            id="dniInput"
+            formControlName="searchDni"
+            required
+            maxlength="30"
+            class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
+            placeholder="Ingrese su DNI"
+          />
+        </div>
+        <div *ngIf="showMessage" class="bg-red-500/20 border border-red-500/50 text-red-200 px-4 py-3 rounded-xl">
+          {{ mensajeExito }}
+        </div>
+        <button (click)="searchByDni()" type="submit"
+                class="w-full py-3 bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-600 hover:to-pink-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+          Buscar Registro
+        </button>
+        <button (click)="closeModal()"
+                class="w-full py-3 bg-gray-700 hover:bg-gray-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

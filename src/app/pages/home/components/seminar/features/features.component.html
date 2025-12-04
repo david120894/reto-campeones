@@ -1,0 +1,21 @@
+<section id="seminar-benefits" class="py-4 bg-card/50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold text-yellow-500 mb-4">
+        ¿Por qué elegir Vacaciones Útiles?
+      </h2>
+      <p class="text-yellow-500 text-lg max-w-2xl mx-auto">
+        Ofrecemos una experiencia de aprendizaje completa y de calidad
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div *ngFor="let feature of features; let index = index"
+           class="p-6 rounded-xl bg-blue-100 border border-border hover:border-primary/50 transition group">
+        <span class="w-6 h-6 text-primary mb-4 block group-hover:scale-110 transition">✓</span>
+        <h3 class="font-semibold text-foreground mb-2">{{feature.title}}</h3>
+        <p class="text-foreground/60 text-sm">{{feature.description}}</p>
+      </div>
+    </div>
+  </div>
+</section>

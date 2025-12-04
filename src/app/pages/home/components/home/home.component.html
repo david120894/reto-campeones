@@ -1,7 +1,18 @@
 <!--<app-section-home />-->
-<app-section-home (sectionChanged)="onSectionChanged($event)"></app-section-home>
-<div class="bg-section">
+<app-section-home class="" (sectionChanged)="onSectionChanged($event)"></app-section-home>
+<!--@if (sectionChangedValue === 'useful-vacations') {-->
+<!--  <app-header [typeSection]="sectionChangedValue"></app-header>-->
+<!--  <app-footer [typeSection]="sectionChangedValue"></app-footer>-->
+<!--}-->
+@if(sectionChangedValue === 'useful-vacations') {
+  <app-useful-vacations/>
+}
+@if (sectionChangedValue === 'seminar') {
+  <app-seminar/>
+}
+<div class="background">
   <app-presentation [typeSection]="sectionChangedValue" />
+  <app-section-gallery [typeSection]="sectionChangedValue"></app-section-gallery>
   <app-bracket [typeSection]="sectionChangedValue"></app-bracket>
   <app-gallery [typeSection]="sectionChangedValue" />
   <app-carrousel [typeSection]="sectionChangedValue" />

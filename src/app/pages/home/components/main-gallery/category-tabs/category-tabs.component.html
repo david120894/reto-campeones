@@ -1,0 +1,15 @@
+<!-- category-tabs.component.html -->
+<div class="mb-12">
+  <div class="flex flex-wrap gap-2 sm:gap-3">
+    <button
+      *ngFor="let category of categories"
+      (click)="onCategorySelect(category.id)"
+      [class]="getButtonClasses(category.id)"
+      type="button"
+    class="bg-red-950 text-white">
+      <span>{{ category.icon }}</span>
+      <span class="hidden sm:inline">{{ category.label }}</span>
+      <span class="sm:hidden text-sm">{{ getCategoryLabel(category) }}</span>
+    </button>
+  </div>
+</div>
