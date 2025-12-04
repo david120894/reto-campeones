@@ -12,18 +12,18 @@
     right: 0;
     bottom: 0;
     background: radial-gradient(
-      circle at 20% 80%, 
-      oklch(0.9 0.1 25 / 0.1) 0%, 
+      circle at 20% 80%,
+      oklch(0.9 0.1 25 / 0.1) 0%,
       transparent 50%
     ),
     radial-gradient(
-      circle at 80% 20%, 
-      oklch(0.9 0.1 60 / 0.1) 0%, 
+      circle at 80% 20%,
+      oklch(0.9 0.1 60 / 0.1) 0%,
       transparent 50%
     ),
     radial-gradient(
-      circle at 40% 40%, 
-      oklch(0.9 0.1 280 / 0.05) 0%, 
+      circle at 40% 40%,
+      oklch(0.9 0.1 280 / 0.05) 0%,
       transparent 50%
     );
     pointer-events: none;
@@ -90,7 +90,7 @@
 // Interactive elements
 .glow-on-hover {
   transition: all 0.3s ease;
-  
+
   &:hover {
     animation: glow 2s ease-in-out infinite;
   }
@@ -111,7 +111,7 @@
     .text-8xl { font-size: 3.5rem; }
     .text-6xl { font-size: 2.5rem; }
     .text-4xl { font-size: 1.875rem; }
-    
+
     .flex-col {
       gap: 1.5rem;
     }
@@ -177,18 +177,18 @@ a:focus {
   border-radius: 50%;
   animation: blink 2s infinite;
   box-shadow: 0 0 10px currentColor;
-  
-  &.red { 
+
+  &.red {
     background: linear-gradient(45deg, oklch(0.7 0.3 25), oklch(0.5 0.2 25));
     animation-delay: 0s;
   }
-  
-  &.yellow { 
+
+  &.yellow {
     background: linear-gradient(45deg, oklch(0.9 0.2 60), oklch(0.7 0.15 60));
     animation-delay: 0.3s;
   }
-  
-  &.blue { 
+
+  &.blue {
     background: linear-gradient(45deg, oklch(0.7 0.2 240), oklch(0.5 0.15 240));
     animation-delay: 0.6s;
   }
@@ -246,5 +246,340 @@ a:focus {
   100% {
     transform: translateY(100vh) rotate(360deg) translateX(50px);
     opacity: 0;
+  }
+}
+//gorritos
+// Gorritos navideños
+.holiday-hats {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100px;
+  pointer-events: none;
+  z-index: 4;
+
+  .hat {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+
+    &.top-left {
+      top: 100px;
+      left: 20px;
+      transform: rotate(-15deg);
+    }
+
+    &.top-right {
+      top: 100px;
+      right: 20px;
+      transform: rotate(15deg) scaleX(-1);
+    }
+
+    .hat-top {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 50px;
+      border-radius: 20px 20px 0 0;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .hat-brim {
+      position: absolute;
+      top: 45px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 20px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .hat-ball {
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      box-shadow: 0 0 8px currentColor;
+    }
+  }
+}
+
+// Campanitas
+.holiday-bells {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  pointer-events: none;
+  z-index: 4;
+
+  .bell {
+    position: absolute;
+    width: 60px;
+    height: 80px;
+
+    &.bottom-left {
+      bottom: 20px;
+      left: 30px;
+    }
+
+    &.bottom-right {
+      bottom: 20px;
+      right: 30px;
+      transform: scaleX(-1);
+    }
+
+    .bell-body {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 60px;
+      border-radius: 25px 25px 40px 40px;
+      box-shadow:
+        0 6px 12px rgba(0,0,0,0.3),
+        inset 0 -10px 10px rgba(0,0,0,0.1);
+    }
+
+    .bell-clapper {
+      position: absolute;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 20px;
+      border-radius: 6px;
+    }
+
+    .bell-ring {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #FFD700;
+      box-shadow: 0 0 12px #FFD700;
+    }
+  }
+}
+
+// Animación de campanitas
+@keyframes swing {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  75% {
+    transform: rotate(15deg);
+  }
+}
+
+.animate-swing {
+  animation: swing 3s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+// Papá Noel volando
+.santa-flying {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+  overflow: hidden;
+
+  .santa-container {
+    position: absolute;
+    top: 50px;
+    right: -200px;
+    width: 200px;
+    height: 200px;
+    animation: flyAcross 20s linear infinite;
+    animation-delay: 2s;
+  }
+
+  .santa {
+    position: relative;
+    width: 120px;
+    height: 140px;
+
+    .santa-hat {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 60px;
+
+      .hat-top {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 40px;
+        background: linear-gradient(to bottom, #c00 0%, #900 100%);
+        border-radius: 25px 25px 0 0;
+      }
+
+      .hat-brim {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 20px;
+        background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+        border-radius: 10px;
+      }
+
+      .hat-ball {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 16px;
+        height: 16px;
+        background: linear-gradient(to bottom, #fff 0%, #ff0 100%);
+        border-radius: 50%;
+      }
+    }
+
+    .santa-face {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 60px;
+
+      .eye {
+        position: absolute;
+        top: 15px;
+        width: 8px;
+        height: 8px;
+        background: #000;
+        border-radius: 50%;
+
+        &.left {
+          left: 20px;
+        }
+
+        &.right {
+          right: 20px;
+        }
+      }
+
+      .beard {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 70px;
+        height: 40px;
+        background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+        border-radius: 50%;
+      }
+    }
+
+    .santa-body {
+      position: absolute;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 60px;
+      background: linear-gradient(to bottom, #c00 0%, #900 100%);
+      border-radius: 50px 50px 0 0;
+    }
+
+    .santa-bag {
+      position: absolute;
+      top: 120px;
+      right: -40px;
+      width: 50px;
+      height: 40px;
+      background: linear-gradient(to bottom, #8B4513 0%, #654321 100%);
+      border-radius: 10px;
+      transform: rotate(-20deg);
+    }
+  }
+}
+
+// Animación de vuelo de Papá Noel
+@keyframes flyAcross {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-120vw) translateY(100px) rotate(5deg);
+    opacity: 0;
+  }
+}
+
+// Versión móvil responsiva
+@media (max-width: 768px) {
+  .holiday-hats .hat {
+    width: 60px;
+    height: 60px;
+
+    &.top-left, &.top-right {
+      top: 10px;
+    }
+
+    &.top-left {
+      left: 10px;
+    }
+
+    &.top-right {
+      right: 10px;
+    }
+  }
+
+  .holiday-bells .bell {
+    width: 40px;
+    height: 60px;
+
+    &.bottom-left, &.bottom-right {
+      bottom: 10px;
+    }
+
+    &.bottom-left {
+      left: 15px;
+    }
+
+    &.bottom-right {
+      right: 15px;
+    }
+  }
+
+  .santa-flying .santa-container {
+    width: 120px;
+    height: 120px;
+    animation-duration: 15s;
+  }
+
+  .santa {
+    transform: scale(0.7);
   }
 }

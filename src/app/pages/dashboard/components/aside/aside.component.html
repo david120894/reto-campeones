@@ -1,60 +1,134 @@
+<!-- En tu template HTML -->
 <aside id="logo-sidebar"
-       class="fixed top-0 left-0 z-40 w-64 h-screen pt-[60px] bg-white border-r border-gray-200 shadow-lg transition-transform -translate-x-full sm:translate-x-0"
+       [class.w-64]="sidebarExpanded"
+       [class.w-20]="!sidebarExpanded"
+       [class.-translate-x-full]="!sidebarOpen"
+       class="fixed top-0 left-0 z-40 h-screen pt-[60px] bg-white border-r border-gray-200 shadow-lg transition-all duration-300"
        aria-label="Sidebar">
 
+  <!-- Botón para expandir/contraer (visible en todos los dispositivos) -->
+  <button (click)="toggleSidebarExpand()"
+          class="absolute -right-3 top-20 bg-white border border-gray-300 rounded-full p-2 shadow-md hover:shadow-lg transition-shadow duration-200 z-50">
+    <svg [class.rotate-180]="!sidebarExpanded"
+         class="w-4 h-4 text-gray-600 transition-transform duration-300"
+         fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+    </svg>
+  </button>
 
-<div class="h-full px-3 pt-4 pb-4 overflow-y-auto bg-white">
+  <!-- Botón para cerrar completamente (solo móviles) -->
+  <button (click)="toggleSidebar()"
+          class="absolute -right-3 top-32 bg-white border border-gray-300 rounded-full p-2 shadow-md hover:shadow-lg transition-shadow duration-200 sm:hidden z-50">
+    <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+
+  <div class="h-full px-3 pt-4 pb-4 overflow-y-auto bg-white">
+    <!-- Header del sidebar con título condicional -->
+    <div class="flex items-center justify-between mb-4 px-2 overflow-hidden">
+      <h3 *ngIf="sidebarExpanded" class="text-sm font-semibold text-gray-700 uppercase tracking-wider whitespace-nowrap">
+        Menú Principal
+      </h3>
+      <button (click)="toggleSidebar()"
+              class="p-1 rounded-md hover:bg-gray-100 sm:hidden">
+        <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
     <ul class="space-y-1 font-medium">
-
-      <!-- Item -->
+      <!-- Item 1 - Bicicleteada -->
       <li>
         <a routerLinkActive="bg-[#FDF2F3] text-[#8D0C28] font-semibold shadow-sm border-l-4 border-[#8D0C28]"
            ariaCurrentWhenActive="page"
            routerLink="/auth/dashboard/participants"
            class="flex items-center gap-3 px-4 py-3 rounded-md cursor-pointer
-                  text-gray-700 hover:bg-gray-100 transition-all duration-200">
-          <i class="fa-solid fa-users text-lg text-gray-500 group-[.active]:text-[#8D0C28]"></i>
-          <span class="truncate">Bicicleteada</span>
+                  text-gray-700 hover:bg-gray-100 transition-all duration-200 group">
+          <i class="fa-solid fa-users text-lg text-gray-500 group-[.active]:text-[#8D0C28] min-w-5"></i>
+          <span class="truncate transition-opacity duration-300"
+                [class.opacity-0]="!sidebarExpanded"
+                [class.opacity-100]="sidebarExpanded">Bicicleteada</span>
+          <!-- Tooltip para modo contraído -->
+          <span *ngIf="!sidebarExpanded"
+                class="absolute left-full ml-2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50">
+            Bicicleteada
+          </span>
         </a>
       </li>
+
+      <!-- Item 2 - Seminario -->
       <li>
         <a routerLinkActive="bg-[#FDF2F3] text-[#8D0C28] font-semibold shadow-sm border-l-4 border-[#8D0C28]"
            ariaCurrentWhenActive="page"
            routerLink="/auth/dashboard/seminar"
            class="flex items-center gap-3 px-4 py-3 rounded-md cursor-pointer
-                  text-gray-700 hover:bg-gray-100 transition-all duration-200">
-          <i class="fa-solid fa-users text-lg text-gray-500 group-[.active]:text-[#8D0C28]"></i>
-          <span class="truncate">Seminario</span>
+                  text-gray-700 hover:bg-gray-100 transition-all duration-200 group">
+          <i class="fa-solid fa-users text-lg text-gray-500 group-[.active]:text-[#8D0C28] min-w-5"></i>
+          <span class="truncate transition-opacity duration-300"
+                [class.opacity-0]="!sidebarExpanded"
+                [class.opacity-100]="sidebarExpanded">Seminario</span>
+          <span *ngIf="!sidebarExpanded"
+                class="absolute left-full ml-2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50">
+            Seminario
+          </span>
         </a>
       </li>
 
-      <!-- Item -->
+      <!-- Item 3 - Sorteo -->
       <li>
         <a routerLinkActive="bg-[#FDF2F3] text-[#8D0C28] font-semibold shadow-sm border-l-4 border-[#8D0C28]"
            ariaCurrentWhenActive="page"
            routerLink="/auth/dashboard/raffle"
            class="flex items-center gap-3 px-4 py-3 rounded-md cursor-pointer
-                  text-gray-700 hover:bg-gray-100 transition-all duration-200">
-          <i class="fa-solid fa-ticket text-lg text-gray-500"></i>
-          <span class="truncate">Sorteo</span>
+                  text-gray-700 hover:bg-gray-100 transition-all duration-200 group">
+          <i class="fa-solid fa-ticket text-lg text-gray-500 min-w-5"></i>
+          <span class="truncate transition-opacity duration-300"
+                [class.opacity-0]="!sidebarExpanded"
+                [class.opacity-100]="sidebarExpanded">Sorteo</span>
+          <span *ngIf="!sidebarExpanded"
+                class="absolute left-full ml-2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50">
+            Sorteo
+          </span>
         </a>
       </li>
+
       <li>
-        <hr class="my-2 border-gray-300" />
+        <hr class="my-2 border-gray-300" [class.opacity-0]="!sidebarExpanded" />
       </li>
-      <!-- Item -->
+
+      <!-- Item 4 - Volver al inicio -->
       <li>
         <a routerLinkActive="bg-[#FDF2F3] text-[#8D0C28] font-semibold shadow-sm border-l-4 border-[#8D0C28]"
            ariaCurrentWhenActive="page"
            routerLink="/"
            class="flex items-center gap-3 px-4 py-3 rounded-md cursor-pointer
-                  text-gray-700 hover:bg-gray-100 transition-all duration-200">
-          <i class="fa-solid fa-arrow-right-to-bracket text-lg text-gray-500"></i>
-          <span class="truncate">Volver al inicio</span>
+                  text-gray-700 hover:bg-gray-100 transition-all duration-200 group">
+          <i class="fa-solid fa-arrow-right-to-bracket text-lg text-gray-500 min-w-5"></i>
+          <span class="truncate transition-opacity duration-300"
+                [class.opacity-0]="!sidebarExpanded"
+                [class.opacity-100]="sidebarExpanded">Volver al inicio</span>
+          <span *ngIf="!sidebarExpanded"
+                class="absolute left-full ml-2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50">
+            Volver al inicio
+          </span>
         </a>
       </li>
-
     </ul>
   </div>
 </aside>
 
+<!-- Botón para abrir sidebar en móviles -->
+<button (click)="toggleSidebar()"
+        *ngIf="!sidebarOpen"
+        class="fixed top-4 left-4 z-30 p-2 bg-white border border-gray-300 rounded-md shadow-sm hover:shadow-md transition-shadow duration-200 sm:hidden">
+  <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+  </svg>
+</button>
+
+<!-- Overlay para móviles cuando sidebar está abierto -->
+<div *ngIf="sidebarOpen"
+     (click)="toggleSidebar()"
+     class="fixed inset-0 bg-black bg-opacity-50 z-30 sm:hidden"></div>

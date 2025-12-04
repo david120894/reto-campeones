@@ -1,8 +1,40 @@
-<!-- Hero Section -->
-<!-- Agrega esto al principio del hero-section, después del opening tag -->
-<!-- Agrega esto en el background elements -->
 <section id="home"
          class="hero-section min-h-screen overflow-hidden">
+  <!-- Agrega esto dentro de la sección hero-section, después del div con clase "christmas-lights" -->
+
+  <!-- Gorritos navideños en esquinas superiores -->
+  <div class="holiday-hats pt-20">
+    <!-- Gorrito superior izquierdo -->
+    <div class="hat top-left animate-bounce">
+      <div class="hat-top bg-gradient-to-b from-red-600 to-red-500"></div>
+      <div class="hat-brim bg-gradient-to-b from-white to-gray-100"></div>
+      <div class="hat-ball bg-gradient-to-b from-white to-yellow-200 animate-ping"></div>
+    </div>
+
+    <!-- Gorrito superior derecho -->
+    <div class="hat top-right animate-bounce" style="animation-delay: 0.5s;">
+      <div class="hat-top bg-gradient-to-b from-green-600 to-green-500"></div>
+      <div class="hat-brim bg-gradient-to-b from-white to-gray-100"></div>
+      <div class="hat-ball bg-gradient-to-b from-white to-red-200 animate-ping" style="animation-delay: 0.2s;"></div>
+    </div>
+  </div>
+
+  <!-- Campanitas en esquinas inferiores -->
+  <div class="holiday-bells pt-20">
+    <!-- Campanita inferior izquierda -->
+    <div class="bell bottom-left animate-swing">
+      <div class="bell-body bg-gradient-to-b from-yellow-400 to-yellow-600"></div>
+      <div class="bell-clapper bg-gradient-to-b from-red-600 to-red-800"></div>
+      <div class="bell-ring animate-pulse"></div>
+    </div>
+
+    <!-- Campanita inferior derecha -->
+    <div class="bell bottom-right animate-swing" style="animation-delay: 0.3s;">
+      <div class="bell-body bg-gradient-to-b from-gold-400 to-gold-600"></div>
+      <div class="bell-clapper bg-gradient-to-b from-green-600 to-green-800"></div>
+      <div class="bell-ring animate-pulse" style="animation-delay: 0.1s;"></div>
+    </div>
+  </div>
   <!-- Efecto navideño dinámico -->
   <div class="snowflakes" aria-hidden="true">
     <div *ngFor="let flake of snowflakes; let i = index"
@@ -213,7 +245,7 @@
 
                 <!-- Ver Registro -->
                 <a (click)="openModal()"
-                   class="group/btn flex-1 bg-secondary hover:bg-secondary/80 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl border border-gray-700 text-center cursor-pointer">
+                   class="group/btn flex-1 bg-primary-950/5 hover:bg-primary hover:text-white text-black font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl border border-red-900 text-center cursor-pointer">
           <span class="flex items-center justify-center gap-3">
             <svg class="w-6 h-6 group-hover/btn:scale-110 transition-transform" fill="none"
                  stroke="currentColor" viewBox="0 0 24 24">
@@ -266,132 +298,181 @@
       </div>
 
       <!-- Championship Event Card -->
-      <div *ngIf="selectedItem === 'challenge-champions'" class="group relative">
-        <!-- Background Effect -->
-        <div
-          class="absolute inset-0 bg-gradient-to-r from-pink-500/30 via-pink-500/20 to-purple-500/30 rounded-4xl blur-2xl group-hover:blur-3xl transition-all duration-500 -z-10"
-          style="border-radius: 20px"></div>
+      <div *ngIf="selectedItem === 'challenge-champions'" class="space-y-10">
 
-        <div
-          class="mb-2 bg-gradient-to-br from-red-900/90 to-red-900/95 backdrop-blur-xl rounded-3xl border border-white/10 p-8 shadow-2xl"
-        >
-          <div class="flex flex-col lg:flex-row gap-8 items-center">
+        <!-- Header Section -->
+        <div class="space-y-6">
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-3 border border-orange-300 rounded-2xl px-4 py-2 bg-primary">
+            <div class="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
+            <span class="text-secondary font-bold text-sm uppercase tracking-wider">
+        Competencia
+      </span>
+          </div>
 
-            <!-- Visual -->
-            <div class="flex-shrink-0">
-              <div class="relative group/img">
-                <div
-                  class="w-80 h-80 bg-white/5 rounded-3xl flex items-center justify-center p-8 border border-white/10 group-hover/img:border-purple-400/40 transition-all"
-                >
-                  <img src="championship/logo1.png"
-                       alt="Challenge Champions"
-                       class="w-48 h-48 object-contain transform group-hover/img:scale-110 transition-transform duration-300">
-                </div>
-
-                <div
-                  class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-3xl opacity-0 group-hover/img:opacity-100 transition-opacity duration-300">
-                </div>
-              </div>
-            </div>
-
-            <!-- Content -->
-            <div class="flex-1 space-y-6">
-
-              <!-- Badge -->
-              <div
-                class="inline-flex items-center gap-3 bg-orange-500/20 border border-orange-400/40 rounded-2xl px-4 py-2"
-              >
-                <div class="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
-                <span class="text-orange-300 font-bold text-sm uppercase tracking-wider">
-          Competencia
-        </span>
-              </div>
-
-              <!-- Title -->
-              <h2 class="text-4xl md:text-5xl font-bold text-white">
-                Primer Campeonato Interescolar
-                <span class="block text-2xl md:text-3xl text-orange-400 mt-2">
-          Torneo Interescolar
-        </span>
-              </h2>
-
-              <!-- Description -->
-              <p class="text-lg text-gray-300 leading-relaxed">
-                La competencia escolar más esperada del año donde las mejores instituciones educativas
-                se enfrentan por el título de
-                <span class="text-purple-300 font-semibold">campeón absoluto</span>.
-                Deporte, disciplina y excelencia académica en un solo evento.
-              </p>
-
-              <!-- Video Section -->
-              <div class="space-y-4">
-                <h3 class="text-xl font-bold text-white flex items-center gap-3">
-                  <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                  </svg>
-                  Mira el Evento
-                </h3>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-
-                  <!-- Video 1 -->
-                  <div class="relative group/video">
-                    <video
-                      src="https://taqe.cusco.gob.pe/publico/web/campeonato/Spot_fin.mp4"
-                      autoplay loop muted playsinline
-                      class="w-full h-[300px] md:h-[350px] lg:h-[400px] object-cover rounded-2xl shadow-lg
-                     transform group-hover/video:scale-[1.02] transition-all duration-300
-                     border-2 border-white/10 group-hover/video:border-purple-400/40"
-                    ></video>
-
-                    <div
-                      class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-2xl opacity-0
-                     group-hover/video:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                    >
-                      <div
-                        class="bg-white/20 backdrop-blur-sm rounded-full p-4 transform scale-0
-                       group-hover/video:scale-100 transition-transform duration-300"
-                      >
-                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Video 2 -->
-                  <div class="relative group/video">
-                    <video
-                      src="https://taqe.cusco.gob.pe/publico/web/campeonato/FC.mp4"
-                      autoplay loop muted playsinline
-                      class="w-full h-[300px] md:h-[350px] lg:h-[400px] object-cover rounded-2xl shadow-lg
-                     transform group-hover/video:scale-[1.02] transition-all duration-300
-                     border-2 border-white/10 group-hover/video:border-purple-400/40"
-                    ></video>
-
-                    <div
-                      class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-2xl opacity-0
-                     group-hover/video:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                    >
-                      <div
-                        class="bg-white/20 backdrop-blur-sm rounded-full p-4 transform scale-0
-                       group-hover/video:scale-100 transition-transform duration-300"
-                      >
-                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-            </div>
+          <!-- Title -->
+          <div>
+            <h1 class="text-5xl md:text-6xl font-bold text-gray-900 tracking-tight">
+              Primer Campeonato Interescolar
+            </h1>
+            <p class="text-2xl md:text-3xl text-secondary mt-3">
+              Torneo Interescolar
+            </p>
           </div>
         </div>
 
+        <!-- Main Content Grid -->
+        <div class="grid lg:grid-cols-3 gap-10">
+
+          <!-- Left Column - Logo Card -->
+          <div class="lg:col-span-1">
+            <div class="sticky top-10">
+              <div class="p-8">
+                <div class="aspect-square bg-primary rounded-2xl flex items-center justify-center p-8">
+                  <img src="championship/logo1.png"
+                       alt="Challenge Champions"
+                       class="w-full max-w-[200px] object-contain">
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="mt-8 space-y-4">
+                  <div class="flex items-center justify-between py-3 border-b border-gray-100">
+                    <span class="text-gray-600">Instituciones</span>
+                    <span class="text-xl font-bold text-gray-900">24+</span>
+                  </div>
+                  <div class="flex items-center justify-between py-3 border-b border-gray-100">
+                    <span class="text-gray-600">Deportes</span>
+                    <span class="text-xl font-bold text-gray-900">3+</span>
+                  </div>
+<!--                  <div class="flex items-center justify-between py-3">-->
+<!--                    <span class="text-xl font-bold text-gray-900">2025</span>-->
+<!--                  </div>-->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column - Content -->
+          <div class="lg:col-span-2 space-y-10">
+
+            <!-- Description -->
+            <div class="space-y-6">
+              <div class="flex items-center gap-3">
+                <div class="w-6 h-[2px] bg-gray-900"></div>
+                <h3 class="text-xl font-bold text-gray-900">Sobre el Evento</h3>
+              </div>
+
+              <p class="text-gray-700 text-lg leading-relaxed">
+                La competencia escolar más esperada del año donde las mejores instituciones educativas
+                se enfrentan por el título de
+                <span class="font-bold text-gray-900">campeón absoluto</span>.
+                Deporte, disciplina y excelencia académica en un solo evento.
+              </p>
+
+              <!-- Features -->
+              <div class="grid md:grid-cols-2 gap-4 pt-4">
+                <div class="flex items-start gap-3 p-4 border border-gray-100 rounded-xl">
+                  <svg class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <div>
+                    <p class="font-medium text-gray-900">Competencia deportiva</p>
+                    <p class="text-sm text-gray-600">Múltiples disciplinas</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 border border-gray-100 rounded-xl">
+                  <svg class="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <div>
+                    <p class="font-medium text-gray-900">Excelencia académica</p>
+                    <p class="text-sm text-gray-600">Valores educativos</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Videos Section -->
+            <div class="space-y-8">
+              <!-- Section Header -->
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="p-2 bg-gray-100 rounded-lg">
+                    <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h2 class="text-2xl font-bold text-gray-900">Mira el Evento</h2>
+                    <p class="text-gray-600">Videos destacados</p>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-2 text-sm text-gray-600">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  <span>2 videos</span>
+                </div>
+              </div>
+
+              <!-- Videos Grid -->
+              <div class="grid md:grid-cols-2 gap-6">
+
+                <!-- Video 1 -->
+                <div class="group">
+                  <div class="relative overflow-hidden rounded-xl border border-gray-200">
+                    <div class="aspect-video bg-gray-900">
+                      <video
+                        src="https://taqe.cusco.gob.pe/publico/web/campeonato/Spot_fin.mp4"
+                        autoplay loop muted playsinline
+                        class="w-full h-full object-cover"
+                      ></video>
+                    </div>
+
+                    <!-- Play Button -->
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-colors duration-300">
+                      <button class="transform scale-100 group-hover:scale-110 transition-transform duration-300">
+                        <div class="bg-white/90 rounded-full p-3">
+                          <svg class="w-6 h-6 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="group">
+                  <div class="relative overflow-hidden rounded-xl border border-gray-200">
+                    <div class="aspect-video bg-gray-900">
+                      <video
+                        src="https://taqe.cusco.gob.pe/publico/web/campeonato/FC.mp4"
+                        autoplay loop muted playsinline
+                        class="w-full h-full object-cover"
+                      ></video>
+                    </div>
+
+                    <!-- Play Button -->
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-colors duration-300">
+                      <button class="transform scale-100 group-hover:scale-110 transition-transform duration-300">
+                        <div class="bg-white/90 rounded-full p-3">
+                          <svg class="w-6 h-6 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Useful Vacations Event Card -->
@@ -535,133 +616,169 @@
           </div>
         </div>
       </div>
-      <div *ngIf="selectedItem === 'seminar'" class="group relative">
-        <!-- Background Effect -->
-        <div
-          class="absolute inset-0 bg-gradient-to-r from-pink-500/30 via-pink-500/20 to-purple-500/30 rounded-4xl blur-2xl group-hover:blur-3xl transition-all duration-500 -z-10"></div>
+      <div *ngIf="selectedItem === 'seminar'" class="space-y-10">
 
-        <div
-          class="mb-2 bg-gradient-to-br from-red-900/90 to-red-900 backdrop-blur-xl rounded-4xl border border-white/10 p-8 shadow-2xl"
-          style="border-radius: 20px">
-          <div class="flex flex-col lg:flex-row gap-8 items-center">
+        <!-- Header Section -->
+        <div class="space-y-6">
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-3 border border-orange-400 rounded-2xl px-4 py-2 bg-primary">
+            <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+            <span class="text-secondary font-bold text-sm uppercase tracking-wider">
+        Seminario Especializado
+      </span>
+          </div>
 
-            <!-- Content -->
-            <div class="flex-1 space-y-6">
-              <!-- Badge -->
-              <div
-                class="inline-flex items-center gap-3 bg-orange-500/20 border border-orange-500/30 rounded-2xl px-4 py-2">
-                <div class="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
-                <span class="text-orange-300 font-bold text-sm uppercase tracking-wider">Seminario Especializado</span>
-              </div>
-              <!-- Title -->
-              <h2 class="text-4xl md:text-5xl font-bold text-white">
-                I Seminario sobre Gestión Deportiva
-                <span class="block text-2xl md:text-3xl text-orange-400 mt-2">Ciudad del Cusco - Diciembre 2025</span>
-              </h2>
+          <!-- Title -->
+          <div class="space-y-2">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900">
+              I Seminario sobre Gestión Deportiva
+            </h1>
+            <p class="text-2xl md:text-3xl text-secondary">
+              Ciudad del Cusco - Diciembre 2025
+            </p>
+          </div>
+        </div>
 
-              <!-- Description -->
-              <p class="text-lg text-gray-300 leading-relaxed">
-                Evento académico especializado para <span class="text-red-300 font-semibold">fortalecer las capacidades de gestión,
-          planificación y liderazgo</span> de los actores vinculados al ámbito deportivo en la región Cusco.
+        <!-- Main Content Grid -->
+        <div class="grid lg:grid-cols-3 gap-10">
+
+          <!-- Left Column - Content -->
+          <div class="lg:col-span-2 space-y-8">
+
+            <!-- Description -->
+            <div class="space-y-4">
+              <p class="text-gray-700 text-lg leading-relaxed">
+                Evento académico especializado para
+                <span class="font-bold text-gray-900">fortalecer las capacidades de gestión, planificación y liderazgo</span>
+                de los actores vinculados al ámbito deportivo en la región Cusco.
               </p>
+            </div>
 
-              <!-- Key Information -->
-              <div class="grid md:grid-cols-3 gap-4 p-6 bg-blue-50 rounded-2xl">
-                <div class="text-center">
-                  <div class="text-2xl text-orange-400 font-bold">5</div>
-                  <div class="text-gray-400 text-sm">Días de duración</div>
-                </div>
-                <div class="text-center">
-                  <div class="text-2xl text-orange-400 font-bold">300+</div>
-                  <div class="text-gray-400 text-sm">Participantes</div>
-                </div>
-                <div class="text-center">
-                  <div class="text-2xl text-orange-400 font-bold">100%</div>
-                  <div class="text-gray-400 text-sm">Certificación</div>
-                </div>
+            <!-- Key Stats -->
+            <div class="grid grid-cols-3 gap-4">
+              <div class="text-center p-4 border border-red-800/20 rounded-xl">
+                <div class="text-3xl font-bold text-secondary">5</div>
+                <div class="text-gray-600 text-sm mt-1">Días de duración</div>
               </div>
+              <div class="text-center p-4 border border-red-800/20 rounded-xl">
+                <div class="text-3xl font-bold text-secondary">300+</div>
+                <div class="text-gray-600 text-sm mt-1">Participantes</div>
+              </div>
+              <div class="text-center p-4 border border-red-800/20 rounded-xl">
+                <div class="text-3xl font-bold text-secondary">100%</div>
+                <div class="text-gray-600 text-sm mt-1">Certificación</div>
+              </div>
+            </div>
 
-              <!-- Features Grid -->
-              <div class="grid md:grid-cols-2 gap-6">
-                <div class="space-y-4">
-                  <div class="flex items-center gap-4 p-4 bg-blue-50 rounded-2xl">
-                    <div
-                      class="w-12 h-12 bg-gradient-to-br from-orange-400/20 to-pink-500/20 rounded-xl flex items-center justify-center">
-                      <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                      </svg>
-                    </div>
-                    <div>
-                      <div class="text-yellow-500 font-semibold">Gestión Deportiva</div>
-                      <div class="text-gray-400 text-sm">Capacitación especializada</div>
-                    </div>
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-2 gap-6">
+
+              <!-- Column 1 -->
+              <div class="space-y-4">
+                <!-- Feature 1 -->
+                <div class="flex items-start gap-4 p-4 border  border-red-800/20 rounded-xl">
+                  <div class="p-3 bg-orange-50 rounded-lg">
+                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
                   </div>
-
-                  <div class="flex items-center gap-4 p-4 bg-blue-50 rounded-2xl">
-                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
-                      <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                      </svg>
-                    </div>
-                    <div>
-                      <div class="text-yellow-500 font-semibold">Certificación</div>
-                      <div class="text-gray-400 text-sm">80% de asistencia</div>
-                    </div>
+                  <div>
+                    <h4 class="font-bold text-gray-900">Gestión Deportiva</h4>
+                    <p class="text-gray-600 text-sm">Capacitación especializada</p>
                   </div>
                 </div>
 
-                <div class="space-y-4">
-                  <div class="flex items-center gap-4 p-4 bg-blue-50 rounded-2xl">
-                    <div class="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center">
-                      <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                      </svg>
-                    </div>
-                    <div>
-                      <div class="text-yellow-500 font-semibold">Casa de la Cultura</div>
-                      <div class="text-gray-400 text-sm">Sede principal</div>
-                    </div>
+                <!-- Feature 2 -->
+                <div class="flex items-start gap-4 p-4 border border-red-800/20 rounded-xl">
+                  <div class="p-3 bg-blue-50 rounded-lg">
+                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
                   </div>
-
-                  <div class="flex items-center gap-4 p-4 bg-blue-50 rounded-2xl">
-                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
-                      <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                      </svg>
-                    </div>
-                    <div>
-                      <div class="text-yellow-500 font-semibold">Proyecto Final</div>
-                      <div class="text-gray-400 text-sm">Aplicación práctica</div>
-                    </div>
+                  <div>
+                    <h4 class="font-bold text-gray-900">Certificación</h4>
+                    <p class="text-gray-600 text-sm">80% de asistencia</p>
                   </div>
                 </div>
               </div>
 
-              <!-- Organizers -->
-              <div class="pt-4">
-                <h3 class="text-white font-semibold mb-3">Organizan:</h3>
-                <div class="flex flex-wrap gap-3">
-                  <span class="bg-red-500/20 text-red-300 px-3 py-1 rounded-lg text-sm">Municipalidad Provincial del Cusco</span>
-                  <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-lg text-sm">Proyecto Cusco Deportes</span>
-                  <!--                  <span class="bg-green-500/20 text-green-300 px-3 py-1 rounded-lg text-sm">GEREDU</span>-->
-                  <span class="bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-lg text-sm">UGEL Cusco</span>
-                  <span class="bg-purple-500/20 text-purple-300 px-3 py-1 rounded-lg text-sm">IPD Cusco</span>
+              <!-- Column 2 -->
+              <div class="space-y-4">
+                <!-- Feature 3 -->
+                <div class="flex items-start gap-4 p-4 border border-red-800/20 rounded-xl">
+                  <div class="p-3 bg-yellow-50 rounded-lg">
+                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-gray-900">Casa de la Cultura</h4>
+                    <p class="text-gray-600 text-sm">Sede principal</p>
+                  </div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="flex items-start gap-4 p-4 border border-red-800/20 rounded-xl">
+                  <div class="p-3 bg-purple-50 rounded-lg">
+                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-gray-900">Proyecto Final</h4>
+                    <p class="text-gray-600 text-sm">Aplicación práctica</p>
+                  </div>
                 </div>
               </div>
+            </div>
 
-              <!-- Action Buttons -->
-              <div class="flex flex-col sm:flex-row gap-4 pt-6">
+            <!-- Organizers -->
+            <div class="space-y-4">
+              <h3 class="text-lg font-bold text-gray-900">Organizan:</h3>
+              <div class="flex flex-wrap gap-3">
+          <span class="border border-red-300 text-red-700 px-4 py-2 rounded-lg text-sm bg-red-50">
+            Municipalidad Provincial del Cusco
+          </span>
+                <span class="border border-blue-300 text-blue-700 px-4 py-2 rounded-lg text-sm bg-blue-50">
+            Proyecto Cusco Deportes
+          </span>
+                <span class="border border-yellow-300 text-yellow-700 px-4 py-2 rounded-lg text-sm bg-yellow-50">
+            UGEL Cusco
+          </span>
+                <span class="border border-purple-300 text-purple-700 px-4 py-2 rounded-lg text-sm bg-purple-50">
+            IPD Cusco
+          </span>
+              </div>
+            </div>
+
+            <!-- Schedule Info -->
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="text-center p-4 border border-red-800/20 bg-red-950/10 rounded-xl">
+                <div class="text-xl font-bold text-gray-900">3 Días</div>
+                <div class="text-gray-600 text-sm">Presencial</div>
+              </div>
+              <div class="text-center p-4 border border-red-800/20 bg-red-950/10 rounded-xl">
+                <div class="text-xl font-bold text-gray-900">2 Días</div>
+                <div class="text-gray-600 text-sm">Virtuales</div>
+              </div>
+              <div class="text-center p-4 border border-red-800/20 bg-red-950/10 rounded-xl">
+                <div class="text-xl font-bold text-gray-900">8 Módulos</div>
+                <div class="text-gray-600 text-sm">Especializados</div>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="space-y-4">
+              <div class="grid sm:grid-cols-3 gap-4">
                 <button (click)="goSeminarRegistration()"
-                        class="group/btn flex-1 bg-gradient-to-r from-red-500 to-orange-600 hover:from-red-600 hover:to-orange-700 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg text-center">
-            <span class="flex items-center justify-center gap-3">
-              <svg class="w-6 h-6 group-hover/btn:scale-110 transition-transform" fill="none"
-                   stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        class="group border-2 bg-primary text-white border-primary text-primary hover:bg-primary hover:text-white font-bold py-3 px-4 rounded-xl transition-all duration-300 text-center">
+            <span class="flex items-center justify-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
               </svg>
               Inscribirse al Seminario
             </span>
@@ -669,117 +786,61 @@
 
                 <a href="https://drive.google.com/drive/u/0/my-drive"
                    target="_blank"
-                   class="group/btn flex-1 bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl border border-gray-700 text-center cursor-pointer">
-            <span class="flex items-center justify-center gap-3">
-              <svg class="w-6 h-6 group-hover/btn:scale-110 transition-transform" fill="none"
-                   stroke="currentColor" viewBox="0 0 24 24">
+                   class="group border-2 border-red-800 text-gray-700 hover:bg-primary hover:text-white font-bold py-3 px-4 rounded-xl transition-all duration-300 text-center cursor-pointer">
+            <span class="flex items-center justify-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
               </svg>
               Herramientas de trabajo
             </span>
                 </a>
-                <a (click)="openModal()"
-                       class="group/btn flex-1 bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl border border-gray-700 text-center cursor-pointer">
-            <span class="flex items-center justify-center gap-3">
-              <svg class="w-6 h-6 group-hover/btn:scale-110 transition-transform" fill="none"
-                   stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-              </svg>
-              Ver Inscripcion
-            </span>
-              </a>
-              </div>
-            </div>
 
-            <!-- Visual -->
-            <div class="flex-shrink-0">
-              <div class="relative group/img">
-                <div
-                  class="w-72 h-96 bg-gradient-to-br from-orange-400/20 to-pink-500/20 rounded-3xl flex items-center justify-center p-8">
-                  <div class="text-center">
-                    <div class="relative group/video">
-                      <video
-                        #videoPlayer2
-                        src="https://taqe.cusco.gob.pe/publico/web/deporte/Gestion_Deportes.mp4"
-                        type="video/mp4"
-                        autoplay
-                        loop
-                        muted
-                        playsinline
-                        class="w-full rounded-2xl shadow-lg transform group-hover/video:scale-[1.02] transition-all duration-300 border-2 border-white/10 group-hover/video:border-purple-400/30">
-                      </video>
-                      <div
-                        class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-2xl opacity-0 group-hover/video:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <div
-                          class="bg-white/20 backdrop-blur-sm rounded-full p-4 transform scale-0 group-hover/video:scale-100 transition-transform duration-300">
-                          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                    <!--                    <div class="text-white font-bold text-lg">Gran Evento Familiar</div>-->
-                    <!--                    <div class="text-orange-300 text-sm mt-2">Pedalea con Propósito</div>-->
-                  </div>
-                </div>
-                <div
-                  class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-3xl opacity-0 group-hover/img:opacity-100 transition-opacity duration-300"></div>
+                <a (click)="openModal()"
+                   class="group border-2 border-red-800 text-gray-700 hover:bg-primary hover:text-white font-bold py-3 px-4 rounded-xl transition-all duration-300 text-center cursor-pointer">
+            <span class="flex items-center justify-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+              </svg>
+              Ver Inscripción
+            </span>
+                </a>
               </div>
             </div>
-<!--            <div class="flex-shrink-0">-->
-<!--              <div class="relative group/img">-->
-<!--                <div-->
-<!--                  class="w-80 h-10    0 bg-gradient-to-br from-red-400/20 to-orange-500/20 rounded-3xl flex items-center justify-center p-8">-->
-<!--                  <div class="text-center">-->
-<!--&lt;!&ndash;                    <img src="https://taqe.cusco.gob.pe/publico/web/deporte/Gestion_Deportes.mp4" alt="">&ndash;&gt;-->
-<!--                    &lt;!&ndash;                    <div class="text-6xl mb-4">🏆</div>&ndash;&gt;-->
-<!--                    &lt;!&ndash;                    <div class="text-white font-bold text-lg">Gestión Deportiva</div>&ndash;&gt;-->
-<!--                    &lt;!&ndash;                    <div class="text-red-300 text-sm mt-2">10-13 Dic 2025</div>&ndash;&gt;-->
-<!--                    &lt;!&ndash;                    <div class="text-gray-400 text-xs mt-2">Casa de la Cultura - Cusco</div>&ndash;&gt;-->
-<!--                    <div class="relative group/video">-->
-<!--                      <video-->
-<!--                        #videoPlayer2-->
-<!--                        src="https://taqe.cusco.gob.pe/publico/web/deporte/Gestion_Deportes.mp4"-->
-<!--                        type="video/mp4"-->
-<!--                        autoplay-->
-<!--                        loop-->
-<!--                        muted-->
-<!--                        playsinline-->
-<!--                        class="w-full rounded-2xl shadow-lg transform group-hover/video:scale-[1.02] transition-all duration-300 border-2 border-white/10 group-hover/video:border-purple-400/30">-->
-<!--                      </video>-->
-<!--                      <div-->
-<!--                        class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-2xl opacity-0 group-hover/video:opacity-100 transition-opacity duration-300 flex items-center justify-center">-->
-<!--                        <div-->
-<!--                          class="bg-white/20 backdrop-blur-sm rounded-full p-4 transform scale-0 group-hover/video:scale-100 transition-transform duration-300">-->
-<!--                          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">-->
-<!--                            <path d="M8 5v14l11-7z" />-->
-<!--                          </svg>-->
-<!--                        </div>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div-->
-<!--                  class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-3xl opacity-0 group-hover/img:opacity-100 transition-opacity duration-300"></div>-->
-<!--              </div>-->
-<!--            </div>-->
           </div>
 
-          <!-- Additional Information -->
-          <div class="mt-8 grid md:grid-cols-3 gap-6 text-center">
-            <div class="p-4 bg-blue-50 rounded-2xl">
-              <div class="text-red-400 font-bold text-lg">3 Días</div>
-              <div class="text-gray-400 text-sm">Presencial</div>
-            </div>
-            <div class="p-4 bg-blue-50 rounded-2xl">
-              <div class="text-red-400 font-bold text-lg">2 Día</div>
-              <div class="text-gray-400 text-sm">Vituales</div>
-            </div>
-            <div class="p-4 bg-blue-50 rounded-2xl">
-              <div class="text-red-400 font-bold text-lg">8 Módulos</div>
-              <div class="text-gray-400 text-sm">Especializados</div>
+          <!-- Right Column - Video -->
+          <div class="lg:col-span-1">
+            <div class="space-y-6">
+              <!-- Video Section -->
+              <div class="group">
+                <div class="relative overflow-hidden rounded-2xl border border-gray-200">
+                  <video
+                    #videoPlayer2
+                    src="https://taqe.cusco.gob.pe/publico/web/deporte/Gestion_Deportes.mp4"
+                    type="video/mp4"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    class="w-full aspect-[9/16] object-cover"
+                  ></video>
+
+                  <!-- Play Overlay -->
+                  <div class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-colors duration-300">
+                    <button class="transform scale-100 group-hover:scale-110 transition-transform duration-300">
+                      <div class="bg-white/90 rounded-full p-3">
+                        <svg class="w-6 h-6 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -867,8 +928,30 @@
           {{ mensajeExito }}
         </div>
         <button (click)="searchByDni()" type="submit"
-                class="w-full py-3 bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-600 hover:to-pink-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
-          Buscar Registro
+                [disabled]="loading()"
+                class="relative w-full py-3 bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-600 hover:to-pink-700 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg overflow-hidden group">
+
+          <!-- Contenido del botón -->
+          <div class="relative z-10 flex items-center justify-center gap-2">
+            <!-- Icono de búsqueda (se muestra cuando NO está cargando) -->
+            <svg *ngIf="!loading()" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+
+            <!-- Spinner giratorio (se muestra cuando SÍ está cargando) -->
+            <svg *ngIf="loading()" class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+
+            <!-- Texto del botón -->
+            <span>{{ loading() ? 'Buscando...' : 'Buscar Registro' }}</span>
+          </div>
+
+          <!-- Efecto de escala para hover -->
+          <div class="absolute inset-0 transform scale-0 group-hover:scale-100 transition-transform duration-300 bg-white/10"></div>
         </button>
         <button (click)="closeModal()"
                 class="w-full py-3 bg-gray-700 hover:bg-gray-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105">

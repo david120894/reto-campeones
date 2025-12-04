@@ -1,7 +1,7 @@
-<section class="py-4 background">
+<section class="py-4 hero-section">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
-      <h2 class="text-3xl sm:text-4xl font-bold text-yellow-500 mb-4">¿A quién está dirigido?</h2>
+      <h2 class="text-3xl sm:text-4xl font-bold text-secondary mb-4">¿A quién está dirigido?</h2>
       <p class="text-yellow-500 text-lg max-w-2xl mx-auto">
         Seminario especializado para actores del ecosistema deportivo
       </p>
@@ -9,21 +9,21 @@
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
       <div *ngFor="let audience of audiences; let index = index"
-           class="p-6 border border-gray-200 rounded-lg bg-blue-100 hover:border-blue-300 transition shadow-sm">
+           class="p-6 border border-red-800/20 rounded-lg bg-red-950/5 hover:border-red-800 transition shadow-sm">
         <div class="text-4xl mb-4">{{audience.icon}}</div>
         <h3 class="font-bold text-gray-900 mb-2">{{audience.title}}</h3>
         <p class="text-sm text-gray-600">{{audience.description}}</p>
       </div>
     </div>
 
-    <div class="p-8 rounded-xl bg-blue-100 border border-blue-200">
+    <div class="p-8 rounded-xl bg-red-950/5 border border-red-800/20 ">
       <div class="flex items-start gap-3 mb-6">
         <span class="text-blue-600 text-xl">👥</span>
         <h3 class="font-bold text-lg text-gray-900">Beneficios de participar</h3>
       </div>
       <div class="grid sm:grid-cols-2 gap-4">
-        <div *ngFor="let benefit of benefits; let index = index" class="flex items-start gap-3">
-          <span class="text-blue-600 mt-0.5">✓</span>
+        <div *ngFor="let benefit of benefits; let index = index" class="flex items-start gap-3 hover:border-red-800">
+          <span class="text-primary mt-0.5">✓</span>
           <span class="text-gray-700">{{benefit}}</span>
         </div>
       </div>

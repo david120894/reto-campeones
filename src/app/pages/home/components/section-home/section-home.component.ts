@@ -4,7 +4,7 @@ import {
   CUSTOM_ELEMENTS_SCHEMA,
   ElementRef, EventEmitter, inject,
   OnDestroy,
-  OnInit, Output,
+  OnInit, Output, signal,
   ViewChild,
 } from '@angular/core'
 import { DatePipe, NgClass, NgForOf, NgIf } from '@angular/common'
@@ -38,6 +38,7 @@ interface CarouselItem {
 })
 export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  {
 
+  loading = signal(false)
   selectedTab: string = 'bike-ride';
   objectRegister: ResponseRegisterModels | null = null;
   router = inject(Router)
@@ -130,32 +131,39 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
     console.log(this.selectedItem)
     const dni = this.search['searchDni'].value;
     if (this.selectedItem === 'seminar') {
+      this.loading.set(true)
       this.reservationService.searchByDniRegisterSeminar(dni).subscribe({
         next: (response) => {
           this.objectRegister = response;
           this.imageModal = this.objectRegister.qrCode.image;
           this.showModal = true;
           this.formSearchDni.reset();
+          this.loading.set(false)
           this.closeModal();
         },
         error: (error) => {
           console.error('Usuario no registrado aun');
           this.showMessage = true;
           this.mensajeExito = 'El DNI ingresado no está registrado.';
+          this.loading.set(false)
+
         },
       })
     }else{
+      this.loading.set(true)
       this.reservationService.searchByDni(dni).subscribe({
         next: (response) => {
           this.objectRegister = response;
           this.imageModal = this.objectRegister.qrCode.image;
           this.showModal = true;
+          this.loading.set(false)
           this.formSearchDni.reset();
           this.closeModal();
         },
         error: (error) => {
           console.error('Usuario no registrado aun');
           this.showMessage = true;
+          this.loading.set(false)
           this.mensajeExito = 'El DNI ingresado no está registrado.';
         },
       });
@@ -374,20 +382,17 @@ export class SectionHomeComponent implements OnInit, OnDestroy , AfterViewInit  
   }
 
   goSeminarRegistration() {
-    // const tablePositions = document.getElementById('seminar-inscriptions')
-    // if (tablePositions) {
-    //   tablePositions.scrollIntoView({ behavior: 'smooth' })
-    // }
     this.router.navigate(['/seminar-register']);
   }
 
   // En tu componente TypeScript
-  snowflakes = Array.from({ length: 20 }, (_, i) => ({
+  snowflakes = Array.from({ length: 60 }, (_, i) => ({
     left: `${Math.random() * 100}%`,
     size: `${0.8 + Math.random() * 1.2}em`,
-    color: `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.5})`,
+    color:'#86c1ec',
     duration: `${10 + Math.random() * 15}s`,
     delay: `${Math.random() * 10}s`,
     symbol: ['❄', '❅', '❆', '✻', '✼'][Math.floor(Math.random() * 5)]
   }));
 }
+
