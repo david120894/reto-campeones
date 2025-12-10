@@ -135,7 +135,7 @@ export class SeminarAttendanceComponent implements OnInit, OnDestroy {
       if (this.listParticipantsSeminar.length === 0) {
         // this.toastr.warning('No hay datos para exportar', 'Advertencia');
         return
-      }
+      } 
 
       const data = this.mapParticipants()
       const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data)
