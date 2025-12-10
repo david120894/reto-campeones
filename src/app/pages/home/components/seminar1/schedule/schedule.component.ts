@@ -28,7 +28,7 @@ export class ScheduleComponent {
         { time: "9:30 - 11:00 am", activity: "Funcionamiento del Registro Nacional de Deporte" +
             "Retos y desafíos de la gestión deportiva en el Perú", speaker: "Abg. José Antonio Reyes especialista IPD - Lima" },
         {
-          time: "11:15 - 1:00 am",
+          time: "11:15 - 1:00 pm",
           activity: 'Gestión deportiva y organización de eventos Análisis de casos',
           speaker: "Lic. Luis Morales Ramon especialista IPD - Lima",
         },
