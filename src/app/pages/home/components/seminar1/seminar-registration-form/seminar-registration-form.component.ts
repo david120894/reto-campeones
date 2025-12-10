@@ -1,4 +1,5 @@
 import { Component, OnInit, signal } from '@angular/core'
+import { Router } from '@angular/router'
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms'
 import { DatePipe, NgForOf, NgIf } from '@angular/common'
 import { RouterLink } from '@angular/router'
@@ -36,11 +37,17 @@ export class SeminarRegistrationFormComponent implements OnInit {
   showSuccessModal = signal(false)
   seminarResponse = signal<SeminarResponse | null>(null)
   qrImageUrl: SafeUrl = ''
+  isRegistrationClosed = signal(true)
 
   constructor(
     private seminarService: ReservationService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private router: Router
   ) {}
+
+  navigateToSeminar() {
+    this.router.navigate(['/main/seminar']);
+  }
 
   formSeminar: FormGroup = new FormGroup({
     name: new FormControl(null, [Validators.required]),

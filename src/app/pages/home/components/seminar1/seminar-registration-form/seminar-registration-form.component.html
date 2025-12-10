@@ -1,3 +1,20 @@
+<!-- Modal de Registro Cerrado -->
+<div *ngIf="isRegistrationClosed()" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 text-center">
+    <div class="mb-6">
+      <i class="fas fa-calendar-times text-red-500 text-5xl mb-4"></i>
+      <h2 class="text-2xl font-bold text-gray-800 mb-2">¡Inscripciones Cerradas!</h2>
+      <p class="text-gray-600">Las inscripciones para este seminario ya no están disponibles.</p>
+    </div>
+    <button
+      (click)="navigateToSeminar()"
+      class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors"
+    >
+      Entendido
+    </button>
+  </div>
+</div>
+
 <section id="seminar-inscriptions" class="py-8 px-4 sm:px-6 lg:px-8">
   <div class="max-w-4xl mx-auto">
     <div class="bg-white shadow-xl rounded-2xl overflow-hidden">
@@ -9,7 +26,7 @@
         >
       </div>
 
-      <form [formGroup]="formSeminar" (ngSubmit)="onSubmit()" class="p-6 sm:p-8">
+      <form [formGroup]="formSeminar" (ngSubmit)="onSubmit()" class="p-6 sm:p-8" [class.opacity-50]="isRegistrationClosed()" [class.pointer-events-none]="isRegistrationClosed()">
 
         <!-- Información Personal -->
         <div class="mb-10">
