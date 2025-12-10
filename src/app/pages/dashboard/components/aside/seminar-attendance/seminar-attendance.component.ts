@@ -258,10 +258,6 @@ export class SeminarAttendanceComponent implements OnInit, OnDestroy {
     this.updatePagination()
   }
 
-  // onDateChange() {
-  //   this.getParticipantsSeminar();
-  // }
-
   changePage(page: number) {
     if (page >= 1 && page <= this.totalPages) {
       this.currentPage = page

@@ -1,8 +1,8 @@
-<div class="bg-gray-50 p-6 sm:ml-64">
-  <div class="mb-8">
+<div class="bg-gray-50 p-3 sm:p-4 md:p-6 sm:ml-0 md:ml-64">
+  <div class="mb-4 md:mb-8">
     <!-- Header -->
     <!-- Stats Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 mt-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-6 md:mb-8 mt-6 sm:mt-12">
       <!-- Total Inscritos Card -->
       <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 transition-all duration-300 hover:shadow-md">
         <div class="flex items-center">
@@ -52,50 +52,51 @@
           </div>
           <div>
             <p class="text-sm font-medium text-gray-500">Fecha seleccionada</p>
-            <h3 class="text-lg font-bold text-gray-800">{{ searchForm.get('selectedDate')?.value | date:'mediumDate' }}</h3>
-<!--            <p class="text-xs text-gray-500 mt-1">Última actualización: {{ lastUpdated | date:'shortTime' }}</p>-->
+            <h3
+              class="text-lg font-bold text-gray-800">{{ searchForm.get('selectedDate')?.value | date:'mediumDate' }}</h3>
+            <!--            <p class="text-xs text-gray-500 mt-1">Última actualización: {{ lastUpdated | date:'shortTime' }}</p>-->
           </div>
         </div>
       </div>
     </div>
 
     <!-- Search and Actions Bar -->
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 mb-6">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div class="flex flex-col md:flex-row gap-4 w-full" [formGroup]="searchForm">
-          <div class="relative flex-grow max-w-2xl" >
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-3 sm:p-4 mb-6">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full" [formGroup]="searchForm">
+          <div class="relative flex-grow w-full sm:max-w-2xl">
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <i class="fas fa-search text-gray-400"></i>
+              <i class="fas fa-search text-gray-400 text-sm sm:text-base"></i>
             </div>
             <input
               type="text"
               formControlName="searchQuery"
               (input)="onSearchChangeFilter()"
-              placeholder="Buscar por nombre, email o DNI..."
-              class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition duration-200"
+              placeholder="Buscar..."
+              class="block w-full pl-10 pr-3 py-2 text-sm sm:text-base border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition duration-200"
             />
           </div>
 
-          <div class="relative">
+          <div class="relative w-full sm:w-auto">
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <i class="fas fa-calendar-alt text-gray-400"></i>
+              <i class="fas fa-calendar-alt text-gray-400 text-sm sm:text-base"></i>
             </div>
             <input
               type="date"
               formControlName="selectedDate"
               [min]="minDate"
               (change)="onDateChange()"
-              class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+              class="block w-full pl-10 pr-3 py-2 text-sm sm:text-base border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
             />
           </div>
         </div>
 
         <button
           (click)="exportExcelSeminar()"
-          class="flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-medium py-2 px-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 whitespace-nowrap"
+          class="flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white text-sm sm:text-base font-medium py-2 px-3 sm:px-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 whitespace-nowrap w-full sm:w-auto"
         >
-          <i class="fas fa-file-export"></i>
-          <span>Exportar a Excel</span>
+          <i class="fas fa-file-export text-sm sm:text-base"></i>
+          <span class="truncate">Exportar a Excel</span>
         </button>
       </div>
     </div>
@@ -103,59 +104,100 @@
     <!-- Table Container -->
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
       <!-- Table -->
-      <div class="overflow-x-auto">
+      <div class="overflow-x-auto -mx-2 sm:mx-0">
         <table class="min-w-full divide-y divide-gray-200">
-          <thead class="bg-gray-50">
+          <thead class="bg-gray-50 hidden sm:table-header-group">
           <tr>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre</th>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">DNI</th>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Profesión</th>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Lugar de Trabajo</th>
-            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Asistencia</th>
+            <th scope="col"
+                class="px-3 sm:px-4 py-2 sm:py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Nombre
+            </th>
+            <th scope="col"
+                class="px-3 sm:px-4 py-2 sm:py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              DNI
+            </th>
+            <th scope="col"
+                class="px-3 sm:px-4 py-2 sm:py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:table-cell">
+              Profesión
+            </th>
+            <th scope="col"
+                class="px-3 sm:px-4 py-2 sm:py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">
+              Lugar de Trabajo
+            </th>
+            <th scope="col"
+                class="px-3 sm:px-4 py-2 sm:py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Asistencia
+            </th>
           </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
           <tr *ngIf="paginatedReservations.length === 0" class="bg-white">
-            <td colspan="7" class="px-6 py-4 text-center text-sm text-gray-500">
+            <td colspan="7" class="px-4 py-4 text-center text-sm text-gray-500">
               No se encontraron participantes
             </td>
           </tr>
-          <tr
-            *ngFor="let p of paginatedReservations; let i = index"
-            class="bg-white hover:bg-gray-50 transition-colors duration-150"
-          >
-            <td class="px-6 py-4 whitespace-nowrap">
-              <div class="flex items-center">
-                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-red-100 flex items-center justify-center text-red-600 font-medium">
-                  {{ p.name.charAt(0) }}{{ p.lastName.charAt(0) }}
+          <ng-container *ngFor="let p of paginatedReservations; let i = index">
+            <!-- Mobile View -->
+            <tr class="sm:hidden bg-white hover:bg-gray-50 transition-colors duration-150 border-b border-gray-200">
+              <td class="px-3 py-4">
+                <div class="flex items-start space-x-3">
+                  <div
+                    class="flex-shrink-0 h-10 w-10 rounded-full bg-red-100 flex items-center justify-center text-red-600 font-medium">
+                    {{ p.name.charAt(0) }}{{ p.lastName.charAt(0) }}
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-sm font-medium text-gray-900 truncate">{{ p.name }} {{ p.lastName }}</div>
+                    <div class="text-xs text-gray-500 mt-1">DNI: {{ p.dni }}</div>
+                    <div class="text-xs text-gray-500">
+                      <span class="font-medium">Asistencia:</span>
+                      <span [class.text-green-600]="p.checkinFirst || p.checkinSecond"
+                            [class.text-yellow-600]="!p.checkinFirst && !p.checkinSecond">
+                        {{ (p.checkinFirst || p.checkinSecond) ? 'Presente' : 'Ausente' }}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <div class="ml-4">
-                  <div class="text-sm font-medium text-gray-900">{{ p.name }} {{ p.lastName }}</div>
+              </td>
+            </tr>
+
+            <!-- Desktop View -->
+            <tr class="hidden sm:table-row bg-white hover:bg-gray-50 transition-colors duration-150">
+              <td class="px-3 sm:px-4 py-3 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div
+                    class="flex-shrink-0 h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-red-100 flex items-center justify-center text-red-600 font-medium text-sm sm:text-base">
+                    {{ p.name.charAt(0) }}{{ p.lastName.charAt(0) }}
+                  </div>
+                  <div class="ml-2 sm:ml-3">
+                    <div class="text-sm font-medium text-gray-900">{{ p.name }} {{ p.lastName }}</div>
+                  </div>
                 </div>
-              </div>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ p.dni }}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ p.profession || 'N/A' }}</td>
-            <td class="px-6 py-4 whitespace-normal max-w-xs">
-              <div class="text-sm text-gray-900">{{ p.workplace || 'N/A' }}</div>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <div class="flex flex-col sm:flex-row gap-2 justify-center">
-                <div class="flex items-center justify-center gap-1">
+              </td>
+              <td class="px-3 sm:px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ p.dni }}</td>
+              <td
+                class="px-3 sm:px-4 py-3 whitespace-nowrap text-sm text-gray-500 hidden md:table-cell">{{ p.profession || 'N/A' }}
+              </td>
+              <td class="px-3 sm:px-4 py-3 whitespace-normal max-w-xs hidden lg:table-cell">
+                <div class="text-sm text-gray-900">{{ p.workplace || 'N/A' }}</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex flex-col sm:flex-row gap-2 justify-center">
+                  <div class="flex items-center justify-center gap-1">
                   <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"
                         [ngClass]="p.checkinFirst ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'">
                     {{ p.checkinFirst ? 'Mañana: ' + p.checkinFirst : 'Mañana: Sin registro' }}
                   </span>
-                </div>
-                <div class="flex items-center justify-center gap-1">
+                  </div>
+                  <div class="flex items-center justify-center gap-1">
                   <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"
                         [ngClass]="p.checkinSecond ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'">
                     {{ p.checkinSecond ? 'Tarde: ' + p.checkinSecond : 'Tarde: Sin registro' }}
                   </span>
+                  </div>
                 </div>
-              </div>
-            </td>
-          </tr>
+              </td>
+            </tr>
+          </ng-container>
           </tbody>
         </table>
       </div>
@@ -205,7 +247,8 @@
                 >
                   {{ page }}
                 </button>
-                <span *ngIf="page === '...'" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
+                <span *ngIf="page === '...'"
+                      class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
                   {{ page }}
                 </span>
               </ng-container>
