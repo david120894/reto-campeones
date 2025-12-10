@@ -124,9 +124,8 @@ export class SeminarAttendanceComponent implements OnInit, OnDestroy {
       Apellido: participant.lastName,
       dni: participant.dni,
       fecha: participant.date,
-      checkinFirst: participant.checkinFirst,
-      checkinSecond: participant.checkinSecond,
-
+      Asistencia_Mañana: participant.checkinFirst ? `${participant.checkinFirst}` : 'No',
+      Asistencia_Tarde: participant.checkinSecond ? `${participant.checkinSecond}` : 'No',
     }))
     return this.listToExcel
   }
@@ -155,7 +154,7 @@ export class SeminarAttendanceComponent implements OnInit, OnDestroy {
       })
 
       const date = new Date().toISOString().split('T')[0]
-      saveAs(blob, `participantes_seminario_${date}.xlsx`)
+      saveAs(blob, `asistentes_seminario_${date}.xlsx`)
       // this.toastr.success('Exportación completada con éxito', 'Éxito');
     } catch (error) {
       console.error('Error al exportar a Excel:', error)
