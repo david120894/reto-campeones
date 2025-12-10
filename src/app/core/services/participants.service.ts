@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { ParticipantsModel } from '../models/participants.model';
 import { ParticipantSeminar } from '../models/model.seminar'
+import { SeminarAttendance } from '../models/seminar-attendance'
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,10 @@ export class ParticipantsService {
 
   getAllParticipantsSeminar():Observable<ParticipantSeminar[]> {
     return this.http.get<ParticipantSeminar[]>(`${environment.apiUrl}/seminar/participants`);
+  }
+
+  getParticipantsAttendanceSeminar(date : string) :Observable<SeminarAttendance[]> {
+    return this.http.get<SeminarAttendance[]>(`${environment.apiUrl}/seminar/attendance/date/${date}`);
   }
 
   getParticipantsById(dni: string): Observable<string> {

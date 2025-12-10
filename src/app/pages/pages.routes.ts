@@ -9,6 +9,9 @@ import {
   SeminarRegistrationFormComponent,
 } from './home/components/seminar1/seminar-registration-form/seminar-registration-form.component'
 import { PagesComponent } from './pages.component'
+import {
+  SeminarAttendanceComponent
+} from './dashboard/components/aside/seminar-attendance/seminar-attendance.component'
 
 
 export const pagesRoutes: Routes = [

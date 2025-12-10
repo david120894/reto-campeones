@@ -44,6 +44,10 @@ export const sharedRoutes: Routes = [
         loadComponent: () => import('../pages/dashboard/components/aside/seminar/seminar.component').then((m) => m.SeminarComponent),
       },
       {
+        path: 'seminar-attendance',
+        loadComponent: () => import('../pages/dashboard/components/aside/seminar-attendance/seminar-attendance.component').then((m) => m.SeminarAttendanceComponent),
+      },
+      {
         path: 'users',
         loadComponent: () => import('../pages/dashboard/components/aside/users/users.component').then((m) => m.UsersComponent),
         canActivate: [adminGuard],

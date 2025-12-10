@@ -33,7 +33,6 @@ export class SeminarComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly participantsService: ParticipantsService,
-    // private toastr: ToastrService
   ) {}
 
   ngOnDestroy() {
@@ -151,10 +150,6 @@ export class SeminarComponent implements OnInit, OnDestroy {
     this.paginatedReservations = filteredReservations.slice(startIndex, endIndex);
   }
 
-  /**
-   * Generate an array of page numbers for pagination controls
-   * Includes ellipsis for large numbers of pages
-   */
   getPageNumbers(): (number | string)[] {
     const pages: (number | string)[] = [];
     const maxPagesToShow = this.maxVisiblePages;
