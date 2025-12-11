@@ -37,7 +37,7 @@ export class SeminarRegistrationFormComponent implements OnInit {
   showSuccessModal = signal(false)
   seminarResponse = signal<SeminarResponse | null>(null)
   qrImageUrl: SafeUrl = ''
-  isRegistrationClosed = signal(true)
+  isRegistrationClosed = signal(false)
 
   constructor(
     private seminarService: ReservationService,
@@ -153,8 +153,8 @@ export class SeminarRegistrationFormComponent implements OnInit {
           this.loading.set(false)
           if (err.status === 409) {
             alert('El DNI ya se encuentra registrado')
-          } else {
-            alert('Error al guardar los datos. Por favor, intente nuevamente.')
+          } else if (err.status === 400) {
+            this.isRegistrationClosed.set(true)
           }
         }
       })

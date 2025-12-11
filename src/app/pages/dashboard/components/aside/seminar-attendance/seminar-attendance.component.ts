@@ -36,43 +36,44 @@ export class SeminarAttendanceComponent implements OnInit, OnDestroy {
   lastUpdated = new Date()
   attendanceStats = {
     attended: 0,
-    notAttended: 0
+    notAttended: 0,
   }
 
   constructor(
     private readonly participantsService: ParticipantsService,
-  ) {}
+  ) {
+  }
 
   // Calculate attendance percentage
   getAttendancePercentage(): number {
-    if (this.totalInscriptions === 0) return 0;
-    return Math.round((this.attendanceStats.attended / this.totalInscriptions) * 100);
+    if (this.totalInscriptions === 0) return 0
+    return Math.round((this.attendanceStats.attended / this.totalInscriptions) * 100)
   }
 
   // Calculate non-attendance percentage
   getNonAttendancePercentage(): number {
-    if (this.totalInscriptions === 0) return 0;
-    return Math.round((this.attendanceStats.notAttended / this.totalInscriptions) * 100);
+    if (this.totalInscriptions === 0) return 0
+    return Math.round((this.attendanceStats.notAttended / this.totalInscriptions) * 100)
   }
 
   // Update attendance statistics
   updateAttendanceStats() {
     if (!this.listParticipantsSeminar || this.listParticipantsSeminar.length === 0) {
-      this.attendanceStats = { attended: 0, notAttended: 0 };
-      return;
+      this.attendanceStats = { attended: 0, notAttended: 0 }
+      return
     }
 
     this.attendanceStats = this.listParticipantsSeminar.reduce((acc, participant) => {
       // Assuming a participant is considered attended if either checkinFirst or checkinSecond is true
       if (participant.checkinFirst || participant.checkinSecond) {
-        acc.attended++;
+        acc.attended++
       } else {
-        acc.notAttended++;
+        acc.notAttended++
       }
-      return acc;
-    }, { attended: 0, notAttended: 0 });
+      return acc
+    }, { attended: 0, notAttended: 0 })
 
-    this.lastUpdated = new Date();
+    this.lastUpdated = new Date()
   }
 
   ngOnDestroy() {
@@ -135,7 +136,7 @@ export class SeminarAttendanceComponent implements OnInit, OnDestroy {
       if (this.listParticipantsSeminar.length === 0) {
         // this.toastr.warning('No hay datos para exportar', 'Advertencia');
         return
-      } 
+      }
 
       const data = this.mapParticipants()
       const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data)
@@ -170,7 +171,6 @@ export class SeminarAttendanceComponent implements OnInit, OnDestroy {
     }
 
     const searchTerm = (this.searchQuery.value || '').toLowerCase().trim()
-
     const filteredReservations = searchTerm
       ? this.listParticipantsAux.filter(r =>
         (r.name?.toLowerCase().includes(searchTerm) ||
@@ -192,10 +192,6 @@ export class SeminarAttendanceComponent implements OnInit, OnDestroy {
     this.paginatedReservations = filteredReservations.slice(startIndex, endIndex)
   }
 
-  /**
-   * Generate an array of page numbers for pagination controls
-   * Includes ellipsis for large numbers of pages
-   */
   getPageNumbers(): (number | string)[] {
     const pages: (number | string)[] = []
     const maxPagesToShow = this.maxVisiblePages
