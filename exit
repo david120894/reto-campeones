@@ -1,0 +1,301 @@
+[33mcommit ae48a788ee442251554aed9b5826e8deca22646c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;32mmain-view[m[33m)[m
+Author: david <jesus251293@gmail.com>
+Date:   Thu Dec 18 12:50:02 2025 -0500
+
+    refactoring landing bike, challenges and seminar
+
+[33mcommit e68fcca7d643daa3f7c153d28563fae2c95ce900[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: david <jesus251293@gmail.com>
+Date:   Thu Dec 11 13:00:11 2025 -0500
+
+    update
+
+[33mcommit def62db5675593de7863b12a6a613ed942353907[m
+Author: david <jesus251293@gmail.com>
+Date:   Thu Dec 11 10:23:13 2025 -0500
+
+    update closed inscriptions
+
+[33mcommit 6708b6e00d6bdd06c74d45700a756ccf7c30a87b[m
+Author: david <jesus251293@gmail.com>
+Date:   Wed Dec 10 16:02:24 2025 -0500
+
+    update inscription view
+
+[33mcommit 377a9915ca31d3e9d0b9f2416765f53c51fcfc60[m
+Author: david <jesus251293@gmail.com>
+Date:   Wed Dec 10 12:41:23 2025 -0500
+
+    resolved conflict
+
+[33mcommit b46454b5cc0891aaf45d154a8d21e340f193ce4a[m
+Author: david <jesus251293@gmail.com>
+Date:   Wed Dec 10 12:13:51 2025 -0500
+
+    update seminar report
+
+[33mcommit 41f0277f655486806fb407d5e195e669f3331eb9[m
+Author: david <jesus251293@gmail.com>
+Date:   Wed Dec 10 11:54:31 2025 -0500
+
+    create attendance seminar view
+
+[33mcommit beeff75c29d4b1e1caedac846182514fcb8f99b6[m
+Author: david <jesus251293@gmail.com>
+Date:   Wed Dec 10 10:17:00 2025 -0500
+
+    create closed modal inscriptions
+
+[33mcommit 0132d811679f2926512216cfaba156a268823ea3[m
+Author: david <jesus251293@gmail.com>
+Date:   Wed Dec 10 10:01:15 2025 -0500
+
+    refactoring view course siminar
+
+[33mcommit 9d1c632fa98ed7efb8d3480e1ec197d7009f35c2[m
+Author: david <jesus251293@gmail.com>
+Date:   Thu Dec 4 11:37:28 2025 -0500
+
+    resolved conflict budgets
+
+[33mcommit c843188caa76f99f6970e82944a709d5cc72538e[m
+Author: david <jesus251293@gmail.com>
+Date:   Thu Dec 4 11:06:43 2025 -0500
+
+    refactoring main view
+
+[33mcommit adf3785d974e49503998785cd796f14104a47a5b[m
+Author: david jesus <jesus251293@gmail.com>
+Date:   Wed Dec 3 23:19:56 2025 -0500
+
+    update
+
+[33mcommit 2f435280e96a82cf327c7f6bbe89f2e10e42563a[m
+Merge: ac3aa15 7c9c01c
+Author: david jesus <jesus251293@gmail.com>
+Date:   Wed Dec 3 23:10:30 2025 -0500
+
+    resolved conflict
+
+[33mcommit ac3aa152fa0e397bbf99d183c9cc9b388e8fec0b[m
+Merge: 9b14e2e e18685c
+Author: david jesus <jesus251293@gmail.com>
+Date:   Wed Dec 3 22:54:39 2025 -0500
+
+    update
+
+[33mcommit 9b14e2ee62b17e35cb2e989e196dd026f4697247[m
+Author: david jesus <jesus251293@gmail.com>
+Date:   Wed Dec 3 22:44:03 2025 -0500
+
+    update
+
+[33mcommit 161bed6379e67db8dbf3ff99632a181e7dd9b440[m
+Merge: 89fd2c2 e18685c
+Author: david jesus <jesus251293@gmail.com>
+Date:   Wed Dec 3 21:35:06 2025 -0500
+
+    rsolved conflict
+
+[33mcommit 89fd2c27d2fce023388799b5283ec76112e67b0c[m
+Author: david jesus <jesus251293@gmail.com>
+Date:   Wed Dec 3 21:14:53 2025 -0500
+
+    update
+
+[33mcommit 7c9c01c521a94d7b9ce9595c824c6198dc61849a[m
+Author: david <jesus251293@gmail.com>
+Date:   Wed Dec 3 17:10:05 2025 -0500
+
+    update
+
+[33mcommit e18685cb6ae60dd6ee87879897336847d6f69563[m
+Author: david <jesus251293@gmail.com>
+Date:   Wed Dec 3 17:10:05 2025 -0500
+
+    update
+
+[33mcommit d627657baed62b1dc07e600405e7115b77b6e81e[m
+Author: david <jesus251293@gmail.com>
+Date:   Tue Dec 2 17:09:51 2025 -0500
+
+    updat
+
+[33mcommit 8733c30576d42a1dab641e6d22f90f3af356e31e[m
+Author: david <jesus251293@gmail.com>
+Date:   Tue Dec 2 17:09:51 2025 -0500
+
+    updat
+
+[33mcommit e0ac4003fb74e6b84bb5b99594e71c1a84e554b3[m
+Author: david <jesus251293@gmail.com>
+Date:   Tue Dec 2 15:49:32 2025 -0500
+
+    update seminar register
+
+[33mcommit 9205a0b64a450f7560d225c12e3c0cfa9789377e[m
+Author: david <jesus251293@gmail.com>
+Date:   Tue Dec 2 15:49:32 2025 -0500
+
+    update seminar register
+
+[33mcommit 2bbd158752d769f51e5d7d4ffc3e52884cfc79a1[m
+Author: david <jesus251293@gmail.com>
+Date:   Tue Dec 2 11:13:56 2025 -0500
+
+    update
+
+[33mcommit 2bd91d4f6d351395a455cb849bfcf7910640a618[m
+Author: david <jesus251293@gmail.com>
+Date:   Tue Dec 2 11:13:56 2025 -0500
+
+    update
+
+[33mcommit 2527a64a3befaf32f2ae5e7463ffffe4a9fcd38e[m
+Author: david <jesus251293@gmail.com>
+Date:   Tue Dec 2 10:48:24 2025 -0500
+
+    create seminar register
+
+[33mcommit a1a8612f94beafdc20aa3548dda4c33ad74703f9[m
+Author: david <jesus251293@gmail.com>
+Date:   Tue Dec 2 10:48:24 2025 -0500
+
+    create seminar register
+
+[33mcommit 9972326f06059cbf9f45c716d772bc13bc4f795d[m
+Author: david <jesus251293@gmail.com>
+Date:   Tue Dec 2 10:45:38 2025 -0500
+
+    create seminar register
+
+[33mcommit 0d58ccba5fb24eae35704019d8f49130275bc125[m
+Author: david <jesus251293@gmail.com>
+Date:   Tue Dec 2 10:45:38 2025 -0500
+
+    create seminar register
+
+[33mcommit bf8307857df63de7332840fad43424e91e31ef5f[m
+Author: david <jesus251293@gmail.com>
+Date:   Tue Dec 2 10:43:33 2025 -0500
+
+    create seminar register
+
+[33mcommit 0a565afcc33bf867b023131c550ea51817dfec22[m
+Author: david <jesus251293@gmail.com>
+Date:   Tue Dec 2 10:43:33 2025 -0500
+
+    create seminar register
+
+[33mcommit a1dbbcd4e7893528cd5dde81b982f9162476d0bb[m
+Author: david <jesus251293@gmail.com>
+Date:   Mon Dec 1 17:41:25 2025 -0500
+
+    create register seminar
+
+[33mcommit 6e4965e0df4854a4f16ae103f17f4611f4624d17[m
+Author: david <jesus251293@gmail.com>
+Date:   Mon Dec 1 17:41:25 2025 -0500
+
+    create register seminar
+
+[33mcommit 395c5cb704a5284e3b452e797264ddaee389a2c1[m
+Author: david <jesus251293@gmail.com>
+Date:   Fri Nov 28 17:06:43 2025 -0500
+
+    update register seminar view
+
+[33mcommit 97e7b006d7c90fc4ec8bedc3689d78c30cf87077[m
+Author: david <jesus251293@gmail.com>
+Date:   Fri Nov 28 17:06:43 2025 -0500
+
+    update register seminar view
+
+[33mcommit 640c0e5fc940046818ce3e3107c3ec472628a48b[m
+Author: david <jesus251293@gmail.com>
+Date:   Thu Nov 27 17:03:27 2025 -0500
+
+    refactoring seminar view
+
+[33mcommit 162c609b769be5e56d256c8ef59011916ae70277[m
+Author: david <jesus251293@gmail.com>
+Date:   Thu Nov 27 17:03:27 2025 -0500
+
+    refactoring seminar view
+
+[33mcommit 1ab6d42ff7909444e77544a6b1c29acbf4b0b29c[m
+Author: david <jesus251293@gmail.com>
+Date:   Thu Nov 27 10:09:32 2025 -0500
+
+    refactoring
+
+[33mcommit 483bef824f2fc5b68998eccd4484f8c39272738f[m
+Author: david <jesus251293@gmail.com>
+Date:   Thu Nov 27 10:09:32 2025 -0500
+
+    refactoring
+
+[33mcommit 4e3cb0cf6977f54a7e1d73d6d5f4a075406b4561[m
+Author: david <jesus251293@gmail.com>
+Date:   Thu Nov 27 10:06:23 2025 -0500
+
+    create view seminar and useful vacations view
+
+[33mcommit 92e7a4f4c4dbb9cd2abf7bb54b415be0bd808aa3[m
+Author: david <jesus251293@gmail.com>
+Date:   Thu Nov 27 10:06:23 2025 -0500
+
+    create view seminar and useful vacations view
+
+[33mcommit 2e055e095c09423f2d3995d49da533715895cee0[m
+Author: david <jesus251293@gmail.com>
+Date:   Tue Nov 25 17:01:34 2025 -0500
+
+    create new view
+
+[33mcommit cc9c558254ad00c02826ebd407d3cc98dd6246ab[m
+Author: david <jesus251293@gmail.com>
+Date:   Tue Nov 25 17:01:34 2025 -0500
+
+    create new view
+
+[33mcommit ea3aacc542e099205e712ecc156856b513dce42d[m
+Author: david <jesus251293@gmail.com>
+Date:   Mon Nov 24 17:26:12 2025 -0500
+
+    update
+
+[33mcommit f47f3292086a012723ce57f0a90d2db7251f802e[m
+Author: david <jesus251293@gmail.com>
+Date:   Mon Nov 24 17:26:12 2025 -0500
+
+    update
+
+[33mcommit b8d5b31b842c945566fe122c2670f9af93a06a59[m
+Author: david jesus <jesus251293@gmail.com>
+Date:   Fri Nov 14 10:42:47 2025 -0500
+
+    resolved conflict
+
+[33mcommit 370bb1c0a12b3c0c4267a6a31f62d4d3948d5fdf[m
+Author: david jesus <jesus251293@gmail.com>
+Date:   Fri Nov 14 10:42:47 2025 -0500
+
+    resolved conflict
+
+[33mcommit c42bff9dbe4c3268d658dbf8b516e1c20f63e73c[m
+Author: david jesus <jesus251293@gmail.com>
+Date:   Fri Nov 14 10:09:15 2025 -0500
+
+    resolved conflict
+
+[33mcommit a5551564091259e446467c757a6457e5270e874a[m
+Author: david jesus <jesus251293@gmail.com>
+Date:   Fri Nov 14 10:09:15 2025 -0500
+
+    resolved conflict
+
+[33mcommit d8b35b7efbc3468ffc0b15cac58c82d691f23734[m
+Merge: 1b06ae9 b566f04
+Author: david jesus <jesus251293@gmail.com>
+Date:   Fri Nov 14

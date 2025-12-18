@@ -1,0 +1,84 @@
+
+  <section id="services" class="">
+    <div class="d-flex text-center p-2 mb-4 my-8 text-8Fixture del Torneoxl font-extrabold big-title md:text-6xl">
+      <p class="mt-4 text-7xl text-secondary" style="font-family: Niconne, sans-serif, sans-serif;">Bases</p>
+    </div>
+    <div class="px-4 py-8 mx-auto">
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-12 gallery-container-cards">
+        <div
+          class="overflow-hidden transition-all duration-300 transform bg-white rounded-lg shadow-md room-card hover:scale-105">
+          <div class="relative h-48 overflow-hidden">
+            <!--          <img src="children/children.jpg"-->
+            <!--               class="object-cover w-full h-full transition-opacity duration-500">-->
+            <img [src]="imagen2"
+                 class="object-cover w-full h-full transition-opacity duration-500" alt="img">
+
+          </div>
+          <div class="p-6" style="background-color: #460805">
+            <h2 class="mb-4 text-2xl font-bold text-center text-white">
+              {{ 'Plaza de San Jerónimo - Plaza de Armas Cusco'}}</h2>
+            <div class="space-y-2">
+              <p class="text-white text-center pb-8"><span class="font-semibold"></span>12 años en adelante Varones Mujeres, 14.5O KM
+              </p>
+            </div>
+            <div class="flex flex-row flex-wrap justify-between w-full">
+              <button
+                (click)="openPdf()"
+                class="md:mt-[80px] lg:mt-[18px] w-[60%] md:w-[70%] bg-white text-black py-2 px-4 rounded-lg hover:bg-[#e21743] transition-colors duration-300">
+                <a (click)="openPdf()" class="font-semibold" style="font-size: 14px;">
+                  {{'TRAMO INTI'}}
+                </a>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="overflow-hidden transition-all duration-300 transform bg-white rounded-lg shadow-md room-card hover:scale-105">
+          <div class="relative h-48 overflow-hidden">
+            <img src='bike-rider/IMG_2209.jpg'
+                 class="object-cover w-full h-full transition-opacity duration-500">
+          </div>
+          <div class="p-6"  style="background-color: #460805">
+            <h2 class="mb-4 text-2xl font-bold text-center text-white">
+              {{'Plaza de San Sebastian - Plaza de Armas Cusco'}}</h2>
+            <div class="space-y-2">
+              <p class="text-white text-center pb-8">
+                <span class="font-semibold"></span>8 a 11 años Niños y Niñas, 7 km
+              </p>
+            </div>
+            <div class="flex flex-row flex-wrap justify-between w-full">
+              <button
+                (click)="openPdf()"
+                class="md:mt-[80px] lg:mt-[18px] w-[60%] md:w-[70%] bg-white text-black py-2 px-4 rounded-lg hover:bg-[#e21743] transition-colors duration-300">
+                <a (click)="openPdf()" class="font-semibold" style="font-size: 14px;">
+                  {{'TRAMO KILLA'}}
+                </a>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="overflow-hidden transition-all duration-300 transform bg-white rounded-lg shadow-md room-card hover:scale-105">
+          <div class="relative h-48 overflow-hidden">
+            <img [src]="'bike-rider/IMG_2261.jpg'"
+                 class="object-cover w-full h-full transition-opacity duration-500">
+          </div>
+          <div class="p-6" style="background-color: #460805">
+            <h2 class="mb-4 text-2xl font-bold text-center text-white">{{'Margen Derecha Distrito de Santiago - Plaza de Armas Cusco'}}</h2>
+            <div class="space-y-2">
+              <p class="text-white text-center"><span class="font-semibold"></span>Competidores con habilidades diferentes Varones Mujeres</p>
+            </div>
+            <div class="flex flex-row flex-wrap justify-between w-full">
+              <button
+                (click)="openPdf()"
+                class="md:mt-[18px] lg:mt-[18px] w-[60%] md:w-[70%] bg-white text-black py-2 px-4 rounded-lg hover:bg-[#740938] transition-colors duration-300">
+                <a (click)="openPdf()" class="font-semibold" style="font-size: 14px;">
+                  {{'TRAMO CHASKA'}}
+                </a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

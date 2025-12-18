@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router'
 import { NewRegisterComponent } from './new-register/new-register.component'
-import { EmailFormComponent } from './home/components/email-form/email-form.component'
 import { LoginComponent } from './login/login.component'
 import { UserRegisterComponent } from './home/components/user-register/user-register.component'
 import { LotteryMachineComponent } from './dashboard/components/aside/lottery/lottery-machine/lottery-machine.component'
@@ -12,6 +11,7 @@ import { PagesComponent } from './pages.component'
 import {
   SeminarAttendanceComponent
 } from './dashboard/components/aside/seminar-attendance/seminar-attendance.component'
+import { EmailFormComponent } from './home/components/reto/email-form/email-form.component'
 
 
 export const pagesRoutes: Routes = [

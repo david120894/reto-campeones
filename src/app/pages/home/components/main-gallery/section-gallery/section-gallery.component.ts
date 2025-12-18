@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core'
-import { GalleryComponent } from '../gallery/gallery.component'
+import { GalleryComponent } from '../../reto/gallery/gallery.component'
 
 @Component({
   selector: 'app-section-gallery',
