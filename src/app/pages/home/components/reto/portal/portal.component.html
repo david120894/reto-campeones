@@ -1,0 +1,258 @@
+<section id="home background"
+         class="hero-section min-h-screen overflow-hidden">
+  <div class="holiday-hats pt-20">
+    <!-- Gorrito superior izquierdo -->
+    <div class="hat top-left animate-bounce">
+      <div class="hat-top bg-gradient-to-b from-red-600 to-red-500"></div>
+      <div class="hat-brim bg-gradient-to-b from-white to-gray-100"></div>
+      <div class="hat-ball bg-gradient-to-b from-white to-yellow-200 animate-ping"></div>
+    </div>
+
+    <!-- Gorrito superior derecho -->
+    <div class="hat top-right animate-bounce" style="animation-delay: 0.5s;">
+      <div class="hat-top bg-gradient-to-b from-green-600 to-green-500"></div>
+      <div class="hat-brim bg-gradient-to-b from-white to-gray-100"></div>
+      <div class="hat-ball bg-gradient-to-b from-white to-red-200 animate-ping" style="animation-delay: 0.2s;"></div>
+    </div>
+  </div>
+
+  <!-- Campanitas en esquinas inferiores -->
+  <div class="holiday-bells pt-20">
+    <!-- Campanita inferior izquierda -->
+    <div class="bell bottom-left animate-swing">
+      <div class="bell-body bg-gradient-to-b from-yellow-400 to-yellow-600"></div>
+      <div class="bell-clapper bg-gradient-to-b from-red-600 to-red-800"></div>
+      <div class="bell-ring animate-pulse"></div>
+    </div>
+
+    <!-- Campanita inferior derecha -->
+    <div class="bell bottom-right animate-swing" style="animation-delay: 0.3s;">
+      <div class="bell-body bg-gradient-to-b from-gold-400 to-gold-600"></div>
+      <div class="bell-clapper bg-gradient-to-b from-green-600 to-green-800"></div>
+      <div class="bell-ring animate-pulse" style="animation-delay: 0.1s;"></div>
+    </div>
+  </div>
+  <!-- Efecto navideño dinámico -->
+  <div class="snowflakes" aria-hidden="true">
+    <div *ngFor="let flake of snowflakes; let i = index"
+         class="snowflake"
+         [style.left]="flake.left"
+         [style.font-size]="flake.size"
+         [style.animation-duration]="flake.duration"
+         [style.color]="flake.color"
+         [style.animation-delay]="flake.delay">
+      {{ flake.symbol }}
+    </div>
+  </div>
+
+  <!-- Luces navideñas mejoradas -->
+  <div class="christmas-lights">
+    <div class="light red"></div>
+    <div class="light green"></div>
+    <div class="light blue"></div>
+    <div class="light yellow"></div>
+    <div class="light purple"></div>
+    <div class="light red"></div>
+    <div class="light green"></div>
+    <div class="light blue"></div>
+    <div class="light yellow"></div>
+    <div class="light purple"></div>
+  </div>
+  <!-- Background Elements -->
+  <div class="absolute inset-0">
+    <!-- Animated Gradients -->
+    <div class="absolute top-0 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+    <div
+      class="absolute top-1/4 right-0 w-80 h-80 bg-orange-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+    <div
+      class="absolute bottom-0 left-1/3 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+
+    <!-- Grid Overlay -->
+    <div
+      class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]"></div>
+  </div>
+
+  <div class="relative z-10 container mx-auto px-4 pt-12 rounded-3xl">
+
+    <!-- Header Section -->
+    <div class="text-center my-24 md:my-16">
+
+      <!-- -->
+
+      <h2  class="text-lg md:text-2xl text-yellow-700 rounded-full font-bold max-w-3xl mx-auto leading-relaxed ">
+        <!--        Eventos deportivos y culturales diseñados para crear-->
+        Eventos deportivos diseñados  para impulsar tu rendimiento;
+        crear momentos inolvidables para fortalecer la pasión por el deporte en nuestra comunidad cusqueña
+        <!--        <span class="text-orange-400 font-semibold">momentos inolvidables</span>-->
+        <!--        y fortalecer nuestra comunidad-->
+      </h2>
+    </div>
+    <!-- Main Events Grid -->
+    <div class="space-y-12">
+
+      <!-- Bike Event Card -->
+
+      <!-- Championship Event Card -->
+      <div class="space-y-10">
+
+        <!-- Header Section -->
+        <div class="space-y-6">
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-3 border border-orange-300 rounded-2xl px-4 py-2 bg-primary">
+            <div class="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
+            <span class="text-secondary font-bold text-sm uppercase tracking-wider">
+        Competencia
+      </span>
+          </div>
+
+          <!-- Title -->
+          <div>
+            <h1 class="text-5xl md:text-6xl font-bold text-gray-900 tracking-tight">
+              Primer Campeonato Interescolar
+            </h1>
+            <p class="text-2xl md:text-3xl text-secondary mt-3">
+              Torneo Interescolar
+            </p>
+          </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="grid lg:grid-cols-3 gap-10">
+
+          <!-- Left Column - Logo Card -->
+          <div class="lg:col-span-1">
+            <div class="sticky top-10">
+              <div class="p-8">
+                <div class="aspect-square bg-primary rounded-2xl flex items-center justify-center p-8">
+                  <img src="championship/logo1.png"
+                       alt="Challenge Champions"
+                       class="w-full max-w-[200px] object-contain">
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="mt-8 space-y-4">
+                  <div class="flex items-center justify-between py-3 border-b border-gray-100">
+                    <span class="text-gray-600">Instituciones</span>
+                    <span class="text-xl font-bold text-gray-900">24+</span>
+                  </div>
+                  <div class="flex items-center justify-between py-3 border-b border-gray-100">
+                    <span class="text-gray-600">Deportes</span>
+                    <span class="text-xl font-bold text-gray-900">3+</span>
+                  </div>
+                  <!--                  <div class="flex items-center justify-between py-3">-->
+                  <!--                    <span class="text-xl font-bold text-gray-900">2025</span>-->
+                  <!--                  </div>-->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column - Content -->
+          <div class="lg:col-span-2 space-y-10">
+
+            <!-- Description -->
+            <div class="space-y-6">
+              <div class="flex items-center gap-3">
+                <div class="w-6 h-[2px] bg-gray-900"></div>
+                <h3 class="text-xl font-bold text-gray-900">Sobre el Evento</h3>
+              </div>
+
+              <p class="text-gray-700 text-lg leading-relaxed">
+                La competencia escolar más esperada del año donde las mejores instituciones educativas
+                se enfrentan por el título de
+                <span class="font-bold text-gray-900">campeón absoluto</span>.
+                Deporte, disciplina y excelencia académica en un solo evento.
+              </p>
+
+              <!-- Features -->
+              <div class="grid md:grid-cols-2 gap-4 pt-4">
+                <div class="flex items-start gap-3 p-4 border border-gray-100 rounded-xl">
+                  <svg class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <div>
+                    <p class="font-medium text-gray-900">Competencia deportiva</p>
+                    <p class="text-sm text-gray-600">Múltiples disciplinas</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 border border-gray-100 rounded-xl">
+                  <svg class="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <div>
+                    <p class="font-medium text-gray-900">Excelencia académica</p>
+                    <p class="text-sm text-gray-600">Valores educativos</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Videos Section -->
+            <div class="space-y-8">
+              <!-- Section Header -->
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="p-2 bg-gray-100 rounded-lg">
+                    <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h2 class="text-2xl font-bold text-gray-900">Mira el Evento</h2>
+                    <p class="text-gray-600">Videos destacados</p>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-2 text-sm text-gray-600">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  <span>2 videos</span>
+                </div>
+              </div>
+
+              <!-- Videos Grid -->
+              <div class="grid md:grid-cols-2 gap-6">
+
+                <!-- Video 1 -->
+                <div class="group">
+                  <div class="relative overflow-hidden rounded-xl border border-gray-200">
+                    <div class="aspect-video bg-gray-900">
+                      <video
+                        #videoPlayer
+                        type="video/mp4"
+                        src="https://taqe.cusco.gob.pe/publico/web/campeonato/Spot_fin.mp4"
+                        autoplay loop muted playsinline
+                        class="w-full h-full object-cover"
+                      ></video>
+                    </div>
+                    <!-- Play Button -->
+                  </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="group">
+                  <div class="relative overflow-hidden rounded-xl border border-gray-200">
+                    <div class="aspect-video bg-gray-900">
+                      <video
+                        #videoPlayer2
+                        src="https://taqe.cusco.gob.pe/publico/web/campeonato/FC.mp4"
+                        autoplay loop muted playsinline
+                        class="w-full h-full object-cover"
+                      ></video>
+                    </div>
+
+                    <!-- Play Button -->
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

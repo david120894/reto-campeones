@@ -24,6 +24,18 @@ export const pagesRoutes: Routes = [
         path: '',
         loadComponent: () => import('./home/components/home/home.component').then((m) => m.HomeComponent),
       },
+      {
+        path: 'challenge-champions',
+        loadComponent: () => import('./home/components/reto/main-reto/main-reto.component').then((m) => m.MainRetoComponent),
+      },
+      {
+        path: 'bike',
+        loadComponent: () => import('./home/components/bike/main-bike/main-bike.component').then((m) => m.MainBikeComponent),
+      },
+      {
+        path: 'seminar',
+        loadComponent: () => import('./home/components/seminar1/seminar/seminar.component').then((m) => m.SeminarComponent),
+      },
     ],
   },
   {

@@ -7,6 +7,7 @@ import { FixtureComponent } from '../fixture/fixture.component'
 import { CarrouselRetoComponent } from '../carrousel-reto/carrousel-reto.component'
 import { EmailFormComponent } from '../email-form/email-form.component'
 import { SponsorsRetoComponent } from '../sponsors-reto/sponsors-reto.component'
+import { PortalComponent } from '../portal/portal.component'
 
 @Component({
   selector: 'app-main-reto',
@@ -19,10 +20,11 @@ import { SponsorsRetoComponent } from '../sponsors-reto/sponsors-reto.component'
     CarrouselRetoComponent,
     EmailFormComponent,
     SponsorsRetoComponent,
+    PortalComponent,
+    PortalComponent,
   ],
   templateUrl: './main-reto.component.html',
   styleUrl: './main-reto.component.scss'
 })
 export class MainRetoComponent {
-  @Input() typeSection!: string;
 }

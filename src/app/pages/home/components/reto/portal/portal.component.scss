@@ -1,0 +1,586 @@
+// Main section with background and layout
+.hero-section {
+  position: relative;
+  background-color: var(--background);
+  color: var(--foreground);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at 20% 80%,
+        oklch(0.9 0.1 25 / 0.1) 0%,
+        transparent 50%
+    ),
+    radial-gradient(
+        circle at 80% 20%,
+        oklch(0.9 0.1 60 / 0.1) 0%,
+        transparent 50%
+    ),
+    radial-gradient(
+        circle at 40% 40%,
+        oklch(0.9 0.1 280 / 0.05) 0%,
+        transparent 50%
+    );
+    pointer-events: none;
+  }
+}
+
+// Animations
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px var(--ring);
+  }
+  50% {
+    box-shadow: 0 0 40px var(--ring), 0 0 60px var(--ring);
+  }
+}
+
+// Card styles
+.event-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+}
+
+// Text effects
+.text-gradient {
+  background: linear-gradient(
+      135deg,
+      var(--primary) 0%,
+      var(--accent) 50%,
+      var(--secondary) 100%
+  );
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+// Interactive elements
+.glow-on-hover {
+  transition: all 0.3s ease;
+
+  &:hover {
+    animation: glow 2s ease-in-out infinite;
+  }
+}
+
+// Responsive design
+@media (max-width: 1024px) {
+  .hero-section {
+    .container {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    .text-8xl { font-size: 3.5rem; }
+    .text-6xl { font-size: 2.5rem; }
+    .text-4xl { font-size: 1.875rem; }
+
+    .flex-col {
+      gap: 1.5rem;
+    }
+  }
+}
+
+// Accessibility
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// Focus states
+button:focus,
+a:focus {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+// Performance optimizations
+.will-change-transform {
+  will-change: transform;
+}
+
+// Mobile optimizations
+@media (max-width: 640px) {
+  .hero-section {
+    .grid-cols-2 {
+      grid-template-columns: 1fr;
+    }
+
+    .flex-row {
+      flex-direction: column;
+    }
+
+    .space-y-6 > * + * {
+      margin-top: 1.5rem;
+    }
+  }
+}
+
+// Christmas lights animation
+.christmas-lights {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  z-index: 3;
+  padding: 10px 0;
+  background: oklch(0.2 0.05 280 / 0.3);
+  backdrop-filter: blur(5px);
+  border-bottom: 1px solid oklch(1 0 0 / 0.1);
+}
+
+.light {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  animation: blink 2s infinite;
+  box-shadow: 0 0 10px currentColor;
+
+  &.red {
+    background: linear-gradient(45deg, oklch(0.7 0.3 25), oklch(0.5 0.2 25));
+    animation-delay: 0s;
+  }
+
+  &.yellow {
+    background: linear-gradient(45deg, oklch(0.9 0.2 60), oklch(0.7 0.15 60));
+    animation-delay: 0.3s;
+  }
+
+  &.blue {
+    background: linear-gradient(45deg, oklch(0.7 0.2 240), oklch(0.5 0.15 240));
+    animation-delay: 0.6s;
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.8);
+    box-shadow: 0 0 5px currentColor;
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+    box-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+}
+
+// Snowflakes animation
+.snowflakes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.snowflake {
+  position: absolute;
+  top: -30px;
+  color: oklch(1 0 0 / 0.9);
+  font-size: 1em;
+  text-shadow:
+    0 0 8px oklch(1 0 0 / 0.7),
+    0 0 15px oklch(0.8 0.1 220 / 0.5);
+  animation: snowfall linear infinite;
+  user-select: none;
+  filter: drop-shadow(0 0 3px oklch(1 0 0 / 0.5));
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translateY(-30px) rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg) translateX(50px);
+    opacity: 0;
+  }
+}
+//gorritos
+// Gorritos navideños
+.holiday-hats {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100px;
+  pointer-events: none;
+  z-index: 4;
+
+  .hat {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+
+    &.top-left {
+      top: 100px;
+      left: 20px;
+      transform: rotate(-15deg);
+    }
+
+    &.top-right {
+      top: 100px;
+      right: 20px;
+      transform: rotate(15deg) scaleX(-1);
+    }
+
+    .hat-top {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 50px;
+      border-radius: 20px 20px 0 0;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .hat-brim {
+      position: absolute;
+      top: 45px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 20px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .hat-ball {
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      box-shadow: 0 0 8px currentColor;
+    }
+  }
+}
+
+// Campanitas
+.holiday-bells {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  pointer-events: none;
+  z-index: 4;
+
+  .bell {
+    position: absolute;
+    width: 60px;
+    height: 80px;
+
+    &.bottom-left {
+      bottom: 20px;
+      left: 30px;
+    }
+
+    &.bottom-right {
+      bottom: 20px;
+      right: 30px;
+      transform: scaleX(-1);
+    }
+
+    .bell-body {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 60px;
+      border-radius: 25px 25px 40px 40px;
+      box-shadow:
+        0 6px 12px rgba(0,0,0,0.3),
+        inset 0 -10px 10px rgba(0,0,0,0.1);
+    }
+
+    .bell-clapper {
+      position: absolute;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 20px;
+      border-radius: 6px;
+    }
+
+    .bell-ring {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #FFD700;
+      box-shadow: 0 0 12px #FFD700;
+    }
+  }
+}
+
+// Animación de campanitas
+@keyframes swing {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  75% {
+    transform: rotate(15deg);
+  }
+}
+
+.animate-swing {
+  animation: swing 3s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+// Papá Noel volando
+.santa-flying {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+  overflow: hidden;
+
+  .santa-container {
+    position: absolute;
+    top: 50px;
+    right: -200px;
+    width: 200px;
+    height: 200px;
+    animation: flyAcross 20s linear infinite;
+    animation-delay: 2s;
+  }
+
+  .santa {
+    position: relative;
+    width: 120px;
+    height: 140px;
+
+    .santa-hat {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 60px;
+
+      .hat-top {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 40px;
+        background: linear-gradient(to bottom, #c00 0%, #900 100%);
+        border-radius: 25px 25px 0 0;
+      }
+
+      .hat-brim {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 20px;
+        background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+        border-radius: 10px;
+      }
+
+      .hat-ball {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 16px;
+        height: 16px;
+        background: linear-gradient(to bottom, #fff 0%, #ff0 100%);
+        border-radius: 50%;
+      }
+    }
+
+    .santa-face {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 60px;
+
+      .eye {
+        position: absolute;
+        top: 15px;
+        width: 8px;
+        height: 8px;
+        background: #000;
+        border-radius: 50%;
+
+        &.left {
+          left: 20px;
+        }
+
+        &.right {
+          right: 20px;
+        }
+      }
+
+      .beard {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 70px;
+        height: 40px;
+        background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+        border-radius: 50%;
+      }
+    }
+
+    .santa-body {
+      position: absolute;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 60px;
+      background: linear-gradient(to bottom, #c00 0%, #900 100%);
+      border-radius: 50px 50px 0 0;
+    }
+
+    .santa-bag {
+      position: absolute;
+      top: 120px;
+      right: -40px;
+      width: 50px;
+      height: 40px;
+      background: linear-gradient(to bottom, #8B4513 0%, #654321 100%);
+      border-radius: 10px;
+      transform: rotate(-20deg);
+    }
+  }
+}
+
+// Animación de vuelo de Papá Noel
+@keyframes flyAcross {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-120vw) translateY(100px) rotate(5deg);
+    opacity: 0;
+  }
+}
+
+// Versión móvil responsiva
+@media (max-width: 768px) {
+  .holiday-hats .hat {
+    width: 60px;
+    height: 60px;
+
+    &.top-left, &.top-right {
+      top: 10px;
+    }
+
+    &.top-left {
+      left: 10px;
+    }
+
+    &.top-right {
+      right: 10px;
+    }
+  }
+
+  .holiday-bells .bell {
+    width: 40px;
+    height: 60px;
+
+    &.bottom-left, &.bottom-right {
+      bottom: 10px;
+    }
+
+    &.bottom-left {
+      left: 15px;
+    }
+
+    &.bottom-right {
+      right: 15px;
+    }
+  }
+
+  .santa-flying .santa-container {
+    width: 120px;
+    height: 120px;
+    animation-duration: 15s;
+  }
+
+  .santa {
+    transform: scale(0.7);
+  }
+}
+
