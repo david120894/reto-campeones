@@ -7,10 +7,6 @@ import { RaffleComponent } from './dashboard/components/aside/raffle/raffle.comp
 import {
   SeminarRegistrationFormComponent,
 } from './home/components/seminar1/seminar-registration-form/seminar-registration-form.component'
-import { PagesComponent } from './pages.component'
-import {
-  SeminarAttendanceComponent
-} from './dashboard/components/aside/seminar-attendance/seminar-attendance.component'
 import { EmailFormComponent } from './home/components/reto/email-form/email-form.component'
 
 
@@ -22,8 +18,12 @@ export const pagesRoutes: Routes = [
     children: [
       {
         path: '',
-        loadComponent: () => import('./home/components/home/home.component').then((m) => m.HomeComponent),
+        loadComponent: () => import('./home/components/main-home/main-home.component').then((m) => m.MainHomeComponent),
       },
+      // {
+      //   path: '',
+      //   loadComponent: () => import('./home/components/home/home.component').then((m) => m.HomeComponent),
+      // },
       {
         path: 'challenge-champions',
         loadComponent: () => import('./home/components/reto/main-reto/main-reto.component').then((m) => m.MainRetoComponent),
@@ -36,6 +36,10 @@ export const pagesRoutes: Routes = [
         path: 'seminar',
         loadComponent: () => import('./home/components/seminar1/seminar/seminar.component').then((m) => m.SeminarComponent),
       },
+      // {
+      //   path: 'event/:id',
+      //   loadComponent: () => import('./event-details/event-details.component').then(m => m.EventDetailsComponent)
+      // },
     ],
   },
   {

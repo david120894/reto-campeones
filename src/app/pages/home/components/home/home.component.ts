@@ -17,7 +17,7 @@ const DECLARATIONS = [
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgParticlesModule, SectionHomeComponent, SectionGalleryComponent, UsefulVacationsComponent, SeminarComponent, MainRetoComponent, MainBikeComponent],
+  imports: [NgParticlesModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

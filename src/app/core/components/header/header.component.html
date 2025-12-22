@@ -1,31 +1,29 @@
-<nav class="bg-[#1a1a1d] w-full z-20 top-0 start-0 border-b border-gray-200 fixed">
-  <div class="flex items-center justify-between max-w-screen-xl p-4 mx-auto w-full">
-    <div class="text-4xl font-bold text-white">
-      <a (click)="scrollToHome()" class="cursor-pointer">
-        <img src="images/round_log.png" class="h-12" alt="logo sol">
+<header class="bg-gradient-to-b from-gray-900 to-black text-white shadow-lg sticky top-0 z-50">
+  <div class="container mx-auto px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <a routerLink="/" class="flex items-center">
+        <img src="auspiciadores/cusco.png" alt="Proyecto Cusco Deportes" class="h-16 object-contain">
       </a>
     </div>
 
-    <div class="flex items-center space-x-4">
-      <div class="md:hidden">
-        <button data-collapse-toggle="navbar-sticky" type="button"
-                class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
-                aria-controls="navbar-sticky" aria-expanded="false">
-          <span class="sr-only">Abrir menú</span>
-          <i class="fa-solid fa-bars text-xl"></i>
-        </button>
-      </div>
+    <nav class="hidden md:flex items-center gap-8">
+      <a routerLink="/" class="text-white hover:text-blue-400 transition-colors font-medium">
+        Inicio
+      </a>
+      <a href="#eventos" class="text-gray-300 hover:text-white transition-colors">
+        Eventos
+      </a>
+      <a href="#nosotros" class="text-gray-300 hover:text-white transition-colors">
+        Nosotros
+      </a>
+    </nav>
 
-      <div id="navbar-sticky"
-           class="hidden md:flex items-center">
-        <a routerLinkActive="active">
-          <button type="button"
-                  routerLink="/login"
-                  class="text-white bg-[#8d0c28] hover:bg-[#740938] focus:ring-4 focus:outline-none focus:ring-[#F4C151] font-medium rounded-lg text-sm px-4 py-2 text-center">
-            Iniciar Sesión
-          </button>
-        </a>
-      </div>
-    </div>
+    <button
+      routerLink="/login"
+      class="bg-primary hover:bg-primary-700 text-white px-6 py-2 rounded-lg font-medium transition-colors flex items-center gap-2"
+    >
+      <i class="fas fa-sign-in-alt"></i>
+      <span>Iniciar Sesión</span>
+    </button>
   </div>
-</nav>
+</header>

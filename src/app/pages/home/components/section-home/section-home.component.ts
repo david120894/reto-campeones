@@ -88,12 +88,7 @@ export class SectionHomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   selectedItem = 'bike-ride'
   currentIndex = 1 // Iniciar con la bicicleteada
-
-  days: string = '00'
-  hours: string = '00'
-  minutes: string = '00'
-  seconds: string = '00'
-
+  
   private intervalId: any
 
   constructor(
@@ -233,7 +228,7 @@ export class SectionHomeComponent implements OnInit, OnDestroy, AfterViewInit {
       const originalContent = document.body.innerHTML
 
       document.body.innerHTML = `
-      <html>
+      <html lang="">
         <head>
           <style>
             body {
@@ -306,11 +301,9 @@ export class SectionHomeComponent implements OnInit, OnDestroy, AfterViewInit {
     clone.style.top = '-9999px'
     clone.style.left = '-9999px'
     clone.style.zIndex = '999999'
-
-    // Quitar TODAS las clases Tailwind (que generan oklch)
+    
     this.removeTailwindClasses(clone)
 
-    // Colores seguros
     clone.style.background = '#1f2937'      // gris oscuro estable
     clone.style.color = '#ffffff'          // texto blanco
     clone.style.border = '1px solid #4b5563'

@@ -1,0 +1,121 @@
+<!-- Cambié border por border-2 para que sea visible y agregué estilos faltantes -->
+@if (evento.id==='hatunphaway') {
+  <div
+    class="group overflow-hidden hover:shadow-xl transition-all duration-300 border-2 rounded-xl h-full bg-white cursor-pointer border-[#8e171f]"
+      (click)="navigate()"
+  >
+    <div class="relative aspect-video overflow-hidden bg-gray-100">
+      <img
+        [src]="evento.imagen"
+        [alt]="evento.titulo"
+        class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+        style="object-fit: contain; background-color: #f9fafb;"
+        loading="lazy"
+      />
+      <!-- Cambié bg-primary por bg-[#8e171f] para consistencia -->
+      <span class="absolute top-4 left-4 bg-[#8e171f] text-white px-3 py-1 rounded-full text-xs font-medium">
+      {{evento.categoria}}
+    </span>
+    </div>
+
+    <div class="p-6 flex flex-col h-[calc(100%-16rem)]">
+      <div class="flex-grow">
+        <!-- Agregué duration-300 a la transición del hover -->
+        <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-[#8e171f] transition-colors duration-300">
+          {{evento.titulo}}
+        </h3>
+        <p class="text-sm text-gray-600 mb-4 line-clamp-2">{{evento.descripcion}}</p>
+
+        <div class="space-y-2">
+          <div class="flex items-center gap-2 text-sm text-gray-500">
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+            <span class="truncate">{{evento.fecha}}</span>
+          </div>
+          <div class="flex items-center gap-2 text-sm text-gray-500">
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            <span class="truncate">{{evento.ubicacion}}</span>
+          </div>
+          <div class="flex items-center gap-2 text-sm text-gray-500">
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5 2.0v-5m0 0H21m-8 0h8"/>
+            </svg>
+            <span class="truncate">{{evento.capacidad}}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cambié text-primary por text-[#8e171f] para consistencia -->
+      <div class="mt-6 flex items-center gap-2 text-[#8e171f] font-medium group-hover:gap-4 transition-all duration-300">
+        <span>Ver detalles</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+} @else {
+  <div
+    class="group overflow-hidden hover:shadow-xl transition-all duration-300 border-2 rounded-xl h-full bg-white cursor-pointer border-[#8e171f]"
+    [routerLink]="['/', evento.id]"
+  >
+    <div class="relative aspect-video overflow-hidden bg-gray-100">
+      <img
+        [src]="evento.imagen"
+        [alt]="evento.titulo"
+        class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+        style="object-fit: contain; background-color: #f9fafb;"
+        loading="lazy"
+      />
+      <!-- Cambié bg-primary por bg-[#8e171f] para consistencia -->
+      <span class="absolute top-4 left-4 bg-[#8e171f] text-white px-3 py-1 rounded-full text-xs font-medium">
+      {{evento.categoria}}
+    </span>
+    </div>
+
+    <div class="p-6 flex flex-col h-[calc(100%-16rem)]">
+      <div class="flex-grow">
+        <!-- Agregué duration-300 a la transición del hover -->
+        <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-[#8e171f] transition-colors duration-300">
+          {{evento.titulo}}
+        </h3>
+        <p class="text-sm text-gray-600 mb-4 line-clamp-2">{{evento.descripcion}}</p>
+
+        <div class="space-y-2">
+          <div class="flex items-center gap-2 text-sm text-gray-500">
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+            <span class="truncate">{{evento.fecha}}</span>
+          </div>
+          <div class="flex items-center gap-2 text-sm text-gray-500">
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            <span class="truncate">{{evento.ubicacion}}</span>
+          </div>
+          <div class="flex items-center gap-2 text-sm text-gray-500">
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5 2.0v-5m0 0H21m-8 0h8"/>
+            </svg>
+            <span class="truncate">{{evento.capacidad}}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cambié text-primary por text-[#8e171f] para consistencia -->
+      <div class="mt-6 flex items-center gap-2 text-[#8e171f] font-medium group-hover:gap-4 transition-all duration-300">
+        <span>Ver detalles</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+}
+
