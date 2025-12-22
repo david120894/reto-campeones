@@ -6,6 +6,7 @@ export interface Evento {
   capacidad: string;
   categoria: string;
   imagen: string;
+  qr:string;
   descripcion: string;
 }
 
@@ -14,4 +15,10 @@ export interface Stats {
   asistentesTotales: number;
   satisfaccion: number;
   anosExperiencia: number;
+}
+
+export interface Photo {
+  src: string;
+  titulo?: string;
+  categoria?: string;
 }
