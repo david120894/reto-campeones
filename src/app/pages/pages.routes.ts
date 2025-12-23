@@ -20,10 +20,6 @@ export const pagesRoutes: Routes = [
         path: '',
         loadComponent: () => import('./home/components/main-home/main-home.component').then((m) => m.MainHomeComponent),
       },
-      // {
-      //   path: '',
-      //   loadComponent: () => import('./home/components/home/home.component').then((m) => m.HomeComponent),
-      // },
       {
         path: 'challenge-champions',
         loadComponent: () => import('./home/components/reto/main-reto/main-reto.component').then((m) => m.MainRetoComponent),

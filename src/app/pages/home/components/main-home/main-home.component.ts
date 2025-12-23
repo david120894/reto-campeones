@@ -26,13 +26,13 @@ export class MainHomeComponent implements OnInit, OnDestroy {
   eventos: Evento[] = [
     {
       id: 'hatunphaway',
-      titulo: 'BIENVENIDOS A LA SEGUNDA EDICIÓN DE LA GRAN CARRERA QOSQO 10K HATUN PHAWAY 2025',
+      titulo: 'Bienvenidos a la segunda edición de la gran carrera QOSQO 10K hatun phaway 2025',
       fecha: '2025',
       ubicacion: 'Cusco',
       capacidad: '+500 asistentes',
       categoria: 'Deporte',
       imagen: 'images/feliz.png',
-      qr:'qr/qr-hatunphaway.png',
+      qr:'qr/QrHatunPhaway.jpg',
       descripcion: 'Corre con amor, corre con propósito',
     },
     {
